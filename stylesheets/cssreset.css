@@ -3,31 +3,6 @@
    License: none (public domain)
 */
 
-/*
-@font-face {
-	font-family: 'Normal';
-	src: local("NotoSansCJKtc-Medium"),
-	url('../fonts/NotoSansCJKtc-Medium.otf') format('Opentype');
-}
-@font-face {
-	font-family: 'Bolder';
-	src: local("NotoSansCJKtc-Bold"),
-	url('../fonts/NotoSansCJKtc-Bold.otf') format('Opentype');
-}
-
-@font-face {
-	font-family: 'Light';
-	src: local("NotoSansCJKtc-DemiLight"),
-	url('../fonts/NotoSansCJKtc-DemiLight.otf') format('Opentype');
-}
-*/
-body {
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
-}
-
-
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -47,9 +22,6 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
-	box-sizing:border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -57,20 +29,13 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
-	-webkit-text-size-adjust: 100%;
+	line-height: 1;
+	font-family: '微軟正黑體';
 	
 }
 ol, ul {
 	list-style: none;
 }
-
-blockquote{
-    border-left: 5px solid #cccccc;
-    padding-left: 25px;
-}
-
 blockquote, q {
 	quotes: none;
 }
@@ -89,8 +54,7 @@ div{
 }
 section{
 	box-sizing:border-box;
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
+	font-family: '微軟正黑體';
 }
 
 
@@ -100,44 +64,19 @@ p{
 a{
 	text-decoration:none;
 }
-a:hover{
-	text-decoration:none;
-}
-strong{
-	font-weight: bold;
-}
+
+
 button{
 	background:none;
 	border:0;
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
+	font-family:Arial,"微軟正黑體";
 	cursor:pointer;
 	font-size:15px;
 	box-sizing:border-box;
 }
 
 input{
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
-}
-
-select{
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
-}
-textarea{
-	font-family: 'Noto Sans TC';
-	font-weight: 400;
-}
-
-
-em{
-    font-style: italic;
-}
-
-
-strong,b{
-	font-weight: bold;
+	font-family:"微軟正黑體";
 }
 
 

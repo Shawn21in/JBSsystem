@@ -14,10 +14,9 @@ function CheckInput( Field ){
 			_val  	= checkin(_focus.val());
 			_min 	= checkin(_focus.attr('input-min'));
 			_max 	= checkin(_focus.attr('input-max'));
-			_minlen	= checkin(_focus.attr('minlength'));
-			_maxlen	= checkin(_focus.attr('maxlength'));
+			//_minlen	= checkin(_focus.attr('minlength'));
+			//_maxlen	= checkin(_focus.attr('maxlength'));
 			_data 	= checkin(_focus.attr('input-data'));
-			_name 	= checkin(_focus.attr('input-name'));
 			
 			if( _msg != '' && _val == '' ){
 				
@@ -47,71 +46,6 @@ function CheckInput( Field ){
 					
 					_focus.val(0);
 				}
-			}else if( _type == 'date' ){
-					
-					var reg = /^(\d{4})-(\d{2})-(\d{2})$/;  
-					//var arr = reg.exec(_val);
-					
-					if( !reg.test(_val)&&RegExp.$2<=12&&RegExp.$3<=31){
-						
-						_msg = '請輸入正確的格式(YYYY-MM-DD)';
-						return false;
-					}
-					
-			//---台灣身分證格式		
-			}else if( _type == 'twid' ){
-				
-
-				  tab = "ABCDEFGHJKLMNPQRSTUVXYWZIO"                     
-				  A1 = new Array (1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3 );
-				  A2 = new Array (0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5 );
-				  Mx = new Array (9,8,7,6,5,4,3,2,1,1);
-
-				  if ( _val.length != 10 ) {
-					  
-					  _msg = '請輸入正確的身分證格式';
-					  return false;
-				  }
-				  i = tab.indexOf( _val.charAt(0) );
-				  if ( i == -1 ) {
-					  
-					  _msg = '請輸入正確的身分證格式';
-					  return false;
-				  }
-				  sum = A1[i] + A2[i]*9;
-
-				  for ( i=1; i<10; i++ ) {
-					v = parseInt( _val.charAt(i) );
-					if ( isNaN(v) ) {
-					  
-					  _msg = '請輸入正確的身分證格式';
-					  return false;
-				  }
-					sum = sum + v * Mx[i];
-				  }
-				  if ( sum % 10 != 0 ) {
-					  
-					  _msg = '請輸入正確的身分證格式';
-					  return false;
-				  }
-				  
-			//---僅能輸入中文名	  
-			}else if( _type == 'chinesename' ){
-				
-					var reg = /[^\u4e00-\u9fa5]/;
-					
-					if( reg.test(_val) ){
-						_msg = '請輸入中文名稱';
-						return false;
-					}
-					/*
-					if( _val.match("小姐") || _val.match("先生") ){
-						
-						_msg = '請輸入您的本名，請勿輸入(先生/小姐)!';
-						return false;
-					}*/
-					
-			//---家電、手機僅判斷數字			
 			}else if( _type == 'tel' ){
 				
 				if( _val != '' ){
@@ -121,11 +55,11 @@ function CheckInput( Field ){
 						
 						_msg = '請輸入 0 - 9 數字';
 						return false;
-					}else if( _val.length < _minlen && _minlen != '' ){
+					}else if( _val.length < _min && _min != '' ){
 						
 						_msg = '電話碼數過少';
 						return false;
-					}else if( _val.length > _maxlen && _maxlen != '' ){
+					}else if( _val.length > _max && _max != '' ){
 						
 						_msg = '電話碼數過多';
 						return false;
@@ -134,6 +68,56 @@ function CheckInput( Field ){
 					
 					_focus.val('');
 				}
+			}else if(_type == 'ctel'){
+				if( _val != '' ){
+					
+					var r_number = /^09\d{8}$/;
+					if( r_number.test(_val) ){
+						return true;
+					}else{
+						_msg = '行動電話格式錯誤';
+						return false;
+						
+					}
+					
+				}else{
+					
+					_focus.val('');
+				}
+			}else if(_type == 'id'){
+				if( _val != '' ){
+					
+					var r_number = /^[A-Z]{1}[1-2]{1}[0-9]{8}$/;
+					if( r_number.test(_val) ){
+						return true;
+					}else{
+						_msg = '身分證格式錯誤';
+						return false;
+						
+					}
+					
+				}else{
+					
+					_focus.val('');
+				}
+				
+			}else if(_type == 'time'){
+				if( _val != '' ){
+					
+					var r_number = /^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$/;
+					if( r_number.test(_val) ){
+						return true;
+					}else{
+						_msg = '時間格式錯誤(0000-2359)';
+						return false;
+						
+					}
+					
+				}else{
+					
+					_focus.val('');
+				}
+				
 			}else if( _type == 'repassword' ){
 				
 				var re_val = $('#' +_focus.attr('input-re-id')).val();
@@ -151,19 +135,6 @@ function CheckInput( Field ){
 					_msg = '密碼與密碼確認不一樣';
 					return false;
 				}
-				
-			//---判斷radio button 有無勾選
-			}else if( _type == 'radio' ){
-				
-				var che = $('input:radio[name='+_name+']:checked').val();
-				
-				if( che == null ) {
-					
-					_msg = '請勾選性別';
-					return false;
-				}
-			
-			
 			}else if( _type == 'checkbox' ){
 				
 				if( !_focus.prop('checked') ) return false;
@@ -200,7 +171,7 @@ function CheckInput( Field ){
 			
 			_focus = $(this);
 			
-			if( _focus.attr('disabled') == false || _focus.attr('disabled') == null ){
+			if( _focus.prop('disabled') == false ){
 				
 				_msg = checkin(_focus.attr('msg'));
 				

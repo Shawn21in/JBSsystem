@@ -353,7 +353,7 @@
         overlay.className = '';
         setTimeout(function() {
             overlay.style.display = 'none';
-           // exitFullscreen();
+            exitFullscreen();
             if(options.afterHide)
                 options.afterHide();
         }, 500);

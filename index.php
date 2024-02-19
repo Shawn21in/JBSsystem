@@ -10,6 +10,16 @@ if( $_Login ) {
 		break;
 	}
 }
+$db = new MySQL();
+$db->Order_By = ' ORDER BY Video_Sort DESC, Video_ID DESC';
+$db->Where = " WHERE Video_Open = '1'";
+
+$db->query_sql($video_db, '*');
+
+while($row = $db->query_fetch()){
+	
+	$_html_video[$row['Video_ID']] = $row;
+}
 $_html 			= $CM->GET_WEB_SETTING( "Setting_Index01,Setting_Index02" );
 
 //-----------------------------SEO-------------------------------------------
@@ -25,161 +35,317 @@ $_setting_['WO_Description'] 	.= $_BannerList['SEO']['WO_Description'];
 
 $_Title 	= '首頁';
 ?>
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<!doctype html>
+<html>
 <head>
-	<?php require('head.php') ?>
-	<link rel="stylesheet" type="text/css" href="stylesheets/index.css?v=<?=$version?>" />
-	<link rel="stylesheet" href="stylesheets/css/general.css">
-	<link rel="stylesheet" href="stylesheets/css/style.css">
-	<link rel="stylesheet" href="stylesheets/css/queries.css">
+<?php require('head.php') ?>
+<title>庫點子文創 - 創造企業e化的好點子</title>
+<style>
+  /* 2022/04/01追加 */
+
+.intro02-2,.intro02-3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin:100px auto;
+    flex-flow: row wrap;
+}
+
+.intro02-2__left{
+    width: 43%;
+}
+.intro02-2__left img{
+    width: 100%;
+}
+.tit_h2,.tit_h3{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.tit_h2{
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+.tit_h2 img{
+  height: auto;
+  margin-right: 10px;
+}
+.tit_h2 p{
+  font-size:36px;
+  color: #000;
+}
+.tit_p{
+  font-size:16px;
+  color: #b97808;
+  line-height: 1.7em;
+}
+
+@media (max-width: 640px) {
+    
+    .intro02-2{
+        width: 90%;
+        flex-flow: column-reverse wrap;
+    }
+    .intro02-3{
+        width: 90%;
+        flex-flow: column wrap;
+    }
+    .intro02-2__left{
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+</style>
+
 </head>
 
+<body  data-target=".navbar-spy" data-spy="scroll" data-offset="150">
 
-	
 
-<body>
-	<?php require('mobile_aside.php') ?>
-		<div class="Wrapper">
-			<div class="Wrapper__mask"></div>
-			
-			<?php //require('header.php') ?>
-			<header>
-				<div class="secondaryNav">
-					<div class="secondaryNavBox">
-						<a href="signup_customer.php" class="navlink">消費者註冊</a>
-						<a href="signup.php" class="navlink">企業註冊</a>
-						<a href="login.php" class="navlink">登入</a>
+<?php require('header.php') ?>
+
+
+<article>
+
+  <section class="bannerslider">
+    <ul>
+      <li class="bannerslider__item">
+        <img src="images/banner.png" width="100%">
+        <p>
+          <span class="t01">E化大革命 一機搞定！</span>
+          <span class="t02">手機APP打卡，資料直接同步至公司資料庫，<br>打卡不再僅限於公司內！</span>
+          <span class="t02">現在購買手機APP打卡<br>享優惠價格購入人事薪資系統</span>
+          <!-- <span class="t02" >現在購買手機APP打卡，<br>享有優惠價格加購人事薪資系統!</span> -->
+          <button onClick="location.href='register.php'">立即註冊 購買打卡APP帳號</button>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+<div class="tit_h2"><img src="images/titImg01.png" alt=""><p>打卡APP快速又方便</p></div>
+<div class="tit_h3 "><p class="tit_p">打卡順手拍照，同步紀錄、回傳座標位置，<br>外出差旅好方便。</p></div>
+  
+
+
+
+  <section class="intro" id="intro">
+    <div class="intro__left">
+      <h2 class="tit">同步作業快速方便</h2>
+      <p class="con">手機打卡的資料，可同步寫入至公司的資料庫，<br>進行後續薪資作業處理</p>
+      <p  class="con">打卡介面超簡單<br>同步紀錄座標位置</p>
+    </div>
+    <div class="intro__right">
+      <img src="images/m01.png">
+      <img src="images/m02.png">
+
+    </div>
+    
+  </section>
+  
+  <section class="intro02">
+    <div class="intro02__left">
+      <img src="images/m03.png">
+      <img src="images/m04.png">
+      <img src="images/m05.png">
+      <img src="images/m06.png">
+    </div>
+    <div class="intro02__right">
+      <H2 class="tit">E化系統<br>輕鬆管理</H2>
+      <p class="con">主管只需用手機，即可進行人事管理、人事建檔、休假審核、出缺勤查詢..等</p>
+    </div>
+    
+  </section>
+  
+  <section class="intro03">
+    <div class="intro03__left">
+      <H2 class="tit">不疾不徐保障安全</H2>
+      <p class="con">用手機即可在外拍照回傳完成打卡，出差不再需要趕回公司打下班卡讓我們的安全暴露在風險下</p>
+    </div>
+    <div class="intro03__right">
+      <img src="images/m07.png">
+      <img src="images/m08.png">
+    </div>
+    
+  </section>
+
+  <div class="tit_h2"><img src="images/titImg02.png" alt=""><p>優惠加購人事薪資系統</p></div>
+  <div class="tit_h3 " style="margin-bottom:50px"><p class="tit_p">自動計算人事薪資，連接考勤機生成考勤資料，<br>並與銀行系統整合進行薪資發放，同時提供各種報表供管理者查詢。</p></div>
+  
+  <section class="intro02-2" >
+    <div class="intro02-2__left">
+      <img class="" src="images/pay01-2.png">
+    </div>
+    <div class="intro02__right" >
+      <H2 class="tit">人事管理</H2>
+      <p class="con">員工基本資料建檔 （到職日、班別）。<br>管理人員目前就職狀態：就職、離職、調職、復職。</p>
+    </div>
+  </section>
+  
+  <section class="intro02-3" id="intro">
+    <div class="intro__left">
+      <h2 class="tit">薪資管理</h2>
+      <p class="con">管理薪資各類：勞保、健保、勞退、薪資計算、<br>分紅獎金..等各種類別。</p>
+    </div>
+    <div class="intro02-2__left">
+      <img src="images/pay02-2.png">
+    </div>
+    
+  </section>
+
+  <section class="intro02-2">
+    <div class="intro02-2__left">
+      <img src="images/pay03-2.png">
+    </div>
+    <div class="intro02__right">
+      <H2 class="tit">考勤管理</H2>
+      <p class="con">管理出缺勤狀況<br>
+        遲到、排休、特休、加班、病假、喪假、婚假..等<br>
+        各種假別設定。<br>
+        各種假別申請、核准機制。</p>
+    </div>
+  </section>
+
+   <section class="program" id="program">
+    <div class="container-fluid">
+      <h2 class="tit">方案介紹</h2>
+      <div class="program__left">
+        <ul>
+          <div  style="text-align:center;background-color: #737373;padding:15px 0;color:#fff;font-size: 17px;margin-bottom:5px;">打卡APP</div>
+          <li class="program__left__item"><p>GPS定位</p>打卡時，系統會同時記錄座標位置，並存入資料庫中。</li>
+          <li class="program__left__item"><p>行動打卡</p>用手機即可立即打卡上下班，並記錄至人事薪資系統內</li>
+          <li class="program__left__item"><p>打卡拍照</p>可要求員工打卡時拍下現場照片回傳至公司，才算完成打卡作業。</li>
+          <li class="program__left__item"><p>手機建檔</p>利用手機即可建立員工檔案。</li>
+          <li class="program__left__item"><p>休假申請</p>可用手機與主管申請休假，免去公文往返的時間。</li>
+          <li class="program__left__item"><p>休假審核</p>主管用手機就可審核員工的休假申請。</li>
+          <li class="program__left__item"><p>出缺勤查詢</p>主管可即時用手機查詢員工的出缺勤的狀況，以利薪資計算。</li>
+          <li class="program__left__item"><p>跑馬燈公告</p>可隨時更改跑馬燈內的公告內容</li>
+          <div  style="text-align:center;background-color: #737373;padding:15px 0;color:#fff;font-size: 17px;margin-bottom:5px;">人事薪資系統</div>
+          <li class="program__left__item"><p>人事管理</p>員工基本資料建檔，清楚掌握員工到職日、離職日、復職等基本資料。</li>
+          <li class="program__left__item"><p>薪資管理</p>支援多種薪資計算方式與各種不同薪資計算方法，並與銀行系統整合進行薪資發放</li>
+          <li class="program__left__item"><p>考勤管理</p>管理出勤狀況與請假申請核准機制，並可依公司需求新增假別。</li>
+          <li class="program__left__item"><p>員工出勤曆報表</p>可產生多種出勤報表供管理者查詢，快速調閱員工出勤狀況。</li>
+
+        </ul>
+      </div>
+      <div class="program__right">
+        <div class="title">方案原價<!--<br>(年租，每年酌收一次費用)--></div>
+        <ul>
+        	<!--<li class="program__right__item"><p>60人以上</p><p class="cost"> 另外報價</p></li>-->
+        	<li class="program__right__item"><p>40人</p><p class="cost"> NT.60000</p></li>
+        	<!--<li class="program__right__item"><p>20人</p><p class="cost"> NT.30000</p></li>-->
+        	
+        </ul>
+
+        
+		    <!-- <div class="title">攻頂會員價格</div>
+        <ul>
+          <?php //foreach($Version_Data as $key => $val){ ?>
+            <li class="program__right__item"><p><?=$val['Version_Title']?>(<?=$val['Version_Day'].'天'?>)</p><p class="cost"> NT.<?=$val['Version_Price']?></p></li>
+            <?php //} ?>
+            
+          </ul> -->
+
+          <div class="title">含人事薪資組合價</div>
+          <ul>
+            <!--<li class="program__right__item"><p>PLUS版(60人以上)</p><p class="cost"> NT.400000</p></li>-->
+            <!--<li class="program__right__item"><p>專業版(40人)</p><p class="cost"> NT.300000</p></li>-->
+            <li class="program__right__item"><p>標準版(20人)</p><p class="cost"><b class="color:#ff0000">(特價)</b> NT.60000</p></li>
+            <li class="program__right__item"><p>人事薪資版60人(plus)</p><p class="cost"> NT.400000</p></li>
+            
+          </ul>
+        <!--<div class="remind">(版本費用每年酌收一次)</div>
+        <div class="title">開通費用</div>
+        <div class="remind"><span>請洽經銷商</span> (僅酌收一次)</div>-->
+        <button onClick="location.href='register.php'">直接前往註冊會員<img src="images/icon.png"></button>
+
+      </div>
+      
+      <ul class="tips">
+        <li>目前僅供 iOS、Android 可使用。</li>
+        <!--<li>若已完成付款，請登入會員帳號填寫匯款後五碼及日期給我們，我們對帳後將會開通你註冊的帳號，您即可開始使用APP或登入網站後台操作。</li>-->
+        <li>請注意！帳號開通七日後無法取消退回已支付的款項。</li>
+        <li>可補差額升級版本。</li>
+      </ul>
+    </div>
+
+   </section>
+
+
+  <section class="download" id="download">
+     <div class="container-fluid">
+      <H2 class="tit">下載安裝說明</H2>
+      <ul class="download__list">
+        <li  class="download__item">
+          <div>
+            <h3>您還不是會員？</h3>
+            <button class="btn01" onClick="location.href='register.php'"><span>點我立即註冊會員帳號<br>並完成繳費動作</span></button>
+            <p>填寫資料註冊成為會員<br>
+			並完成繳費動作後<br>
+			請<a href="login.php">直接登入管理會員</a><br>
+			確認您的匯款帳號<br>
+			查看帳號狀態<br>
+			</p>
 					</div>
-				</div>
-				<div class="navBox">
-					<div class="Navcontainer">
-						<div>
-							<a href="index.php"><img src="images/img/Ai2BiLOGO.png" alt="logo" class="logo"></a>
-							<div class="nav-toggle" id="navToggle">
-								<img id="navClosed" class="navIcon" src="https://www.richardmiddleton.me/wp-content/themes/richardcodes/assets/img/hamburger.svg" alt="hamburger menu">
-								<img id="navOpen" class="navIcon hidden" src="https://www.richardmiddleton.me/wp-content/themes/richardcodes/assets/img/close.svg" alt="close hamburger">
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#stepSection">功能介紹</a></li>
-								<li><a href="#payment">價格方案</a></li>
-								<li><a href="contact.php">聯絡我們</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<div class="herosection">
-					<div class="herocontainer">
-						<img src="images/img/Portal.png" alt="手機app畫面與logo" class="banner">
-						<div class="herocontent">
-							<div>
-								<ul class="herocontentList">
-									<li><ion-icon name="checkmark-outline" class="checkmark"></ion-icon>市場洞察</li>
-									<span>
-										替企業找出路
-									</span>
-									<li><ion-icon name="checkmark-outline" class="checkmark"></ion-icon>經營精準</li>
-									<span>
-										替企業經營找方法
-									</span>
-									<li><ion-icon name="checkmark-outline" class="checkmark"></ion-icon>競爭力提升</li>
-									<span>
-										替企業了解目前經營盲點
-									</span>
-								</ul>
-							</div>
-							<span>
-								Ai2Bi問卷洞察平台助力企業，深入了解客戶需求、提升產品品質，有效制定營銷策略，提升企業競爭力。
-							</span>
-							<div class="btnBox">
-								<a href="signup.php" class="heroBtn">申請會員</a>
-							</div>
-						</div>
-					</div>
-					<h1 class="h1">革新問卷設計，<br>AI生成問卷平台助您輕鬆搞定!</h1>
-				</div>
-			</header>
-			<section class="sectionFunction" id="stepSection">
-				<div class="functionContainer">
-					<div class="functionBox">
-						<h2 class="functionTitle">・智慧生成問卷</h2>
-						<p class="functionContent">借助先進的AI技術，我們的平台能夠根據您的需求智能生成問卷，節省您寶貴的時間。不再煩惱從零開始，只需幾個簡單的步驟，即可獲得專業而精準的問卷。</p>
-					</div>
+					</li>
+					<li  class="download__item">
 					<div>
-						<img src="images/img/aisurvey.png" alt="ai生成問卷示意圖" class="functionImg">
+						<h3>我已註冊並完成繳費</h3>
+						<button class="btn02" onClick="location.href='login.php'"><span>網站管理會員<br>後台登入</span></button>
+						<p><span>登入後可由後台操作以下功能</span><br>
+			確認匯款帳號<br>
+			續約<br>
+			版本升級<br>
+			修改會員基本資料<br>
+			修改密碼<br>
+			查看員工基本資料<br>
+			查詢或匯出員工出缺勤</p>
 					</div>
-				</div>
-				<div class="functionContainer functionContainerSec">
+					</li>
+					<li  class="download__item">
 					<div>
-						<img src="images/img/survey.png" alt="ai生成問卷示意圖" class="functionImg">
-					</div>
-					<div class="functionBox">
-						<h2 class="functionTitle2">・提供多款公版問卷</h2>
-						<p class="functionContent standardFunctionContent">不同於傳統問卷平台的固定模板，我們提供實用的問卷選項，讓您根據具體需求及使用情境使用。</p>
-						<div class="functionTitle3Box">
-							<h3 class="functionTitle3">服務滿意度</h3>
-							<p class="functionContent3">顧客對產品與服務之滿意度</p>
-						</div>
-						<div class="functionTitle3Box">
-							<h3 class="functionTitle3">客戶足跡調查</h3>
-							<p class="functionContent3">顧客從何而來、何時來、怎麼來、內容偏好</p>
-						</div>
-						<div class="functionTitle3Box">
-							<h3 class="functionTitle3">商業旅程調查</h3>
-							<p class="functionContent3">商業旅程是指透過問卷中的前、中、後三大區塊，使企業經營者能全面了解客戶與企業互動的步驟和感知。商業旅程地圖有助於評估洞察報告、影響力、問題與機會的發現，並促使企業經營者優化預算、精力，以實現對客戶體驗的改變。</p>
-						</div>
-					</div>
-				</div>
-				<div class="functionContainer">
-					<div class="functionBox">
-						<h2 class="functionTitle">・折扣券發放</h2>
-						<p class="functionContent">通過每次生成問卷，我們可以同時發布一張折扣券至平台，鼓勵參與問卷填寫的用戶前往各家店鋪，有效提升店家的曝光度。這個策略不僅激勵了用戶參與問卷，更成功的促使了店家之間的互通，為各家店鋪帶來了更多的機會與可見性。</p>
-						<img src="images/img/coupon.png" alt="ai生成問卷示意圖" class="couponImg">
-						<div class="decoLinkBox">
-							<img src="images/img/decoline.png" alt="裝飾線條" class="decoline">
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="Sectiondatainfo">
-				<div class="functionContainer datainfoContainer">
-					<div class="functionBox">
-						<h2 class="functionTitle">・數據分析</h2>
-					</div>
-				</div>
-				<div class="datainfoImgBox">
-					<div>
-						<img src="images/img/table1.png" alt="" class="datainfoImg">
-					</div>
-					<div>
-						<img src="images/img/table2.png" alt="" class="datainfoImg">
-					</div>
-					<div>
-						<img src="images/img/table3.png" alt="" class="datainfoImg">
-					</div>
-				</div>
-				<div class="lineBox1"><div class="line1"></span></div>
-				<div class="lineBox2"><span class="line1"></span></div>
-			</section>
-			<section class="Sectionpayment" id="payment">
-				<div class="functionContainer paymentContainer">
-					<div class="functionBox">
-						<h2 class="functionTitle">・訂閱方案</h2>
-					</div>
-				</div>
-				<div class="datainfoImgBox">
-					<img src="images/img/payment1.png" alt="" class="datainfoImg">
-					<img src="images/img/payment2.png" alt="" class="datainfoImg">
-					<img src="images/img/payment3.png" alt="" class="datainfoImg">
-				</div>
-				<div class="btnBox">
-					<a href="signup.php" class="heroBtn">立即註冊</a>
-				</div>
-			</section>
-			<?php require('footer.php') ?>
-		</div>
-	</body>
-	</script>
+						<h3>我已完成繳費<br>
+			並收到MAIL帳號開通確認信<br>
+			開始使用手機APP版</h3>
+			<button class="btn03" onClick="location.href='https://itunes.apple.com/app/id1289615237'">立即下載 IOS版</button>
+			<button class="btn04" onClick="location.href='https://play.google.com/store/apps/details?id=com.leo.ci_app'">立即下載 Android版</button>
+          <p><a href="#video" style="border-bottom: 2px solid #000; padding-bottom: 2px;">點我瀏覽教學影片</a></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="video" id="video">
+    <div class="container-fluid">
+      <H2 class="tit">教學影片</H2>
+      <ul class="video__list">
+      	<?php foreach($_html_video as $val){ ?>
+            <li>
+              <div>
+                <iframe src="https://www.youtube.com/embed/<?=$val['Video_YouTube']?>" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <p><?=$val['Video_Title']?></p>
+            </li>
+        <?php } ?>
+        
+      </ul>
+    </div>
+  </section>
+  
+  
+ 
+</article>
+
+
+<?php require('footer.php') ?>
+
+</body>
+
 </html>

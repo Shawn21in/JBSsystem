@@ -100,18 +100,9 @@ if( $website_open ){
 	$qa_db 			= 'web_qa';
 	$albums_db 		= 'albums';
 	$member_db 		= 'web_member';
-	$coupon_db		= 'web_coupon';
-	$cld_db 		= 'web_coupon_launch_detail';
-	$cc_db			= 'web_customer_coupon';
 	$company_db 	= 'web_company';
-	$cs_db			= 'web_company_splan';
-	$candidate_db 	= 'web_candidate_launch';
-	$survey_db 		= 'web_survey';
-	$sl_db 			= 'web_survey_launch';
-	$sld_db 		= 'web_survey_launch_detail';
-	$sq_db 			= 'web_survey_question';
-	$sr_db 			= 'web_survey_record';
-	$srd_db 		= 'web_survey_record_detail';
+	$video_db		= "web_video";
+	
 	
 	define( 'IMG_PATH', WEB_PATH.'upload'.DIRECTORY_SEPARATOR.'sys_images'.DIRECTORY_SEPARATOR.$_Website.DIRECTORY_SEPARATOR );//圖片路徑
 	
