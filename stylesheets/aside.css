@@ -1,0 +1,237 @@
+@charset "UTF-8";
+.mobile_aside {
+  width: 200px;
+  height: 100vh;
+  overflow-y: scroll;
+  transform: translateX(-201px);
+  -moz-transform: translateX(-201px);
+  -webkit-transform: translateX(-201px);
+  -o-transform: translateX(-201px);
+  -ms-transform: translateX(-201px);
+  position: fixed;
+  top: 0;
+  background-color: #122e5d;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
+  .mobile_aside .links {
+    padding-left: 20px;
+    padding-bottom: 100px; }
+    .mobile_aside .links a {
+      margin: 0 10px 0 0; }
+
+.mobile_searchbox {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0;
+  justify-content: center; }
+  .mobile_searchbox select.sel_style01 {
+    width: 210px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    margin-top: 20px; }
+  .mobile_searchbox input.input_style01 {
+    width: 145px;
+    font-size: 15px; }
+  .mobile_searchbox .searchbtn {
+    background-color: #3e3e3e;
+    height: 45px;
+    padding: 0 15px;
+    color: #fff;
+    width: 65px;
+    font-size: 15px;
+    box-sizing: border-box;
+    position: relative; }
+    .mobile_searchbox .searchbtn:hover {
+      top: 2px;
+      left: 2px; }
+
+.mnav {
+  padding: 30px 0 30px 0; }
+  .mnav__item {
+    position: relative; }
+    .mnav__item > span {
+      background-image: url("../images/tri_drop_w.png");
+      position: absolute;
+      right: 15px;
+      top: 20px;
+      width: 8px;
+      height: 7px;
+      background-size: 100%;
+      background-repeat: no-repeat; }
+    .mnav__item > a {
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 20px;
+      display: block; }
+    .mnav__item__list {
+      background-color: #fff;
+      padding: 10px 0 20px 0;
+      display: none; }
+      .mnav__item__list li {
+        position: relative; }
+        .mnav__item__list li a {
+          color: #181818;
+          padding: 5px 30px 5px 40px;
+          display: block; }
+        .mnav__item__list li > span {
+          position: absolute;
+          right: 15px;
+          top: 14px;
+          width: 8px;
+          height: 7px;
+          background-size: 100%;
+          background-repeat: no-repeat; }
+        .mnav__item__list li.current > a {
+          background-image: url("../images/tri.png");
+          background-position: left 25px center;
+          background-repeat: no-repeat;
+          color: #a1754d; }
+      .mnav__item__list ul {
+        padding: 0px 0 10px 15px; }
+        .mnav__item__list ul li a {
+          color: #181818; }
+        .mnav__item__list ul li.current a {
+          background: none;
+          /*text-shadow:  0.01em 0 #01a29d;
+          background-image: url('../images/tri.png');
+          background-position: left 20px center;
+          background-repeat: no-repeat;*/ }
+
+.Wrapper {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
+  .Wrapper.openaside {
+    overflow: hidden; }
+
+.Wrapper__mask {
+  background-color: #000;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: -1px;
+  z-index: 1000000;
+  visibility: hidden; }
+  .Wrapper__mask.openaside {
+    visibility: visible; }
+
+.mobile_btn {
+  position: absolute;
+  left: 30px;
+  top: 65px;
+  display: none;
+  padding-left: 0; }
+  @media (max-width: 1024px) {
+    .mobile_btn {
+      display: block; } }
+  @media (max-width: 640px) {
+    .mobile_btn {
+      top: 55px;
+      left: 10px; } }
+
+#nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 {
+  width: 25px;
+  height: 20px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer; }
+
+/* line 791, ../scss/base.scss */
+#nav-icon1 span, #nav-icon3 span, #nav-icon4 span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #3e3e3e;
+  opacity: 1;
+  left: 0;
+  border: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out; }
+
+/* line 810, ../scss/base.scss */
+#nav-icon4 span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center; }
+
+/* line 818, ../scss/base.scss */
+#nav-icon4 span:nth-child(2) {
+  top: 7px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center; }
+
+/* line 826, ../scss/base.scss */
+#nav-icon4 span:nth-child(3) {
+  top: 14px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center; }
+
+/* line 834, ../scss/base.scss */
+#nav-icon4.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 0px;
+  top: 1;
+  width: 30px; }
+
+/* line 844, ../scss/base.scss */
+#nav-icon4.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0; }
+
+/* line 850, ../scss/base.scss */
+#nav-icon4.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  left: 0px;
+  top: 21px;
+  width: 30px; }
+
+.mobile_aside__copyright {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Noto Sans TC', '微軟正黑體';
+  font-weight: 300;
+  position: fixed;
+  bottom: 170px;
+  right: -60px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  opacity: 0.6;
+  z-index: 10000; }
+
+/*# sourceMappingURL=aside.css.map */

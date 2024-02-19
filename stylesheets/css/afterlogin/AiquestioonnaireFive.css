@@ -1,0 +1,134 @@
+/* title */
+.SectionAiquestionnaire{
+    padding:3rem 8rem;
+    margin-bottom: 6rem;
+}
+.headingTitleBox{
+    margin-bottom:3rem;
+}
+.headingTitle{
+    background-color: #7FBCEC;
+    color:#fff;
+    padding:1rem 2rem;
+    display: inline-block;
+    font-size:3rem;
+    font-weight:500;
+}
+.headingContent{
+    font-size:3rem;
+    color:#4496D6;
+}
+/* Setting */
+.questionnaireSetting{
+    display: flex;
+    column-gap:10rem;
+    row-gap:2rem;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+}
+.questionnaireSetting:not(:nth-child(4)){
+    border-bottom: 1px solid #4496D6;
+    padding-bottom:1rem;
+}
+.settingTitle{
+    color:#4496D6;
+    font-weight:400;
+    margin-bottom: 2rem;
+}
+.settinginput{
+    padding:0.5rem 2rem;
+    border: none;
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+    font-size:1.8rem;
+    color:#1E5E8E;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.settingCouponselect{
+    width:23rem;
+}
+.settinginfo{
+    line-height: 1.5;
+}
+#input_num{
+    width:20rem;
+}
+.textarea{
+    width:35rem;
+    height:15rem;
+    padding:0.5rem;
+    font-size:1.8rem;
+    resize:none;
+    color:#FF5C00;
+}
+.settinginfo{
+    color:#e65300;
+}
+.settinginputBox *:focus{
+    outline: none;
+    box-shadow: 0 0 0.2rem 0.5rem rgba(166, 228, 252, 0.469)!important;
+}
+/* file */
+.fileContainer{
+    display: flex;
+    gap:3rem;
+    flex-wrap: wrap;
+    align-items:flex-start;
+   
+}
+.fileInputBox{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 1px 0.5rem 0.1rem #a2a2a2af;
+    padding:1.5rem 1rem;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.fileInputBox:hover{
+    cursor:pointer;
+}
+.fileContent{
+    /* 移動位置 */
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left:1rem;
+    z-index:1;
+}
+.fileInput{
+    opacity: 0;
+}
+.fileIcon{
+    width:4rem;
+}
+.fileIconChecked{
+    margin-right: 0.5rem;
+}
+.fileInfo{
+    color:#FF5C00
+}
+.fileDownloadLink:link,
+.fileDownloadLink:visited{
+    background-color: #fff;
+    box-shadow: 0 1px 0.5rem 0.1rem #a2a2a2af;
+    padding:0.8rem 1rem;
+    border-radius: 5px;
+    color:#4CD3AA;
+    display: flex;
+    align-items: center;
+    gap:1.5rem;
+    transition: all 0.3s;
+}
+.fileDownloadLink:hover,
+.fileDownloadLink:active{
+    color:#3da988;
+}
+.fileDownloadIcon{
+    width:3.5rem;
+}
+.targetSettingBox{
+    margin-bottom: 1.5rem;
+}

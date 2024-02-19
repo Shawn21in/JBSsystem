@@ -1,0 +1,40 @@
+.adlist {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .adlist li {
+    width: calc(50% - 5px);
+    overflow: hidden;
+    margin-bottom: 10px; }
+    .adlist li.full {
+      width: 100%; }
+    .adlist li a {
+      width: 100%;
+      display: block;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      padding-bottom: 66.6%;
+      transform: scale(1);
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
+      .adlist li a img {
+        display: none; }
+    .adlist li:hover a {
+      transform: scale(1.05); }
+    @media (max-width: 640px) {
+      .adlist li {
+        width: 100%; }
+        .adlist li a {
+          background: none !important;
+          padding-bottom: 0;
+          margin-bottom: 20px; }
+          .adlist li a img {
+            display: block;
+            max-width: 100%; } }
+
+/*# sourceMappingURL=ad_style01.css.map */

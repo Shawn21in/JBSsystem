@@ -1,0 +1,917 @@
+/**************************/
+/* BELOW 944px navigation (Tablets) */
+/**************************/
+@media (max-width: 59em) {
+    /* MOBILE NAVIGATION */
+      .main{
+          display: grid;
+          grid-template-columns:1fr;
+      }
+      .btn-mobile-nav {
+        display: block;
+        z-index: 9999;
+      }
+      .header {
+          background:none;
+          height:auto;
+        }
+      .main-nav {
+        background-color:#1E5E8E;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateX(100%);
+       
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease-in;
+        padding:5rem 0;
+        z-index: 2;
+    
+        /* Hide navigation */
+        /* Allows NO transitions at all */
+        /* display: none; */
+    
+        /* 1) Hide it visually */
+        opacity: 0;
+    
+        /* 2) Make it unaccessible to mouse and keyboard */
+        pointer-events: none;
+    
+        /* 3) Hide it from screen readers */
+        visibility: hidden;
+      }
+      .nav-open .main-nav {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+        transform: translateX(0);
+      }
+      .nav-open .icon-mobile-nav[name="close-outline"] {
+        display: block;
+      }
+    
+      .nav-open .icon-mobile-nav[name="menu-outline"] {
+        display: none;
+      }
+    
+      .main-nav-list {
+        flex-direction: column;
+        gap:2rem;
+      }
+      .main-nav-link:link,
+      .main-nav-link:visited {
+        font-size:2rem;
+        color:#fff;
+        text-align: center;
+      }
+      .secondScetion{
+        padding:1rem; 
+      }
+      /* input{
+        margin-top: 1rem;
+      } */
+      .secondScetion{
+        transform: translateY(-10rem);
+  
+      }
+      .CardContainer{
+        padding:1.5rem;
+        grid-template-columns: 1fr 1fr;
+      }
+    .currentNav:link,
+    .currentNav:visited{
+        background: none;
+        border-radius: none;
+    }
+}
+/**************************/
+/* BELOW Ai questionnairefour demo  */
+/**************************/
+/* 650 */
+@media (max-width: 41em) {
+    .questionnaire{
+        width:50rem;
+        height:55rem;
+    }
+}
+/* 530 */
+@media (max-width: 34em) {
+    .questionnaire{
+        width:40rem;
+        height:55rem;
+        padding:2rem;
+    }
+    .questionnaireLogo{
+        width:5rem;
+        height:5rem;
+    }
+    .questionnaireTitle{
+        font-size:2rem;
+    }
+}
+/* 430 */
+@media (max-width: 27em) {
+    .questionnaire{
+        width:35rem;
+        height:55rem;
+    }
+}
+/* 430 */
+@media (max-width: 27em) {
+    .questionnaire{
+        width:33rem;
+        height:55rem;
+    }
+}
+/**************************/
+/* OVER 1500px (Large Screen) */
+/**************************/
+@media (min-width: 94em){
+    html{
+        font-size:67%;
+    }
+    /* nav */
+    .mainNavList{
+        font-size:2rem;
+    }
+    /* font size */
+    .QuestionAmountTitle, .QuestionProduceTitle{
+        font-size:2.4rem;
+    }
+    .selectionSampleTitle,
+    .infomationContent,
+    .answerContent,
+    .label,
+    .adjustAnswerContainer,
+    .editlabel,
+    .settinginfo,
+    .outputLink:link, .outputLink:visited,
+    .dataLink:link, .dataLink:visited{
+        font-size:1.8rem
+    }
+
+    .navCompany,.logoutBtn{
+        font-size:1.6rem;
+    }
+    .infomationBoxTitle,
+    .adjustInput,
+    .questionaireFooter,
+    .answerlist,
+    .prebtn:link, .prebtn:visited,
+    .nextbtn:link, .nextbtn:visited,
+    .editbtn:link, .editbtn:visited,
+    .qrcodeContent,
+    .dataHeadingTitle,
+    .indexBtn:link, .indexBtn:visited{
+        font-size:2rem;
+    }
+    .settingTitle,
+    .outputTitle{
+        font-size:2.4rem;
+    }
+    .questionnaireTitle{
+        font-size:4rem;
+    }
+    .questionnaireSecondaryTitle,
+    .questionnaireContent,
+    .questionnaireinfomaiton{
+        font-size:2.6rem;
+    }
+    .question,
+    .questionnaireLabel,
+    .questionaieSelect{
+        /* font-size:2.6rem; */
+    }
+    /* others */
+    .sampleImg{
+        width:70%;
+    }
+    .indexrobotImg{
+        width:50rem;
+    }
+    .addCouponBtnBox{
+        padding:1rem 35rem 3rem 35rem;
+        margin-top: 2rem;
+    }
+    .sectionAddCoupon{
+        padding:1rem 35rem 3rem 35rem;
+    }
+    .sectiondataQuestionnaire{
+        padding:1rem 25rem 3rem 25rem;
+    }
+    .SectionMember{
+        padding:3rem 20rem;
+    }
+    .indexfixfooter,
+    .aifixfooter,
+    s.addCouponEditfixfooter,
+    .standardFooterFix{
+        /* position: fixed; */
+        bottom: 0;
+        width:100vw;
+    }
+    .sectionCoupon{
+        padding:0 25rem;
+    }
+    .SectionAiquestionnaire{
+        padding:3rem 25rem;
+    }
+    .SectionStandethree{
+        padding:3rem 25rem;
+    }
+    .sectiondataAnalysis{
+        padding:3rem 15rem;
+    }
+    /* questionnaire */
+    .questionnaireContainer{
+        margin: 0 auto;
+    }
+    .sectionCoupon{
+        padding:3rem 8rem;
+        width:80%;
+        margin: 0 auto;
+    }
+    .infocontent{
+        font-size:2.2rem;
+    }
+    .demobox{
+        width:100%;
+    }
+    .sampleContaioner{
+        width:80%;
+    }
+    /* member */
+    .memberPlanImg{
+        width:70%;
+    }
+    .memberPlanIfoBox{
+        padding:0 15rem 2rem 15rem;
+    }
+    .sampleImgBox{
+        padding:2rem 20rem 0 20rem;
+    }
+    .indexBtnBox:hover .indexBtnInfo1,
+    .indexBtnBox:active .indexBtnInfo1{
+        transform: translateY(5rem);
+        opacity: 1;
+    }
+    .indexBtnBox:hover .indexBtnInfo2,
+    .indexBtnBox:active .indexBtnInfo2{
+        transform: translateY(5rem);
+        opacity: 1;
+    }
+    .indexBtnBox:hover .indexBtnInfo3,
+    .indexBtnBox:active .indexBtnInfo3{
+        transform: translateY(5rem);
+        opacity: 1;
+    }
+    .indexBtnImg{
+        width:100%;
+    }
+}
+/**************************/
+/* BELOW 1056px (Tablets) */
+/**************************/
+@media (max-width: 67em){
+    .sampleImg{
+        width:68%;
+    }
+    
+}
+/**************************/
+/* BELOW 1024px (Tablets) */
+/**************************/
+@media (max-width: 64em){
+    /* ////index//// */
+    .fixfooter{
+        position: fixed;
+        bottom: 0;
+        width:100%;
+    }
+    .footerimg{
+        width:30%;
+    }
+    /* ////ai questionnaire//// */
+    .selectionBox{
+        width:70%;
+    }
+    /* standard */
+    .sampleImg{
+        width:85%;
+    }
+    .questionnaireHeader{
+        gap:1rem;
+    }
+    /* questionnaire */
+    .qusetionnaireBody{
+        padding:3rem;
+    }
+    .SectionOutput{
+        height:95vh;
+    }
+    .sectionparticipantContainer{
+        padding:3rem 4rem;
+    }
+}
+/**************************/
+/* BELOW 944px(Tablets) */
+/**************************/
+
+@media (max-width: 59em) {
+    /* standard */
+    .sampleContaioner{
+        grid-template-columns: 1fr;
+        justify-items:flex-start;
+        gap:2rem;
+    }
+    .inputContainer{
+        gap:1.5rem;
+    }
+    .standardCustomerBox{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .demobox{
+        width:90%;
+    }
+    .sampleImgBox{
+        padding:2rem 0 0 0;
+        
+    }
+    /* coupons /expired coupon */
+    .CouponContainer{
+        grid-template-columns: 1fr;
+        gap:2rem;
+    }
+    .sectionAddCoupon{
+        margin-bottom:8rem;
+    }
+    .cusinputContainer{
+        width:80%;
+    }
+    .sectionparticipantContainer{
+        padding:3rem 2rem;
+    }
+    
+}
+/**************************/
+/* BELOW 850px (Tablets) */
+/**************************/
+@media (max-width: 54em) {
+    /* footer */
+    .indexfixfooter,
+    .aioutPutFooterFix,
+    .standardOutputFooterFix
+    {
+        position: fixed;
+        bottom:0;
+        width:100vw;
+    }
+    .editCotainer{
+        grid-template-columns: 1fr;
+    }
+    .backgroundColorBox, .titleColorBox{
+        gap:2rem;
+    }
+    .backgroundColorBtn, 
+    .titleColorBtn{
+        width:3.5rem;
+        height:3.5rem;
+    }.questionnaireSix{
+        padding:3rem 10rem;
+    }
+    .standardQuestionnaireFour{
+        padding:3rem 8rem;
+    }
+    /* questionnaire */
+    .sectionQuestionaire{
+        padding:3rem 4rem;
+    }
+    .questionnaireHeader{
+        padding:1.5rem 3rem 3rem 3rem;
+    }
+    .qrcodeDemo{
+        width:20rem;
+    }
+    /* member */
+    .memberPlanIfoBox{
+        gap:1rem;
+    }
+    .SectionMember{
+        padding:3rem 5rem;  
+    }
+    .memberPlanImg{
+        width:100%;
+    }
+    /* data */
+    .participantContainer{
+        height:800px;
+    }
+    .indexBtnContainer{
+        grid-template-columns: 1fr;
+        row-gap: 10rem;
+    }
+    .sectionIndexMain{
+        padding:5rem 12rem;
+    }
+    .indexDeco{
+        border-top:none;
+        border-left:#1E5E8E solid 4rem;
+        top:0;
+        left:50%;
+        width:30%;;
+        height:100vh;
+        z-index: -2;
+        transform: translateX(-25px);
+    }
+    .sectionIndexMain{
+        height:fit-content;
+    }
+    .indexBtnImg{
+        width:70%;
+    }
+}
+/**************************/
+/* BELOW 780px (Largemobile) */
+/**************************/
+
+@media (max-width: 49em) {
+    .customerinputBox{
+        padding:1.5rem;
+    }
+    .cusinputContainer{
+        width:85%;
+    }
+    .SectionStandardCustomer{
+        padding:3rem 4rem;
+    }
+    
+}
+
+
+
+/**************************/
+/* BELOW 700px (Largemobile) */
+/**************************/
+
+@media (max-width: 44em) {
+    /* ////ai questionnaire//// */
+    .SectionAiquestionnaire{
+        padding:3rem 2rem;
+    }
+    /* history Questionnaire  */
+    .sectionHistory{
+        padding:3rem 5rem;
+    }
+    
+}
+/**************************/
+/* BELOW 655px (Largemobile) */
+/**************************/
+@media (max-width:41em){
+    /* ai Questionnaire animation */
+    .loadingAnimation{
+        position: absolute;
+        top:25%;
+        left:38%;
+    }
+    .ladingTitle{
+        position: absolute;
+        top:20%;
+        left:38%;
+    }
+    .sectionAddCoupon{
+        padding:1rem 3rem 3rem 3rem;
+        margin-bottom:8rem;
+    }
+    .couponinputContainer{
+        padding:0 2rem;
+        justify-content: flex-start;
+        margin-bottom: 4rem;
+    }
+    .addcoupon, .addcustomerCoupon{
+        width:420px;
+        height:230px;
+    }
+    .addCouponBtnBox{
+        padding:3rem;
+    }
+    .couponMainInput{
+        font-size:3rem;
+    }
+    .addcouponBody{
+        gap:0.5rem;
+    }
+    .couponheader{
+        gap:0.5rem;
+    }
+    .couponInput{
+        width:auto;
+    }
+    .questioninput{
+        width:35rem;
+        height:15rem;
+    }
+     /* member */
+    .memberPlanIfoBox{
+        grid-template-columns:1fr;
+        margin-top:2rem;
+    }
+    .memberPlanImg{
+        width:65%;
+    }
+    .participantIcon{
+        width:3rem;
+    }
+    .participantTitleBox{
+        gap:1rem;
+    }
+    .participantContent{
+        font-size:2rem;
+    }
+    .participantContent:not(:last-child){
+        margin-bottom:0;
+    }
+    .indexBtnContainer{
+        grid-template-columns: 1fr;
+    }
+    .inputContainer{
+        padding:3rem;
+    }
+} 
+/**************************/
+/* BELOW 580px (Largemobile) */
+/**************************/
+@media (max-width: 37em) {
+    /* footer */
+    .indexfixfooter,
+    .aioutPutFooterFix,
+    .standardOutputFooterFix
+    {
+        position: fixed;
+        bottom:0;
+        width:100vw;
+    }
+     /* ////index//// */
+    .indexBtnBox{
+        gap:5rem;
+    }
+    .indexrobotImg{
+        width:80%;
+    }
+    .indexBtn:link, .indexBtn:visited{
+        padding:1rem 2rem;
+    }
+    .footerimg{
+        width:70%;
+    }
+    .historyQuestionnaireEditBtnBox{
+        padding:1rem 3rem;
+    }
+    .indexBtnBox:hover >.indexBtnInfo1,
+    .indexBtnBox:active >.indexBtnInfo1{
+        transform: translateY(-10rem);
+    }
+    .indexBtnBox:hover >.indexBtnInfo2, 
+    .indexBtnBox:active >.indexBtnInfo2{
+        transform: translateY(-10rem);
+    }
+    .indexBtnBox:hover >.indexBtnInfo3,
+    .indexBtnBox:active >.indexBtnInfo3{
+        transform: translateY(-10rem);
+    }
+    /* ///ai qusetionnaire//// */
+    .questionInput{
+        margin-bottom:1rem;
+    }
+    .answerContainer{
+        padding:1rem 2.5rem;
+    }
+    .questionnaireSetting{
+        gap:3rem;
+    }
+    .qrcodeDemo{
+        width:20rem;
+    }
+    .answerSelect{
+        font-size:1.8rem;
+    }
+    /* standard */
+    .sampleImg{
+        width:80%;
+    }
+    .SectionStandard{
+        padding:3rem 4rem;
+    }
+    .SectionStandardOne,.SectionStandardCustomer{
+        padding:2rem 2rem 2rem 2rem;
+    }
+    .standardCustomerBox{
+        margin:2rem 0;
+        padding:0.5rem 2rem;
+        margin-bottom: 0;
+    }
+    .answerlist{
+        margin-bottom: 1.5rem;
+    }
+    .cusinputContainer{
+        width:95%;
+    }
+    .demobox{
+        width:100%;
+    }
+    .cusinputContainer{
+        width:100%;
+    }
+    .SectionStandardCustomer{
+        padding:3rem 2rem;
+    }
+    .ChInput20{
+        width:32rem;
+    }
+    .questioninput{
+        width:30rem;
+        height:15rem;
+    }
+    /* coupon/ expired coupon */
+    .CouponBtnBox{
+        gap:3rem;
+        padding:1rem 1.5rem
+    }
+    .availableBtn:link, .availableBtn:visited{
+        padding:1rem 3.5rem;
+    }
+    .coupon,.customerCoupon{
+        width:320px;
+        height:160px;
+    }
+    .logoBox{
+        width:35px;
+    }
+    .couponBodyTitle{
+        font-size:3rem;
+        margin:0.5rem 0;
+    }
+    .sectionAddCoupon{
+        padding:1rem 1rem 3rem 1rem;
+    }
+    .couponinputContainer{
+        padding:0;
+    }
+    .addcoupon, .addcustomerCoupon{
+        width:360px;
+        height:180px;
+        margin:2rem;
+    }
+    .couponsecondary{
+        font-size:1.5rem;
+    }
+    .couponMainInput{
+        font-size:2rem;
+    }
+    .availableBtn:link, .availableBtn:visited{
+        padding:1.5rem;
+        font-size:1.6rem;
+    }
+    /* member */
+    .SectionMember{
+        padding:3rem;
+    }
+    /* .inputContainer{
+        padding:1.5rem;
+    } */
+    /* data */
+    .sectiondataAnalysis{
+        padding:3rem 2rem;
+    }
+    .dataAnalysisBox{
+        gap:2rem;
+    }
+    .sectionparticipantContainer{
+        padding:3rem 2rem;
+    }
+     /* questionnaire */
+     .dataQuestionnaireInfoContainer{
+        padding:1rem 3rem;
+     }
+     .sectiondataQuestionnaire{
+        padding:3rem;
+     }
+     .questionnaireTitle{
+        font-size:2.8rem;
+    }
+    .questionnaireLogo{
+        width:8rem;
+        height:8rem;
+    }
+    .questionnaireContent,
+    .questionnaireinfomaiton{
+        font-size:1.8ren;
+    }
+    .questionaireFooter{
+        gap:1rem;
+    }
+    .questionnaireHeaderBox{
+        gap:1.5rem;
+    }
+    .sectiondataQuestionnaire{
+        padding:1.5rem;
+    }
+    .questionnaireHeader{
+        margin-bottom: 1rem;
+    }
+    .qusetionnaireBody{
+        padding:1rem 2rem 2rem 2rem;
+    }
+    .aioutPutFooterFix{
+        position: inherit;
+    }
+    .dataSecondaryTitle{
+        margin:0;
+    }
+    .sectionIndexMain{
+        padding:5rem;
+    }
+    .indexBtnImg{
+        width:90%;
+    }
+
+}
+/**************************/
+/* BELOW 460px (Largemobile) */
+/**************************/
+@media (max-width: 28.7em) {
+    .loadingAnimation{
+        position: absolute;
+        top:25%;
+        left:28%;
+    }
+    .ladingTitle{
+        position: absolute;
+        top:20%;
+        left:28%;
+    }
+    /* input */
+    .CHInput20{
+        width:30rem;
+    }
+    .ChInput20{
+        width:28rem;
+    }
+    .customerinputBox{
+        padding:1.5rem 0.5rem;
+    }
+    .cusinputBox{
+        gap:0.5rem;
+    }
+    /* history Questionnaire  */
+    .sectionHistory{
+        padding:3rem 2rem;
+    }
+}
+/**************************/
+/* BELOW 400px (Largemobile) */
+/**************************/
+@media (max-width: 25em) {
+     /* ////index//// */
+    .logoimg{
+        width:25rem;
+    }
+    .footerimg{
+        width:70%;
+    }
+    .footercopyright{
+        font-size:1.2rem;
+    }
+    .indexrobotImg{
+        width:70%;
+    }
+    /* ////ai questionnaire//// */
+    .headingTitle,
+    .headingContent{
+        font-size:2rem;
+    }
+    .SectionAiquestionnaire{
+        padding:3rem 2rem;
+        margin-bottom: 8rem;
+    }
+    .qrInfo{
+        font-size:2.2rem;
+    }
+    .outputTitle{
+        font-size:2.8rem;
+    }
+     /* ai Questionnaire animation */
+     .loadingAnimation{
+        position: absolute;
+        top:18%;
+        left:25%;
+    }
+    .ladingTitle{
+        position: absolute;
+        top:12%;
+        left:25%;
+    }
+    /* standard */
+    .sampleBtn{
+        font-size:1.6rem;
+    }    
+    .sampleImg{
+        width:90%;
+    }
+    .sampleBtn{
+        gap:0;
+    }
+    .addcoupon, .addcustomerCoupon{
+        margin: 0.2rem 0.2rem 3rem 0.2rem;
+        width:340px;
+        height:170px;
+    }
+    .couponsecondary{
+        font-size:1.3rem;
+    }
+    .couponheader{
+        padding:0.5rem;
+    }
+    /* .coupomBody > p{
+        font-size:1.6rem;
+    } */
+    /* member */
+    .input, .select{
+        width:25rem;
+    }
+    .receiptInput{
+        width:30rem;
+    }
+    .memberTitle{
+        font-size:2.5rem;
+    }
+    /* data */
+    .sectiondataAnalysis{
+        margin-bottom: 20rem;
+    }
+    /* questionnaire */
+    .sectiondataQuestionnaire{
+        padding:1.8rem;
+    }
+    .questionnaireHeader{
+        padding:1.5rem 2rem;
+    }
+    .qusetionnaireBody{
+        padding:1.8rem;
+    }
+    .dataQuestionnaireInfoContainer{
+        margin-bottom: 1.5rem;
+    }
+    /* member */
+    .SectionMember{
+        padding:3rem 1.6rem;
+    }
+    .memberPlanImg{
+        width:80%;
+    }
+    .sectionHistory,
+    .SectionOutput{
+        height:90vh;
+    }
+    .sectionIndexMain{
+        padding:8rem 5rem;
+    }
+}
+/**************************/
+/* BELOW 350px (Largemobile) */
+/**************************/
+@media (max-width:21em) {
+    .mainNavBox{
+        padding:0 1.5rem 0.5rem 1.5rem;
+    }
+    .SectionOutput{
+        margin-bottom: 25rem;
+    }
+}
+/* adjust index hover */
+/**************************/
+/* BELOW 1700px */
+/**************************/
+@media (max-width:106em) {
+    .indexBtnBox:hover .indexBtnInfo1,
+    .indexBtnBox:active .indexBtnInfo1{
+        transform: translateY(5rem);
+        opacity: 1;
+    }
+    .indexBtnBox:hover .indexBtnInfo2,
+    .indexBtnBox:active .indexBtnInfo2{
+        transform: translateY(5rem);
+        opacity: 1;
+    }
+    .indexBtnBox:hover .indexBtnInfo3,
+    .indexBtnBox:active .indexBtnInfo3{
+     transform: translateY(5rem);
+     opacity: 1;
+    }
+}

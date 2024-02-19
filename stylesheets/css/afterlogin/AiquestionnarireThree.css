@@ -1,0 +1,94 @@
+/* title */
+.SectionAiquestionnaire{
+    padding:3rem 8rem;
+    margin-bottom:15rem;
+}
+.headingTitleBox{
+    margin-bottom:3rem;
+}
+.headingTitle{
+    background-color: #7FBCEC;
+    color:#fff;
+    padding:1rem 2rem;
+    display: inline-block;
+    font-size:3rem;
+    font-weight:500;
+}
+.headingContent{
+    font-size:3rem;
+    color:#4496D6;
+}
+.adjustContainer{
+    padding-bottom: 1.5rem;
+    border-bottom:dashed 1px #1E5E8E;
+}
+.adjustInputBox{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+.adjustInputBox * :focus{
+    outline: none;
+    box-shadow: 0 0 0.2rem 0.5rem rgba(166, 228, 252, 0.469)!important;
+}
+
+.adjustInput{
+    border:none;
+    padding:0.5rem 2rem;
+    border-radius: 5px;
+    width:35rem;
+    font-size:1.8rem;
+}
+.textarea{
+    width:35rem;
+    height:15rem;
+    padding:0.5rem;
+    font-size:1.8rem;
+    resize:none
+}
+::placeholder{
+    color:#999;
+}
+.adjustselect{
+    border:none;
+    padding:0.5rem 2rem;
+    border-radius: 5px;
+    width:25rem;
+    font-size:1.8rem;
+    color:#1E5E8E;
+}
+.adjustAnswerBox{
+    margin-top: 2rem;
+}
+.answerlist{
+    padding:1rem 0 0 4rem;
+}
+.editBtnBox{
+    margin-top: 0.5rem;
+}
+.editBtnBox button{
+    margin-right: 0.5rem;
+}
+.editBtn{
+    font-size:1.5rem;
+}
+.editBtn:hover{
+    cursor: pointer;
+}
+.btn{
+    font-size:1.5rem;
+}
+.answerlist{
+    line-height: 1.5;
+}
+.questionInput{
+    width:100%;
+}
+.answerlist_input{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.answerlist_input .adjustInput{
+    margin:5px 0px;
+}

@@ -1,0 +1,132 @@
+
+/* function */
+.sectionFunction{
+    position: relative;
+}
+.functionContainer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.functionContainerSec{
+    margin-top: 5rem;
+}
+.functionBox{
+    padding:3rem 9rem;
+}
+.functionTitle{
+    color:#1E5E8E;
+    font-size:2.8rem;
+}
+.functionTitle::after{
+    content: '';
+    width:15rem;
+    height:10rem;
+    border-top-right-radius: 25rem;
+    border-bottom-right-radius: 25rem;
+    background-color: #D2D2D2;
+
+    position: absolute;
+    top:0;
+    left:-6rem;
+
+    z-index: -1;
+}
+.functionContent{
+    color:#1E5E8E;
+    line-height: 1.5;
+    margin-top: 4rem;
+    font-size:2.4rem;
+}
+
+.functionImg{
+    width:40rem;
+}
+.functionTitle2{
+    color:#1E5E8E;
+    font-size:2.8rem;
+}
+.functionTitle2::after{
+    content: '';
+    width:15rem;
+    height:10rem;
+    border-top-left-radius: 25rem;
+    border-bottom-left-radius: 25rem;
+    background-color: #D2D2D2;
+
+    position: absolute;
+    top:0;
+    right:-6rem;
+
+    z-index: -1;
+}
+.standardFunctionContent{
+    padding-bottom:1rem;
+    border-bottom:1px #555 solid;
+}
+.functionTitle3Box{
+    margin-top: 2rem;
+}
+.functionTitle3{
+    color:#1E5E8E;
+    font-size:2.4rem;
+    margin-bottom: 1rem;
+}
+.functionContent3{
+    font-size:1.8rem;
+    line-height:1.5;
+    color:#4b7ea5;
+}
+.couponImg{
+    margin-top: 3rem;
+    width:70%;
+}
+.decoLinkBox{
+    display: flex;
+    position: absolute;
+    bottom: -5rem;
+    right: 0;
+}
+/* data info */
+.datainfoContainer{
+    margin-top: 10rem;
+}
+.datainfoImgBox{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding:1rem 8rem;
+    justify-items: center;
+}
+.datainfoImg{
+    width:90%;
+}
+.lineBox1,
+.lineBox2{
+    padding:0 3rem;
+}
+.lineBox1{
+    margin-top: 3rem;
+}
+.line1,
+.line2{
+    border-bottom: 1px solid #FF5C00;
+    margin-bottom: 1rem;
+    width:90%;
+    display: flex;
+    justify-content: center;
+
+}
+/* payment */
+.Sectionpayment{
+    margin-bottom: 5rem;
+}
+.paymentContainer{
+    margin-top: 10rem;
+    
+}
+.btnBox{
+    display: flex;
+    justify-content: center;
+    margin-top:3rem;
+}

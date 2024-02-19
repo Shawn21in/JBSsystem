@@ -1,0 +1,14 @@
+.adlist {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap; }
+  .adlist li {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px; }
+    .adlist li a {
+      background: none !important; }
+      .adlist li a img {
+        width: 100%; }
+
+/*# sourceMappingURL=ad_style02.css.map */
