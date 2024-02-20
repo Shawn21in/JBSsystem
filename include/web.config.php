@@ -102,20 +102,32 @@ if( $website_open ){
 	$member_db 		= 'web_member';
 	$company_db 	= 'web_company';
 	$video_db		= "web_video";
+	$version_db		= "web_version";
+	$delivery_db		= "web_delivery";
 	
 	
-	define( 'IMG_PATH', WEB_PATH.'upload'.DIRECTORY_SEPARATOR.'sys_images'.DIRECTORY_SEPARATOR.$_Website.DIRECTORY_SEPARATOR );//圖片路徑
+		//經銷商代號
+		define( 'Dealer_ID', 'jpapp' );
 	
-	define( 'IMG_URL', WEB_URL.'upload/sys_images/'.$_Website.'/' );//圖片網址
-	
-	define( 'FILE_PATH', WEB_PATH.'upload'.DIRECTORY_SEPARATOR.'sys_files'.DIRECTORY_SEPARATOR.$_Website.DIRECTORY_SEPARATOR );//檔案路徑
-	
-	define( 'FILE_URL', WEB_URL.'upload/sys_files/'.$_Website.'/' );//檔案網址
-	
-	define( 'Banner_Url', IMG_URL.'Banner/' );
-	define( 'News_Url', IMG_URL.'News/' );	
-	define( 'Product_Url', IMG_URL.'Product/' );
-	define( 'AD_Url', IMG_URL.'Ad/1/' );
+		define( 'Dealer_Name', '庫點子文創資訊產業有限公司' );
+		
+		define( 'BM_ID', 'jpapp' );
+		
+		define( 'IMG_PATH', WEB_PATH.'sys_images'.DIRECTORY_SEPARATOR.$Now_Table.DIRECTORY_SEPARATOR );//圖片路徑
+		
+		define( 'IMG_URL', WEB_URL.'sys_images/'.$Now_Table.'/' );//圖片網址
+		
+		define( 'FILE_PATH', WEB_PATH.'sys_files'.DIRECTORY_SEPARATOR.$Now_Table.DIRECTORY_SEPARATOR );//檔案路徑
+		
+		define( 'FILE_URL', WEB_URL.'sys_files/'.$Now_Table.'/' );//檔案網址
+		
+		define('OP_Path' ,'sys_images'.DIRECTORY_SEPARATOR.$Now_Table.DIRECTORY_SEPARATOR );
+		
+		
+		define( 'Banner_Url', IMG_URL.'Banner/' );
+		define( 'News_Url', IMG_URL.'News/' );	
+		
+		define( 'albums_Path', OP_Path.'albums'.DIRECTORY_SEPARATOR );
 	
 	// $_COOKIE  && SafeFilter($_COOKIE);
 	

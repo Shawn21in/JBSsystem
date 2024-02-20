@@ -555,93 +555,38 @@ if( !empty($_Type) ){
 			$_html_href = 'contact.php';
 		break;
 		
-		case "member_login":
+		case "mlogin":
 			
-			if( empty($_POST['login_acc']) || empty($_POST['login_pwd']) ){
+			if( empty($_POST['acc']) || empty($_POST['pwd']) ){
 				
 				$_html_msg 	= '請輸入帳號密碼。';
 				break;
 			}
 			
-			$acc 		= $_POST['login_acc'];
+			$acc 		= $_POST['acc'];
 			
-			$pwd = md5(Turnencode(trim($_POST['login_pwd']), 'password'));
-			
-			//-----------------------recaptcha------------------------------------
-			
-			if( 0 && !empty($_POST['recaptchaResponse']) ) {
-			
-				$RC = new ReCaptcha();
-				$RC->Verify( $_POST['recaptchaResponse'] );
+			$pwd = md5(Turnencode(trim($_POST['pwd']), 'password'));
+			//-----------------------CAPTCHA ------------------------------------
+				$formsigncode 	= trim($_POST['formsigncode']);
 				
-				if( $RC->rs != "success" ) {
-				
-					$_html_msg 	= '驗證碼連接失敗';
+				if( $formsigncode != $_SESSION['website']['formsigncode'] || empty($formsigncode)  ){
+					
+					$_html_msg 	= '驗證錯誤, 請重新操作';
 					break;
 				}
-			}
-			//-------------------------------------------------------------------
-			
-			ob_start();
-			
-			if( empty($_html_msg) ) {
-			
-				$db->Where = " WHERE (BINARY Member_Acc = '" .$db->val_check($acc). "' OR BINARY Member_Email = '" .$db->val_check($acc). "') AND  (BINARY Member_Pwd = '" .$db->val_check($pwd). "' OR BINARY Member_RePwd = '" .$db->val_check($pwd). "')";
-				$db->query_sql($member_db, 'Member_Open, Member_ID, Member_Name');
-				if( $row = $db->query_fetch() ){
-					
-					if( $row['Member_Open'] != 1 ){
-						
-						$_html_msg 	= '帳號未啟用';
-					}else{
-						$db->query_data( $member_db , array('Member_Pwd' => $pwd,'Member_RePwd'=>'','Member_Is_RePwd'=>0), 'UPDATE');
-						$_html_msg 	= '歡迎 ' .$row['Member_Name']. ' 回來';
-						$_SESSION[$_Website]['website']['member_id']    = $row['Member_ID'];
-						$_SESSION[$_Website]['website']['type']    		= 'customer';
-						if(!empty($_SESSION['BackUrl'])){
-							$_html_href = $_SESSION['BackUrl'];
-						}else{
-							$_html_href = 'index.php';
-						}
-					}
-				}else{
-					
-					$_html_msg 	= '帳號或密碼輸入錯誤';
-					$_html_eval = 'Reload()';
-				}
-			}
-			
-			
-			ob_end_clean(); 
-			
-			
-		break;
-		
-		case "company_login":
-			
-			if( empty($_POST['login_acc']) || empty($_POST['login_pwd']) ){
-				
-				$_html_msg 	= '請輸入帳號密碼。';
-				break;
-			}
-			
-			$acc 		= $_POST['login_acc'];
-			
-			$pwd = md5(Turnencode(trim($_POST['login_pwd']), 'password'));
-			
 			//-----------------------recaptcha------------------------------------
 			
-			if( 0 && !empty($_POST['recaptchaResponse']) ) {
-			
-				$RC = new ReCaptcha();
-				$RC->Verify( $_POST['recaptchaResponse'] );
+				// if( 0 && !empty($_POST['recaptchaResponse']) ) {
 				
-				if( $RC->rs != "success" ) {
-				
-					$_html_msg 	= '驗證碼連接失敗';
-					break;
-				}
-			}
+				// 	$RC = new ReCaptcha();
+				// 	$RC->Verify( $_POST['recaptchaResponse'] );
+					
+				// 	if( $RC->rs != "success" ) {
+					
+				// 		$_html_msg 	= '驗證碼連接失敗';
+				// 		break;
+				// 	}
+				// }
 			//-------------------------------------------------------------------
 			
 			ob_start();

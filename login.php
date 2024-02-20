@@ -1,89 +1,110 @@
 <?php 
-require_once(__DIR__.'/include/web.config.php');
+require_once("include/web.config.php");
 
-if( $_Login ) {
-	
-	header("Location:index.php"); exit;
+//不接受任何get資料
+ob_start();
+if (!empty($_GET)) {
+  header("Location: login.php");
 }
+ob_end_flush();
 
-require_once('plugins/line_login/config.php');
+$_SESSION['website']['formsigncode'] = md5(time());
 
-$Line = new LineController();
-
-$Line_Url= $Line->lineLogin();//產生LINE登入連結
-
-
-$_Title 	= "會員登入";
+$_Title = '會員登入';
 ?>
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-	<head>
-		<?php require('head.php') ?>
-		<link rel="stylesheet" type="text/css" href="stylesheets/layout.css?v=<?=$version?>" />
-		<link rel="stylesheet" href="stylesheets/css/general.css">
-		<link rel="stylesheet" href="stylesheets/css/signup.css">
-		<link rel="stylesheet" href="stylesheets/css/queries.css">
-		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-	</head>
+<!doctype html>
+<html>
+<head>
+<?php require('head.php') ?>
+<link rel="stylesheet" type="text/css" href="stylesheets/member.css" />
+
+</head>
+
+<body  data-target=".navbar-spy" data-spy="scroll" data-offset="150">
 
 
 
-	<body class="signupBody">
-		<?php require('mobile_aside.php') ?>
-		<div class="Wrapper">
-			<div class="Wrapper__mask"></div>
-			<?php require('header.php') ?>
-			<section class="sectionMain sectionLogin">
-				<div class="loginInputContainer">
-					<img src="images/img/cidtlogoLogin.png" alt="企業logo" class="companyLoginLogo">
-					<form class="inputContainerLogin" name="forms" id="forms" onSubmit="return false;">
-						<div class="headtitleContainer loginheadtitleContainer">
-							<a href="login.php" class="headerlogin loginactive">
-								<img src="images/img/companyicon.png" alt="企業的圖示icon" class="titleicon">
-								企業登入
-							</a>
-							<a href="login_customer.php" class="headerlogin">
-								<img src="images/img/Bcustomericon.png" alt="企業的圖示icon" class="titleicon">
-								消費者登入
-							</a>
-						</div>
-						<div class="inputBox">
-							<div>
-								<label class="label"><span class="impmark">*</span>帳號</label>
-								<input type="text" class="input" placeholder="輸入電子信箱" name="login_acc">
-							</div>
-						</div>
-						<div class="inputBox">
-							<div>
-								<label class="label"><span class="impmark">*</span>密碼</label>
-								<input type="password" class="input" name="login_pwd">
-							</div>
-						</div>
-						<div class="fotrgetLinkBox">
-							<a href="forgot.php?i=com" class="forgetLink">忘記密碼？</a>
-						</div>
-						<div class="btnBox btnBox2">
-							<a href="signup.php" class="signupBtn">註冊</a>
-							<button href="#" class="mainButton fsubmit" data-type="company_login">登入</button>
-						</div>
-					</form>
-				</div>
-			</section>
-			<?php require('footer.php') ?>
-			<?php /*$RC = new ReCaptcha(); echo $RC->Call_Init( "#recaptchaResponse" , "contact");*/ ?>
-		</div>
-		
-	</body>
+<?php require('header.php') ?>
+
+
+
+<article class="center">
+
+  <section class="center_section">
+    <h2><img src="images/member_.png">會員登入</h2>
+    <form id="forms" onSubmit="return false;">
+        <div class="login__form">
+            <input type="text" class="account" name="acc">
+            <input type="password" class="password" name="pwd">
+            <label for="captcha" class="captcha">驗証碼／verification code</label>
+            <div class="capchadiv">
+                <input type="text" name="capcha" id="captcha" class="captchainput" style="width:35%;vertical-align:top;"/>
+			    <img src="imagebuilder.php" height="50"  alt="">
+            	<!-- <img src="images/captcha.png" height="50"  alt=""> -->
+            </div>
+
+        </div>
+        <input type="hidden" name="formsigncode" value="<?=$_SESSION['website']['formsigncode']?>">
+
+       <button class="style01 login fsubmit" data-type="mlogin">確認登入</button> 
+	</form>
+    
+    <a class="forget_btn">忘記密碼</a>
+    <div class="forget__form">
+      <p>請輸入信箱，我們將會將密碼發送至您的信箱。</p>
+      <input type="text" name="">
+      <div class="code"><input type="text" name=""><img src="images/num.png"></div>
+      <button class="style01 submit">確認送出</button>
+    </div>
+    <button class="style01 regi" onClick="location.href='register.php'">註冊成為會員</button>
+    
+  </section>
+  
+ 
+</article>
+
+
+
+<footer data-role="footer">
+   <div class="container-fluid pay" id="pay">
+    <h5>匯款資訊</h5>
+    <p>
+      <span>華越資通企管顧問有限公司</span>　
+      <span>（009）彰化銀行西屯分行</span>　
+      <span>93320101520－300</span>
+    </p>
+  </div>
+  <div class="container-fluid footer">
+    <p>進銷存軟體．採購訂單．會計系統．票據．製造業．POS系統．發票．固定資產．人事薪資．維修關懷系統．網頁製作．網路行銷</p>
+    <p class="copyright">版權所有 © 2018 華越資通企管顧問有限公司 All Rights Reserved</p>
+  </div>
+  
+</footer>
+</body>
+
 </html>
-<script>
 
-	$(document).ready(function() {
-		
-		$( ".login_formcode img" ).click(function(){
-		
-			$( this ).attr('src' , 'formcode/formcode.php');
-		});
-	});
+<style>
+    .captcha{
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        margin: 22px 0 5px 0;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: default;
+    }
 
-</script>
+    .captchainput{
+        background: center no-repeat #f6f6f6;
+
+    }
+
+    .capchadiv{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
+</style>

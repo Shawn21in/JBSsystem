@@ -1,16 +1,37 @@
 <?php 
 require_once(__DIR__.'/include/web.config.php');
 
-if( $_Login ) {
+//不接受任何get資料
+ob_start();
+if (!empty($_GET)) {
+  header("Location: register.php");
+}
+ob_end_flush();
+//版本
+$db = new MySQL();
+
+$db->Order_By = ' ORDER BY Version_Sort DESC, Version_ID DESC';
+$db->Where = " WHERE Version_Open = '1'";
+
+$db->query_sql($version_db, '*');
+
+while($row = $db->query_fetch()){
 	
-	header("Location:login.php"); exit;
+	$_html_version[$row['Version_ID']] = $row;
 }
 
-require_once('plugins/line_login/config.php');
+//付款方式
+$db = new MySQL();
 
-$Line = new LineController();
+$db->Order_By = ' ORDER BY Delivery_Sort DESC, Delivery_ID DESC';
+$db->Where = " WHERE Delivery_Open = '1'";
 
-$Line_Url= $Line->lineLogin();//產生LINE登入連結
+$db->query_sql($delivery_db, '*');
+
+while($row = $db->query_fetch()){
+	
+	$_html_pay[$row['Delivery_ID']] = $row;
+}
 
 
 $_Title 	= "會員登入";
