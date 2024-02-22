@@ -318,19 +318,22 @@
               </div>
             </li>
             <li>
-              <a href="user-profile.html"><i class="mdi mdi-account"></i> My Profile</a>
+              <a href="index.php"><i class="mdi mdi-home"></i> 首頁</a>
             </li>
             <li>
+              <a data-tag="profile" href="m_profile.php#profile"><i class="mdi mdi-account"></i> 公司資訊</a>
+            </li>
+            <!-- <li>
               <a href="#"><i class="mdi mdi-email"></i> Message</a>
             </li>
             <li>
               <a href="#"><i class="mdi mdi-diamond-stone"></i> Projects</a>
-            </li>
+            </li> -->
             <li class="right-sidebar-in">
-              <a href="javascript:0"><i class="mdi mdi-settings"></i> Setting</a>
+              <a data-tag="settings" href="m_profile.php#settings"><i class="mdi mdi-settings"></i> 帳號設定</a>
             </li>
             <li class="dropdown-footer">
-              <a class="logout" href="javascript:void(0);"><i class="mdi mdi-logout"></i> Log Out</a>
+              <a class="logout" href="javascript:void(0);"><i class="mdi mdi-logout"></i> 登出</a>
             </li>
           </ul>
         </li>

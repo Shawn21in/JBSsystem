@@ -17,6 +17,10 @@
   padding-left: 1rem;
 }
 
+.navbar {
+  padding-right: unset;
+}
+
 #sidebar {
   padding-bottom: unset;
 }

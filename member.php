@@ -11,7 +11,7 @@ $_Title = '會員中心';
 <html dir="ltr" lang="tw">
 
 <head>
-  <?php include('head_m.php'); ?>
+  <?php include('m_head.php'); ?>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
@@ -29,13 +29,13 @@ $_Title = '會員中心';
     <!-- ====================================
           ——— LEFT SIDEBAR WITH OUT FOOTER
         ===================================== -->
-    <?php require('aside.php'); ?>
+    <?php require('m_aside.php'); ?>
     <!-- ====================================
         ——— PAGE WRAPPER
         ===================================== -->
     <div class="page-wrapper">
       <!-- Header -->
-      <?php require('header_m.php'); ?>
+      <?php require('m_header.php'); ?>
       <!-- ====================================
           ——— CONTENT WRAPPER
           ===================================== -->
@@ -54,7 +54,7 @@ $_Title = '會員中心';
         </div><!-- End Content -->
       </div><!-- End Content Wrapper -->
       <!-- Footer -->
-      <?php require('footer_m.php'); ?>
+      <?php require('m_footer.php'); ?>
     </div><!-- End Page Wrapper -->
   </div><!-- End Wrapper -->
   <!-- <script type="module">
