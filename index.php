@@ -1,15 +1,15 @@
 <?php 
 require_once(__DIR__.'/include/web.config.php');
-if( $_Login ) {
-	switch($_state){
-		case 'company':
-			header("Location:com_index.php"); exit;
-		break;
-		case 'member':
-			header("Location:cust_index.php"); exit;
-		break;
-	}
-}
+// if( $_Login ) {
+// 	switch($_state){
+// 		case 'company':
+// 			header("Location:com_index.php"); exit;
+// 		break;
+// 		case 'member':
+// 			header("Location:cust_index.php"); exit;
+// 		break;
+// 	}
+// }
 $db = new MySQL();
 $db->Order_By = ' ORDER BY Video_Sort DESC, Video_ID DESC';
 $db->Where = " WHERE Video_Open = '1'";

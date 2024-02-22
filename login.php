@@ -2,11 +2,14 @@
 require_once("include/web.config.php");
 
 //不接受任何get資料
-ob_start();
+
 if (!empty($_GET)) {
-  header("Location: login.php");
+  header("Location: login.php");exit;
 }
-ob_end_flush();
+if( $_Login ) {
+  header("Location:index.php"); exit;
+}
+
 
 $_SESSION['website']['formsigncode'] = md5(time());
 

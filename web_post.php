@@ -557,23 +557,32 @@ if( !empty($_Type) ){
 		
 		case "mlogin":
 			
-			if( empty($_POST['acc']) || empty($_POST['pwd']) ){
-				
-				$_html_msg 	= '請輸入帳號密碼。';
-				break;
-			}
 			
 			$acc 		= $_POST['acc'];
 			
 			$pwd = md5(Turnencode(trim($_POST['pwd']), 'password'));
 			//-----------------------CAPTCHA ------------------------------------
-				$formsigncode 	= trim($_POST['formsigncode']);
+			$capcha = trim($_POST['capcha']);
+
+			$formsigncode 	= trim($_POST['formsigncode']);
+			
+			if( $formsigncode != $_SESSION['website']['formsigncode'] || empty($formsigncode)  ){
 				
-				if( $formsigncode != $_SESSION['website']['formsigncode'] || empty($formsigncode)  ){
-					
-					$_html_msg 	= '驗證錯誤, 請重新操作';
-					break;
-				}
+				$_html_msg 	= '驗證錯誤, 請重新操作';
+				break;
+			}
+			
+            if( empty($acc) || empty($pwd)){
+				
+				$_html_msg 	= '帳號和密碼請勿空白, 請重新操作';
+				break;
+			}
+
+            if( $capcha != $_SESSION['string']){
+				
+				$_html_msg 	= '驗證碼錯誤, 請重新輸入';
+				break;
+			}
 			//-----------------------recaptcha------------------------------------
 			
 				// if( 0 && !empty($_POST['recaptchaResponse']) ) {
@@ -588,7 +597,7 @@ if( !empty($_Type) ){
 				// 	}
 				// }
 			//-------------------------------------------------------------------
-			
+
 			ob_start();
 			
 			if( empty($_html_msg) ) {

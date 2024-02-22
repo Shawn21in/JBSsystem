@@ -1,6 +1,5 @@
-
 <footer data-role="footer">
-	<!-- 
+  <!-- 
    <div class="container-fluid pay" id="pay">
     <h5>匯款資訊</h5>
     <p>
@@ -15,5 +14,5 @@
     <p class="copyright">聯絡電話：04-23502490</p>
     <p class="copyright">版權所有 © 2018 庫點子文創資訊產業有限公司 All Rights Reserved</p>
   </div>
-  
+
 </footer>
