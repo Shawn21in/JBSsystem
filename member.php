@@ -1,14 +1,10 @@
 <?php
 require_once("include/web.config.php");
-//不接受任何get資料
-if (!empty($_GET)) {
-  header("Location: login.php");
-  exit;
-}
 if (!$_Login) {
   header("Location:index.php");
   exit;
 }
+
 $_Title = '會員中心';
 ?>
 <!DOCTYPE html>
@@ -16,7 +12,6 @@ $_Title = '會員中心';
 
 <head>
   <?php include('head_m.php'); ?>
-  <title></title>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
@@ -67,22 +62,7 @@ $_Title = '會員中心';
       const el = document.createElement('pwa-update');
       document.body.appendChild(el);
     </script> -->
-  <!-- Javascript -->
-  <script src="stylesheets/assets/plugins/jquery/jquery.min.js"></script>
-  <script src="stylesheets/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="stylesheets/assets/plugins/simplebar/simplebar.min.js"></script>
-  <script src='stylesheets/assets/plugins/charts/Chart.min.js'></script>
-  <script src='stylesheets/assets/js/chart.js'></script>
-  <script src='stylesheets/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js'></script>
-  <script src='stylesheets/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js'></script>
-  <script src='stylesheets/assets/js/vector-map.js'></script>
-  <script src='stylesheets/assets/plugins/daterangepicker/moment.min.js'></script>
-  <script src='stylesheets/assets/plugins/daterangepicker/daterangepicker.js'></script>
-  <script src='stylesheets/assets/js/date-range.js'></script>
-  <script src='stylesheets/assets/plugins/toastr/toastr.min.js'></script>
-  <script src="stylesheets/assets/js/sleek.js"></script>
-  <link href="stylesheets/assets/options/optionswitch.css" rel="stylesheet">
-  <script src="stylesheets/assets/options/optionswitcher.js"></script>
+
 </body>
 
 </html>

@@ -330,7 +330,7 @@
               <a href="javascript:0"><i class="mdi mdi-settings"></i> Setting</a>
             </li>
             <li class="dropdown-footer">
-              <a href="index.html"><i class="mdi mdi-logout"></i> Log Out</a>
+              <a class="logout" href="javascript:void(0);"><i class="mdi mdi-logout"></i> Log Out</a>
             </li>
           </ul>
         </li>

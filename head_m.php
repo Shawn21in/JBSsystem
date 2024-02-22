@@ -13,7 +13,7 @@
 <link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
 
 <!-- PLUGINS CSS STYLE -->
-<link href="stylesheets/assets/plugins/simplebar/simplebar.css" rel="stylesheet" />
+<!-- <link href="stylesheets/assets/plugins/simplebar/simplebar.css" rel="stylesheet" /> -->
 <link href="stylesheets/assets/plugins/nprogress/nprogress.css" rel="stylesheet" />
 
 <!-- No Extra plugin used -->
@@ -44,5 +44,29 @@
     <![endif]-->
 <script src="stylesheets/assets/plugins/nprogress/nprogress.js"></script>
 <link href="stylesheets/member.css" rel="stylesheet" />
+<!-- Javascript -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="stylesheets/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="stylesheets/assets/plugins/simplebar/simplebar.min.js"></script> -->
+<script src='stylesheets/assets/plugins/charts/Chart.min.js'></script>
+<script src='stylesheets/assets/js/chart.js'></script>
+<script src='stylesheets/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js'></script>
+<script src='stylesheets/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js'></script>
+<!-- <script src='stylesheets/assets/js/vector-map.js'></script> -->
+<script src='stylesheets/assets/plugins/daterangepicker/moment.min.js'></script>
+<script src='stylesheets/assets/plugins/daterangepicker/daterangepicker.js'></script>
+<script src='stylesheets/assets/js/date-range.js'></script>
+<script src='stylesheets/assets/plugins/toastr/toastr.min.js'></script>
+<script src="stylesheets/assets/js/sleek.js"></script>
+<!-- <link href="stylesheets/assets/options/optionswitch.css" rel="stylesheet">
+<script src="stylesheets/assets/options/optionswitcher.js"></script> -->
+
+<script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
+<script src="js/jquery-loading.js"></script>
+<script src="system/assets/jquery/jquery-address.js"></script>
+<script src="js/ani.js?v=<?= $version ?>"></script>
+<script src="js/web-main.js?v=<?= $version ?>"></script>
+<script src="js/web-cart.js?v=<?= $version ?>"></script>
+<script src="js/web-checkinput.js"></script>
 <!--彈跳視窗插件-->
 <script src="js/sweetalert.js"></script>
