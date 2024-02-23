@@ -357,7 +357,132 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
-
+		case "bank_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['bankno'] 		= $_POST['bankno'];
+			$Value['bankname'] 		= $_POST['bankname'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$bank_data = array(
+					'bankno' 				=> $Value['bankno'],
+					'bankname' 			=> $Value['bankname'],
+				);
+				$db->Where = " WHERE  1 = 1";
+				$db->query_sql($bank_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($bank_db, $bank_data, 'UPDATE');
+				} else {
+					$db->query_data($bank_db, $bank_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
+		case "education_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['educationno'] 		= $_POST['educationno'];
+			$Value['educationname'] 		= $_POST['educationname'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$education_data = array(
+					'educationno' 				=> $Value['educationno'],
+					'educationname' 			=> $Value['educationname'],
+				);
+				$db->Where = " WHERE  1 = 1";
+				$db->query_sql($education_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($education_db, $education_data, 'UPDATE');
+				} else {
+					$db->query_data($education_db, $education_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
+		case "jobs_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['appno'] 		= $_POST['appno'];
+			$Value['appname'] 		= $_POST['appname'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$jobs_data = array(
+					'appno' 				=> $Value['appno'],
+					'appname' 			=> $Value['appname'],
+				);
+				$db->Where = " WHERE  1 = 1";
+				$db->query_sql($jobs_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($jobs_db, $jobs_data, 'UPDATE');
+				} else {
+					$db->query_data($jobs_db, $jobs_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {

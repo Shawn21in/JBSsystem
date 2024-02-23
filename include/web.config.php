@@ -105,6 +105,16 @@ if ($website_open) {
 	$version_db		= "web_version";
 	$delivery_db		= "web_delivery";
 	$comp_db 	= 'comp';
+	$bank_db 	= 'bank';
+	$jobs_db 	= 'jobs';
+	$education_db 	= 'education';
+	$family_db 	= 'family';
+	$part_db 	= 'part';
+	$reason_db 	= 'reason';
+	$attendance_db 	= 'attendance';
+	$deduction_db 	= 'deduction';
+	$seclab1_db 	= 'seclab1';
+	$purchaser1_db 	= 'purchaser1';
 
 
 	//經銷商代號

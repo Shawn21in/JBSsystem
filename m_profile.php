@@ -4,13 +4,20 @@ if (!$_Login) {
   header("Location:index.php");
   exit;
 }
+
 $_Title = '會員中心';
+
+$_No = 0;           //按鈕列的序號，第一個有連結的按鈕為0，第二個為1，以次類推.....
+
 $comp = GET_COMP_DATA();
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="tw">
 
 <head>
+  <script>
+    var no = <?= $_No ?>;
+  </script>
   <?php include('m_head.php'); ?>
   <script src="js/m_profile.js"></script>
 </head>
@@ -109,7 +116,7 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="cono">公司編號 *</label>
-                                <input type="text" data-name="公司編號" class="form-control" name="cono" id="cono" value="<?= $comp['cono'] ?>" placeholder="Ex:A01" required>
+                                <input type="text" data-name="公司編號" class="form-control" name="cono" id="cono" value="<?= $comp['cono'] ?>" placeholder="Ex:01" required>
                               </div>
                             </div>
 
@@ -199,7 +206,7 @@ $comp = GET_COMP_DATA();
                           </div> -->
 
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill memBtn" data-type="mem_edit">修改</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill memBtn" data-type="mem_edit">儲存</button>
                           </div>
                         </form>
                       </div>
@@ -229,7 +236,7 @@ $comp = GET_COMP_DATA();
                           </div>
 
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill pwBtn" data-type="pw_edit">修改</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill pwBtn" data-type="pw_edit">儲存</button>
                           </div>
                         </form>
                       </div>

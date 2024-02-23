@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-02-23 07:35:44
+-- 產生時間： 2024-02-23 09:59:11
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -60,6 +60,13 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `bankname` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
   PRIMARY KEY (`bankno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `bank`
+--
+
+INSERT INTO `bank` (`bankno`, `bankname`) VALUES
+('822', '中國信託商業銀行');
 
 -- --------------------------------------------------------
 
@@ -133,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `comp` (
 --
 
 INSERT INTO `comp` (`cono`, `coname1`, `coname2`, `coper`, `couno`, `cotel1`, `cofax1`, `coaddr1`, `cowww`, `coemail`, `comemo1`, `xa1no`, `xa1name`, `copaths`, `copatha`, `copathc`, `colnk11`, `colnk11no`, `colnk12`, `colnk12no`, `colnk13`, `colnk13no`, `colnk14`, `colnk14no`, `colnk15`, `colnk15no`, `colnk16`, `colnk16no`, `colnk17`, `colnk17no`, `colnk18`, `colnk18no`, `colnk19`, `colnk19no`, `colnk1a`, `colnk1ano`, `colnk21`, `colnk21no`, `colnk22`, `colnk22no`, `colnk23`, `colnk23no`, `colnk24`, `colnk24no`, `colnk25`, `colnk25no`, `colnk26`, `colnk26no`, `colnk27`, `colnk27no`, `colnk28`, `colnk28no`, `colnk29`, `colnk29no`, `laobaono`, `jianbaono`) VALUES
-('A0', '庫點子', '庫點子文創資訊產業有限公司', '廖石龍', '04235868', '0423586802', '0423586807', '407台中市西屯區中工二路120號', NULL, 'bmidp888@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', '1234');
+('01', '庫點子', '庫點子文創資訊產業有限公司', '廖石龍', '04235868', '0423586802', '0423586807', '407台中市西屯區中工二路120號', NULL, 'bmidp888@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', '1234');
 
 -- --------------------------------------------------------
 
@@ -163,6 +170,13 @@ CREATE TABLE IF NOT EXISTS `education` (
   PRIMARY KEY (`educationno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- 傾印資料表的資料 `education`
+--
+
+INSERT INTO `education` (`educationno`, `educationname`) VALUES
+('07', '博士');
+
 -- --------------------------------------------------------
 
 --
@@ -188,6 +202,13 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `appname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職稱',
   PRIMARY KEY (`appno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `jobs`
+--
+
+INSERT INTO `jobs` (`appno`, `appname`) VALUES
+('BE', '後端工程師');
 
 -- --------------------------------------------------------
 
@@ -444,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -482,7 +503,15 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (29, '2024-02-23 15:29:10', '系統管理員', '1', 'Unknown column \'Member_Pwd\' in \'field list\'', 'UPDATE web_company SET `Member_Pwd` = \'767f2e385cba483c5e3a0f41d9d78cc3\'  WHERE  1 = 1 ;', 'ERROR', '/jp/web_post.php'),
 (30, '2024-02-23 15:29:35', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\'  WHERE  1 = 1 ;', 'UPDATE', '/jp/web_post.php'),
 (31, '2024-02-23 15:30:43', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
-(32, '2024-02-23 15:35:28', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'A01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php');
+(32, '2024-02-23 15:35:28', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'A01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(33, '2024-02-23 17:13:12', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'A01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(34, '2024-02-23 17:13:24', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(35, '2024-02-23 17:45:19', '系統管理員', '1', '', 'INSERT INTO bank () VALUES ();', 'INSERT', '/jp/web_post.php'),
+(36, '2024-02-23 17:46:19', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'822\',\'中國信託商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(37, '2024-02-23 17:52:27', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'07\',\'博士\');', 'INSERT', '/jp/web_post.php'),
+(38, '2024-02-23 17:57:30', '系統管理員', '1', '', 'INSERT INTO jobs (`appno`,`appname`) VALUES (\'BE\',\'後端工程師\');', 'INSERT', '/jp/web_post.php'),
+(39, '2024-02-23 17:57:35', '系統管理員', '1', '', 'UPDATE jobs SET `appno` = \'BE1\',`appname` = \'後端工程師\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(40, '2024-02-23 17:57:39', '系統管理員', '1', '', 'UPDATE jobs SET `appno` = \'BE\',`appname` = \'後端工程師\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

@@ -68,5 +68,6 @@
 <script src="js/web-main.js?v=<?= $version ?>"></script>
 <script src="js/web-cart.js?v=<?= $version ?>"></script>
 <script src="js/web-checkinput.js"></script>
+<script src="js/aside.js"></script>
 <!--彈跳視窗插件-->
 <script src="js/sweetalert.js"></script>

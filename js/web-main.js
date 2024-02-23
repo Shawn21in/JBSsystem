@@ -156,7 +156,16 @@ $(document).ready(function (e) {
 			Post_JS(Form_Data, Exec_Url);
 		}
 	});
-
+	$('.saveBtn').click(function () {
+		if (form_check('form1')) {
+			var type = $(this).attr('data-type');
+			var field = $('#form1');
+			var Form_Data = '';
+			Form_Data += field.serialize();
+			Form_Data += '&_type=' + type;
+			Post_JS(Form_Data, Exec_Url);
+		}
+	});
 	$('.logout').click(function () {
 		var Form_Data = '';
 		Form_Data += '&_type=mlogout';
