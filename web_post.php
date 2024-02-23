@@ -253,22 +253,8 @@ if (!empty($_Type)) {
 			break;
 
 			//會員資料修改-公司
-		case "com_edit":
-			if ($_Login) {
-				switch ($_state) {
-					case 'company':
-						break;
-						break;
-					case 'member':
-						$_html_msg = '請先登入帳號！';
-						$_html_href = "index.php";
-						break;
-					default:
-						$_html_msg = '請先登入帳號！';
-						$_html_href = "index.php";
-						break;
-				}
-			} else {
+		case "mem_edit":
+			if (!$_Login) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -276,149 +262,102 @@ if (!empty($_Type)) {
 			$_html_msg = '';
 			$_html_msg_array = array();
 			$value = array();
-			$Value['account'] 		= trim($_POST['account']); //帳號
-			$Value['Email'] 		= trim($_POST['email']); //信箱
-			$Value['company_name'] 	= trim($_POST['com_name']);
-			$Value['com_id'] 		= trim($_POST['com_id']);
-			$Value['company_tel'] 	= trim($_POST['com_tel']);
-			$Value['com_address']   = trim($_POST['com_address']);
-			$Value['Verify'] 	= 'CT' . strtoupper(dechex(time()));
+			$Value['cono'] 	= trim($_POST['cono']);
+			$Value['coname1'] 		= trim($_POST['coname1']);
+			$Value['coname2'] 		= trim($_POST['coname2']);
+			$Value['coper'] 	= trim($_POST['coper']);
+			$Value['couno']   	= trim($_POST['couno']);
+			$Value['cotel1'] 		= trim($_POST['cotel1']);
+			$Value['cofax1']   	= trim($_POST['cofax1']);
+			$Value['coaddr1']   	= trim($_POST['coaddr1']);
+			$Value['coemail']   	= trim($_POST['coemail']);
+			$Value['laobaono']   	= trim($_POST['laobaono']);
+			$Value['jianbaono']   	= trim($_POST['jianbaono']);
+
 			foreach ($Value as $key => $val) {
 				if (empty($val)) {
 					array_push($_html_msg_array, '資料填寫不完整');
 					break;
 				}
 			}
-			$Value['password'] 			= md5(Turnencode(trim($_POST['password']), 'password'));
-			$Value['repassword'] 		= md5(Turnencode(trim($_POST['repassword']), 'password'));
-			if ($Value['password'] != $Value['repassword']) {
-				array_push($_html_msg_array, '密碼與確認密碼不相同，請重新確認！');
-			}
-			if (!preg_match('/^[a-zA-Z0-9]{6,12}$/', $Value['account'])) {
-				array_push($_html_msg_array, '帳號請輸入6~12位的英文加數字，請重新確認！');
-			}
-			$db->Where = " WHERE  Company_ID != '" . $_MemberData['Company_ID'] . "' AND (Company_Email='" . $db->val_check($Value['Email']) . "' OR Company_Acc='" . $db->val_check($Value['account']) . "' OR Company_EDITORIAL='" . $db->val_check($Value['com_id']) . "')";
-			$db->query_sql($company_db, '*');
-			if ($row = $db->query_fetch()) {
-				array_push($_html_msg_array, '帳號、電子郵件或統編已經有其他帳號申請了，請重新更換一個！');
-			}
-
+			$Value['cowww']   	= trim($_POST['cowww']);
+			$Value['comemo1']   	= trim($_POST['comemo1']);
 			if (!empty($_html_msg_array)) { //判斷資料完整度
 				foreach ($_html_msg_array as $hma) {
 					$_html_msg = $hma;
 					break;
 				}
 			} else {
-				$Value['agent_tel'] 	= trim($_POST['agent_tel']);
-				$Value['agent_name']   	= trim($_POST['agent_name']);
-				$acc = $Value['account'];
-				$email = $Value['Email'];
-				$com_id = $Value['com_id'];
-				$pwd = !empty($_POST['password']) ? $Value['password'] : $_MemberData['Company_PW'];
-				$db->Where = " WHERE  Company_ID = '" . $_MemberData['Company_ID'] . "'";
+				$comp_data = array(
+					'cono' 				=> $Value['cono'],
+					'coname1' 			=> $Value['coname1'],
+					'coname2' 			=> $Value['coname2'],
+					'coper' 			=> $Value['coper'],
+					'couno' 			=> $Value['couno'],
+					'cotel1' 			=> $Value['cotel1'],
+					'cofax1' 			=> $Value['cofax1'],
+					'coaddr1' 			=> $Value['coaddr1'],
+					'coemail' 			=> $Value['coemail'],
+					'laobaono' 			=> $Value['laobaono'],
+					'jianbaono' 		=> $Value['jianbaono'],
+				);
+				$db->Where = " WHERE  1 = 1";
+				$db->query_sql($comp_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($comp_db, $comp_data, 'UPDATE');
+				} else {
+					$db->query_data($comp_db, $comp_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '修改失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '修改成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
+		case "pw_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['oldPassword'] 		= md5(Turnencode(trim($_POST['oldPassword']), 'password'));
+			$Value['newPassword'] 		= md5(Turnencode(trim($_POST['newPassword']), 'password'));
+			$Value['conPassword'] 		= md5(Turnencode(trim($_POST['conPassword']), 'password'));
+			if ($_MemberData['Company_PW'] != $Value['oldPassword']) {
+				array_push($_html_msg_array, '舊密碼不正確，請重新確認！');
+			}
+			if ($Value['newPassword'] != $Value['conPassword']) {
+				array_push($_html_msg_array, '新密碼與確認密碼不相同，請重新確認！');
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$pwd = $Value['newPassword'];
+				$db->Where = " WHERE  1 = 1 ";
 				$db->query_sql($company_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db_data = array(
-						'Company_Acc' 				=> $Value['account'],
 						'Company_PW' 				=> $pwd,
-						'Company_NAME' 				=> $Value['company_name'],
-						'Company_EDITORIAL'			=> $com_id,
-						'Company_CTEL'				=> $Value['company_tel'],
-						'Company_ADDRESS'			=> $Value['com_address'],
-						'Company_PER'				=> $Value['agent_name'],
-						'Company_TEL' 				=> $Value['agent_tel'],
-						'Company_EMAIL' 			=> $Value['Email'],
-						'Company_EDATE'				=> $sdate
 					);
-					$db->query_data('web_company', $db_data, 'UPDATE');
+					$db->query_data($company_db, $db_data, 'UPDATE');
 					if (!empty($db->Error)) {
 						$_html_msg 	= '修改失敗，請重新整理後再試試';
 					} else {
 						$_html_msg 	= '修改成功！';
-						$_html_href = 'com_profile.php';
+						$_html_eval = 'Reload()';
 					}
 				}
 			}
 			break;
-			//會員資料修改-消費者
-		case "mem_edit":
-			if ($_Login) {
-				switch ($_state) {
-					case 'company':
-						$_html_msg = '請先登入帳號！';
-						$_html_href = "index.php";
-						break;
-					case 'member':
-						break;
-					default:
-						$_html_msg = '請先登入帳號！';
-						$_html_href = "index.php";
-						break;
-				}
-			} else {
-				$_html_msg = '請先登入帳號！';
-				$_html_href = "index.php";
-				break;
-			}
-			$_html_msg = '';
-			$_html_msg_array = array();
-			$value = array();
-			$Value['email'] 	= trim($_POST['email']);
-			$Value['acc'] 		= trim($_POST['acc']);
-			$Value['name'] 		= trim($_POST['name']);
-			$Value['mobile'] 	= trim($_POST['mobile']);
-			$Value['sex'] 		= trim($_POST['sex']);
-			$Value['city']   	= trim($_POST['city']);
-			$Value['county']   	= trim($_POST['area']);
-			foreach ($Value as $key => $val) {
-				if (empty($val)) {
-					array_push($_html_msg_array, '資料填寫不完整');
-					break;
-				}
-			}
-			$Value['password'] 			= md5(Turnencode(trim($_POST['password']), 'password'));
-			$Value['repassword'] 		= md5(Turnencode(trim($_POST['repassword']), 'password'));
-			if ($Value['password'] != $Value['repassword']) {
-				array_push($_html_msg_array, '密碼與確認密碼不相同，請重新確認！');
-			}
-			if (!preg_match('/^[a-zA-Z0-9]{6,12}$/', $Value['acc'])) {
-				array_push($_html_msg_array, '帳號請輸入6~12位的英文加數字，請重新確認！');
-			}
-			$db->Where = " WHERE  Member_ID != '" . $_MemberData['Member_ID'] . "' AND (Member_Email='" . $db->val_check($Value['email']) . "' OR Member_Acc='" . $db->val_check($Value['acc']) . "')";
-			$db->query_sql($member_db, '*');
-			if ($row = $db->query_fetch()) {
-				array_push($_html_msg_array, '帳號或是電子郵件已經有其他帳號申請了，請重新更換一個！');
-			}
-			if (!empty($_html_msg_array)) { //判斷資料完整度
-				foreach ($_html_msg_array as $hma) {
-					$_html_msg = $hma;
-					break;
-				}
-			} else {
-				$pwd = !empty($_POST['password']) ? $Value['password'] : $_MemberData['Member_Pwd'];
-				$db->Where = " WHERE  Member_ID = '" . $_MemberData['Member_ID'] . "'";
-				$db->query_sql($member_db, '*');
-				if ($row = $db->query_fetch()) {
-					$db_data = array(
-						'Member_Acc' 				=> $Value['acc'],
-						'Member_Pwd' 				=> $pwd,
-						'Member_Name' 				=> $Value['name'],
-						'Member_Mobile' 			=> $Value['mobile'],
-						'Member_Email' 				=> $Value['email'],
-						'Member_Sex' 				=> $Value['sex'],
-						'Member_City' 				=> $Value['city'],
-						'Member_County' 			=> $Value['county'],
-					);
-					$db->query_data($member_db, $db_data, 'UPDATE');
-					if (!empty($db->Error)) {
-						$_html_msg 	= '修改失敗，請重新整理後再試試';
-					} else {
-						$_html_msg 	= '修改成功！';
-						$_html_href = 'cust_profile.php';
-					}
-				}
-			}
-			break;
+
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {
@@ -762,7 +701,7 @@ if (!empty($_Type)) {
 
 		case "mlogout":
 
-			// unset($_SESSION[$_Website]['website']);
+			unset($_SESSION[$_Website]['website']);
 
 			$_html_msg 	= '成功登出，歡迎再次光臨。';
 			$_html_href = 'index.php';

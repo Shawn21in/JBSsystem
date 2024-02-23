@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-02-20 06:37:49
+-- 產生時間： 2024-02-23 07:35:44
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -127,6 +127,13 @@ CREATE TABLE IF NOT EXISTS `comp` (
   `jianbaono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保代號',
   PRIMARY KEY (`cono`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `comp`
+--
+
+INSERT INTO `comp` (`cono`, `coname1`, `coname2`, `coper`, `couno`, `cotel1`, `cofax1`, `coaddr1`, `cowww`, `coemail`, `comemo1`, `xa1no`, `xa1name`, `copaths`, `copatha`, `copathc`, `colnk11`, `colnk11no`, `colnk12`, `colnk12no`, `colnk13`, `colnk13no`, `colnk14`, `colnk14no`, `colnk15`, `colnk15no`, `colnk16`, `colnk16no`, `colnk17`, `colnk17no`, `colnk18`, `colnk18no`, `colnk19`, `colnk19no`, `colnk1a`, `colnk1ano`, `colnk21`, `colnk21no`, `colnk22`, `colnk22no`, `colnk23`, `colnk23no`, `colnk24`, `colnk24no`, `colnk25`, `colnk25no`, `colnk26`, `colnk26no`, `colnk27`, `colnk27no`, `colnk28`, `colnk28no`, `colnk29`, `colnk29no`, `laobaono`, `jianbaono`) VALUES
+('A0', '庫點子', '庫點子文創資訊產業有限公司', '廖石龍', '04235868', '0423586802', '0423586807', '407台中市西屯區中工二路120號', NULL, 'bmidp888@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1234', '1234');
 
 -- --------------------------------------------------------
 
@@ -298,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '586645033c69b340cd997b2555654a62', '2019-08-12 21:27:51', '2024-02-19 11:33:37', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, 'f269e203996701b7a5eb8afb159648ea', '2019-08-12 21:27:51', '2024-02-23 14:51:19', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -437,7 +444,45 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+
+--
+-- 傾印資料表的資料 `sys_mysql_log`
+--
+
+INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_COMMENT`, `ML_SQL_CON`, `ML_SQL_EXEC_TYPE`, `ML_EXEC_FILE`) VALUES
+(1, '2024-02-21 17:04:51', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'ed73cba70194a14690a4ea0e88bdbcfa\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(2, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'125\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(3, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'124\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(4, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'121\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(5, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'120\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(6, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'119\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(7, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'118\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(8, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'117\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(9, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'116\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(10, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'115\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(11, '2024-02-21 17:05:16', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'114\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(12, '2024-02-21 17:05:33', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'112\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(13, '2024-02-21 17:05:33', '系統管理員', '1', '', 'DELETE FROM web_company  WHERE Company_bid = \'111\';', 'DELETE', '/jp/system/mods/table/table.post.php?fun=231211001'),
+(14, '2024-02-21 17:12:43', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(15, '2024-02-22 10:18:01', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(16, '2024-02-22 14:44:36', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(17, '2024-02-22 14:45:25', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(18, '2024-02-22 14:50:49', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(19, '2024-02-22 14:51:48', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(20, '2024-02-22 14:53:27', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(21, '2024-02-22 14:56:28', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(22, '2024-02-22 15:00:46', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(23, '2024-02-23 08:45:17', '', '', '', 'UPDATE web_company SET `Company_PW` = \'e5248681094860252687e6475300ea76\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'e5248681094860252687e6475300ea76\' OR BINARY Company_RePwd = \'e5248681094860252687e6475300ea76\');', 'UPDATE', '/jp/web_post.php'),
+(24, '2024-02-23 14:50:27', '', '', '', 'UPDATE comp SET `cono` = \'123\',`coname1` = \'321\',`coname2` = \'123\',`coper` = \'312\',`couno` = \'321\',`cotel1` = \'123\',`cofax1` = \'312\',`coaddr1` = \'312\',`coemail` = \'123@gmail.com\',`laobaono` = \'123\',`jianbaono` = \'321\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(25, '2024-02-23 14:51:19', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'f269e203996701b7a5eb8afb159648ea\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(26, '2024-02-23 14:57:43', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'A01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'1\',`couno` = \'1\',`cotel1` = \'1\',`cofax1` = \'1\',`coaddr1` = \'1\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1\',`jianbaono` = \'1\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(27, '2024-02-23 14:58:24', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'A01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'1\',`couno` = \'0423586802\',`cotel1` = \'1\',`cofax1` = \'1\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1\',`jianbaono` = \'1\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(28, '2024-02-23 15:00:48', '系統管理員', '1', '', 'INSERT INTO comp (`cono`,`coname1`,`coname2`,`coper`,`couno`,`cotel1`,`cofax1`,`coaddr1`,`coemail`,`laobaono`,`jianbaono`) VALUES (\'A01\',\'庫點子\',\'庫點子文創資訊產業有限公司\',\'1\',\'0423586802\',\'1\',\'1\',\'407台中市西屯區中工二路120號\',\'bmidp888@gmail.com\',\'1\',\'1\');', 'INSERT', '/jp/web_post.php'),
+(29, '2024-02-23 15:29:10', '系統管理員', '1', 'Unknown column \'Member_Pwd\' in \'field list\'', 'UPDATE web_company SET `Member_Pwd` = \'767f2e385cba483c5e3a0f41d9d78cc3\'  WHERE  1 = 1 ;', 'ERROR', '/jp/web_post.php'),
+(30, '2024-02-23 15:29:35', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\'  WHERE  1 = 1 ;', 'UPDATE', '/jp/web_post.php'),
+(31, '2024-02-23 15:30:43', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(32, '2024-02-23 15:35:28', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'A01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -915,19 +960,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', 'e5248681094860252687e6475300ea76', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'CT657C0CCA', 1),
-(111, 'C2312220002', 'chantal0409', '15c02fdba041aade3a6efd57b49250c8', '', 0, '華越', '11223344', '041234573', '台中市西屯區', '', '', 'cathy830409@gmail.com', '2023-12-22 16:29:05', NULL, '2024-12-31 11:31:04', 1, 0, NULL, '', 0, 1, 'CT658548D1', 1),
-(112, 'C2312250001', 'bm888111', '4e90bf5c6e89b179005004f6ef56fda1', '', 0, '華越', '11223344', '041234573', '台中市西屯區', '', '', 'cathy830409@gmail.com', '2023-12-22 16:29:05', NULL, '2024-12-31 11:31:55', 2, 0, NULL, '', 0, 1, 'CT658548D1', 1),
-(114, 'C2401190001', 'Bmbm888', '279dedc8016fb5cc5dca7b7adcdfc94a', '', 0, '華越資通企管顧問', '54909107', '04-23586802', '台中市西屯區中工二路120號1F', '廖石龍', '', 'bmidp888@gmail.com', '2024-01-19 13:58:26', '2024-01-25 11:09:58', '2024-12-31 09:23:49', 2, 0, NULL, '台中市西屯區中工二路120號1F', 0, 1, 'CT65AA0F82', 1),
-(115, 'C2401220001', 'a25932356', 'e5248681094860252687e6475300ea76', 'ea4043f5ec86b4ac2581d0ebf8a6f581', 1, '測試人員一號', '12345678', '0412345678', '407台中市西屯區中工二路120號', '測試人', '0912345678', 'a25932356@gmail.com', '2024-01-22 16:33:16', NULL, '2024-04-06 16:37:14', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'CT65AE284C', 1),
-(116, 'C2401250001', 'ming007', 'd94d49588446db286a6ebdf2bb023478', NULL, 0, '名文企業社', '37592723', '066986002', '台南市六甲區文化街59號', '陳叙名', '', 'ming@mingwen.com.tw', '2024-01-25 20:41:36', NULL, NULL, 0, 0, NULL, '', 1, 0, 'CT65B25700', NULL),
-(117, 'C2401270001', 'hl63511402', 'c0dbfdeb93d7396086e2fe548d169929', '', 0, '海麟國際食品有限公司', '63511402', '04-23552080', '台中市南屯區工業區20路39號2樓', '何苡嬅', '04-23552080', 'hailin23552080@gmail.com', '2024-01-27 10:51:53', NULL, NULL, 0, 0, NULL, '', 1, 0, 'CT65B46FC9', 1),
-(118, 'C2401290001', '12742871', 'cf284365282ebbd3af1cbe082102c154', '', 0, '金農興生物科技股份有', '12742871', '04-23869198', '台中市南屯區大墩六街410號', 'IVY', '0982911958', 'ivy188kimo@yahoo.com.tw', '2024-01-29 09:44:55', NULL, '2024-02-29 09:47:41', 1, 0, NULL, '', 0, 1, 'CT65B70317', 1),
-(119, 'C2401290002', 'magic1103wu', '59225793b5384d0b89c73241af5c68e4', '', 0, '聯太生物科技有限公司', '12994030', '04-7784190', '彰化縣鹿港鎮復興路386巷1號', '吳純真', '0982914913', 'magic1103wu@gmail.com', '2024-01-29 09:47:06', NULL, '2024-02-29 09:48:06', 1, 0, NULL, '', 0, 1, 'CT65B7039A', 1),
-(120, 'C2401290003', 'BMTEST888', '8e192676fb75152ed12915e9de857e69', '', 0, '一茶一味有限公司', '97076883', '049-2897238', '南投縣魚池鄉新城村香茶巷5號', '', '', 'some.fat.fat@gmail.com', '2024-01-29 09:48:46', NULL, '2024-02-29 09:48:56', 1, 0, NULL, '南投縣魚池鄉新城村香茶巷5號', 1, 1, 'CT65B703FE', 1),
-(121, 'C2401290004', 'mq54589890', '74070599c86f72447aaf666807aed5ec', '', 0, '毓品有限公司', '54589890', '04-24638689', '台中市西屯區福順路6-8號', '', '', 'ie1945@yahoo.com.tw', '2024-01-29 09:50:42', NULL, '2024-02-29 09:52:25', 1, 0, NULL, '', 0, 1, 'CT65B70472', 1),
-(124, 'C2401290999', 'BMCYY', '4e90bf5c6e89b179005004f6ef56fda1', '', 0, '華越資訊', '25686802', '0912345678', '台中市', '測試', '0912345678', 'jason91027@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'CT657C0CCA', 1),
-(125, 'C2401290998', '庭宏', '4e90bf5c6e89b179005004f6ef56fda1', '', 0, '華越資訊', '25686802', '0912345678', '台中市', '測試', '0912345678', 'f129138777@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'CT657C0CCA', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'CT657C0CCA', 1);
 
 -- --------------------------------------------------------
 

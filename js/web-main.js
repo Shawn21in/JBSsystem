@@ -7,7 +7,7 @@ function Post_JS(FormData, ExecUrl, Field) {
 			loading('close');
 
 			if (data.html_msg != '' && data.html_msg != null) {
-
+				console.log(data.html_msg)
 				swal.fire({
 					title: "訊息",
 					text: data.html_msg,
@@ -136,14 +136,78 @@ $(document).ready(function (e) {
 			Post_JS(Form_Data, Exec_Url);
 		}
 	});
-
+	$('.pwBtn').click(function () {
+		if (form_check('form2')) {
+			var type = $(this).attr('data-type');
+			var field = $('#form2');
+			var Form_Data = '';
+			Form_Data += field.serialize();
+			Form_Data += '&_type=' + type;
+			Post_JS(Form_Data, Exec_Url);
+		}
+	});
+	$('.memBtn').click(function () {
+		if (form_check('form1')) {
+			var type = $(this).attr('data-type');
+			var field = $('#form1');
+			var Form_Data = '';
+			Form_Data += field.serialize();
+			Form_Data += '&_type=' + type;
+			Post_JS(Form_Data, Exec_Url);
+		}
+	});
 
 	$('.logout').click(function () {
 		var Form_Data = '';
 		Form_Data += '&_type=mlogout';
 		Post_JS(Form_Data, Exec_Url);
 	});
-
+	/*
+	form_check補充說明：
+	input、select、textarea欄位需有以下屬性
+	name:*			  欄位名稱
+	required:required 是否必填
+	data-name:*		  跳出提示時會顯示該格文字
+	*/
+	window.form_check = function (selector) {
+		//檢查Form有required屬性元件是否過檢查機制
+		var form = document.getElementById(selector);
+		var isValid = form.reportValidity();
+		var validElement = $(form).find(':valid');
+		validElement.each(function (key, value) {
+			// 通過驗證的元素會自動添加class以示通過
+			$(value).addClass('is-valid');
+			$(value).removeClass('is-invalid');
+		})
+		if (!isValid) {
+			// 尋找第一個未通過驗證的元素
+			var invalidElement = $(form).find(':invalid');
+			var invalid_list = '';
+			var invalid_other = false;
+			if (invalidElement) {
+				invalidElement.each(function (key, value) {
+					if ($(value).closest('.otherclass').length > 0) {
+						invalid_other = true;
+					} else {
+						invalid_list += $(value).data('name') + '<br/>';
+						$(value).removeClass('is-valid');
+						$(value).addClass('is-invalid');
+					}
+				})
+				if (invalid_other) {
+					invalid_list += "請檢查每個題目、答案及選項類型是否已填完";
+				}
+				Swal.fire({
+					title: "請確認是否填寫↓",
+					html: invalid_list,
+					icon: "error"
+				});
+			}
+			return false;
+		} else {
+			return true;
+		}
+	}
 });
 
 function noOPEN() {

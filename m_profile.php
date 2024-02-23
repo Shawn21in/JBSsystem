@@ -4,8 +4,8 @@ if (!$_Login) {
   header("Location:index.php");
   exit;
 }
-
 $_Title = '會員中心';
+$comp = GET_COMP_DATA();
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="tw">
@@ -52,8 +52,8 @@ $_Title = '會員中心';
                     </div>
 
                     <div class="card-body">
-                      <h4 class="py-2 text-dark"><?= $_MemberData['Company_NAME'] ?></h4>
-                      <p><?= $_MemberData['Company_EMAIL'] ?></p>
+                      <h4 class="py-2 text-dark"><?= $comp['coname1'] ?></h4>
+                      <p><?= $comp['coemail'] ?></p>
                     </div>
                   </div>
 
@@ -104,42 +104,40 @@ $_Title = '會員中心';
                   <div class="tab-content px-3 px-xl-5" id="myTabContent">
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                       <div class="tab-pane-content mt-5">
-                        <form>
-
+                        <form id="form1" onsubmit="return false;">
                           <div class="row mb-2">
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="firstName">公司編號</label>
-                                <input type="text" class="form-control" id="firstName" value="" placeholder="Ex:A01">
+                                <label for="cono">公司編號 *</label>
+                                <input type="text" data-name="公司編號" class="form-control" name="cono" id="cono" value="<?= $comp['cono'] ?>" placeholder="Ex:A01" required>
                               </div>
                             </div>
 
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="lastName">公司簡號</label>
-                                <input type="text" class="form-control" id="lastName" value="" placeholder="Ex:庫點子">
+                                <label for="coname1">公司簡號 *</label>
+                                <input type="text" data-name="公司簡號" class="form-control" name="coname1" id="coname1" value="<?= $comp['coname1'] ?>" placeholder="Ex:庫點子" required>
                               </div>
                             </div>
                           </div>
 
                           <div class="form-group mb-4">
-                            <label for="userName">公司名稱</label>
-                            <input type="text" class="form-control" id="userName" value="" placeholder="Ex:庫點子文創資訊產業有限公司">
+                            <label for="coname2">公司名稱 *</label>
+                            <input type="text" data-name="公司名稱" class="form-control" name="coname2" id="coname2" value="<?= $comp['coname2'] ?>" placeholder="Ex:庫點子文創資訊產業有限公司" required>
                             <span class="d-block mt-1">請輸入公司全名。</span>
                           </div>
 
                           <div class="row mb-2">
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="firstName">負責人</label>
-                                <input type="text" class="form-control" id="firstName" value="" placeholder="Ex:廖石龍">
+                                <label for="couno">統編 *</label>
+                                <input type="text" data-name="統編" class="form-control" name="couno" id="couno" value="<?= $comp['couno'] ?>" placeholder="Ex:0423586802" required>
                               </div>
                             </div>
-
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="email">電子信箱</label>
-                                <input type="email" class="form-control" id="email" value="" placeholder="Ex:bmidp888@gmail.com">
+                                <label for="coper">負責人 *</label>
+                                <input type="text" data-name="負責人" class="form-control" name="coper" id="coper" value="<?= $comp['coper'] ?>" placeholder="Ex:廖石龍" required>
                               </div>
                             </div>
                           </div>
@@ -147,26 +145,61 @@ $_Title = '會員中心';
                           <div class="row mb-2">
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="firstName">公司電話</label>
-                                <input type="text" class="form-control" id="firstName" value="" placeholder="Ex:0423586802">
+                                <label for="cotel1">公司電話 *</label>
+                                <input type="text" data-name="公司電話" class="form-control" name="cotel1" id="cotel1" value="<?= $comp['cotel1'] ?>" placeholder="Ex:0423586802" required>
                               </div>
                             </div>
 
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="lastName">公司傳真</label>
-                                <input type="text" class="form-control" id="lastName" value="" placeholder="Ex:0423586807">
+                                <label for="cofax1">公司傳真 *</label>
+                                <input type="text" data-name="公司傳真" class="form-control" name="cofax1" id="cofax1" value="<?= $comp['cofax1'] ?>" placeholder="Ex:0423586807" required>
                               </div>
                             </div>
                           </div>
 
+                          <div class="row mb-2">
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label for="laobaono">勞保投保代號 *</label>
+                                <input type="text" data-name="勞保投保代號" class="form-control" name="laobaono" id="laobaono" value="<?= $comp['laobaono'] ?>" placeholder="Ex:1234" required>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label for="jianbaono">健保投保代號 *</label>
+                                <input type="text" data-name="健保投保代號" class="form-control" name="jianbaono" id="jianbaono" value="<?= $comp['jianbaono'] ?>" placeholder="Ex:1234" required>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group mb-4">
+                            <label for="coemail">電子信箱 *</label>
+                            <input type="email" data-name="電子信箱" class="form-control" name="coemail" id="coemail" value="<?= $comp['coemail'] ?>" placeholder="Ex:bmidp888@gmail.com" required>
+                          </div>
+
+                          <div class="form-group mb-4">
+                            <label for="coaddr1">地址 *</label>
+                            <input type="text" data-name="地址" class="form-control" name="coaddr1" id="coaddr1" value="<?= $comp['coaddr1'] ?>" placeholder="Ex: 407台中市西屯區中工二路120號" required>
+                          </div>
+
+                          <div class="form-group mb-4">
+                            <label for="cowww">網路地址</label>
+                            <input type="text" data-name="網路地址" class="form-control" name="cowww" id="cowww" value="<?= $comp['cowww'] ?>" placeholder="Ex:">
+                          </div>
+
+                          <div class="form-group mb-4">
+                            <label for="comemo1">備註</label>
+                            <input type="text" data-name="備註" class="form-control" name="comemo1" id="comemo1" value="<?= $comp['comemo1'] ?>" placeholder="Ex:">
+                          </div>
                           <!-- <div class="form-group mb-4">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" value="albrecht.straub@gmail.com">
                           </div> -->
 
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="submit" class="btn btn-primary mb-2 btn-pill">修改</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill memBtn" data-type="mem_edit">修改</button>
                           </div>
                         </form>
                       </div>
@@ -174,28 +207,29 @@ $_Title = '會員中心';
 
                     <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                       <div class="tab-pane-content mt-5">
-                        <form>
+                        <form id="form2" onsubmit="return false;">
                           <div class="form-group mb-4">
                             <label for="account">帳號</label>
-                            <input type="text" class="form-control" id="account">
+                            <input type="text" class="form-control" id="account" value="<?= $_MemberData['Company_Acc'] ?>" readonly>
                           </div>
                           <div class="form-group mb-4">
-                            <label for="oldPassword">舊密碼</label>
-                            <input type="password" class="form-control" id="oldPassword">
-                          </div>
-
-                          <div class="form-group mb-4">
-                            <label for="newPassword">新密碼</label>
-                            <input type="password" class="form-control" id="newPassword">
+                            <label for="oldPassword">舊密碼 *</label>
+                            <input type="password" data-name="舊密碼" name="oldPassword" class="form-control" id="oldPassword" required>
                           </div>
 
                           <div class="form-group mb-4">
-                            <label for="conPassword">重新輸入新密碼</label>
-                            <input type="password" class="form-control" id="conPassword">
+                            <label for="newPassword">新密碼 *</label>
+                            <input type="password" data-name="新密碼" name="newPassword" class="form-control" id="newPassword" required>
+                          </div>
+
+                          <div class="form-group mb-4">
+                            <label for="conPassword">重新輸入新密碼 *</label>
+                            <input type="password" data-name="重新輸入新密碼" name="conPassword" class="form-control" id="conPassword" required>
+                            <span class="d-block mt-1 text-danger">此欄位需與新密碼完全相同。</span>
                           </div>
 
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="submit" class="btn btn-primary mb-2 btn-pill">Update Profile</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill pwBtn" data-type="pw_edit">修改</button>
                           </div>
                         </form>
                       </div>
