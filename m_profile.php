@@ -7,7 +7,7 @@ if (!$_Login) {
 
 $_Title = '會員中心';
 
-$_No = 0;           //按鈕列的序號，第一個有連結的按鈕為0，第二個為1，以次類推.....
+$_No = 'profile';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
 $comp = GET_COMP_DATA();
 ?>
@@ -16,7 +16,7 @@ $comp = GET_COMP_DATA();
 
 <head>
   <script>
-    var no = <?= $_No ?>;
+    var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
   <script src="js/m_profile.js"></script>
@@ -113,25 +113,36 @@ $comp = GET_COMP_DATA();
                       <div class="tab-pane-content mt-5">
                         <form id="form1" onsubmit="return false;">
                           <div class="row mb-2">
-                            <div class="col-lg-6">
+                            <div class="col-lg-2">
                               <div class="form-group">
                                 <label for="cono">公司編號 *</label>
                                 <input type="text" data-name="公司編號" class="form-control" name="cono" id="cono" value="<?= $comp['cono'] ?>" placeholder="Ex:01" required>
                               </div>
                             </div>
 
+                            <div class="col-lg-10">
+                              <div class="form-group">
+                                <label for="coname2">公司名稱 *</label>
+                                <input type="text" data-name="公司名稱" class="form-control" name="coname2" id="coname2" value="<?= $comp['coname2'] ?>" placeholder="Ex:庫點子文創資訊產業有限公司" required>
+                                <span class="d-block mt-1">請輸入公司全名。</span>
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="row mb-2">
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="coname1">公司簡號 *</label>
                                 <input type="text" data-name="公司簡號" class="form-control" name="coname1" id="coname1" value="<?= $comp['coname1'] ?>" placeholder="Ex:庫點子" required>
                               </div>
                             </div>
-                          </div>
-
-                          <div class="form-group mb-4">
-                            <label for="coname2">公司名稱 *</label>
-                            <input type="text" data-name="公司名稱" class="form-control" name="coname2" id="coname2" value="<?= $comp['coname2'] ?>" placeholder="Ex:庫點子文創資訊產業有限公司" required>
-                            <span class="d-block mt-1">請輸入公司全名。</span>
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label for="coper">負責人 *</label>
+                                <input type="text" data-name="負責人" class="form-control" name="coper" id="coper" value="<?= $comp['coper'] ?>" placeholder="Ex:廖石龍" required>
+                              </div>
+                            </div>
                           </div>
 
                           <div class="row mb-2">
@@ -143,8 +154,8 @@ $comp = GET_COMP_DATA();
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="coper">負責人 *</label>
-                                <input type="text" data-name="負責人" class="form-control" name="coper" id="coper" value="<?= $comp['coper'] ?>" placeholder="Ex:廖石龍" required>
+                                <label for="coemail">電子信箱 *</label>
+                                <input type="email" data-name="電子信箱" class="form-control" name="coemail" id="coemail" value="<?= $comp['coemail'] ?>" placeholder="Ex:bmidp888@gmail.com" required>
                               </div>
                             </div>
                           </div>
@@ -165,6 +176,11 @@ $comp = GET_COMP_DATA();
                             </div>
                           </div>
 
+                          <div class="form-group mb-4">
+                            <label for="coaddr1">地址 *</label>
+                            <input type="text" data-name="地址" class="form-control" name="coaddr1" id="coaddr1" value="<?= $comp['coaddr1'] ?>" placeholder="Ex: 407台中市西屯區中工二路120號" required>
+                          </div>
+
                           <div class="row mb-2">
                             <div class="col-lg-6">
                               <div class="form-group">
@@ -179,16 +195,6 @@ $comp = GET_COMP_DATA();
                                 <input type="text" data-name="健保投保代號" class="form-control" name="jianbaono" id="jianbaono" value="<?= $comp['jianbaono'] ?>" placeholder="Ex:1234" required>
                               </div>
                             </div>
-                          </div>
-
-                          <div class="form-group mb-4">
-                            <label for="coemail">電子信箱 *</label>
-                            <input type="email" data-name="電子信箱" class="form-control" name="coemail" id="coemail" value="<?= $comp['coemail'] ?>" placeholder="Ex:bmidp888@gmail.com" required>
-                          </div>
-
-                          <div class="form-group mb-4">
-                            <label for="coaddr1">地址 *</label>
-                            <input type="text" data-name="地址" class="form-control" name="coaddr1" id="coaddr1" value="<?= $comp['coaddr1'] ?>" placeholder="Ex: 407台中市西屯區中工二路120號" required>
                           </div>
 
                           <div class="form-group mb-4">

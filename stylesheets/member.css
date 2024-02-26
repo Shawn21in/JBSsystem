@@ -24,3 +24,7 @@
 #sidebar {
   padding-bottom: unset;
 }
+
+.card-default .card-header {
+  justify-content: space-between;
+}

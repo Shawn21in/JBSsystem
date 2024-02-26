@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-02-23 09:59:11
+-- 產生時間： 2024-02-26 07:59:50
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -190,6 +190,13 @@ CREATE TABLE IF NOT EXISTS `family` (
   PRIMARY KEY (`relationno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- 傾印資料表的資料 `family`
+--
+
+INSERT INTO `family` (`relationno`, `relationship`) VALUES
+('9', '外曾祖父母');
+
 -- --------------------------------------------------------
 
 --
@@ -246,6 +253,13 @@ CREATE TABLE IF NOT EXISTS `part` (
   PRIMARY KEY (`partno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- 傾印資料表的資料 `part`
+--
+
+INSERT INTO `part` (`partno`, `partname`) VALUES
+('WD', '網設部');
+
 -- --------------------------------------------------------
 
 --
@@ -274,6 +288,13 @@ CREATE TABLE IF NOT EXISTS `reason` (
   `reason` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`reasonno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `reason`
+--
+
+INSERT INTO `reason` (`reasonno`, `reason`) VALUES
+('U', '喪失健保資格');
 
 -- --------------------------------------------------------
 
@@ -465,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -511,7 +532,121 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (37, '2024-02-23 17:52:27', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'07\',\'博士\');', 'INSERT', '/jp/web_post.php'),
 (38, '2024-02-23 17:57:30', '系統管理員', '1', '', 'INSERT INTO jobs (`appno`,`appname`) VALUES (\'BE\',\'後端工程師\');', 'INSERT', '/jp/web_post.php'),
 (39, '2024-02-23 17:57:35', '系統管理員', '1', '', 'UPDATE jobs SET `appno` = \'BE1\',`appname` = \'後端工程師\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
-(40, '2024-02-23 17:57:39', '系統管理員', '1', '', 'UPDATE jobs SET `appno` = \'BE\',`appname` = \'後端工程師\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php');
+(40, '2024-02-23 17:57:39', '系統管理員', '1', '', 'UPDATE jobs SET `appno` = \'BE\',`appname` = \'後端工程師\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(41, '2024-02-26 08:51:00', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(42, '2024-02-26 10:20:26', '', '', '', 'INSERT INTO part (`partno`,`partname`) VALUES (\'WD\',\'網設部\');', 'INSERT', '/jp/web_post.php'),
+(43, '2024-02-26 10:40:06', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(44, '2024-02-26 13:49:05', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(45, '2024-02-26 13:49:06', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(46, '2024-02-26 13:49:06', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(47, '2024-02-26 13:49:06', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(48, '2024-02-26 13:49:07', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(49, '2024-02-26 13:49:07', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(50, '2024-02-26 13:49:08', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(51, '2024-02-26 13:49:38', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(52, '2024-02-26 13:49:39', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 1\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(53, '2024-02-26 13:54:15', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(54, '2024-02-26 13:54:24', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(55, '2024-02-26 13:54:30', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(56, '2024-02-26 13:54:36', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(57, '2024-02-26 13:58:14', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(58, '2024-02-26 13:58:53', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(59, '2024-02-26 13:58:54', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(60, '2024-02-26 13:58:54', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(61, '2024-02-26 13:59:05', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(62, '2024-02-26 13:59:06', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(63, '2024-02-26 13:59:06', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(64, '2024-02-26 13:59:06', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where bankno = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(65, '2024-02-26 13:59:33', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where `bankno` = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(66, '2024-02-26 13:59:34', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where `bankno` = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(67, '2024-02-26 13:59:35', '', '', 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'\' at line 1', 'SELECT * FROM bank Where `bankno` = 822\'   ;', 'ERROR', '/jp/m_bank.php?c=2KFtk5g%3D'),
+(68, '2024-02-26 14:05:01', '', '', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'411\',\'請輸入銀行名稱全名。\');', 'INSERT', '/jp/web_post.php'),
+(69, '2024-02-26 14:05:09', '', '', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'41132131\',\'請輸入銀行名稱全名。\');', 'INSERT', '/jp/web_post.php'),
+(70, '2024-02-26 14:21:32', '', '', '', 'UPDATE bank SET `bankno` = \'4111\',`bankname` = \'請輸入銀行名稱全名。\'  WHERE  bankno = 41132131;', 'UPDATE', '/jp/web_post.php'),
+(71, '2024-02-26 14:21:42', '', '', '', 'UPDATE bank SET `bankno` = \'411\',`bankname` = \'test\'  WHERE  bankno = 411;', 'UPDATE', '/jp/web_post.php'),
+(72, '2024-02-26 14:22:37', '', '', '', 'UPDATE bank SET `bankno` = \'822\',`bankname` = \'中國信託商業銀行\'  WHERE  bankno = 822;', 'UPDATE', '/jp/web_post.php'),
+(73, '2024-02-26 14:22:42', '', '', '', 'UPDATE bank SET `bankno` = \'822\',`bankname` = \'中國信託商業銀行123\'  WHERE  bankno = 822;', 'UPDATE', '/jp/web_post.php'),
+(74, '2024-02-26 14:22:48', '', '', '', 'UPDATE bank SET `bankno` = \'8221\',`bankname` = \'中國信託商業銀行\'  WHERE  bankno = 822;', 'UPDATE', '/jp/web_post.php'),
+(75, '2024-02-26 14:22:54', '', '', '', 'UPDATE bank SET `bankno` = \'822\',`bankname` = \'中國信託商業銀行\'  WHERE  bankno = 8221;', 'UPDATE', '/jp/web_post.php'),
+(76, '2024-02-26 14:34:47', '', '', 'Unknown column \'2KFpkpc\' in \'where clause\'', 'DELETE FROM bank  WHERE  bankno = 2KFpkpc%3D;', 'ERROR', '/jp/web_post.php'),
+(77, '2024-02-26 14:34:52', '', '', 'Unknown column \'2KFpkpc\' in \'where clause\'', 'DELETE FROM bank  WHERE  bankno = 2KFpkpc%3D;', 'ERROR', '/jp/web_post.php'),
+(78, '2024-02-26 14:36:27', '', '', 'Unknown column \'Array\' in \'where clause\'', 'DELETE FROM bank  WHERE  bankno = Array;', 'ERROR', '/jp/web_post.php'),
+(79, '2024-02-26 14:41:37', '', '', 'Unknown column \'Array\' in \'where clause\'', 'DELETE FROM bank  WHERE  bankno = Array;', 'ERROR', '/jp/web_post.php'),
+(80, '2024-02-26 14:41:40', '', '', 'Unknown column \'Array\' in \'where clause\'', 'DELETE FROM bank  WHERE  bankno = Array;', 'ERROR', '/jp/web_post.php'),
+(81, '2024-02-26 14:42:23', '', '', '', 'DELETE FROM bank  WHERE  bankno = 4111;', 'DELETE', '/jp/web_post.php'),
+(82, '2024-02-26 14:53:29', '', '', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'01\',\'阿瓜\');', 'INSERT', '/jp/web_post.php'),
+(83, '2024-02-26 14:53:38', '', '', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'071\',\'博士\');', 'INSERT', '/jp/web_post.php'),
+(84, '2024-02-26 14:53:54', '', '', '', 'UPDATE education SET `educationno` = \'07\',`educationname` = \'博士123\'  WHERE  educationno = 07;', 'UPDATE', '/jp/web_post.php'),
+(85, '2024-02-26 14:53:59', '', '', 'Unknown column \'educationno\' in \'where clause\'', 'DELETE FROM bank  WHERE  educationno = 071;', 'ERROR', '/jp/web_post.php'),
+(86, '2024-02-26 14:55:18', '', '', 'Unknown column \'educationno\' in \'where clause\'', 'DELETE FROM bank  WHERE  educationno = 071;', 'ERROR', '/jp/web_post.php'),
+(87, '2024-02-26 14:56:43', '', '', '', 'UPDATE education SET `educationno` = \'07123\',`educationname` = \'博士123\'  WHERE  educationno = 07;', 'UPDATE', '/jp/web_post.php'),
+(88, '2024-02-26 14:56:45', '', '', 'Unknown column \'educationno\' in \'where clause\'', 'DELETE FROM bank  WHERE  educationno = 07123;', 'ERROR', '/jp/web_post.php'),
+(89, '2024-02-26 14:58:00', '', '', '', 'DELETE FROM education  WHERE  educationno = 07123;', 'DELETE', '/jp/web_post.php'),
+(90, '2024-02-26 14:58:04', '', '', '', 'UPDATE education SET `educationno` = \'07\',`educationname` = \'博士\'  WHERE  educationno = 071;', 'UPDATE', '/jp/web_post.php'),
+(91, '2024-02-26 14:58:19', '', '', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'02\',\'阿天\');', 'INSERT', '/jp/web_post.php'),
+(92, '2024-02-26 14:58:41', '', '', '', 'UPDATE education SET `educationno` = \'02\',`educationname` = \'阿天3\'  WHERE  educationno = 02;', 'UPDATE', '/jp/web_post.php'),
+(93, '2024-02-26 14:58:46', '', '', 'Duplicate entry \'01\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'01\',`educationname` = \'阿天3\'  WHERE  educationno = 02;', 'ERROR', '/jp/web_post.php'),
+(94, '2024-02-26 14:58:48', '', '', 'Duplicate entry \'01\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'01\',`educationname` = \'阿天3\'  WHERE  educationno = 02;', 'ERROR', '/jp/web_post.php'),
+(95, '2024-02-26 14:58:55', '', '', 'Duplicate entry \'01\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'01\',`educationname` = \'阿天3\'  WHERE  educationno = 02;', 'ERROR', '/jp/web_post.php'),
+(96, '2024-02-26 14:59:43', '', '', '', 'UPDATE education SET `educationno` = \'02\',`educationname` = \'阿天3\'  WHERE  educationno = 02;', 'UPDATE', '/jp/web_post.php'),
+(97, '2024-02-26 14:59:48', '', '', 'Duplicate entry \'02\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'02\',`educationname` = \'阿瓜\'  WHERE  educationno = 01;', 'ERROR', '/jp/web_post.php'),
+(98, '2024-02-26 14:59:58', '', '', 'Duplicate entry \'02\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'02\',`educationname` = \'阿瓜\'  WHERE  educationno = 01;', 'ERROR', '/jp/web_post.php'),
+(99, '2024-02-26 15:00:18', '', '', 'Duplicate entry \'02\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'02\',`educationname` = \'阿瓜\'  WHERE  educationno = 01;', 'ERROR', '/jp/web_post.php'),
+(100, '2024-02-26 15:00:25', '', '', 'Duplicate entry \'02\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'02\',`educationname` = \'阿瓜\'  WHERE  educationno = 01;', 'ERROR', '/jp/web_post.php'),
+(101, '2024-02-26 15:08:10', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(102, '2024-02-26 15:09:37', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(103, '2024-02-26 15:09:38', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(104, '2024-02-26 15:09:38', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(105, '2024-02-26 15:09:39', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(106, '2024-02-26 15:09:54', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(107, '2024-02-26 15:09:55', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(108, '2024-02-26 15:10:00', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(109, '2024-02-26 15:10:01', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(110, '2024-02-26 15:10:02', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs Where appno = BE   ;', 'ERROR', '/jp/m_jobs.php?c=qHSjdQ%3D%3D'),
+(111, '2024-02-26 15:10:41', '', '', 'Unknown column \'BE\' in \'where clause\'', 'SELECT * FROM jobs  WHERE  appno = BE   ;', 'ERROR', '/jp/web_post.php'),
+(112, '2024-02-26 15:10:41', '', '', '', 'INSERT INTO jobs (`appno`,`appname`) VALUES (\'BE11\',\'後端工程師\');', 'INSERT', '/jp/web_post.php'),
+(113, '2024-02-26 15:10:58', '', '', 'Unknown column \'BE11\' in \'where clause\'', 'SELECT * FROM jobs  WHERE  appno = BE11   ;', 'ERROR', '/jp/web_post.php'),
+(114, '2024-02-26 15:10:58', '', '', 'Duplicate entry \'BE11\' for key \'jobs.PRIMARY\'', 'INSERT INTO jobs (`appno`,`appname`) VALUES (\'BE11\',\'後端工程師1\');', 'ERROR', '/jp/web_post.php'),
+(115, '2024-02-26 15:11:35', '', '', 'Unknown column \'BE11\' in \'where clause\'', 'SELECT * FROM jobs  WHERE  appno = BE11   ;', 'ERROR', '/jp/web_post.php'),
+(116, '2024-02-26 15:11:35', '', '', 'Duplicate entry \'BE11\' for key \'jobs.PRIMARY\'', 'INSERT INTO jobs (`appno`,`appname`) VALUES (\'BE11\',\'後端工程師1\');', 'ERROR', '/jp/web_post.php'),
+(117, '2024-02-26 15:11:48', '', '', 'Unknown column \'BE11\' in \'where clause\'', 'SELECT * FROM jobs  WHERE  appno = BE11   ;', 'ERROR', '/jp/web_post.php'),
+(118, '2024-02-26 15:11:48', '', '', 'Duplicate entry \'BE11\' for key \'jobs.PRIMARY\'', 'INSERT INTO jobs (`appno`,`appname`) VALUES (\'BE11\',\'後端工程師\');', 'ERROR', '/jp/web_post.php'),
+(119, '2024-02-26 15:12:54', '', '', 'Unknown column \'BE11\' in \'where clause\'', 'DELETE FROM jobs  WHERE  appno = BE11;', 'ERROR', '/jp/web_post.php'),
+(120, '2024-02-26 15:12:56', '', '', 'Unknown column \'BE11\' in \'where clause\'', 'DELETE FROM jobs  WHERE  appno = BE11;', 'ERROR', '/jp/web_post.php'),
+(121, '2024-02-26 15:13:49', '', '', '', 'UPDATE jobs SET `appno` = \'BE11\',`appname` = \'後端工程師123\'  WHERE  appno = \'BE11\';', 'UPDATE', '/jp/web_post.php'),
+(122, '2024-02-26 15:13:54', '', '', '', 'UPDATE jobs SET `appno` = \'BE2\',`appname` = \'後端工程師123\'  WHERE  appno = \'BE11\';', 'UPDATE', '/jp/web_post.php'),
+(123, '2024-02-26 15:13:56', '', '', '', 'DELETE FROM jobs  WHERE  appno = \'BE2\';', 'DELETE', '/jp/web_post.php'),
+(124, '2024-02-26 15:22:53', '', '', '', 'DELETE FROM bank  WHERE  bankno = 411;', 'DELETE', '/jp/web_post.php'),
+(125, '2024-02-26 15:22:59', '', '', '', 'DELETE FROM education  WHERE  educationno = 01;', 'DELETE', '/jp/web_post.php'),
+(126, '2024-02-26 15:23:01', '', '', '', 'DELETE FROM education  WHERE  educationno = 02;', 'DELETE', '/jp/web_post.php'),
+(127, '2024-02-26 15:27:16', '', '', 'Unknown column \'WD\' in \'where clause\'', 'SELECT * FROM part  WHERE  partno = WD   ;', 'ERROR', '/jp/web_post.php'),
+(128, '2024-02-26 15:27:16', '', '', 'Duplicate entry \'WD\' for key \'part.PRIMARY\'', 'INSERT INTO part (`partno`,`partname`) VALUES (\'WD\',\'網設部1\');', 'ERROR', '/jp/web_post.php'),
+(129, '2024-02-26 15:27:54', '', '', 'Unknown column \'WD\' in \'where clause\'', 'SELECT * FROM part  WHERE  partno = WD   ;', 'ERROR', '/jp/web_post.php'),
+(130, '2024-02-26 15:27:54', '', '', 'Duplicate entry \'WD\' for key \'part.PRIMARY\'', 'INSERT INTO part (`partno`,`partname`) VALUES (\'WD\',\'網設部\');', 'ERROR', '/jp/web_post.php'),
+(131, '2024-02-26 15:29:19', '', '', '', 'UPDATE part SET `partno` = \'WD\',`partname` = \'網設部1\'  WHERE  partno = \'WD\';', 'UPDATE', '/jp/web_post.php'),
+(132, '2024-02-26 15:29:22', '', '', '', 'UPDATE part SET `partno` = \'WD1\',`partname` = \'網設部1\'  WHERE  partno = \'WD\';', 'UPDATE', '/jp/web_post.php'),
+(133, '2024-02-26 15:29:28', '', '', '', 'UPDATE part SET `partno` = \'WD\',`partname` = \'網設部\'  WHERE  partno = \'WD1\';', 'UPDATE', '/jp/web_post.php'),
+(134, '2024-02-26 15:29:59', '', '', '', 'INSERT INTO part (`partno`,`partname`) VALUES (\'HR\',\'人資部門\');', 'INSERT', '/jp/web_post.php'),
+(135, '2024-02-26 15:30:04', '', '', '', 'UPDATE part SET `partno` = \'HR1\',`partname` = \'人資部門\'  WHERE  partno = \'HR\';', 'UPDATE', '/jp/web_post.php'),
+(136, '2024-02-26 15:30:06', '', '', 'Unknown column \'partno\' in \'where clause\'', 'DELETE FROM education  WHERE  partno = \'HR1\';', 'ERROR', '/jp/web_post.php'),
+(137, '2024-02-26 15:30:53', '', '', 'Unknown column \'partno\' in \'where clause\'', 'DELETE FROM education  WHERE  partno = \'HR1\';', 'ERROR', '/jp/web_post.php'),
+(138, '2024-02-26 15:31:31', '', '', '', 'DELETE FROM part  WHERE  partno = \'HR1\';', 'DELETE', '/jp/web_post.php'),
+(139, '2024-02-26 15:40:29', '', '', 'Unknown column \'familyno\' in \'where clause\'', 'SELECT * FROM family  WHERE  familyno = \'9\'   ;', 'ERROR', '/jp/web_post.php'),
+(140, '2024-02-26 15:40:29', '', '', 'Unknown column \'familyno\' in \'field list\'', 'INSERT INTO family (`familyno`,`familyname`) VALUES (\'9\',\'外曾祖父母\');', 'ERROR', '/jp/web_post.php'),
+(141, '2024-02-26 15:44:17', '', '', 'Unknown column \'relationname\' in \'field list\'', 'INSERT INTO family (`relationno`,`relationname`) VALUES (\'9\',\'外曾祖父母\');', 'ERROR', '/jp/web_post.php'),
+(142, '2024-02-26 15:44:21', '', '', 'Unknown column \'relationname\' in \'field list\'', 'INSERT INTO family (`relationno`,`relationname`) VALUES (\'9\',\'外曾祖父母\');', 'ERROR', '/jp/web_post.php'),
+(143, '2024-02-26 15:44:25', '', '', 'Unknown column \'relationname\' in \'field list\'', 'INSERT INTO family (`relationno`,`relationname`) VALUES (\'1\',\'123\');', 'ERROR', '/jp/web_post.php'),
+(144, '2024-02-26 15:46:52', '', '', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'9\',\'外曾祖父母\');', 'INSERT', '/jp/web_post.php'),
+(145, '2024-02-26 15:47:03', '', '', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'1\',\'test\');', 'INSERT', '/jp/web_post.php'),
+(146, '2024-02-26 15:47:07', '', '', '', 'UPDATE family SET `relationno` = \'12\',`relationship` = \'test\'  WHERE  relationno = \'1\';', 'UPDATE', '/jp/web_post.php'),
+(147, '2024-02-26 15:47:10', '', '', '', 'UPDATE family SET `relationno` = \'12\',`relationship` = \'test2\'  WHERE  relationno = \'12\';', 'UPDATE', '/jp/web_post.php'),
+(148, '2024-02-26 15:47:15', '', '', '', 'UPDATE family SET `relationno` = \'123\',`relationship` = \'test24\'  WHERE  relationno = \'12\';', 'UPDATE', '/jp/web_post.php'),
+(149, '2024-02-26 15:47:30', '', '', '', 'DELETE FROM family  WHERE  relationno = \'123\';', 'DELETE', '/jp/web_post.php'),
+(150, '2024-02-26 15:55:01', '', '', 'Unknown column \'reasonname\' in \'field list\'', 'INSERT INTO reason (`reasonno`,`reasonname`) VALUES (\'U\',\'喪失健保資格\');', 'ERROR', '/jp/web_post.php'),
+(151, '2024-02-26 15:56:47', '', '', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'U\',\'喪失健保資格\');', 'INSERT', '/jp/web_post.php'),
+(152, '2024-02-26 15:59:10', '', '', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'A\',\'TEST\');', 'INSERT', '/jp/web_post.php'),
+(153, '2024-02-26 15:59:15', '', '', '', 'UPDATE reason SET `reasonno` = \'AB\',`reason` = \'TESTC\'  WHERE  reasonno = \'A\';', 'UPDATE', '/jp/web_post.php'),
+(154, '2024-02-26 15:59:18', '', '', '', 'DELETE FROM reason  WHERE  reasonno = \'AB\';', 'DELETE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

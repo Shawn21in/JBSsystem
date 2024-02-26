@@ -696,45 +696,124 @@ class Custom
 	//                                               資料表集合
 	//************************************************************************************************************
 	//--銀行編號
-	function GET_BANK_DATA()
+	function GET_BANK_DATA($id = '')
 	{
 
 		$Sheet = "bank";
 
 		$db = new MySQL();
-		$db->Where = "Where 1 = 1";
-		$db->query_sql($Sheet, '*');
-		if ($row = $db->query_fetch()) {
-			$_DATA = $row;
+		if ($id) {
+			$db->Where = "Where bankno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
 		}
-		return $_DATA;
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
 	}
 	//--學歷編號
-	function GET_EDUCATION_DATA()
+	function GET_EDUCATION_DATA($id = '')
 	{
 
 		$Sheet = "education";
 
 		$db = new MySQL();
-		$db->Where = "Where 1 = 1";
-		$db->query_sql($Sheet, '*');
-		if ($row = $db->query_fetch()) {
-			$_DATA = $row;
+		if ($id) {
+			$db->Where = "Where educationno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
 		}
-		return $_DATA;
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
 	}
 	//--職位編號
-	function GET_JOBS_DATA()
+	function GET_JOBS_DATA($id = '')
 	{
 
 		$Sheet = "jobs";
 
 		$db = new MySQL();
-		$db->Where = "Where 1 = 1";
-		$db->query_sql($Sheet, '*');
-		if ($row = $db->query_fetch()) {
-			$_DATA = $row;
+		if ($id) {
+			$db->Where = "Where appno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
 		}
-		return $_DATA;
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
+
+	//--部門編號
+	function GET_PART_DATA($id = '')
+	{
+
+		$Sheet = "part";
+
+		$db = new MySQL();
+		if ($id) {
+			$db->Where = "Where partno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
+		}
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
+	//--眷屬編號
+	function GET_FAMILY_DATA($id = '')
+	{
+
+		$Sheet = "reason";
+
+		$db = new MySQL();
+		if ($id) {
+			$db->Where = "Where reasonno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
+		}
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
+	//--眷屬編號
+	function GET_REASON_DATA($id = '')
+	{
+
+		$Sheet = "reason";
+
+		$db = new MySQL();
+		if ($id) {
+			$db->Where = "Where reasonno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
+		}
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
 	}
 }

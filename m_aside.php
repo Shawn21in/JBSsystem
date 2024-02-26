@@ -15,7 +15,7 @@
 
                     <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="">
+                            <li class="" data-no="profile">
                                 <a class="sidenav-item-link" href="m_profile.php#profile">
                                     <span class="nav-text">公司建檔設定</span>
                                 </a>
@@ -26,40 +26,45 @@
                                 </a>
                                 <ul class="collapse" id="number">
                                     <div class="sub-menu">
-                                        <li class="">
+                                        <li class="" data-no="bank">
                                             <a href="m_bank.php">銀行編號</a>
                                         </li>
-                                        <li class="">
+                                        <li class="" data-no="education">
                                             <a href="m_education.php">學歷編號</a>
                                         </li>
-                                        <li class="">
+                                        <li class="" data-no="jobs">
                                             <a href="m_jobs.php">職位編號</a>
                                         </li>
-                                        <li class="">
+                                        <li class="" data-no="part">
                                             <a href="m_part.php">部門編號</a>
                                         </li>
-                                        <li class="">
+                                        <li class="" data-no="family">
                                             <a href="m_family.php">健保眷屬關係</a>
                                         </li>
-                                        <li class="">
+                                        <li class="" data-no="reason">
                                             <a href="m_reason.php">健保退保原因</a>
                                         </li>
                                     </div>
                                 </ul>
                             </li>
-                            <li class="">
+                            <li class="" data-no="deduction">
                                 <a class="sidenav-item-link" href="analytics.html">
                                     <span class="nav-text">加扣款編號設定</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="" data-no="seclab1">
                                 <a class="sidenav-item-link" href="index.html">
                                     <span class="nav-text">勞保等級設定</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="" data-no="purchaser1">
                                 <a class="sidenav-item-link" href="index.html">
                                     <span class="nav-text">健保等級設定</span>
+                                </a>
+                            </li>
+                            <li class="" data-no="attendace">
+                                <a class="sidenav-item-link" href="index.html">
+                                    <span class="nav-text">員工班別設定</span>
                                 </a>
                             </li>
                         </div>
@@ -74,25 +79,25 @@
 
                     <ul class="collapse " id="app" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="chat.html">
                                     <span class="nav-text">Chat</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="contacts.html">
                                     <span class="nav-text">Contacts</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="team.html">
                                     <span class="nav-text">Team</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="calendar.html">
                                     <span class="nav-text">Calendar</span>
                                 </a>
@@ -109,19 +114,19 @@
 
                     <ul class="collapse " id="components" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="alert.html">
                                     <span class="nav-text">Alert</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="badge.html">
                                     <span class="nav-text">Badge</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="breadcrumb.html">
                                     <span class="nav-text">Breadcrumb</span>
 
@@ -135,90 +140,90 @@
 
                                 <ul class="collapse " id="buttons">
                                     <div class="sub-menu">
-                                        <li class="">
+                                        <li class="" data-no="">
                                             <a href="button-default.html">Button Default</a>
                                         </li>
 
-                                        <li class="">
+                                        <li class="" data-no="">
                                             <a href="button-dropdown.html">Button Dropdown</a>
                                         </li>
 
-                                        <li class="">
+                                        <li class="" data-no="">
                                             <a href="button-group.html">Button Group</a>
                                         </li>
 
-                                        <li class="">
+                                        <li class="" data-no="">
                                             <a href="button-social.html">Button Social</a>
                                         </li>
 
-                                        <li class="">
+                                        <li class="" data-no="">
                                             <a href="button-loading.html">Button Loading</a>
                                         </li>
                                     </div>
                                 </ul>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="card.html">
                                     <span class="nav-text">Card</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="carousel.html">
                                     <span class="nav-text">Carousel</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="collapse.html">
                                     <span class="nav-text">Collapse</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="list-group.html">
                                     <span class="nav-text">List Group</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="modal.html">
                                     <span class="nav-text">Modal</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="pagination.html">
                                     <span class="nav-text">Pagination</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="popover-tooltip.html">
                                     <span class="nav-text">Popover & Tooltip</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="progress-bar.html">
                                     <span class="nav-text">Progress Bar</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="spinner.html">
                                     <span class="nav-text">Spinner</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="switcher.html">
                                     <span class="nav-text">Switcher</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="tab.html">
                                     <span class="nav-text">Tab</span>
                                 </a>
@@ -235,13 +240,13 @@
 
                     <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="material-icon.html">
                                     <span class="nav-text">Material Icon</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="flag-icon.html">
                                     <span class="nav-text">Flag Icon</span>
                                 </a>
@@ -258,31 +263,31 @@
 
                     <ul class="collapse " id="forms" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="basic-input.html">
                                     <span class="nav-text">Basic Input</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="input-group.html">
                                     <span class="nav-text">Input Group</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="checkbox-radio.html">
                                     <span class="nav-text">Checkbox & Radio</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="form-validation.html">
                                     <span class="nav-text">Form Validation</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="" data-no="">
                                 <a class="sidenav-item-link" href="form-advance.html">
                                     <span class="nav-text">Form Advance</span>
                                 </a>

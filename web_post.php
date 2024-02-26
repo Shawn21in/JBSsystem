@@ -380,11 +380,16 @@ if (!empty($_Type)) {
 					break;
 				}
 			} else {
+				$Value['bankid'] 		= $_POST['bankid']; //若是編輯已有的資料，該欄位回傳不會是空值
 				$bank_data = array(
 					'bankno' 				=> $Value['bankno'],
 					'bankname' 			=> $Value['bankname'],
 				);
-				$db->Where = " WHERE  1 = 1";
+				if ($Value['bankid']) {
+					$db->Where = " WHERE  bankno = '" . $Value['bankid'] . "'";
+				} else {
+					$db->Where = " WHERE  bankno = '" . $Value['bankno'] . "'";
+				}
 				$db->query_sql($bank_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($bank_db, $bank_data, 'UPDATE');
@@ -392,9 +397,41 @@ if (!empty($_Type)) {
 					$db->query_data($bank_db, $bank_data, 'INSERT');
 				}
 				if (!empty($db->Error)) {
-					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+					$_html_msg 	= '儲存失敗，請重新整理後再試試或檢查是否有一樣的編號存在';
 				} else {
 					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_banklist.php';
+				}
+			}
+			break;
+		case "bank_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['bankno'] 		= GDC($_POST['bankno'], 'bank')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  bankno = '" . $Value['bankno'] . "'";
+				$db->query_delete($bank_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
 					$_html_eval = 'Reload()';
 				}
 			}
@@ -422,11 +459,16 @@ if (!empty($_Type)) {
 					break;
 				}
 			} else {
+				$Value['educationid'] 		= $_POST['educationid']; //若是編輯已有的資料，該欄位回傳不會是空值
 				$education_data = array(
 					'educationno' 				=> $Value['educationno'],
 					'educationname' 			=> $Value['educationname'],
 				);
-				$db->Where = " WHERE  1 = 1";
+				if ($Value['educationid']) {
+					$db->Where = " WHERE  educationno = '" . $Value['educationid'] . "'";
+				} else {
+					$db->Where = " WHERE  educationno = '" . $Value['educationno'] . "'";
+				}
 				$db->query_sql($education_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($education_db, $education_data, 'UPDATE');
@@ -434,9 +476,41 @@ if (!empty($_Type)) {
 					$db->query_data($education_db, $education_data, 'INSERT');
 				}
 				if (!empty($db->Error)) {
-					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+					$_html_msg 	= '儲存失敗，請重新整理後再試試或檢查是否有一樣的編號存在';
 				} else {
 					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_educationlist.php';
+				}
+			}
+			break;
+		case "education_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['educationno'] 		= GDC($_POST['educationno'], 'education')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  educationno = '" . $Value['educationno'] . "'";
+				$db->query_delete($education_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
 					$_html_eval = 'Reload()';
 				}
 			}
@@ -464,11 +538,16 @@ if (!empty($_Type)) {
 					break;
 				}
 			} else {
+				$Value['appid'] 		= $_POST['appid']; //若是編輯已有的資料，該欄位回傳不會是空值
 				$jobs_data = array(
 					'appno' 				=> $Value['appno'],
 					'appname' 			=> $Value['appname'],
 				);
-				$db->Where = " WHERE  1 = 1";
+				if ($Value['appid']) {
+					$db->Where = " WHERE  appno = '" . $Value['appid'] . "'";
+				} else {
+					$db->Where = " WHERE  appno = '" . $Value['appno'] . "'";
+				}
 				$db->query_sql($jobs_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($jobs_db, $jobs_data, 'UPDATE');
@@ -476,13 +555,283 @@ if (!empty($_Type)) {
 					$db->query_data($jobs_db, $jobs_data, 'INSERT');
 				}
 				if (!empty($db->Error)) {
-					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+					$_html_msg 	= '儲存失敗，請重新整理後再試試或檢查是否有一樣的編號存在';
 				} else {
 					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_jobslist.php';
+				}
+			}
+			break;
+		case "jobs_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['appno'] 		= GDC($_POST['appno'], 'jobs')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  appno = '" . $Value['appno'] . "'";
+				$db->query_delete($jobs_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
 					$_html_eval = 'Reload()';
 				}
 			}
 			break;
+		case "part_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['partno'] 		= $_POST['partno'];
+			$Value['partname'] 		= $_POST['partname'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$Value['partid'] 		= $_POST['partid']; //若是編輯已有的資料，該欄位回傳不會是空值
+				$part_data = array(
+					'partno' 				=> $Value['partno'],
+					'partname' 			=> $Value['partname'],
+				);
+				if ($Value['partid']) {
+					$db->Where = " WHERE  partno = '" . $Value['partid'] . "'";
+				} else {
+					$db->Where = " WHERE  partno = '" . $Value['partno'] . "'";
+				}
+				$db->query_sql($part_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($part_db, $part_data, 'UPDATE');
+				} else {
+					$db->query_data($part_db, $part_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試或檢查是否有一樣的編號存在';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_partlist.php';
+				}
+			}
+			break;
+		case "part_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['partno'] 		= GDC($_POST['partno'], 'part')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  partno = '" . $Value['partno'] . "'";
+				$db->query_delete($part_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
+		case "family_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['relationno'] 		= $_POST['relationno'];
+			$Value['relationship'] 		= $_POST['relationship'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$Value['relationid'] 		= $_POST['relationid']; //若是編輯已有的資料，該欄位回傳不會是空值
+				$family_data = array(
+					'relationno' 				=> $Value['relationno'],
+					'relationship' 			=> $Value['relationship'],
+				);
+				if ($Value['relationid']) {
+					$db->Where = " WHERE  relationno = '" . $Value['relationid'] . "'";
+				} else {
+					$db->Where = " WHERE  relationno = '" . $Value['relationno'] . "'";
+				}
+				$db->query_sql($family_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($family_db, $family_data, 'UPDATE');
+				} else {
+					$db->query_data($family_db, $family_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試或檢查是否有一樣的編號存在';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_familylist.php';
+				}
+			}
+			break;
+		case "family_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['relationno'] 		= GDC($_POST['relationno'], 'family')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  relationno = '" . $Value['relationno'] . "'";
+				$db->query_delete($family_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
+		case "reason_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['reasonno'] 		= $_POST['reasonno'];
+			$Value['reason'] 		= $_POST['reason'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$Value['reasonid'] 		= $_POST['reasonid']; //若是編輯已有的資料，該欄位回傳不會是空值
+				$reason_data = array(
+					'reasonno' 				=> $Value['reasonno'],
+					'reason' 			=> $Value['reason'],
+				);
+				if ($Value['reasonid']) {
+					$db->Where = " WHERE  reasonno = '" . $Value['reasonid'] . "'";
+				} else {
+					$db->Where = " WHERE  reasonno = '" . $Value['reasonno'] . "'";
+				}
+				$db->query_sql($reason_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($reason_db, $reason_data, 'UPDATE');
+				} else {
+					$db->query_data($reason_db, $reason_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試或檢查是否有一樣的編號存在';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_reasonlist.php';
+				}
+			}
+			break;
+		case "reason_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['reasonno'] 		= GDC($_POST['reasonno'], 'reason')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  reasonno = '" . $Value['reasonno'] . "'";
+				$db->query_delete($reason_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
+
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {

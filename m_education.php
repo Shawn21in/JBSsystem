@@ -7,11 +7,21 @@ if (!$_Login) {
 
 $_Title = '學歷編號設定';
 
-$_No = 2;           //按鈕列的序號，第一個有連結的按鈕為0，第二個為1，以次類推.....
+$_No = 'education';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
 $comp = GET_COMP_DATA();
 
-$education = $CM->GET_EDUCATION_DATA();
+$Input   = GDC($_GET['c'], 'education');
+
+$educationno = $Input['v'];
+
+if (empty($educationno)) { //判斷是否為編輯模式
+  $edit = 0;
+} else {
+  $education = $CM->GET_EDUCATION_DATA($educationno);
+  $education = $education[0];
+  $edit = 1;
+}
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +29,7 @@ $education = $CM->GET_EDUCATION_DATA();
 
 <head>
   <script>
-    var no = <?= $_No ?>;
+    var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
 </head>
@@ -58,6 +68,7 @@ $education = $CM->GET_EDUCATION_DATA();
 
             <div class="card-body">
               <form id="form1" onsubmit="return false;">
+                <input type="hidden" class="form-control" name="educationid" value="<?= $education['educationno'] ?>">
                 <div class="row mb-2">
                   <div class="col-lg-6">
                     <div class="form-group">
@@ -73,7 +84,14 @@ $education = $CM->GET_EDUCATION_DATA();
                   <span class="d-block mt-1">請輸入學歷名稱全名。</span>
                 </div>
                 <div class="d-flex justify-content-end mt-5">
-                  <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="education_edit">儲存</button>
+                  <button type="button" class="btn btn-success mb-2 btn-pill mr-2" onclick="location.href='m_educationlist.php'">查看所有編號</button>
+                  <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="education_edit">
+                    <?php if ($edit) { ?>
+                      儲存
+                    <?php } else { ?>
+                      新增
+                    <?php } ?>
+                  </button>
                 </div>
               </form>
             </div>

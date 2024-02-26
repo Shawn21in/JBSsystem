@@ -5,24 +5,24 @@ if (!$_Login) {
   exit;
 }
 
-$_Title = '職位編號設定';
+$_Title = '健保退保原因';
 
-$_No = 'jobs';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
+$_No = 'reason';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
 $comp = GET_COMP_DATA();
 
-$Input   = GDC($_GET['c'], 'jobs');
+$Input   = GDC($_GET['c'], 'reason');
 
-$jobsno = $Input['v'];
+$reasonno = $Input['v'];
 
-if (empty($jobsno)) { //判斷是否為編輯模式
+if (empty($reasonno)) { //判斷是否為編輯模式
   $edit = 0;
 } else {
-
-  $jobs = $CM->GET_JOBS_DATA($jobsno);
-  $jobs = $jobs[0];
+  $reason = $CM->GET_REASON_DATA($reasonno);
+  $reason = $reason[0];
   $edit = 1;
 }
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="tw">
@@ -63,29 +63,29 @@ if (empty($jobsno)) { //判斷是否為編輯模式
         <div class="content">
           <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-              <h2>職位編號設定</h2>
+              <h2>健保退保原因</h2>
             </div>
 
             <div class="card-body">
               <form id="form1" onsubmit="return false;">
-                <input type="hidden" class="form-control" name="appid" value="<?= $jobs['appno'] ?>">
+                <input type="hidden" class="form-control" name="reasonid" value="<?= $reason['reasonno'] ?>">
                 <div class="row mb-2">
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <label for="appno">職位編號 *</label>
-                      <input type="text" data-name="職位編號" class="form-control" name="appno" id="appno" value="<?= $jobs['appno'] ?>" placeholder="Ex:BE" required>
+                      <label for="reasonno">退保編號 *</label>
+                      <input type="text" data-name="退保編號" class="form-control" name="reasonno" id="reasonno" value="<?= $reason['reasonno'] ?>" placeholder="Ex:U" required>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group mb-4">
-                  <label for="appname">職位名稱 *</label>
-                  <input type="text" data-name="職位名稱" class="form-control" name="appname" id="appname" value="<?= $jobs['appname'] ?>" placeholder="Ex:後端工程師" required>
-                  <span class="d-block mt-1">請輸入職位名稱全名。</span>
+                  <label for="reason">退保原因 *</label>
+                  <input type="text" data-name="退保原因" class="form-control" name="reason" id="reason" value="<?= $reason['reason'] ?>" placeholder="Ex:喪失健保資格" required>
+                  <span class="d-block mt-1">請輸入退保原因。</span>
                 </div>
                 <div class="d-flex justify-content-end mt-5">
-                  <button type="button" class="btn btn-success mb-2 btn-pill mr-2" onclick="location.href='m_jobslist.php'">查看所有編號</button>
-                  <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="jobs_edit">
+                  <button type="button" class="btn btn-success mb-2 btn-pill mr-2" onclick="location.href='m_reasonlist.php'">查看所有編號</button>
+                  <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="reason_edit">
                     <?php if ($edit) { ?>
                       儲存
                     <?php } else { ?>

@@ -166,6 +166,14 @@ $(document).ready(function (e) {
 			Post_JS(Form_Data, Exec_Url);
 		}
 	});
+	$('.delBtn').click(function () {
+		var type = $(this).attr('data-type');
+		var field = $(this).closest('form');
+		var Form_Data = '';
+		Form_Data += field.serialize();
+		Form_Data += '&_type=' + type;
+		Post_JS(Form_Data, Exec_Url);
+	});
 	$('.logout').click(function () {
 		var Form_Data = '';
 		Form_Data += '&_type=mlogout';

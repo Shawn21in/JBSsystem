@@ -5,13 +5,24 @@ if (!$_Login) {
   exit;
 }
 
+$Input   = GDC($_GET['c'], 'bank');
+
+$bankno = $Input['v'];
+
+if (empty($bankno)) { //判斷是否為編輯模式
+  $edit = 0;
+} else {
+  $bank = $CM->GET_BANK_DATA($bankno);
+  $bank = $bank[0];
+  $edit = 1;
+}
+
+
+
 $_Title = '銀行編號設定';
 
-$_No = 1;           //按鈕列的序號，第一個有連結的按鈕為0，第二個為1，以次類推.....
+$_No = 'bank';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
-$comp = GET_COMP_DATA();
-
-$bank = $CM->GET_BANK_DATA();
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +30,7 @@ $bank = $CM->GET_BANK_DATA();
 
 <head>
   <script>
-    var no = <?= $_No ?>;
+    var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
 </head>
@@ -58,6 +69,7 @@ $bank = $CM->GET_BANK_DATA();
 
             <div class="card-body">
               <form id="form1" onsubmit="return false;">
+                <input type="hidden" class="form-control" name="bankid" value="<?= $bank['bankno'] ?>">
                 <div class="row mb-2">
                   <div class="col-lg-6">
                     <div class="form-group">
@@ -73,7 +85,14 @@ $bank = $CM->GET_BANK_DATA();
                   <span class="d-block mt-1">請輸入銀行名稱全名。</span>
                 </div>
                 <div class="d-flex justify-content-end mt-5">
-                  <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="bank_edit">儲存</button>
+                  <button type="button" class="btn btn-success mb-2 btn-pill mr-2" onclick="location.href='m_banklist.php'">查看所有編號</button>
+                  <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="bank_edit">
+                    <?php if ($edit) { ?>
+                      儲存
+                    <?php } else { ?>
+                      新增
+                    <?php } ?>
+                  </button>
                 </div>
               </form>
             </div>
