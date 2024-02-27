@@ -22,6 +22,7 @@ $family = $CM->GET_FAMILY_DATA();
     var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
+  <script type="text/javascript" src="js/searchbox.js"></script>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
@@ -57,13 +58,20 @@ $family = $CM->GET_FAMILY_DATA();
                 <div class="card card-default">
                   <div class="card-header card-header-border-bottom">
                     <h2>眷屬關係列表</h2>
-                    <button type="button" class="mb-1 btn btn-outline-primary" onclick="location.href='m_family.php'">
-                      <i class=" mdi mdi-plus mr-1"></i> 新增</button>
+                    <div class="search_box">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="search_box" placeholder="搜尋" aria-label="search">
+                        <div class="input-group-append">
+                          <span class="input-group-text bg-primary"><span class="mdi mdi-magnify"></span></span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="card-body">
                     <!-- <p class="mb-5"></p> -->
-
+                    <button type="button" class="mb-1 btn btn-outline-primary" onclick="location.href='m_family.php'">
+                      <i class=" mdi mdi-plus mr-1"></i> 新增</button>
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -73,16 +81,16 @@ $family = $CM->GET_FAMILY_DATA();
                         </tr>
                       </thead>
 
-                      <tbody>
+                      <tbody class="datalist">
                         <?php foreach ($family as $key => $value) { ?>
                           <tr>
                             <td><?= $value['relationno'] ?></td>
                             <td><?= $value['relationship'] ?></td>
                             <td>
                               <form onsubmit="return false;">
-                                <a href="m_family.php?c=<?php echo OEncrypt('v=' . $value['relationno'], 'family'); ?>"><span class="mdi mdi-pencil"></span></a>
+                                <a href="m_family.php?c=<?php echo OEncrypt('v=' . $value['relationno'], 'family'); ?>"><span class="mdi mdi-pencil mdi-18px"></span></a>
                                 <input type="hidden" name="relationno" value="<?= rawurldecode(OEncrypt('v=' . $value['relationno'], 'family')) ?>">
-                                <a href="javascript:void(0)" class="delBtn" data-type="family_del"><span class="mdi mdi-delete"></span></a>
+                                <a href="javascript:void(0)" class="delBtn" data-type="family_del"><span class="mdi mdi-delete mdi-18px"></span></a>
                               </form>
                             </td>
                           </tr>

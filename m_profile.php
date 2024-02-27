@@ -199,7 +199,7 @@ $comp = GET_COMP_DATA();
 
                           <div class="form-group mb-4">
                             <label for="cowww">網路地址</label>
-                            <input type="text" data-name="網路地址" class="form-control" name="cowww" id="cowww" value="<?= $comp['cowww'] ?>" placeholder="Ex:">
+                            <input type="text" data-name="網路地址" class="form-control" name="cowww" id="cowww" value="<?= $comp['cowww'] ?>" placeholder="Ex:https://www.bm888.com.tw/">
                           </div>
 
                           <div class="form-group mb-4">

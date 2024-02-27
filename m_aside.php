@@ -48,22 +48,22 @@
                                 </ul>
                             </li>
                             <li class="" data-no="deduction">
-                                <a class="sidenav-item-link" href="analytics.html">
+                                <a class="sidenav-item-link" href="m_deduction.php">
                                     <span class="nav-text">加扣款編號設定</span>
                                 </a>
                             </li>
                             <li class="" data-no="seclab1">
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="m_seclab1.php">
                                     <span class="nav-text">勞保等級設定</span>
                                 </a>
                             </li>
                             <li class="" data-no="purchaser1">
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="m_purchaser1.php">
                                     <span class="nav-text">健保等級設定</span>
                                 </a>
                             </li>
                             <li class="" data-no="attendace">
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="m_attendace.php">
                                     <span class="nav-text">員工班別設定</span>
                                 </a>
                             </li>

@@ -831,6 +831,90 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "deduction_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['deductionno'] 		= $_POST['deductionno'];
+			$Value['deductionname'] 		= $_POST['deductionname'];
+			$Value['dedmny'] 		= $_POST['dedmny'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$Value['deductionid'] 		= $_POST['deductionid']; //若是編輯已有的資料，該欄位回傳不會是空值
+				$deduction_data = array(
+					'deductionno' 				=> $Value['deductionno'],
+					'deductionname' 			=> $Value['deductionname'],
+					'dedmny' 			=> $Value['dedmny'],
+				);
+				if ($Value['deductionid']) {
+					$db->Where = " WHERE  deductionno = '" . $Value['deductionid'] . "'";
+				} else {
+					$db->Where = " WHERE  deductionno = '" . $Value['deductionno'] . "'";
+				}
+				$db->query_sql($deduction_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($deduction_db, $deduction_data, 'UPDATE');
+				} else {
+					$db->query_data($deduction_db, $deduction_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試或檢查是否有一樣的編號存在';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_deductionlist.php';
+				}
+			}
+			break;
+		case "deduction_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['deductionno'] 		= GDC($_POST['deductionno'], 'deduction')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  deductionno = '" . $Value['deductionno'] . "'";
+				$db->query_delete($deduction_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
+
+
+
 
 		case "plan_change":
 			if ($_Login) {

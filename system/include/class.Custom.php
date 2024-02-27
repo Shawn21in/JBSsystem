@@ -780,11 +780,11 @@ class Custom
 	function GET_FAMILY_DATA($id = '')
 	{
 
-		$Sheet = "reason";
+		$Sheet = "family";
 
 		$db = new MySQL();
 		if ($id) {
-			$db->Where = "Where reasonno = '" . $id . "'";
+			$db->Where = "Where relationno = '" . $id . "'";
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
@@ -805,6 +805,26 @@ class Custom
 		$db = new MySQL();
 		if ($id) {
 			$db->Where = "Where reasonno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
+		}
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
+	//--眷屬編號
+	function GET_DEDUCTION_DATA($id = '')
+	{
+
+		$Sheet = "deduction";
+
+		$db = new MySQL();
+		if ($id) {
+			$db->Where = "Where deductionno = '" . $id . "'";
 		} else {
 			$db->Where = "Where 1 = 1";
 		}

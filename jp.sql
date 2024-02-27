@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-02-26 07:59:50
+-- 產生時間： 2024-02-27 02:12:15
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -156,6 +156,13 @@ CREATE TABLE IF NOT EXISTS `deduction` (
   `dedmny` decimal(19,4) DEFAULT NULL COMMENT '加扣款金額',
   PRIMARY KEY (`deductionno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `deduction`
+--
+
+INSERT INTO `deduction` (`deductionno`, `deductionname`, `dedtype`, `dedmny`) VALUES
+('12', 'test3', NULL, 1231.1234);
 
 -- --------------------------------------------------------
 
@@ -486,7 +493,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -646,7 +653,16 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (151, '2024-02-26 15:56:47', '', '', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'U\',\'喪失健保資格\');', 'INSERT', '/jp/web_post.php'),
 (152, '2024-02-26 15:59:10', '', '', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'A\',\'TEST\');', 'INSERT', '/jp/web_post.php'),
 (153, '2024-02-26 15:59:15', '', '', '', 'UPDATE reason SET `reasonno` = \'AB\',`reason` = \'TESTC\'  WHERE  reasonno = \'A\';', 'UPDATE', '/jp/web_post.php'),
-(154, '2024-02-26 15:59:18', '', '', '', 'DELETE FROM reason  WHERE  reasonno = \'AB\';', 'DELETE', '/jp/web_post.php');
+(154, '2024-02-26 15:59:18', '', '', '', 'DELETE FROM reason  WHERE  reasonno = \'AB\';', 'DELETE', '/jp/web_post.php'),
+(155, '2024-02-26 16:46:19', '', '', '', 'INSERT INTO deduction (`deductionno`,`deductionname`,`dedmny`) VALUES (\'1\',\'test\',\'123\');', 'INSERT', '/jp/web_post.php'),
+(156, '2024-02-26 16:47:57', '', '', '', 'UPDATE deduction SET `deductionno` = \'1\',`deductionname` = \'test\',`dedmny` = \'123\'  WHERE  deductionno = \'1\';', 'UPDATE', '/jp/web_post.php'),
+(157, '2024-02-26 16:49:17', '', '', '', 'UPDATE deduction SET `deductionno` = \'1\',`deductionname` = \'test\',`dedmny` = \'123.1234\'  WHERE  deductionno = \'1\';', 'UPDATE', '/jp/web_post.php'),
+(158, '2024-02-26 16:49:21', '', '', '', 'UPDATE deduction SET `deductionno` = \'1\',`deductionname` = \'test\',`dedmny` = \'123.123411\'  WHERE  deductionno = \'1\';', 'UPDATE', '/jp/web_post.php'),
+(159, '2024-02-26 16:53:17', '', '', '', 'UPDATE deduction SET `deductionno` = \'12\',`deductionname` = \'test3\',`dedmny` = \'1231.1234\'  WHERE  deductionno = \'1\';', 'UPDATE', '/jp/web_post.php'),
+(160, '2024-02-26 16:53:29', '', '', '', 'INSERT INTO deduction (`deductionno`,`deductionname`,`dedmny`) VALUES (\'77\',\'77\',\'1\');', 'INSERT', '/jp/web_post.php'),
+(161, '2024-02-26 16:53:37', '', '', '', 'UPDATE deduction SET `deductionno` = \'771\',`deductionname` = \'772\',`dedmny` = \'1.000303\'  WHERE  deductionno = \'77\';', 'UPDATE', '/jp/web_post.php'),
+(162, '2024-02-26 16:53:40', '', '', '', 'DELETE FROM deduction  WHERE  deductionno = \'771\';', 'DELETE', '/jp/web_post.php'),
+(163, '2024-02-27 09:38:24', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

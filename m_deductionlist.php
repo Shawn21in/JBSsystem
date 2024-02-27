@@ -7,11 +7,11 @@ if (!$_Login) {
 
 $_Title = '健保退保列表';
 
-$_No = 'reason';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
+$_No = 'deduction';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
 $comp = GET_COMP_DATA();
 
-$reason = $CM->GET_REASON_DATA();
+$deduction = $CM->GET_DEDUCTION_DATA();
 
 ?>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@ $reason = $CM->GET_REASON_DATA();
               <div class="col-lg-12">
                 <div class="card card-default">
                   <div class="card-header card-header-border-bottom">
-                    <h2>健保退保列表</h2>
+                    <h2>加扣款編號列表</h2>
                     <div class="search_box">
                       <div class="input-group">
                         <input type="text" class="form-control" id="search_box" placeholder="搜尋" aria-label="search">
@@ -67,30 +67,31 @@ $reason = $CM->GET_REASON_DATA();
                       </div>
                     </div>
                   </div>
-
                   <div class="card-body">
                     <!-- <p class="mb-5"></p> -->
-                    <button type="button" class="mb-1 btn btn-outline-primary" onclick="location.href='m_reason.php'">
-                      <i class=" mdi mdi-plus mr-1"></i> 新增</button>
+                    <button type="button" class="btn btn-outline-primary mb-2" onclick="location.href='m_deduction.php'">
+                      <i class=" mdi mdi-plus mr-1"></i> 新增一筆</button>
                     <table class="table table-hover">
                       <thead>
                         <tr>
                           <th scope="col">編號</th>
-                          <th scope="col">退保原因</th>
+                          <th scope="col">加扣款名稱</th>
+                          <th scope="col">加扣款金額</th>
                           <th scope="col">選項</th>
                         </tr>
                       </thead>
 
                       <tbody class="datalist">
-                        <?php foreach ($reason as $key => $value) { ?>
+                        <?php foreach ($deduction as $key => $value) { ?>
                           <tr>
-                            <td><?= $value['reasonno'] ?></td>
-                            <td><?= $value['reason'] ?></td>
+                            <td><?= $value['deductionno'] ?></td>
+                            <td><?= $value['deductionname'] ?></td>
+                            <td><?= $value['dedmny'] ?></td>
                             <td>
                               <form onsubmit="return false;">
-                                <a href="m_reason.php?c=<?php echo OEncrypt('v=' . $value['reasonno'], 'reason'); ?>"><span class="mdi mdi-pencil mdi-18px"></span></a>
-                                <input type="hidden" name="reasonno" value="<?= rawurldecode(OEncrypt('v=' . $value['reasonno'], 'reason')) ?>">
-                                <a href="javascript:void(0)" class="delBtn" data-type="reason_del"><span class="mdi mdi-delete mdi-18px"></span></a>
+                                <a href="m_deduction.php?c=<?php echo OEncrypt('v=' . $value['deductionno'], 'deduction'); ?>"><span class="mdi mdi-pencil mdi-18px"></span></a>
+                                <input type="hidden" name="deductionno" value="<?= rawurldecode(OEncrypt('v=' . $value['deductionno'], 'deduction')) ?>">
+                                <a href="javascript:void(0)" class="delBtn" data-type="deduction_del"><span class="mdi mdi-delete mdi-18px"></span></a>
                               </form>
                             </td>
                           </tr>
