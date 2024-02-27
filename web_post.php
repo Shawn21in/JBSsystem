@@ -956,6 +956,48 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "purchaser_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['purchaserhmny'] 		= $_POST['purchaserhmny'];
+			$Value['purchasermny'] 		= $_POST['purchasermny'];
+			$len = count($Value['purchaserhmny']);
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  1 = 1";
+				$db->query_delete($purchaser1_db);
+				for ($i = 0; $i < $len; $i++) {
+					$purchaser_data = array(
+						'purchaserno'				=> (int)$i + 1,
+						'purchaserhmny' 			=> $Value['purchaserhmny'][$i],
+						'purchasermny' 			=> $Value['purchasermny'][$i],
+					);
+					$db->query_data($purchaser1_db, $purchaser_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_purchaser1.php';
+				}
+			}
+			break;
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {

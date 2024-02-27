@@ -856,4 +856,25 @@ class Custom
 		}
 		return $rs;
 	}
+
+	//--健保等級
+	function GET_PURCHASER1_DATA($id = '')
+	{
+
+		$Sheet = "purchaser1";
+
+		$db = new MySQL();
+		if ($id) {
+			$db->Where = "Where purchaserno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
+		}
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
 }

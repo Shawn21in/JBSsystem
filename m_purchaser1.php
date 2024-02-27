@@ -5,13 +5,13 @@ if (!$_Login) {
   exit;
 }
 
-$_Title = '勞保等級列表';
+$_Title = '健保等級列表';
 
-$_No = 'seclab1';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
+$_No = 'purchaser1';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
 $comp = GET_COMP_DATA();
 
-$bank = $CM->GET_SECLAB1_DATA();
+$bank = $CM->GET_PURCHASER1_DATA();
 
 ?>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@ $bank = $CM->GET_SECLAB1_DATA();
               <div class="col-lg-12">
                 <div class="card card-default">
                   <div class="card-header card-header-border-bottom">
-                    <h2>勞保等級列表</h2>
+                    <h2>健保等級列表</h2>
                   </div>
                   <div class="card-body">
                     <!-- <p class="mb-5"></p> -->
@@ -68,7 +68,7 @@ $bank = $CM->GET_SECLAB1_DATA();
                     <div class="editnow" style="display:none;">
                       <button type="button" class="mb-1 btn btn-outline-primary" id="addBtn">
                         <i class=" mdi mdi-plus mr-1"></i> 新增</button>
-                      <button type="button" class="mb-1 btn btn-outline-success saveBtn" data-type="seclab_edit">
+                      <button type="button" class="mb-1 btn btn-outline-success saveBtn" data-type="purchaser_edit">
                         <span class="mdi mdi-content-save"></span> 全部儲存</button>
                     </div>
                     <form id="form1" onsubmit="return false;">
@@ -77,8 +77,7 @@ $bank = $CM->GET_SECLAB1_DATA();
                           <tr>
                             <th scope="col">等級</th>
                             <th scope="col">投保金額</th>
-                            <th scope="col">本國勞保費</th>
-                            <th scope="col">外國勞保費</th>
+                            <th scope="col">健保費</th>
                             <th scope="col">選項</th>
                           </tr>
                         </thead>
@@ -86,20 +85,18 @@ $bank = $CM->GET_SECLAB1_DATA();
                         <tbody class="datalist">
                           <?php foreach ($bank as $key => $value) { ?>
                             <tr>
-                              <td><?= $value['seclabNo'] ?></td>
-                              <td><?= $value['seclabMny'] ?></td>
-                              <td><?= $value['seclablMny'] ?></td>
-                              <td><?= $value['ForeignMny'] ?></td>
+                              <td><?= $value['purchaserno'] ?></td>
+                              <td><?= $value['purchasermny'] ?></td>
+                              <td><?= $value['purchaserhmny'] ?></td>
                             </tr>
                           <?php } ?>
                         </tbody>
                         <tbody class="edit_datalist" style="display:none">
                           <?php foreach ($bank as $key => $value) { ?>
                             <tr>
-                              <td class="no"><?= $value['seclabNo'] ?></td>
-                              <td><input class="form-control" name="seclabMny[]" type="number" value="<?= $value['seclabMny'] ?>" step="any"></td>
-                              <td><input class="form-control" name="seclablMny[]" type="number" value="<?= $value['seclablMny'] ?>" step="any"></td>
-                              <td><input class="form-control" name="ForeignMny[]" type="number" value="<?= $value['ForeignMny'] ?>" step="any"></td>
+                              <td class="no"><?= $value['purchaserno'] ?></td>
+                              <td><input class="form-control" name="purchasermny[]" type="number" value="<?= $value['purchasermny'] ?>" step="any"></td>
+                              <td><input class="form-control" name="purchaserhmny[]" type="number" value="<?= $value['purchaserhmny'] ?>" step="any"></td>
                               <td><a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a></td>
                             </tr>
                           <?php } ?>
@@ -110,9 +107,8 @@ $bank = $CM->GET_SECLAB1_DATA();
                       <tbody>
                         <tr>
                           <td class="no"></td>
-                          <td><input class="form-control" name="seclabMny[]" type="number" value="" step="any"></td>
-                          <td><input class="form-control" name="seclablMny[]" type="number" value="" step="any"></td>
-                          <td><input class="form-control" name="ForeignMny[]" type="number" value="" step="any"></td>
+                          <td><input class="form-control" name="purchasermny[]" type="number" value="" step="any"></td>
+                          <td><input class="form-control" name="purchaserhmny[]" type="number" value="" step="any"></td>
                           <td><a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a></td>
                         </tr>
                       </tbody>
