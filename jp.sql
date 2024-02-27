@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-02-27 02:12:15
+-- 產生時間： 2024-02-27 08:03:55
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -275,7 +275,7 @@ INSERT INTO `part` (`partno`, `partname`) VALUES
 
 DROP TABLE IF EXISTS `purchaser1`;
 CREATE TABLE IF NOT EXISTS `purchaser1` (
-  `pid` int NOT NULL COMMENT 'IDENTITY(1,1)',
+  `pid` int NOT NULL AUTO_INCREMENT COMMENT 'IDENTITY(1,1)',
   `purchaserno` int DEFAULT NULL COMMENT '等級',
   `purchasermny` decimal(19,4) DEFAULT NULL COMMENT '投保金額',
   `purchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '健保費',
@@ -311,15 +311,25 @@ INSERT INTO `reason` (`reasonno`, `reason`) VALUES
 
 DROP TABLE IF EXISTS `seclab1`;
 CREATE TABLE IF NOT EXISTS `seclab1` (
-  `sid` int NOT NULL COMMENT 'IDENTITY(1,1)',
+  `sid` int NOT NULL AUTO_INCREMENT COMMENT 'IDENTITY(1,1)',
   `seclabNo` int DEFAULT NULL COMMENT '等級',
-  `seclabMny` decimal(19,4) DEFAULT NULL COMMENT '投保金額',
-  `seclablMny` decimal(19,4) DEFAULT NULL COMMENT '本國勞保費(個人)',
-  `ForeignMny` decimal(19,4) DEFAULT NULL COMMENT '外勞勞保費',
-  `employerSeclablMny` decimal(19,4) DEFAULT NULL COMMENT '本國雇主負擔',
-  `employerForeignMny` decimal(19,4) DEFAULT NULL COMMENT '外勞雇主負擔',
+  `seclabMny` decimal(19,4) DEFAULT '0.0000' COMMENT '投保金額',
+  `seclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國勞保費(個人)',
+  `ForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞勞保費',
+  `employerSeclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國雇主負擔',
+  `employerForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞雇主負擔',
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `seclab1`
+--
+
+INSERT INTO `seclab1` (`sid`, `seclabNo`, `seclabMny`, `seclablMny`, `ForeignMny`, `employerSeclablMny`, `employerForeignMny`) VALUES
+(13, 1, 2.0000, 2.0000, 2.0000, 0.0000, 0.0000),
+(14, 2, 3.0000, 3.0000, 3.0000, 0.0000, 0.0000),
+(15, 3, 7.0000, 7.0000, 7.0000, 0.0000, 0.0000),
+(16, 4, 8.0000, 8.0000, 8.0000, 0.0000, 0.0000);
 
 -- --------------------------------------------------------
 
@@ -354,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, 'f269e203996701b7a5eb8afb159648ea', '2019-08-12 21:27:51', '2024-02-23 14:51:19', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, 'a444f4028dee60ea8fe3e0ff1619fc4e', '2019-08-12 21:27:51', '2024-02-27 14:59:14', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -493,7 +503,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=203 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -662,7 +672,46 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (160, '2024-02-26 16:53:29', '', '', '', 'INSERT INTO deduction (`deductionno`,`deductionname`,`dedmny`) VALUES (\'77\',\'77\',\'1\');', 'INSERT', '/jp/web_post.php'),
 (161, '2024-02-26 16:53:37', '', '', '', 'UPDATE deduction SET `deductionno` = \'771\',`deductionname` = \'772\',`dedmny` = \'1.000303\'  WHERE  deductionno = \'77\';', 'UPDATE', '/jp/web_post.php'),
 (162, '2024-02-26 16:53:40', '', '', '', 'DELETE FROM deduction  WHERE  deductionno = \'771\';', 'DELETE', '/jp/web_post.php'),
-(163, '2024-02-27 09:38:24', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php');
+(163, '2024-02-27 09:38:24', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(164, '2024-02-27 14:58:30', '', '', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(165, '2024-02-27 14:58:30', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'123\',\'4321\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(166, '2024-02-27 14:58:36', '', '', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(167, '2024-02-27 14:58:36', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'123\',\'4321\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(168, '2024-02-27 14:58:36', '', '', 'Duplicate entry \'0\' for key \'seclab1.PRIMARY\'', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'321\',\'123\',\'321\');', 'ERROR', '/jp/web_post.php'),
+(169, '2024-02-27 14:58:40', '', '', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(170, '2024-02-27 14:58:40', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'123\',\'4321\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(171, '2024-02-27 14:58:40', '', '', 'Duplicate entry \'0\' for key \'seclab1.PRIMARY\'', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'321\',\'123\',\'321\');', 'ERROR', '/jp/web_post.php'),
+(172, '2024-02-27 14:58:45', '', '', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(173, '2024-02-27 14:58:45', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'123\',\'4321\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(174, '2024-02-27 14:59:14', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'a444f4028dee60ea8fe3e0ff1619fc4e\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(175, '2024-02-27 14:59:50', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(176, '2024-02-27 14:59:50', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'123\',\'4321\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(177, '2024-02-27 14:59:50', '系統管理員', '1', 'Duplicate entry \'0\' for key \'seclab1.PRIMARY\'', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'\',\'\',\'\');', 'ERROR', '/jp/web_post.php'),
+(178, '2024-02-27 14:59:59', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(179, '2024-02-27 14:59:59', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'1231\',\'4321\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(180, '2024-02-27 15:00:08', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(181, '2024-02-27 15:00:08', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'1231\',\'4321\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(182, '2024-02-27 15:00:08', '系統管理員', '1', 'Duplicate entry \'0\' for key \'seclab1.PRIMARY\'', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'2\',\'2\',\'2\');', 'ERROR', '/jp/web_post.php'),
+(183, '2024-02-27 15:00:49', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(184, '2024-02-27 15:00:49', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'1\',\'1\',\'1\');', 'INSERT', '/jp/web_post.php'),
+(185, '2024-02-27 15:00:53', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(186, '2024-02-27 15:00:53', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'1\',\'1\',\'1\');', 'INSERT', '/jp/web_post.php'),
+(187, '2024-02-27 15:00:53', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'2\',\'2\',\'2\');', 'INSERT', '/jp/web_post.php'),
+(188, '2024-02-27 15:00:58', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(189, '2024-02-27 15:00:58', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'2\',\'2\',\'2\');', 'INSERT', '/jp/web_post.php'),
+(190, '2024-02-27 15:01:22', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(191, '2024-02-27 15:01:22', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'2\',\'2\',\'2\');', 'INSERT', '/jp/web_post.php'),
+(192, '2024-02-27 15:01:22', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'3\',\'3\',\'3\');', 'INSERT', '/jp/web_post.php'),
+(193, '2024-02-27 15:01:22', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'3\',\'4\',\'4\',\'4\');', 'INSERT', '/jp/web_post.php'),
+(194, '2024-02-27 15:01:22', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'4\',\'5\',\'5\',\'5\');', 'INSERT', '/jp/web_post.php'),
+(195, '2024-02-27 15:01:22', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'5\',\'6\',\'6\',\'6\');', 'INSERT', '/jp/web_post.php'),
+(196, '2024-02-27 15:01:22', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'6\',\'7\',\'7\',\'7\');', 'INSERT', '/jp/web_post.php'),
+(197, '2024-02-27 15:01:22', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'7\',\'8\',\'8\',\'8\');', 'INSERT', '/jp/web_post.php'),
+(198, '2024-02-27 16:03:44', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(199, '2024-02-27 16:03:44', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'2\',\'2\',\'2\');', 'INSERT', '/jp/web_post.php'),
+(200, '2024-02-27 16:03:44', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'3\',\'3\',\'3\');', 'INSERT', '/jp/web_post.php'),
+(201, '2024-02-27 16:03:44', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'3\',\'7\',\'7\',\'7\');', 'INSERT', '/jp/web_post.php'),
+(202, '2024-02-27 16:03:44', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'4\',\'8\',\'8\',\'8\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

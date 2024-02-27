@@ -912,10 +912,50 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
-
-
-
-
+		case "seclab_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['seclabMny'] 		= $_POST['seclabMny'];
+			$Value['seclablMny'] 		= $_POST['seclablMny'];
+			$Value['ForeignMny'] 		= $_POST['ForeignMny'];
+			$len = count($Value['seclabMny']);
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE  1 = 1";
+				$db->query_delete($seclab1_db);
+				for ($i = 0; $i < $len; $i++) {
+					$seclab_data = array(
+						'seclabNo'				=> (int)$i + 1,
+						'seclabMny' 			=> $Value['seclabMny'][$i],
+						'seclablMny' 			=> $Value['seclablMny'][$i],
+						'ForeignMny' 			=> $Value['ForeignMny'][$i],
+					);
+					$db->query_data($seclab1_db, $seclab_data, 'INSERT');
+				}
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = 'm_seclab1.php';
+				}
+			}
+			break;
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {

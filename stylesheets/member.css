@@ -28,3 +28,15 @@
 .card-default .card-header {
   justify-content: space-between;
 }
+
+.invisible_table {
+  display: none;
+}
+
+#enabled {
+  width: 7rem;
+}
+
+#enabled>button {
+  width: 100%;
+}
