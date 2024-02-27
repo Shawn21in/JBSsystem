@@ -877,4 +877,24 @@ class Custom
 		}
 		return $rs;
 	}
+	//--班別設定
+	function GET_ATTENDANCE_DATA($id = '')
+	{
+
+		$Sheet = "attendance";
+
+		$db = new MySQL();
+		if ($id) {
+			$db->Where = "Where attendanceno = '" . $id . "'";
+		} else {
+			$db->Where = "Where 1 = 1";
+		}
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
 }

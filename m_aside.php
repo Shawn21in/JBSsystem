@@ -62,8 +62,8 @@
                                     <span class="nav-text">健保等級設定</span>
                                 </a>
                             </li>
-                            <li class="" data-no="attendace">
-                                <a class="sidenav-item-link" href="m_attendace.php">
+                            <li class="" data-no="attendance">
+                                <a class="sidenav-item-link" href="m_attendance.php">
                                     <span class="nav-text">員工班別設定</span>
                                 </a>
                             </li>
