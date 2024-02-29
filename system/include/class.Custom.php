@@ -878,6 +878,24 @@ class Custom
 		return $rs;
 	}
 	//--班別設定
+	function GET_ATTENDANCE_LIST()
+	{
+
+		$Sheet = "attendance";
+
+		$db = new MySQL();
+		$db->Where = "Where 1 = 1";
+		$db->Order_By = 'Order By attendanceid desc';
+		$db->Group_By = 'Group By attendanceno';
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
+	//--班別設定
 	function GET_ATTENDANCE_DATA($id = '')
 	{
 
@@ -889,6 +907,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = 'Order By attendanceid asc';
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {

@@ -998,6 +998,136 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "attendance_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['attendanceno'] 		= $_POST['attendanceno'];
+			$Value['attendancename'] 		= $_POST['attendancename'];
+			$Value['week'] 		= $_POST['week'];
+			$Value['ontime'] 		= $_POST['ontime'];
+			$Value['latetime'] 		= $_POST['latetime'];
+			$Value['resttime1'] 		= $_POST['resttime1'];
+			$Value['resttime2'] 		= $_POST['resttime2'];
+			$Value['resttime3'] 		= $_POST['resttime3'];
+			$Value['resttime4'] 		= $_POST['resttime4'];
+			$Value['offtime'] 		= $_POST['offtime'];
+			$Value['addontime'] 		= $_POST['addontime'];
+			$Value['addofftime'] 		= $_POST['addofftime'];
+			$Value['mealtime'] 		= $_POST['mealtime'];
+			$Value['worktime'] 		= $_POST['worktime'];
+			$Value['daytype'] 		= $_POST['daytype'];
+			$len = count($_POST['week']);
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$Value['attendanceid'] 		= $_POST['attendanceid']; //若是編輯已有的資料，該欄位回傳不會是空值
+				$Value['origin_attendanceno'] 		= $_POST['origin_attendanceno']; //若是編輯已有的資料，該欄位回傳不會是空值
+				if ($Value['attendanceid'][0]) {
+					if ($Value['origin_attendanceno'] != $Value['attendanceno']) {
+						$db->Where = " WHERE attendanceno = '" . $Value['attendanceno'] . "'";
+						$db->query_sql($attendance_db, '*');
+						if ($row = $db->query_fetch()) {
+							$_html_msg 	= '班別編號已存在，請更換一個後再儲存';
+							break;
+						}
+					}
+				} else {
+					$db->Where = " WHERE attendanceno = '" . $Value['attendanceno'] . "'";
+					$db->query_sql($attendance_db, '*');
+					if ($row = $db->query_fetch()) {
+						$_html_msg 	= '班別編號已存在，請更換一個後再儲存';
+						break;
+					}
+				}
+				for ($i = 0; $i < $len; $i++) {
+					$attendance_data = array(
+						'attendanceno'				=> $Value['attendanceno'],
+						'attendancename' 			=> $Value['attendancename'],
+						'week' 						=> $Value['week'][$i],
+						'ontime' 					=> str_replace(":", "", $Value['ontime'][$i]),
+						'latetime' 					=> str_replace(":", "", $Value['latetime'][$i]),
+						'resttime1' 				=> str_replace(":", "", $Value['resttime1'][$i]),
+						'resttime2' 				=> str_replace(":", "", $Value['resttime2'][$i]),
+						'resttime3' 				=> str_replace(":", "", $Value['resttime3'][$i]),
+						'resttime4' 				=> str_replace(":", "", $Value['resttime4'][$i]),
+						'offtime' 					=> str_replace(":", "", $Value['offtime'][$i]),
+						'addontime' 				=> str_replace(":", "", $Value['addontime'][$i]),
+						'addofftime' 				=> str_replace(":", "", $Value['addofftime'][$i]),
+						'mealtime' 					=> str_replace(":", "", $Value['mealtime'][$i]),
+						'worktime' 					=> $Value['worktime'][$i],
+						'type' 						=> $Value['daytype'][$i],
+					);
+					if ($Value['attendanceid'][$i]) {
+						$db->Where = " WHERE attendanceid = '" . $Value['attendanceid'][$i] . "'";
+						$db->query_data($attendance_db, $attendance_data, 'UPDATE');
+					} else {
+						$db->query_data($attendance_db, $attendance_data, 'INSERT');
+					}
+				}
+				if ($Value['origin_attendanceno']) {
+					if (!empty($db->Error)) {
+						$_html_msg 	= '儲存失敗，請重新整理後再試試';
+					} else {
+						$_html_msg 	= '儲存成功！';
+						$_html_href = "m_attendance.php?c=" . OEncrypt('v=' . $Value['attendanceno'], 'attendance');
+					}
+				} else {
+					if (!empty($db->Error)) {
+						$_html_msg 	= '新增失敗，請重新整理後再試試';
+					} else {
+						$_html_msg 	= '新增成功！';
+						$_html_eval = 'Reload();';
+					}
+				}
+			}
+			break;
+		case "attendance_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['attendanceno'] 		= GDC($_POST['attendanceno'], 'attendance')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE attendanceno = '" . $Value['attendanceno'] . "'";
+				$db->query_delete($attendance_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {
