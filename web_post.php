@@ -385,11 +385,7 @@ if (!empty($_Type)) {
 					'bankno' 				=> $Value['bankno'],
 					'bankname' 			=> $Value['bankname'],
 				);
-				if ($Value['bankid']) {
-					$db->Where = " WHERE  bankno = '" . $Value['bankid'] . "'";
-				} else {
-					$db->Where = " WHERE  bankno = '" . $Value['bankno'] . "'";
-				}
+				$db->Where = " WHERE  bankno = '" . $Value['bankid'] . "'";
 				$db->query_sql($bank_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($bank_db, $bank_data, 'UPDATE');
@@ -464,11 +460,7 @@ if (!empty($_Type)) {
 					'educationno' 				=> $Value['educationno'],
 					'educationname' 			=> $Value['educationname'],
 				);
-				if ($Value['educationid']) {
-					$db->Where = " WHERE  educationno = '" . $Value['educationid'] . "'";
-				} else {
-					$db->Where = " WHERE  educationno = '" . $Value['educationno'] . "'";
-				}
+				$db->Where = " WHERE  educationno = '" . $Value['educationid'] . "'";
 				$db->query_sql($education_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($education_db, $education_data, 'UPDATE');
@@ -543,11 +535,7 @@ if (!empty($_Type)) {
 					'appno' 				=> $Value['appno'],
 					'appname' 			=> $Value['appname'],
 				);
-				if ($Value['appid']) {
-					$db->Where = " WHERE  appno = '" . $Value['appid'] . "'";
-				} else {
-					$db->Where = " WHERE  appno = '" . $Value['appno'] . "'";
-				}
+				$db->Where = " WHERE  appno = '" . $Value['appid'] . "'";
 				$db->query_sql($jobs_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($jobs_db, $jobs_data, 'UPDATE');
@@ -622,11 +610,7 @@ if (!empty($_Type)) {
 					'partno' 				=> $Value['partno'],
 					'partname' 			=> $Value['partname'],
 				);
-				if ($Value['partid']) {
-					$db->Where = " WHERE  partno = '" . $Value['partid'] . "'";
-				} else {
-					$db->Where = " WHERE  partno = '" . $Value['partno'] . "'";
-				}
+				$db->Where = " WHERE  partno = '" . $Value['partid'] . "'";
 				$db->query_sql($part_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($part_db, $part_data, 'UPDATE');
@@ -701,11 +685,7 @@ if (!empty($_Type)) {
 					'relationno' 				=> $Value['relationno'],
 					'relationship' 			=> $Value['relationship'],
 				);
-				if ($Value['relationid']) {
-					$db->Where = " WHERE  relationno = '" . $Value['relationid'] . "'";
-				} else {
-					$db->Where = " WHERE  relationno = '" . $Value['relationno'] . "'";
-				}
+				$db->Where = " WHERE  relationno = '" . $Value['relationid'] . "'";
 				$db->query_sql($family_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($family_db, $family_data, 'UPDATE');
@@ -780,11 +760,7 @@ if (!empty($_Type)) {
 					'reasonno' 				=> $Value['reasonno'],
 					'reason' 			=> $Value['reason'],
 				);
-				if ($Value['reasonid']) {
-					$db->Where = " WHERE  reasonno = '" . $Value['reasonid'] . "'";
-				} else {
-					$db->Where = " WHERE  reasonno = '" . $Value['reasonno'] . "'";
-				}
+				$db->Where = " WHERE  reasonno = '" . $Value['reasonid'] . "'";
 				$db->query_sql($reason_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($reason_db, $reason_data, 'UPDATE');
@@ -861,11 +837,7 @@ if (!empty($_Type)) {
 					'deductionname' 			=> $Value['deductionname'],
 					'dedmny' 			=> $Value['dedmny'],
 				);
-				if ($Value['deductionid']) {
-					$db->Where = " WHERE  deductionno = '" . $Value['deductionid'] . "'";
-				} else {
-					$db->Where = " WHERE  deductionno = '" . $Value['deductionno'] . "'";
-				}
+				$db->Where = " WHERE  deductionno = '" . $Value['deductionid'] . "'";
 				$db->query_sql($deduction_db, '*');
 				if ($row = $db->query_fetch()) {
 					$db->query_data($deduction_db, $deduction_data, 'UPDATE');

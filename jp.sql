@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-02-29 09:44:15
+-- 產生時間： 2024-03-01 03:07:17
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -102,7 +102,48 @@ CREATE TABLE IF NOT EXISTS `bank` (
 --
 
 INSERT INTO `bank` (`bankno`, `bankname`) VALUES
-('822', '中國信託商業銀行');
+('822', '中國信託商業銀行'),
+('000', '中央信託局'),
+('001', '中央信託局'),
+('003', '交通銀行'),
+('004', '臺灣銀行'),
+('005', '土地銀行'),
+('006', '合作金庫'),
+('007', '第一商業銀行'),
+('008', '華南商業銀行'),
+('009', '彰化商業銀行'),
+('011', '上海商業儲蓄銀行'),
+('012', '台北富邦銀行'),
+('013', '國泰世華商業銀行'),
+('015', '中國輸出入銀行'),
+('016', '高雄銀行'),
+('017', '兆豐國際商業銀行'),
+('021', '花旗銀行'),
+('040', '中華開發工業銀行'),
+('048', '臺灣工業銀行'),
+('050', '臺灣中小企業銀行'),
+('052', '渣打國際商業銀行'),
+('053', '台中商業銀行'),
+('054', '京城商業銀行'),
+('081', '匯豐銀行'),
+('101', '大台北銀行'),
+('102', '華泰商業銀行'),
+('103', '新光商業銀行'),
+('108', '陽信商業銀行'),
+('118', '板信商業銀行'),
+('147', '三信商業銀行'),
+('700', '中華郵政'),
+('803', '聯邦商業銀行'),
+('805', '遠東國際商業銀行'),
+('806', '元大商業銀行'),
+('807', '永豐商業銀行'),
+('808', '玉山商業銀行'),
+('809', '萬華商業銀行'),
+('810', '寶華商業銀行'),
+('812', '台新國際商業銀行'),
+('814', '大眾商業銀行'),
+('815', '日盛國際商業銀行'),
+('816', '安泰商業銀行');
 
 -- --------------------------------------------------------
 
@@ -145,27 +186,27 @@ CREATE TABLE IF NOT EXISTS `comp` (
   `colnk18` decimal(1,0) DEFAULT NULL,
   `colnk18no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk19` decimal(1,0) DEFAULT NULL,
-  `colnk19no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk19no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk1a` decimal(1,0) DEFAULT NULL,
-  `colnk1ano` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk1ano` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk21` decimal(1,0) DEFAULT NULL,
-  `colnk21no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk21no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk22` decimal(1,0) DEFAULT NULL,
-  `colnk22no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk22no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk23` decimal(1,0) DEFAULT NULL,
-  `colnk23no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk23no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk24` decimal(1,0) DEFAULT NULL,
-  `colnk24no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk24no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk25` decimal(1,0) DEFAULT NULL,
-  `colnk25no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk25no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk26` decimal(1,0) DEFAULT NULL,
-  `colnk26no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk26no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk27` decimal(1,0) DEFAULT NULL,
-  `colnk27no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk27no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk28` decimal(1,0) DEFAULT NULL,
-  `colnk28no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk28no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk29` decimal(1,0) DEFAULT NULL,
-  `colnk29no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk29no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `laobaono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞保投保代號',
   `jianbaono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保代號',
   PRIMARY KEY (`cono`)
@@ -409,7 +450,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '9508a627166da0c528b2d49ba623a54f', '2019-08-12 21:27:51', '2024-02-29 10:17:55', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '6b73c84686200456fb8111ebd7173959', '2019-08-12 21:27:51', '2024-03-01 08:46:42', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -548,7 +589,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=406 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=456 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -961,7 +1002,57 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (402, '2024-02-29 17:43:43', '系統管理員', '1', '', 'UPDATE attendance SET `attendanceno` = \'G\',`attendancename` = \'G1\',`week` = \'四\',`ontime` = \'0830\',`latetime` = \'0831\',`resttime1` = \'1200\',`resttime2` = \'1330\',`resttime3` = \'1200\',`resttime4` = \'1330\',`offtime` = \'1800\',`addontime` = \'1801\',`addofftime` = \'1801\',`mealtime` = \'1200\',`worktime` = \'480\',`type` = \'工作日\'  WHERE attendanceid = \'18\';', 'UPDATE', '/jp/web_post.php'),
 (403, '2024-02-29 17:43:43', '系統管理員', '1', '', 'UPDATE attendance SET `attendanceno` = \'G\',`attendancename` = \'G1\',`week` = \'五\',`ontime` = \'0830\',`latetime` = \'0831\',`resttime1` = \'1200\',`resttime2` = \'1330\',`resttime3` = \'1200\',`resttime4` = \'1330\',`offtime` = \'1800\',`addontime` = \'1801\',`addofftime` = \'1801\',`mealtime` = \'1200\',`worktime` = \'480\',`type` = \'工作日\'  WHERE attendanceid = \'19\';', 'UPDATE', '/jp/web_post.php'),
 (404, '2024-02-29 17:43:43', '系統管理員', '1', '', 'UPDATE attendance SET `attendanceno` = \'G\',`attendancename` = \'G1\',`week` = \'六\',`ontime` = \'0830\',`latetime` = \'0831\',`resttime1` = \'1200\',`resttime2` = \'1330\',`resttime3` = \'1200\',`resttime4` = \'1330\',`offtime` = \'1800\',`addontime` = \'1801\',`addofftime` = \'1801\',`mealtime` = \'1200\',`worktime` = \'480\',`type` = \'例假日\'  WHERE attendanceid = \'20\';', 'UPDATE', '/jp/web_post.php'),
-(405, '2024-02-29 17:43:43', '系統管理員', '1', '', 'UPDATE attendance SET `attendanceno` = \'G\',`attendancename` = \'G1\',`week` = \'日\',`ontime` = \'0830\',`latetime` = \'0831\',`resttime1` = \'1200\',`resttime2` = \'1330\',`resttime3` = \'1200\',`resttime4` = \'1330\',`offtime` = \'1800\',`addontime` = \'1801\',`addofftime` = \'1801\',`mealtime` = \'1200\',`worktime` = \'480\',`type` = \'休息日\'  WHERE attendanceid = \'21\';', 'UPDATE', '/jp/web_post.php');
+(405, '2024-02-29 17:43:43', '系統管理員', '1', '', 'UPDATE attendance SET `attendanceno` = \'G\',`attendancename` = \'G1\',`week` = \'日\',`ontime` = \'0830\',`latetime` = \'0831\',`resttime1` = \'1200\',`resttime2` = \'1330\',`resttime3` = \'1200\',`resttime4` = \'1330\',`offtime` = \'1800\',`addontime` = \'1801\',`addofftime` = \'1801\',`mealtime` = \'1200\',`worktime` = \'480\',`type` = \'休息日\'  WHERE attendanceid = \'21\';', 'UPDATE', '/jp/web_post.php'),
+(406, '2024-03-01 08:46:42', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'6b73c84686200456fb8111ebd7173959\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(407, '2024-03-01 08:50:57', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(408, '2024-03-01 09:38:58', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'000\',\'中央信託局\');', 'INSERT', '/jp/web_post.php'),
+(409, '2024-03-01 09:45:54', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'001\',\'中央信託局\');', 'INSERT', '/jp/web_post.php'),
+(410, '2024-03-01 09:46:05', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'003\',\'交通銀行\');', 'INSERT', '/jp/web_post.php'),
+(411, '2024-03-01 09:46:18', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'004\',\'臺灣銀行\');', 'INSERT', '/jp/web_post.php'),
+(412, '2024-03-01 09:47:13', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'005\',\'土地銀行\');', 'INSERT', '/jp/web_post.php'),
+(413, '2024-03-01 09:47:22', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'006\',\'合作金庫\');', 'INSERT', '/jp/web_post.php'),
+(414, '2024-03-01 09:47:34', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'007\',\'第一商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(415, '2024-03-01 09:47:46', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'008\',\'華南商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(416, '2024-03-01 09:47:57', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'009\',\'彰化商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(417, '2024-03-01 09:48:14', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'011\',\'上海商業儲蓄銀行\');', 'INSERT', '/jp/web_post.php'),
+(418, '2024-03-01 09:48:26', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'012\',\'台北富邦銀行\');', 'INSERT', '/jp/web_post.php'),
+(419, '2024-03-01 09:48:41', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'013\',\'國泰世華商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(420, '2024-03-01 09:48:57', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'015\',\'中國輸出入銀行\');', 'INSERT', '/jp/web_post.php'),
+(421, '2024-03-01 09:49:15', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'016\',\'高雄銀行\');', 'INSERT', '/jp/web_post.php'),
+(422, '2024-03-01 09:49:38', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'017\',\'兆豐國際商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(423, '2024-03-01 09:49:59', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'017\',`bankname` = \'1\'  WHERE  bankno = \'017\';', 'UPDATE', '/jp/web_post.php'),
+(424, '2024-03-01 09:50:14', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'017\',`bankname` = \'兆豐國際商業銀行\'  WHERE  bankno = \'017\';', 'UPDATE', '/jp/web_post.php'),
+(425, '2024-03-01 09:53:40', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'017\',`bankname` = \'12\'  WHERE  bankno = \'017\';', 'UPDATE', '/jp/web_post.php'),
+(426, '2024-03-01 09:53:48', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'017\',`bankname` = \'兆豐國際商業銀行\'  WHERE  bankno = \'017\';', 'UPDATE', '/jp/web_post.php'),
+(427, '2024-03-01 09:55:21', '系統管理員', '1', 'Duplicate entry \'017\' for key \'bank.PRIMARY\'', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'017\',\'123\');', 'ERROR', '/jp/web_post.php'),
+(428, '2024-03-01 09:55:25', '系統管理員', '1', 'Duplicate entry \'017\' for key \'bank.PRIMARY\'', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'017\',\'123\');', 'ERROR', '/jp/web_post.php'),
+(429, '2024-03-01 10:41:17', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'017\',`bankname` = \'兆豐國際商業銀行\'  WHERE  bankno = \'017\';', 'UPDATE', '/jp/web_post.php'),
+(430, '2024-03-01 10:41:42', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'021\',\'花旗銀行\');', 'INSERT', '/jp/web_post.php'),
+(431, '2024-03-01 10:52:26', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'040\',\'中華開發工業銀行\');', 'INSERT', '/jp/web_post.php'),
+(432, '2024-03-01 10:52:44', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'048\',\'臺灣工業銀行\');', 'INSERT', '/jp/web_post.php'),
+(433, '2024-03-01 10:53:23', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'050\',\'臺灣中小企業銀行\');', 'INSERT', '/jp/web_post.php'),
+(434, '2024-03-01 10:53:37', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'052\',\'渣打國際商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(435, '2024-03-01 10:53:58', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'053\',\'台中商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(436, '2024-03-01 10:54:13', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'054\',\'京城商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(437, '2024-03-01 10:54:22', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'081\',\'匯豐銀行\');', 'INSERT', '/jp/web_post.php'),
+(438, '2024-03-01 10:54:36', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'101\',\'大台北銀行\');', 'INSERT', '/jp/web_post.php'),
+(439, '2024-03-01 10:54:46', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'102\',\'華泰商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(440, '2024-03-01 10:54:57', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'103\',\'新光商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(441, '2024-03-01 10:55:09', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'108\',\'陽信商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(442, '2024-03-01 10:55:25', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'118\',\'板信商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(443, '2024-03-01 11:03:06', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'147\',\'三信商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(444, '2024-03-01 11:03:45', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'700\',\'中華郵政\');', 'INSERT', '/jp/web_post.php'),
+(445, '2024-03-01 11:04:01', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'803\',\'聯邦商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(446, '2024-03-01 11:04:18', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'805\',\'遠東國際商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(447, '2024-03-01 11:04:32', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'806\',\'元大商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(448, '2024-03-01 11:04:42', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'807\',\'永豐商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(449, '2024-03-01 11:04:55', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'808\',\'玉山商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(450, '2024-03-01 11:05:52', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'809\',\'萬華商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(451, '2024-03-01 11:06:04', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'810\',\'寶華商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(452, '2024-03-01 11:06:19', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'812\',\'台新國際商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(453, '2024-03-01 11:06:28', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'814\',\'大眾商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(454, '2024-03-01 11:06:44', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'815\',\'日盛國際商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(455, '2024-03-01 11:06:53', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'816\',\'安泰商業銀行\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

@@ -707,6 +707,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = "Order By bankno asc";
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
@@ -727,6 +728,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = "Order By educationno asc";
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
@@ -747,6 +749,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = "Order By appno asc";
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
@@ -768,6 +771,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = "Order By partno asc";
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
@@ -788,6 +792,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = "Order By relationno asc";
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
@@ -808,6 +813,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = "Order By reasonno asc";
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
@@ -828,6 +834,7 @@ class Custom
 		} else {
 			$db->Where = "Where 1 = 1";
 		}
+		$db->Order_By = "Order By deductionno asc";
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
