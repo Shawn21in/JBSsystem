@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-01 03:07:17
+-- 產生時間： 2024-03-01 03:19:11
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -259,7 +259,13 @@ CREATE TABLE IF NOT EXISTS `education` (
 --
 
 INSERT INTO `education` (`educationno`, `educationname`) VALUES
-('07', '博士');
+('07', '博士'),
+('01', '小學'),
+('02', '國中'),
+('03', '高中'),
+('04', '二專'),
+('05', '大學'),
+('06', '碩士');
 
 -- --------------------------------------------------------
 
@@ -279,7 +285,15 @@ CREATE TABLE IF NOT EXISTS `family` (
 --
 
 INSERT INTO `family` (`relationno`, `relationship`) VALUES
-('9', '外曾祖父母');
+('9', '外曾祖父母'),
+('1', '配偶'),
+('2', '父母'),
+('3', '子女'),
+('4', '祖父母'),
+('5', '孫子女'),
+('6', '外祖父母'),
+('7', '外孫子女'),
+('8', '曾祖父母');
 
 -- --------------------------------------------------------
 
@@ -387,7 +401,13 @@ CREATE TABLE IF NOT EXISTS `reason` (
 --
 
 INSERT INTO `reason` (`reasonno`, `reason`) VALUES
-('U', '喪失健保資格');
+('U', '喪失健保資格'),
+('M', '死亡'),
+('B', '眷屬轉換單位'),
+('C', '其他'),
+('E', '失蹤'),
+('I', '受刑'),
+('R', '堃');
 
 -- --------------------------------------------------------
 
@@ -589,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=456 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=489 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1052,7 +1072,40 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (452, '2024-03-01 11:06:19', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'812\',\'台新國際商業銀行\');', 'INSERT', '/jp/web_post.php'),
 (453, '2024-03-01 11:06:28', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'814\',\'大眾商業銀行\');', 'INSERT', '/jp/web_post.php'),
 (454, '2024-03-01 11:06:44', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'815\',\'日盛國際商業銀行\');', 'INSERT', '/jp/web_post.php'),
-(455, '2024-03-01 11:06:53', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'816\',\'安泰商業銀行\');', 'INSERT', '/jp/web_post.php');
+(455, '2024-03-01 11:06:53', '系統管理員', '1', '', 'INSERT INTO bank (`bankno`,`bankname`) VALUES (\'816\',\'安泰商業銀行\');', 'INSERT', '/jp/web_post.php'),
+(456, '2024-03-01 11:10:07', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'01\',\'小學\');', 'INSERT', '/jp/web_post.php'),
+(457, '2024-03-01 11:10:14', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'02\',\'國中\');', 'INSERT', '/jp/web_post.php'),
+(458, '2024-03-01 11:10:24', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'03\',\'高中\');', 'INSERT', '/jp/web_post.php'),
+(459, '2024-03-01 11:12:20', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'04\',\'二專\');', 'INSERT', '/jp/web_post.php'),
+(460, '2024-03-01 11:12:30', '系統管理員', '1', '', 'UPDATE education SET `educationno` = \'06\',`educationname` = \'小學\'  WHERE  educationno = \'01\';', 'UPDATE', '/jp/web_post.php'),
+(461, '2024-03-01 11:12:38', '系統管理員', '1', 'Duplicate entry \'02\' for key \'education.PRIMARY\'', 'UPDATE education SET `educationno` = \'02\',`educationname` = \'小學\'  WHERE  educationno = \'06\';', 'ERROR', '/jp/web_post.php'),
+(462, '2024-03-01 11:12:46', '系統管理員', '1', '', 'UPDATE education SET `educationno` = \'01\',`educationname` = \'小學\'  WHERE  educationno = \'06\';', 'UPDATE', '/jp/web_post.php'),
+(463, '2024-03-01 11:12:54', '系統管理員', '1', 'Duplicate entry \'04\' for key \'education.PRIMARY\'', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'04\',\'大學\');', 'ERROR', '/jp/web_post.php'),
+(464, '2024-03-01 11:12:57', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'05\',\'大學\');', 'INSERT', '/jp/web_post.php'),
+(465, '2024-03-01 11:13:08', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'06\',\'碩士\');', 'INSERT', '/jp/web_post.php'),
+(466, '2024-03-01 11:13:10', '系統管理員', '1', '', 'DELETE FROM education  WHERE  educationno = \'01\';', 'DELETE', '/jp/web_post.php'),
+(467, '2024-03-01 11:13:22', '系統管理員', '1', '', 'INSERT INTO education (`educationno`,`educationname`) VALUES (\'01\',\'小學\');', 'INSERT', '/jp/web_post.php'),
+(468, '2024-03-01 11:13:52', '系統管理員', '1', 'Duplicate entry \'U\' for key \'reason.PRIMARY\'', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'U\',\'123\');', 'ERROR', '/jp/web_post.php'),
+(469, '2024-03-01 11:14:00', '系統管理員', '1', 'Duplicate entry \'U\' for key \'reason.PRIMARY\'', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'U\',\'死亡\');', 'ERROR', '/jp/web_post.php'),
+(470, '2024-03-01 11:14:03', '系統管理員', '1', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'M\',\'死亡\');', 'INSERT', '/jp/web_post.php'),
+(471, '2024-03-01 11:14:13', '系統管理員', '1', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'B\',\'眷屬轉換單位\');', 'INSERT', '/jp/web_post.php'),
+(472, '2024-03-01 11:14:20', '系統管理員', '1', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'C\',\'其他\');', 'INSERT', '/jp/web_post.php'),
+(473, '2024-03-01 11:14:28', '系統管理員', '1', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'E\',\'失蹤\');', 'INSERT', '/jp/web_post.php'),
+(474, '2024-03-01 11:14:37', '系統管理員', '1', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'I\',\'受刑\');', 'INSERT', '/jp/web_post.php'),
+(475, '2024-03-01 11:14:57', '系統管理員', '1', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'R\',\'堃\');', 'INSERT', '/jp/web_post.php'),
+(476, '2024-03-01 11:15:02', '系統管理員', '1', '', 'DELETE FROM reason  WHERE  reasonno = \'I\';', 'DELETE', '/jp/web_post.php'),
+(477, '2024-03-01 11:15:10', '系統管理員', '1', '', 'INSERT INTO reason (`reasonno`,`reason`) VALUES (\'I\',\'受刑\');', 'INSERT', '/jp/web_post.php'),
+(478, '2024-03-01 11:15:15', '系統管理員', '1', 'Duplicate entry \'C\' for key \'reason.PRIMARY\'', 'UPDATE reason SET `reasonno` = \'C\',`reason` = \'眷屬轉換單位\'  WHERE  reasonno = \'B\';', 'ERROR', '/jp/web_post.php'),
+(479, '2024-03-01 11:15:17', '系統管理員', '1', '', 'UPDATE reason SET `reasonno` = \'B\',`reason` = \'眷屬轉換單位\'  WHERE  reasonno = \'B\';', 'UPDATE', '/jp/web_post.php'),
+(480, '2024-03-01 11:16:49', '系統管理員', '1', '', 'UPDATE reason SET `reasonno` = \'M\',`reason` = \'死亡\'  WHERE  reasonno = \'M\';', 'UPDATE', '/jp/web_post.php'),
+(481, '2024-03-01 11:17:13', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'1\',\'配偶\');', 'INSERT', '/jp/web_post.php'),
+(482, '2024-03-01 11:17:20', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'2\',\'父母\');', 'INSERT', '/jp/web_post.php'),
+(483, '2024-03-01 11:17:29', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'3\',\'子女\');', 'INSERT', '/jp/web_post.php'),
+(484, '2024-03-01 11:17:37', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'4\',\'祖父母\');', 'INSERT', '/jp/web_post.php'),
+(485, '2024-03-01 11:17:44', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'5\',\'孫子女\');', 'INSERT', '/jp/web_post.php'),
+(486, '2024-03-01 11:17:51', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'6\',\'外祖父母\');', 'INSERT', '/jp/web_post.php'),
+(487, '2024-03-01 11:18:00', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'7\',\'外孫子女\');', 'INSERT', '/jp/web_post.php'),
+(488, '2024-03-01 11:18:08', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'8\',\'曾祖父母\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
