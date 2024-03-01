@@ -22,7 +22,7 @@ $bank = $CM->GET_SECLAB1_DATA();
     var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
-  <script src="js/m_labor.js"></script>
+  <script src="js/member/labor.js"></script>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">

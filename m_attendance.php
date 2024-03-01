@@ -37,7 +37,7 @@ if (empty($attendanceno)) { //判斷是否為編輯模式
   </script>
   <?php include('m_head.php'); ?>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  <script src="js/m_attendance.js"></script>
+  <script src="js/member/attendance.js"></script>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">

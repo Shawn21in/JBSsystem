@@ -22,7 +22,7 @@ $attendance_list = $CM->GET_ATTENDANCE_LIST();
     var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
-  <script type="text/javascript" src="js/searchbox.js"></script>
+  <script type="text/javascript" src="js/member/searchbox.js"></script>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">

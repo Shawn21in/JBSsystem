@@ -19,7 +19,7 @@ $comp = GET_COMP_DATA();
     var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
-  <script src="js/m_profile.js"></script>
+  <script src="js/member/profile.js"></script>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">

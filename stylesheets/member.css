@@ -29,6 +29,8 @@
   justify-content: space-between;
 }
 
+/* ------seclab、purchaser-------- */
+
 .invisible_table {
   display: none;
 }
@@ -41,7 +43,21 @@
   width: 100%;
 }
 
+/* ------attendance-------- */
 .table-scroll {
   overflow-x: scroll;
   cursor: grab;
+}
+
+/* ------holiday-------- */
+.niandu-group {
+  display: flex;
+}
+
+#ensure {
+  width: 9rem;
+}
+
+.fit_container {
+  width: fit-content;
 }
