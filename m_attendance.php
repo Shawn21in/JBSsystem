@@ -121,16 +121,16 @@ if (empty($attendanceno)) { //判斷是否為編輯模式
                                   <input class="form-control" name="attendanceid[]" type="hidden" value="<?= $attendance[$key - 1]['attendanceid'] ?>">
                                   <input class="form-control" name="week[]" type="hidden" value="<?= $value ?>">
                                 </td>
-                                <td><input class="form-control" name="ontime[]" type="time" value="<?= substr_replace($attendance[$key - 1]['ontime'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="latetime[]" type="time" value="<?= substr_replace($attendance[$key - 1]['latetime'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="resttime1[]" type="time" value="<?= substr_replace($attendance[$key - 1]['resttime1'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="resttime2[]" type="time" value="<?= substr_replace($attendance[$key - 1]['resttime2'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="resttime3[]" type="time" value="<?= substr_replace($attendance[$key - 1]['resttime3'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="resttime4[]" type="time" value="<?= substr_replace($attendance[$key - 1]['resttime4'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="offtime[]" type="time" value="<?= substr_replace($attendance[$key - 1]['offtime'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="addontime[]" type="time" value="<?= substr_replace($attendance[$key - 1]['addontime'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="addofftime[]" type="time" value="<?= substr_replace($attendance[$key - 1]['addofftime'], ':', 2, 0) ?>"></td>
-                                <td><input class="form-control" name="mealtime[]" type="time" value="<?= substr_replace($attendance[$key - 1]['mealtime'], ':', 2, 0) ?>"></td>
+                                <td><input class="form-control" name="ontime[]" type="time" value="<?= !empty($attendance[$key - 1]['ontime']) ? substr_replace($attendance[$key - 1]['ontime'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="latetime[]" type="time" value="<?= !empty($attendance[$key - 1]['latetime']) ? substr_replace($attendance[$key - 1]['latetime'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="resttime1[]" type="time" value="<?= !empty($attendance[$key - 1]['resttime1']) ? substr_replace($attendance[$key - 1]['resttime1'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="resttime2[]" type="time" value="<?= !empty($attendance[$key - 1]['resttime2']) ? substr_replace($attendance[$key - 1]['resttime2'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="resttime3[]" type="time" value="<?= !empty($attendance[$key - 1]['resttime3']) ? substr_replace($attendance[$key - 1]['resttime3'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="resttime4[]" type="time" value="<?= !empty($attendance[$key - 1]['resttime4']) ? substr_replace($attendance[$key - 1]['resttime4'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="offtime[]" type="time" value="<?= !empty($attendance[$key - 1]['offtime']) ? substr_replace($attendance[$key - 1]['offtime'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="addontime[]" type="time" value="<?= !empty($attendance[$key - 1]['addontime']) ? substr_replace($attendance[$key - 1]['addontime'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="addofftime[]" type="time" value="<?= !empty($attendance[$key - 1]['addofftime']) ? substr_replace($attendance[$key - 1]['addofftime'], ':', 2, 0) : '' ?>"></td>
+                                <td><input class="form-control" name="mealtime[]" type="time" value="<?= !empty($attendance[$key - 1]['mealtime']) ? substr_replace($attendance[$key - 1]['mealtime'], ':', 2, 0) : '' ?>"></td>
                                 <td><input class="form-control" name="worktime[]" type="text" style="width:unset" oninput="value=value.replace(/[^0-9]/g,'')" value="<?= $attendance[$key - 1]['worktime'] ?>"></td>
                                 <td>
                                   <select class="form-control" name="daytype[]" style="width:unset">
