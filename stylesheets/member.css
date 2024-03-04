@@ -58,6 +58,10 @@
   width: 9rem;
 }
 
+#autoimpBtn {
+  float: right;
+}
+
 .fit_container {
   width: fit-content;
 }

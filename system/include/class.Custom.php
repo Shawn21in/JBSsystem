@@ -884,7 +884,11 @@ class Custom
 		}
 		return $rs;
 	}
-	//--班別設定
+	/**
+	 * 班別列表
+	 *
+	 * @return array 
+	 */
 	function GET_ATTENDANCE_LIST()
 	{
 
@@ -902,19 +906,65 @@ class Custom
 		}
 		return $rs;
 	}
-	//--班別設定
-	function GET_ATTENDANCE_DATA($id = '')
+	/**
+	 * 班別設定
+	 * @param integer   $id 班別編號
+	 *
+	 * @return array 
+	 */
+	function GET_ATTENDANCE_DATA($id)
 	{
 
 		$Sheet = "attendance";
 
 		$db = new MySQL();
-		if ($id) {
-			$db->Where = "Where attendanceno = '" . $id . "'";
-		} else {
-			$db->Where = "Where 1 = 1";
-		}
+		$db->Where = "Where attendanceno = '" . $id . "'";
 		$db->Order_By = 'Order By attendanceid asc';
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
+	/**
+	 * 假別列表
+	 *
+	 * @return array 
+	 */
+	function GET_HOLIDAYS_LIST()
+	{
+
+		$Sheet = "holidays";
+
+		$db = new MySQL();
+		$db->Where = "Where 1 = 1";
+		$db->Order_By = 'Order By niandu desc';
+		$db->Group_By = 'Group By niandu';
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
+	/**
+	 * 假別設定
+	 * 
+	 * @param integer   $id 年度
+	 * 
+	 * @return array 
+	 */
+	function GET_HOLIDAYS_DATA($id)
+	{
+
+		$Sheet = "holidays";
+
+		$db = new MySQL();
+		$db->Where = "Where niandu = '" . $id . "'";
+		$db->Order_By = 'Order By niandu asc';
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {

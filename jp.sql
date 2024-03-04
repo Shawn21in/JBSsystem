@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-01 03:19:11
+-- 產生時間： 2024-03-04 09:58:47
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -298,6 +298,63 @@ INSERT INTO `family` (`relationno`, `relationship`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `holidays`
+--
+
+DROP TABLE IF EXISTS `holidays`;
+CREATE TABLE IF NOT EXISTS `holidays` (
+  `holidayid` int NOT NULL AUTO_INCREMENT,
+  `holiday` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期',
+  `holidayName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期名稱',
+  `niandu` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度',
+  `attendanceno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別',
+  `AttendDay` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期型態(國定日、休息日等)',
+  PRIMARY KEY (`holidayid`)
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `holidays`
+--
+
+INSERT INTO `holidays` (`holidayid`, `holiday`, `holidayName`, `niandu`, `attendanceno`, `AttendDay`) VALUES
+(18, '0208', '小年夜', '113', NULL, '休息日'),
+(19, '0209', '農曆除夕', '113', NULL, '休息日'),
+(17, '0101', '開國紀念日', '113', NULL, '休息日'),
+(20, '0210', '春節', '113', NULL, '休息日'),
+(21, '0211', '春節', '113', NULL, '休息日'),
+(22, '0212', '春節', '113', NULL, '休息日'),
+(23, '0213', '補假', '113', NULL, '休息日'),
+(24, '0214', '補假', '113', NULL, '休息日'),
+(25, '0228', '和平紀念日', '113', NULL, '休息日'),
+(26, '0404', '兒童節及民族掃墓節', '113', NULL, '休息日'),
+(27, '0405', '補假', '113', NULL, '休息日'),
+(28, '0610', '端午節', '113', NULL, '休息日'),
+(29, '0917', '中秋節', '113', NULL, '休息日'),
+(30, '1010', '國慶日', '113', NULL, '休息日'),
+(31, '0101', '開國紀念日', '112', NULL, '休息日'),
+(32, '0102', '補假', '112', NULL, '休息日'),
+(33, '0120', '小年夜', '112', NULL, '休息日'),
+(34, '0121', '農曆除夕', '112', NULL, '休息日'),
+(35, '0122', '春節', '112', NULL, '休息日'),
+(36, '0123', '春節', '112', NULL, '休息日'),
+(37, '0124', '春節', '112', NULL, '休息日'),
+(38, '0125', '補假', '112', NULL, '休息日'),
+(39, '0126', '補假', '112', NULL, '休息日'),
+(40, '0127', '調整放假', '112', NULL, '休息日'),
+(41, '0227', '調整放假', '112', NULL, '休息日'),
+(42, '0228', '和平紀念日', '112', NULL, '休息日'),
+(43, '0403', '調整放假', '112', NULL, '休息日'),
+(44, '0404', '兒童節', '112', NULL, '休息日'),
+(45, '0405', '民族掃墓節', '112', NULL, '休息日'),
+(46, '0622', '端午節', '112', NULL, '休息日'),
+(47, '0623', '調整放假', '112', NULL, '休息日'),
+(48, '0929', '中秋節', '112', NULL, '休息日'),
+(49, '1009', '調整放假', '112', NULL, '休息日'),
+(50, '1010', '國慶日', '112', NULL, '休息日');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `jobs`
 --
 
@@ -470,7 +527,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '6b73c84686200456fb8111ebd7173959', '2019-08-12 21:27:51', '2024-03-01 08:46:42', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '35f0fe50c60dff64b8f8a4cc41a473ce', '2019-08-12 21:27:51', '2024-03-04 10:32:08', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -609,7 +666,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=489 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=558 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1105,7 +1162,77 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (485, '2024-03-01 11:17:44', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'5\',\'孫子女\');', 'INSERT', '/jp/web_post.php'),
 (486, '2024-03-01 11:17:51', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'6\',\'外祖父母\');', 'INSERT', '/jp/web_post.php'),
 (487, '2024-03-01 11:18:00', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'7\',\'外孫子女\');', 'INSERT', '/jp/web_post.php'),
-(488, '2024-03-01 11:18:08', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'8\',\'曾祖父母\');', 'INSERT', '/jp/web_post.php');
+(488, '2024-03-01 11:18:08', '系統管理員', '1', '', 'INSERT INTO family (`relationno`,`relationship`) VALUES (\'8\',\'曾祖父母\');', 'INSERT', '/jp/web_post.php'),
+(489, '2024-03-01 14:06:10', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(490, '2024-03-01 17:50:32', '系統管理員', '1', '', 'UPDATE sys_web_option SET `WO_Keywords` = \'\',`WO_Name` = \'JP雲端出勤任意打卡平台\',`WO_Tel` = \'04-23586802\',`WO_Email` = \'bm888@ms39.hinet.net\',`WO_OpenTime` = \'早上10：00~晚上22：00\',`WO_Addr` = \'0\',`WO_Addr1` = \'0\',`WO_Addr2` = \'中工二路120號\'  WHERE Admin_ID = \'2\';', 'UPDATE', '/jp/system/post/SPOST_WOption.php?fun=190812010'),
+(491, '2024-03-01 17:50:55', '系統管理員', '1', '', 'UPDATE sys_web_option SET `WO_Keywords` = \'\',`WO_Title` = \'JP雲端出勤任意打卡平台\',`WO_Url` = \'http://localhost/jp/\',`WO_Description` = \'JP雲端出勤任意打卡平台\',`WO_LineLink` = \'\',`WO_FBLink` = \'https://www.facebook.com/jbscloudbusinesssoftware\',`WO_IGLink` = \'\',`WO_YoutubeLink` = \'\',`WO_GMAP` = \'<iframe src=\\\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.809862072403!2d120.61331897611298!3d24.178400178380745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346915ff68fbd3f3%3A0xd8eaff09a7c70a3d!2zNDA35Y-w5Lit5biC6KW_5bGv5Y2A5Lit5bel5LqM6LevMTIw6Jmf!5e0!3m2!1szh-TW!2stw!4v1694596684280!5m2!1szh-TW!2stw\\\" width=\\\"600\\\" height=\\\"450\\\" style=\\\"border:0;\\\" allowfullscreen=\\\"\\\" loading=\\\"lazy\\\" referrerpolicy=\\\"no-referrer-when-downgrade\\\"></iframe>\',`WO_GMAP_Link` = \'https://goo.gl/maps/25a3Wnv8c69mAT926\',`WO_Open` = \'0\',`WO_Debug` = \'0\'  WHERE Admin_ID = \'2\';', 'UPDATE', '/jp/system/post/SPOST_WOption.php?fun=190812009'),
+(492, '2024-03-04 08:54:50', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(493, '2024-03-04 10:32:08', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'35f0fe50c60dff64b8f8a4cc41a473ce\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(494, '2024-03-04 11:12:47', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0101\',\'Test\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(495, '2024-03-04 11:12:47', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0109\',\'123\',\'例假日\');', 'INSERT', '/jp/web_post.php'),
+(496, '2024-03-04 11:12:47', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0123\',\'test123\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(497, '2024-03-04 14:09:37', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'115\';', 'DELETE', '/jp/web_post.php'),
+(498, '2024-03-04 14:09:37', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0101\',\'Test\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(499, '2024-03-04 14:09:37', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0109\',\'123\',\'例假日\');', 'INSERT', '/jp/web_post.php'),
+(500, '2024-03-04 14:09:37', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0123\',\'test123\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(501, '2024-03-04 14:18:02', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'115\';', 'DELETE', '/jp/web_post.php'),
+(502, '2024-03-04 14:18:02', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0123\',\'test123\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(503, '2024-03-04 14:18:02', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'115\',\'0101\',\'Test\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(504, '2024-03-04 14:19:07', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0101\',\'元旦\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(505, '2024-03-04 14:19:17', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'113\';', 'DELETE', '/jp/web_post.php'),
+(506, '2024-03-04 14:19:17', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0101\',\'元旦\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(507, '2024-03-04 14:22:33', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'113\';', 'DELETE', '/jp/web_post.php'),
+(508, '2024-03-04 14:22:33', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0101\',\'元旦\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(509, '2024-03-04 14:22:33', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0104\',\'測試\',\'例假日\');', 'INSERT', '/jp/web_post.php'),
+(510, '2024-03-04 14:27:41', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'113\';', 'DELETE', '/jp/web_post.php'),
+(511, '2024-03-04 14:27:41', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'1201\',\'元旦\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(512, '2024-03-04 14:27:41', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0104\',\'測試\',\'例假日\');', 'INSERT', '/jp/web_post.php'),
+(513, '2024-03-04 14:28:09', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'113\';', 'DELETE', '/jp/web_post.php'),
+(514, '2024-03-04 14:28:09', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0104\',\'測試\',\'例假日\');', 'INSERT', '/jp/web_post.php'),
+(515, '2024-03-04 14:28:09', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0101\',\'元旦\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(516, '2024-03-04 14:29:39', '系統管理員', '1', 'Unknown column \'niandu\' in \'where clause\'', 'DELETE FROM attendance  WHERE niandu = \'113\';', 'ERROR', '/jp/web_post.php'),
+(517, '2024-03-04 14:35:51', '系統管理員', '1', 'Unknown column \'niandu\' in \'where clause\'', 'DELETE FROM attendance  WHERE niandu = \'115\';', 'ERROR', '/jp/web_post.php'),
+(518, '2024-03-04 14:36:20', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'115\';', 'DELETE', '/jp/web_post.php'),
+(519, '2024-03-04 17:36:18', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'113\';', 'DELETE', '/jp/web_post.php'),
+(520, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0101\',\'開國紀念日\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(521, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0208\',\'小年夜\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(522, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0209\',\'農曆除夕\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(523, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0210\',\'春節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(524, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0211\',\'春節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(525, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0212\',\'春節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(526, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0213\',\'補假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(527, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0214\',\'補假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(528, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0228\',\'和平紀念日\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(529, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0404\',\'兒童節及民族掃墓節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(530, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0405\',\'補假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(531, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0610\',\'端午節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(532, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0917\',\'中秋節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(533, '2024-03-04 17:36:18', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'1010\',\'國慶日\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(534, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0101\',\'開國紀念日\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(535, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0102\',\'補假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(536, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0120\',\'小年夜\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(537, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0121\',\'農曆除夕\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(538, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0122\',\'春節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(539, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0123\',\'春節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(540, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0124\',\'春節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(541, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0125\',\'補假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(542, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0126\',\'補假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(543, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0127\',\'調整放假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(544, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0227\',\'調整放假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(545, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0228\',\'和平紀念日\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(546, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0403\',\'調整放假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(547, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0404\',\'兒童節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(548, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0405\',\'民族掃墓節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(549, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0622\',\'端午節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(550, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0623\',\'調整放假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(551, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0929\',\'中秋節\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(552, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'1009\',\'調整放假\',\'休息日\');', 'INSERT', '/jp/web_post.php'),
+(553, '2024-03-04 17:43:59', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'1010\',\'國慶日\',\'休息日\');', 'INSERT', '/jp/web_post.php');
+INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_COMMENT`, `ML_SQL_CON`, `ML_SQL_EXEC_TYPE`, `ML_EXEC_FILE`) VALUES
+(554, '2024-03-04 17:48:28', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'105\',\'0101\',\'\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(555, '2024-03-04 17:50:06', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'105\';', 'DELETE', '/jp/web_post.php'),
+(556, '2024-03-04 17:50:06', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'105\',\'0101\',\'元旦\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(557, '2024-03-04 17:50:17', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'105\';', 'DELETE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -1494,7 +1621,7 @@ CREATE TABLE IF NOT EXISTS `sys_web_option` (
 
 INSERT INTO `sys_web_option` (`Admin_ID`, `WO_Name`, `WO_Addr`, `WO_Addr1`, `WO_Addr2`, `WO_Tel`, `WO_Tel1`, `WO_Fax`, `WO_Email`, `WO_OpenTime`, `WO_Idn`, `WO_About`, `WO_Privacy`, `WO_Title`, `WO_Url`, `WO_FBLink`, `WO_IGLink`, `WO_LineLink`, `WO_Youtube`, `WO_YoutubeLink`, `WO_Description`, `WO_Keywords`, `WO_GMAP`, `WO_GMAP_Link`, `WO_GAnalytics`, `WO_MapLat`, `WO_MapLng`, `WO_Open`, `WO_Debug`, `WO_StmpHost`, `WO_StmpPort`, `WO_SendName`, `WO_SendEmail`, `WO_StmpAuth`, `WO_StmpAcc`, `WO_StmpPass`, `WO_StmpSecure`, `WO_AddrName`, `WO_AddrEmail`, `WO_MailSubject`, `WO_MailBody`, `WO_Version`, `WO_LOGO`, `WO_LOGO2`, `WO_favicon`, `WO_ShareIcon`, `WO_FooterImg`, `WO_FooterLOGO`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 'smtp.gmail.com', '465', '小明', 'sfb122405@gmail.com', 1, 'b9413077@gmail.com', 'zdiwuwoiliqzvxeo', 'SSL', '王大明', 'sfb122405@gmail.com', '這是gmail測試寄信', '這是gmail測試寄信內容', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Ai2Bi', '0', '0', '中工二路120號', '04-23586802', '', '0', 'bm888@ms39.hinet.net', '早上10：00~晚上22：00', NULL, NULL, '', 'Ai2Bi', 'http://localhost/jp/', 'https://www.facebook.com/jbscloudbusinesssoftware', '', '', NULL, '', 'AI智慧問卷', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.809862072403!2d120.61331897611298!3d24.178400178380745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346915ff68fbd3f3%3A0xd8eaff09a7c70a3d!2zNDA35Y-w5Lit5biC6KW_5bGv5Y2A5Lit5bel5LqM6LevMTIw6Jmf!5e0!3m2!1szh-TW!2stw!4v1694596684280!5m2!1szh-TW!2stw\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'https://goo.gl/maps/25a3Wnv8c69mAT926', NULL, NULL, NULL, 0, 0, 'smtp.gmail.com', '465', 'Ai2Bi', 'sfb122405@gmail.com', 1, 'bmidp888@gmail.com', 'fhgxltgnumjgvnmo', 'SSL', '王大明', 'sfb122405@gmail.com', '這是gmail測試寄信', '這是gmail測試寄信內容', '20201124095325', 'WO_LOGO1694596451.png', 'WO_LOGO21694597050.png', NULL, NULL, 'WO_FooterImg1605163215.jpg', 'WO_FooterLOGO1694596510.png');
+(2, 'JP雲端出勤任意打卡平台', '0', '0', '中工二路120號', '04-23586802', '', '0', 'bm888@ms39.hinet.net', '早上10：00~晚上22：00', NULL, NULL, '', 'JP雲端出勤任意打卡平台', 'http://localhost/jp/', 'https://www.facebook.com/jbscloudbusinesssoftware', '', '', NULL, '', 'JP雲端出勤任意打卡平台', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.809862072403!2d120.61331897611298!3d24.178400178380745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346915ff68fbd3f3%3A0xd8eaff09a7c70a3d!2zNDA35Y-w5Lit5biC6KW_5bGv5Y2A5Lit5bel5LqM6LevMTIw6Jmf!5e0!3m2!1szh-TW!2stw!4v1694596684280!5m2!1szh-TW!2stw\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'https://goo.gl/maps/25a3Wnv8c69mAT926', NULL, NULL, NULL, 0, 0, 'smtp.gmail.com', '465', 'Ai2Bi', 'sfb122405@gmail.com', 1, 'bmidp888@gmail.com', 'fhgxltgnumjgvnmo', 'SSL', '王大明', 'sfb122405@gmail.com', '這是gmail測試寄信', '這是gmail測試寄信內容', '20201124095325', 'WO_LOGO1694596451.png', 'WO_LOGO21694597050.png', NULL, NULL, 'WO_FooterImg1605163215.jpg', 'WO_FooterLOGO1694596510.png');
 
 -- --------------------------------------------------------
 

@@ -115,6 +115,7 @@ if ($website_open) {
 	$deduction_db 	= 'deduction';
 	$seclab1_db 	= 'seclab1';
 	$purchaser1_db 	= 'purchaser1';
+	$holidays_db 	= 'holidays';
 
 
 	//經銷商代號

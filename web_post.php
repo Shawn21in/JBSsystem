@@ -1100,6 +1100,111 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "holidays_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['niandu'] 		= Intval($_POST['niandu']);
+			$Value['holiday'] 		= $_POST['holiday'];
+			$Value['holidayName'] 		= $_POST['holidayName'];
+			$Value['AttendDay'] 		= $_POST['AttendDay'];
+			$len = count($_POST['holiday']);
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$Value['holidayid'] 		= $_POST['holidayid']; //若是編輯已有的資料，該欄位回傳不會是空值
+				$Value['origin_niandu'] 		= $_POST['origin_niandu']; //若是編輯已有的資料，該欄位回傳不會是空值
+				if ($Value['origin_niandu']) {
+					if ($Value['origin_niandu'] != $Value['niandu']) {
+						$db->Where = " WHERE niandu = '" . $Value['niandu'] . "'";
+						$db->query_sql($holidays_db, '*');
+						if ($row = $db->query_fetch()) {
+							$_html_msg 	= '假別編號已存在，請更換一個後再儲存';
+							break;
+						}
+					}
+					$db->Where = " WHERE niandu = '" . $Value['niandu'] . "'";
+					$db->query_delete($holidays_db);
+				} else {
+					$db->Where = " WHERE niandu = '" . $Value['niandu'] . "'";
+					$db->query_sql($holidays_db, '*');
+					if ($row = $db->query_fetch()) {
+						$_html_msg 	= '假別編號已存在，請更換一個後再儲存';
+						break;
+					}
+				}
+				for ($i = 0; $i < $len; $i++) {
+					$holidays_data = array(
+						'niandu'					=> $Value['niandu'],
+						'holiday' 					=> date("md", strtotime($_POST['holiday'][$i])),
+						'holidayName' 				=> $Value['holidayName'][$i],
+						'AttendDay' 					=> $Value['AttendDay'][$i],
+					);
+					$db->query_data($holidays_db, $holidays_data, 'INSERT');
+				}
+				if ($Value['origin_niandu']) {
+					if (!empty($db->Error)) {
+						$_html_msg 	= '儲存失敗，請重新整理後再試試';
+					} else {
+						$_html_msg 	= '儲存成功！';
+						$_html_href = "m_holidays.php?c=" . OEncrypt('v=' . $Value['niandu'], 'holidays');
+					}
+				} else {
+					if (!empty($db->Error)) {
+						$_html_msg 	= '新增失敗，請重新整理後再試試';
+					} else {
+						$_html_msg 	= '新增成功！';
+						$_html_eval = 'Reload();';
+					}
+				}
+			}
+			break;
+		case "holidays_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['niandu'] 		= GDC($_POST['niandu'], 'holidays')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE niandu = '" . $Value['niandu'] . "'";
+				$db->query_delete($holidays_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {
