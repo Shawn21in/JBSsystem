@@ -116,14 +116,14 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-2">
                               <div class="form-group">
                                 <label for="cono">公司編號 *</label>
-                                <input type="text" data-name="公司編號" class="form-control" name="cono" id="cono" value="<?= $comp['cono'] ?>" placeholder="Ex:01" required>
+                                <input type="text" data-name="公司編號" class="form-control" name="cono" id="cono" maxlength="2" value="<?= $comp['cono'] ?>" placeholder="Ex:01" required>
                               </div>
                             </div>
 
                             <div class="col-lg-10">
                               <div class="form-group">
                                 <label for="coname2">公司名稱 *</label>
-                                <input type="text" data-name="公司名稱" class="form-control" name="coname2" id="coname2" value="<?= $comp['coname2'] ?>" placeholder="Ex:庫點子文創資訊產業有限公司" required>
+                                <input type="text" data-name="公司名稱" class="form-control" name="coname2" id="coname2" maxlength="50" value="<?= $comp['coname2'] ?>" placeholder="Ex:庫點子文創資訊產業有限公司" required>
                                 <span class="d-block mt-1">請輸入公司全名。</span>
                               </div>
                             </div>
@@ -134,13 +134,13 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="coname1">公司簡號 *</label>
-                                <input type="text" data-name="公司簡號" class="form-control" name="coname1" id="coname1" value="<?= $comp['coname1'] ?>" placeholder="Ex:庫點子" required>
+                                <input type="text" data-name="公司簡號" class="form-control" name="coname1" id="coname1" maxlength="10" value="<?= $comp['coname1'] ?>" placeholder="Ex:庫點子" required>
                               </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="coper">負責人 *</label>
-                                <input type="text" data-name="負責人" class="form-control" name="coper" id="coper" value="<?= $comp['coper'] ?>" placeholder="Ex:廖石龍" required>
+                                <input type="text" data-name="負責人" class="form-control" name="coper" id="coper" maxlength="10" value="<?= $comp['coper'] ?>" placeholder="Ex:廖石龍" required>
                               </div>
                             </div>
                           </div>
@@ -149,13 +149,13 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="couno">統編 *</label>
-                                <input type="text" data-name="統編" class="form-control" name="couno" id="couno" value="<?= $comp['couno'] ?>" placeholder="Ex:0423586802" required>
+                                <input type="text" data-name="統編" class="form-control" name="couno" id="couno" maxlength="8" value="<?= $comp['couno'] ?>" placeholder="Ex:0423586802" required>
                               </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="coemail">電子信箱 *</label>
-                                <input type="email" data-name="電子信箱" class="form-control" name="coemail" id="coemail" value="<?= $comp['coemail'] ?>" placeholder="Ex:bmidp888@gmail.com" required>
+                                <input type="email" data-name="電子信箱" class="form-control" name="coemail" id="coemail" maxlength="68" value="<?= $comp['coemail'] ?>" placeholder="Ex:bmidp888@gmail.com" required>
                               </div>
                             </div>
                           </div>
@@ -164,47 +164,47 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="cotel1">公司電話 *</label>
-                                <input type="text" data-name="公司電話" class="form-control" name="cotel1" id="cotel1" value="<?= $comp['cotel1'] ?>" placeholder="Ex:0423586802" required>
+                                <input type="text" data-name="公司電話" class="form-control" name="cotel1" id="cotel1" maxlength="20" value="<?= $comp['cotel1'] ?>" placeholder="Ex:0423586802" required>
                               </div>
                             </div>
 
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="cofax1">公司傳真 *</label>
-                                <input type="text" data-name="公司傳真" class="form-control" name="cofax1" id="cofax1" value="<?= $comp['cofax1'] ?>" placeholder="Ex:0423586807" required>
+                                <input type="text" data-name="公司傳真" class="form-control" name="cofax1" id="cofax1" maxlength="20" value="<?= $comp['cofax1'] ?>" placeholder="Ex:0423586807" required>
                               </div>
                             </div>
                           </div>
 
                           <div class="form-group mb-4">
                             <label for="coaddr1">地址 *</label>
-                            <input type="text" data-name="地址" class="form-control" name="coaddr1" id="coaddr1" value="<?= $comp['coaddr1'] ?>" placeholder="Ex: 407台中市西屯區中工二路120號" required>
+                            <input type="text" data-name="地址" class="form-control" name="coaddr1" id="coaddr1" maxlength="60" value="<?= $comp['coaddr1'] ?>" placeholder="Ex: 407台中市西屯區中工二路120號" required>
                           </div>
 
                           <div class="row mb-2">
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="laobaono">勞保投保代號 *</label>
-                                <input type="text" data-name="勞保投保代號" class="form-control" name="laobaono" id="laobaono" value="<?= $comp['laobaono'] ?>" placeholder="Ex:1234" required>
+                                <input type="text" data-name="勞保投保代號" class="form-control" name="laobaono" id="laobaono" maxlength="10" value="<?= $comp['laobaono'] ?>" placeholder="Ex:1234" required>
                               </div>
                             </div>
 
                             <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="jianbaono">健保投保代號 *</label>
-                                <input type="text" data-name="健保投保代號" class="form-control" name="jianbaono" id="jianbaono" value="<?= $comp['jianbaono'] ?>" placeholder="Ex:1234" required>
+                                <input type="text" data-name="健保投保代號" class="form-control" name="jianbaono" id="jianbaono" maxlength="10" value="<?= $comp['jianbaono'] ?>" placeholder="Ex:1234" required>
                               </div>
                             </div>
                           </div>
 
                           <div class="form-group mb-4">
                             <label for="cowww">網路地址</label>
-                            <input type="text" data-name="網路地址" class="form-control" name="cowww" id="cowww" value="<?= $comp['cowww'] ?>" placeholder="Ex:https://www.bm888.com.tw/">
+                            <input type="text" data-name="網路地址" class="form-control" name="cowww" id="cowww" maxlength="68" value="<?= $comp['cowww'] ?>" placeholder="Ex:https://www.bm888.com.tw/">
                           </div>
 
                           <div class="form-group mb-4">
                             <label for="comemo1">備註</label>
-                            <input type="text" data-name="備註" class="form-control" name="comemo1" id="comemo1" value="<?= $comp['comemo1'] ?>" placeholder="Ex:">
+                            <input type="text" data-name="備註" class="form-control" name="comemo1" id="comemo1" maxlength="68" value="<?= $comp['comemo1'] ?>" placeholder="Ex:">
                           </div>
                           <!-- <div class="form-group mb-4">
                             <label for="email">Email</label>

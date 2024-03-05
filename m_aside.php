@@ -72,6 +72,11 @@
                                     <span class="nav-text">國定假日設定</span>
                                 </a>
                             </li>
+                            <li class="" data-no="employee">
+                                <a class="sidenav-item-link" href="m_employee.php">
+                                    <span class="nav-text">員工基本資料</span>
+                                </a>
+                            </li>
                         </div>
                     </ul>
                 </li>
