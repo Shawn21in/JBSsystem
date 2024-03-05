@@ -964,7 +964,7 @@ class Custom
 
 		$db = new MySQL();
 		$db->Where = "Where niandu = '" . $id . "'";
-		$db->Order_By = 'Order By niandu asc';
+		$db->Order_By = 'Order By holiday asc';
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {

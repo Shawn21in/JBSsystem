@@ -5,7 +5,7 @@ if (!$_Login) {
   exit;
 }
 
-$_Title = '員工班別設定';
+$_Title = '國定假日設定';
 
 $_No = 'holidays';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
@@ -73,7 +73,7 @@ if (empty($niandu)) { //判斷是否為編輯模式
               <div class="col-lg-12">
                 <div class="card card-default">
                   <div class="card-header card-header-border-bottom">
-                    <h2>員工假別設定</h2>
+                    <h2>國定假日設定</h2>
                     <button type="button" class="btn btn-success mb-2 btn-pill mr-2" onclick="location.href='m_holidayslist.php'">查看所有假別</button>
                   </div>
                   <div class="card-body">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-04 09:58:47
+-- 產生時間： 2024-03-05 05:37:50
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -310,47 +310,71 @@ CREATE TABLE IF NOT EXISTS `holidays` (
   `attendanceno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別',
   `AttendDay` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期型態(國定日、休息日等)',
   PRIMARY KEY (`holidayid`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `holidays`
 --
 
 INSERT INTO `holidays` (`holidayid`, `holiday`, `holidayName`, `niandu`, `attendanceno`, `AttendDay`) VALUES
-(18, '0208', '小年夜', '113', NULL, '休息日'),
-(19, '0209', '農曆除夕', '113', NULL, '休息日'),
-(17, '0101', '開國紀念日', '113', NULL, '休息日'),
-(20, '0210', '春節', '113', NULL, '休息日'),
-(21, '0211', '春節', '113', NULL, '休息日'),
-(22, '0212', '春節', '113', NULL, '休息日'),
-(23, '0213', '補假', '113', NULL, '休息日'),
-(24, '0214', '補假', '113', NULL, '休息日'),
-(25, '0228', '和平紀念日', '113', NULL, '休息日'),
-(26, '0404', '兒童節及民族掃墓節', '113', NULL, '休息日'),
-(27, '0405', '補假', '113', NULL, '休息日'),
-(28, '0610', '端午節', '113', NULL, '休息日'),
-(29, '0917', '中秋節', '113', NULL, '休息日'),
-(30, '1010', '國慶日', '113', NULL, '休息日'),
-(31, '0101', '開國紀念日', '112', NULL, '休息日'),
-(32, '0102', '補假', '112', NULL, '休息日'),
-(33, '0120', '小年夜', '112', NULL, '休息日'),
-(34, '0121', '農曆除夕', '112', NULL, '休息日'),
-(35, '0122', '春節', '112', NULL, '休息日'),
-(36, '0123', '春節', '112', NULL, '休息日'),
-(37, '0124', '春節', '112', NULL, '休息日'),
-(38, '0125', '補假', '112', NULL, '休息日'),
-(39, '0126', '補假', '112', NULL, '休息日'),
-(40, '0127', '調整放假', '112', NULL, '休息日'),
-(41, '0227', '調整放假', '112', NULL, '休息日'),
-(42, '0228', '和平紀念日', '112', NULL, '休息日'),
-(43, '0403', '調整放假', '112', NULL, '休息日'),
-(44, '0404', '兒童節', '112', NULL, '休息日'),
-(45, '0405', '民族掃墓節', '112', NULL, '休息日'),
-(46, '0622', '端午節', '112', NULL, '休息日'),
-(47, '0623', '調整放假', '112', NULL, '休息日'),
-(48, '0929', '中秋節', '112', NULL, '休息日'),
-(49, '1009', '調整放假', '112', NULL, '休息日'),
-(50, '1010', '國慶日', '112', NULL, '休息日');
+(77, '0228', '和平紀念日', '113', NULL, '國定日'),
+(78, '0404', '兒童節及民族掃墓節', '113', NULL, '國定日'),
+(76, '0217', '補行上班', '113', NULL, '工作日'),
+(75, '0214', '補假', '113', NULL, '國定日'),
+(74, '0213', '補假', '113', NULL, '國定日'),
+(73, '0212', '春節', '113', NULL, '國定日'),
+(72, '0211', '春節', '113', NULL, '國定日'),
+(71, '0210', '春節', '113', NULL, '國定日'),
+(70, '0209', '農曆除夕', '113', NULL, '國定日'),
+(69, '0208', '小年夜', '113', NULL, '國定日'),
+(68, '0101', '開國紀念日', '113', NULL, '國定日'),
+(98, '0228', '和平紀念日', '112', NULL, '國定日'),
+(97, '0227', '調整放假', '112', NULL, '國定日'),
+(96, '0218', '補行上班', '112', NULL, '工作日'),
+(95, '0204', '補行上班', '112', NULL, '工作日'),
+(94, '0127', '調整放假', '112', NULL, '國定日'),
+(93, '0126', '補假', '112', NULL, '國定日'),
+(92, '0125', '補假', '112', NULL, '國定日'),
+(91, '0124', '春節', '112', NULL, '國定日'),
+(90, '0123', '春節', '112', NULL, '國定日'),
+(89, '0122', '春節', '112', NULL, '國定日'),
+(88, '0121', '農曆除夕', '112', NULL, '國定日'),
+(87, '0120', '小年夜', '112', NULL, '國定日'),
+(86, '0107', '補行上班', '112', NULL, '工作日'),
+(85, '0102', '補假', '112', NULL, '國定日'),
+(84, '0101', '開國紀念日', '112', NULL, '國定日'),
+(53, '0101', '開國紀念日', '111', NULL, '國定日'),
+(54, '0122', '補行上班', '111', NULL, '工作日'),
+(55, '0131', '農曆除夕', '111', NULL, '國定日'),
+(56, '0201', '春節', '111', NULL, '國定日'),
+(57, '0202', '春節', '111', NULL, '國定日'),
+(58, '0203', '春節', '111', NULL, '國定日'),
+(59, '0204', '調整放假', '111', NULL, '國定日'),
+(60, '0228', '和平紀念日', '111', NULL, '國定日'),
+(61, '0404', '兒童節', '111', NULL, '國定日'),
+(62, '0405', '民族掃墓節', '111', NULL, '國定日'),
+(63, '0603', '端午節', '111', NULL, '國定日'),
+(64, '0909', '補假', '111', NULL, '國定日'),
+(65, '0910', '中秋節', '111', NULL, '國定日'),
+(66, '1010', '國慶日', '111', NULL, '國定日'),
+(67, '0501', '勞動節', '111', NULL, '國定日'),
+(79, '0405', '補假', '113', NULL, '國定日'),
+(80, '0610', '端午節', '113', NULL, '國定日'),
+(81, '0917', '中秋節', '113', NULL, '國定日'),
+(82, '1010', '國慶日', '113', NULL, '國定日'),
+(83, '0501', '勞動節', '113', NULL, '國定日'),
+(99, '0325', '補行上班', '112', NULL, '工作日'),
+(100, '0403', '調整放假', '112', NULL, '國定日'),
+(101, '0404', '兒童節', '112', NULL, '國定日'),
+(102, '0405', '民族掃墓節', '112', NULL, '國定日'),
+(103, '0617', '補行上班', '112', NULL, '工作日'),
+(104, '0622', '端午節', '112', NULL, '國定日'),
+(105, '0623', '調整放假', '112', NULL, '國定日'),
+(106, '0923', '補行上班', '112', NULL, '工作日'),
+(107, '0929', '中秋節', '112', NULL, '國定日'),
+(108, '1009', '調整放假', '112', NULL, '國定日'),
+(109, '1010', '國慶日', '112', NULL, '國定日'),
+(110, '0501', '勞動節', '112', NULL, '國定日');
 
 -- --------------------------------------------------------
 
@@ -527,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '35f0fe50c60dff64b8f8a4cc41a473ce', '2019-08-12 21:27:51', '2024-03-04 10:32:08', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '5de5d0007c762a77a203093e0803b2b7', '2019-08-12 21:27:51', '2024-03-05 08:47:21', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -666,7 +690,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=558 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=620 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1232,7 +1256,69 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (554, '2024-03-04 17:48:28', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'105\',\'0101\',\'\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
 (555, '2024-03-04 17:50:06', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'105\';', 'DELETE', '/jp/web_post.php'),
 (556, '2024-03-04 17:50:06', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'105\',\'0101\',\'元旦\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
-(557, '2024-03-04 17:50:17', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'105\';', 'DELETE', '/jp/web_post.php');
+(557, '2024-03-04 17:50:17', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'105\';', 'DELETE', '/jp/web_post.php'),
+(558, '2024-03-05 08:47:21', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'5de5d0007c762a77a203093e0803b2b7\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(559, '2024-03-05 08:57:49', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(560, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0101\',\'開國紀念日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(561, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0122\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(562, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0131\',\'農曆除夕\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(563, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0201\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(564, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0202\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(565, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0203\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(566, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0204\',\'調整放假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(567, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0228\',\'和平紀念日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(568, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0404\',\'兒童節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(569, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0405\',\'民族掃墓節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(570, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0603\',\'端午節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(571, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0909\',\'補假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(572, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0910\',\'中秋節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(573, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'1010\',\'國慶日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(574, '2024-03-05 11:25:56', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'111\',\'0501\',\'勞動節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(575, '2024-03-05 11:28:30', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'113\';', 'DELETE', '/jp/web_post.php'),
+(576, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0101\',\'開國紀念日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(577, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0208\',\'小年夜\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(578, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0209\',\'農曆除夕\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(579, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0210\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(580, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0211\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(581, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0212\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(582, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0213\',\'補假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(583, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0214\',\'補假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(584, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0217\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(585, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0228\',\'和平紀念日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(586, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0404\',\'兒童節及民族掃墓節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(587, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0405\',\'補假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(588, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0610\',\'端午節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(589, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0917\',\'中秋節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(590, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'1010\',\'國慶日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(591, '2024-03-05 11:28:30', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'113\',\'0501\',\'勞動節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(592, '2024-03-05 11:29:52', '系統管理員', '1', '', 'DELETE FROM holidays  WHERE niandu = \'112\';', 'DELETE', '/jp/web_post.php'),
+(593, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0101\',\'開國紀念日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(594, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0102\',\'補假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(595, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0107\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(596, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0120\',\'小年夜\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(597, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0121\',\'農曆除夕\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(598, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0122\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(599, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0123\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(600, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0124\',\'春節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(601, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0125\',\'補假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(602, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0126\',\'補假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(603, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0127\',\'調整放假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(604, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0204\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(605, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0218\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(606, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0227\',\'調整放假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(607, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0228\',\'和平紀念日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(608, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0325\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(609, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0403\',\'調整放假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(610, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0404\',\'兒童節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(611, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0405\',\'民族掃墓節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(612, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0617\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(613, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0622\',\'端午節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(614, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0623\',\'調整放假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(615, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0923\',\'補行上班\',\'工作日\');', 'INSERT', '/jp/web_post.php'),
+(616, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0929\',\'中秋節\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(617, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'1009\',\'調整放假\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(618, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'1010\',\'國慶日\',\'國定日\');', 'INSERT', '/jp/web_post.php'),
+(619, '2024-03-05 11:29:52', '系統管理員', '1', '', 'INSERT INTO holidays (`niandu`,`holiday`,`holidayName`,`AttendDay`) VALUES (\'112\',\'0501\',\'勞動節\',\'國定日\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

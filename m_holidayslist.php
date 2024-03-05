@@ -5,7 +5,7 @@ if (!$_Login) {
   exit;
 }
 
-$_Title = '員工假別列表';
+$_Title = '國定假日列表';
 
 $_No = 'holidays';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 

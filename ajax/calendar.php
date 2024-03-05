@@ -24,7 +24,7 @@ if (empty($_html_msg)) {
         $accept_array = json_decode($accept_json, true);
         $holiday_array =
             array_filter($accept_array, function ($value) {
-                return $value['description'] != '' && $value['isHoliday'] == true;
+                return $value['description'] != '';
             });
         foreach ($holiday_array as $h => $ha) {
             $holiday_array[$h]['date'] = date('m-d', strtotime($holiday_array[$h]['date']));

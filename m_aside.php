@@ -69,7 +69,7 @@
                             </li>
                             <li class="" data-no="holidays">
                                 <a class="sidenav-item-link" href="m_holidays.php">
-                                    <span class="nav-text">員工假別設定</span>
+                                    <span class="nav-text">國定假日設定</span>
                                 </a>
                             </li>
                         </div>
