@@ -14,6 +14,8 @@ $comp = GET_COMP_DATA();
 $jobs_list = $CM->GET_JOBS_DATA();
 
 $part_list = $CM->GET_PART_DATA();
+
+$attd_list = $CM->GET_ATTENDANCE_LIST();
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="tw">
@@ -205,19 +207,23 @@ $part_list = $CM->GET_PART_DATA();
                                 <input type="text" data-name="籍貫" maxlength="16" class="form-control" name="born" id="born" value="" placeholder="EX:台中市" required>
                               </div>
                             </div>
-
-
-                          </div>
-                          <div class="row mb-2">
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="bornday2">出生日期</label>
                                 <div id="datebornday">
-                                  <input type="text" data-name="出生日期" class="form-control" name="bornday2" id="bornday2" value="80-01-01" required>
+                                  <input type="text" data-name="出生日期" class="form-control datepicker-tw" name="bornday2" id="bornday2" value="80-01-01" required>
                                 </div>
                               </div>
                             </div>
-                            <div class="col-lg-9">
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label for="email">電子信箱</label>
+                                <input type="text" data-name="通訊地址" maxlength="100" class="form-control" name="email" id="email" value="" placeholder="EX：example@example.com.tw" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
                               <div class="form-group">
                                 <label for="add">住址 *</label>
                                 <input type="text" data-name="住址" maxlength="160" class="form-control" name="add" id="add" value="" placeholder="Ex: 407台中市西屯區中工二路120號" required>
@@ -228,19 +234,19 @@ $part_list = $CM->GET_PART_DATA();
                             <div class="col-lg-4">
                               <div class="form-group">
                                 <label for="tel">聯絡電話</label>
-                                <input type="text" data-name="聯絡電話" maxlength="16" class="form-control" name="tel" id="tel" value="" placeholder="0412345678" required>
+                                <input type="text" data-name="聯絡電話" maxlength="16" class="form-control" name="tel" id="tel" value="" placeholder="EX：0412345678" required>
                               </div>
                             </div>
                             <div class="col-lg-4">
                               <div class="form-group">
                                 <label for="fax">傳真號碼</label>
-                                <input type="text" data-name="傳真號碼" maxlength="16" class="form-control" name="fax" id="fax" value="" placeholder="0412345678" required>
+                                <input type="text" data-name="傳真號碼" maxlength="16" class="form-control" name="fax" id="fax" value="" placeholder="EX：0412345678" required>
                               </div>
                             </div>
                             <div class="col-lg-4">
                               <div class="form-group">
                                 <label for="mphone">行動電話</label>
-                                <input type="text" data-name="行動電話" maxlength="16" class="form-control" name="mphone" id="mphone" value="" placeholder="0912345678" required>
+                                <input type="text" data-name="行動電話" maxlength="16" class="form-control" name="mphone" id="mphone" value="" placeholder="EX：0912345678" required>
                               </div>
                             </div>
                           </div>
@@ -280,6 +286,99 @@ $part_list = $CM->GET_PART_DATA();
                               <div class="form-group">
                                 <label for="appname">　</label>
                                 <input type="text" class="form-control" name="appname" id="appname" value="" readonly>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="attendanceno">出勤類別</label>
+                                <select class="form-control" data-name="出勤類別" id="attendanceno" name="attendanceno" required>
+                                  <option value="" data-type="">選擇班別</option>
+                                  <?php foreach ($attd_list as $key => $value) { ?>
+                                    <option value="<?= $value['attendanceno'] ?>" data-type="<?= $value['attendancename'] ?>"><?= $value['attendanceno'] ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="attendancename">　</label>
+                                <input type="text" class="form-control" name="attendancename" id="attendancename" value="" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="workday">到職日期</label>
+                                <div id="datebornday">
+                                  <input type="text" data-name="到職日期" class="form-control datepicker-tw" name="workday" id="workday" value="80-01-01" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="expired">離職日期</label>
+                                <div id="datebornday">
+                                  <input type="text" data-name="離職日期" class="form-control datepicker-tw" name="expired" id="expired" value="80-01-01" required>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="contact">緊急聯絡人</label>
+                                <input type="text" data-name="緊急聯絡人" maxlength="10" class="form-control" name="contact" id="contact" value="" placeholder="EX：張太太" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="contactrelation">聯絡人關係</label>
+                                <input type="text" data-name="聯絡人關係" maxlength="10" class="form-control" name="contactrelation" id="contactrelation" value="" placeholder="妻子" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="contacttel1">聯絡電話一</label>
+                                <input type="text" data-name="聯絡電話一" maxlength="16" class="form-control" name="contacttel1" id="contacttel1" value="" placeholder="EX：0912345678" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="contacttel2">聯絡電話二</label>
+                                <input type="text" data-name="聯絡電話二" maxlength="16" class="form-control" name="contacttel2" id="contacttel2" value="" placeholder="EX：0912345678" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label for="contactadd">聯絡地址</label>
+                                <input type="text" data-name="聯絡地址" maxlength="10" class="form-control" name="contactadd" id="contactadd" value="" placeholder="" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label for="pro">專長</label>
+                                <input type="text" data-name="專長" maxlength="10" class="form-control" name="pro" id="pro" value="" placeholder="" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label for="add1">戶籍地址</label>
+                                <input type="text" data-name="戶籍地址" maxlength="10" class="form-control" name="add1" id="add1" value="" placeholder="" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label for="add2">通訊地址</label>
+                                <input type="text" data-name="通訊地址" maxlength="10" class="form-control" name="add2" id="add2" value="" placeholder="" required>
                               </div>
                             </div>
                           </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-05 05:37:50
+-- 產生時間： 2024-03-06 09:42:07
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -266,6 +266,55 @@ INSERT INTO `education` (`educationno`, `educationname`) VALUES
 ('04', '二專'),
 ('05', '大學'),
 ('06', '碩士');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `employee`
+--
+
+DROP TABLE IF EXISTS `employee`;
+CREATE TABLE IF NOT EXISTS `employee` (
+  `eid` int NOT NULL AUTO_INCREMENT,
+  `employid` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `appno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `appname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `partno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `partname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sex` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EngName` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marry` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blood` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nationality` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `born` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '等同add',
+  `tel` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fax` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bornday` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bornday2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workday` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workday2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expireday` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expireday2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mphone` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pro` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `add1` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `add2` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactrelation` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contacttel1` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contacttel2` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactadd` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PresentType` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PresentName` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `buildday` int DEFAULT NULL,
+  `buildday2` int DEFAULT NULL,
+  PRIMARY KEY (`eid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
