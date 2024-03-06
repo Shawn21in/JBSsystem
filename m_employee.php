@@ -10,6 +10,10 @@ $_Title = '基本資料設定';
 $_No = 'employee';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
 $comp = GET_COMP_DATA();
+
+$jobs_list = $CM->GET_JOBS_DATA();
+
+$part_list = $CM->GET_PART_DATA();
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="tw">
@@ -19,6 +23,9 @@ $comp = GET_COMP_DATA();
     var no = '<?= $_No ?>';
   </script>
   <?php include('m_head.php'); ?>
+  <link href="js/datepicker-tw/bootstrap-datepicker3.min.css" rel="stylesheet" />
+  <script src="js/datepicker-tw/bootstrap-datepicker.js"></script>
+  <script src="js/member/employee.js"></script>
 </head>
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
@@ -73,7 +80,6 @@ $comp = GET_COMP_DATA();
                       <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">固定加扣款</a>
                     </li>
                   </ul>
-
                   <div class="tab-content px-3 px-xl-5" id="myTabContent">
                     <div class="tab-pane fade show active" id="employee" role="tabpanel" aria-labelledby="employee-tab">
                       <div class="tab-pane-content mt-5">
@@ -98,12 +104,12 @@ $comp = GET_COMP_DATA();
                           <div class="row mb-2">
                             <div class="col-lg-2">
                               <div class="form-group">
-                                <label for="employno">員工編號 *</label>
-                                <input type="text" data-name="員工編號" maxlength="10" class="form-control" name="employno" id="employno" value="" placeholder="EX:A001" required>
+                                <label for="employid">員工編號 *</label>
+                                <input type="text" data-name="員工編號" maxlength="10" class="form-control" name="employid" id="employid" value="" placeholder="EX:A001" required>
                               </div>
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="employname">員工姓名 *</label>
                                 <input type="text" data-name="員工姓名" maxlength="10" class="form-control" name="employname" id="employname" value="" placeholder="EX:張先生" required>
@@ -111,7 +117,7 @@ $comp = GET_COMP_DATA();
                               </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                               <div class="form-group">
                                 <label for="EngName">英文姓名</label>
                                 <input type="text" data-name="英文姓名" maxlength="35" class="form-control" name="EngName" id="EngName" value="" placeholder="EX:ZHANG,XIAN-SHENG" required>
@@ -127,34 +133,54 @@ $comp = GET_COMP_DATA();
                                 <input type="text" data-name="卡片編號" maxlength="10" class="form-control" name="no" id="no" value="" placeholder="EX:A001" required>
                               </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="id">身分證字號 *</label>
                                 <input type="text" data-name="身分證字號" maxlength="10" class="form-control" name="id" id="id" value="" placeholder="EX:A12345678" required>
                               </div>
                             </div>
 
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                               <div class="form-group">
                                 <label class="d-inline-block" for="">性別</label>
                                 <ul class="list-unstyled list-inline">
                                   <li class="d-inline-block mr-3">
                                     <label class="control control-radio">男
-                                      <input type="radio" name="option" checked="checked" />
+                                      <input type="radio" name="sex" checked="checked" />
                                       <div class="control-indicator"></div>
                                     </label>
                                   </li>
 
                                   <li class="d-inline-block mr-3">
                                     <label class="control control-radio">女
-                                      <input type="radio" name="option" />
+                                      <input type="radio" name="sex" />
                                       <div class="control-indicator"></div>
                                     </label>
                                   </li>
                                 </ul>
                               </div>
                             </div>
-                            <div class="col-lg-3 form-pill">
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">婚姻狀態</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">未婚
+                                      <input type="radio" name="marry" checked="checked" />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">已婚
+                                      <input type="radio" name="marry" />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-pill">
                               <div class="form-group">
                                 <label for="blood">血型</label>
                                 <select class="form-control" id="blood" name="blood">
@@ -167,10 +193,28 @@ $comp = GET_COMP_DATA();
                             </div>
                           </div>
                           <div class="row mb-2">
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="nationality">國籍</label>
+                                <input type="text" data-name="國籍" maxlength="20" class="form-control" name="nationality" id="nationality" value="" placeholder="EX:台灣" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="born">籍貫</label>
+                                <input type="text" data-name="籍貫" maxlength="16" class="form-control" name="born" id="born" value="" placeholder="EX:台中市" required>
+                              </div>
+                            </div>
+
+
+                          </div>
+                          <div class="row mb-2">
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="bornday2">出生日期</label>
-                                <input type="date" data-name="出生日期" maxlength="10" class="form-control" name="bornday2" id="bornday2" value="" required>
+                                <div id="datebornday">
+                                  <input type="text" data-name="出生日期" class="form-control" name="bornday2" id="bornday2" value="80-01-01" required>
+                                </div>
                               </div>
                             </div>
                             <div class="col-lg-9">
@@ -197,6 +241,45 @@ $comp = GET_COMP_DATA();
                               <div class="form-group">
                                 <label for="mphone">行動電話</label>
                                 <input type="text" data-name="行動電話" maxlength="16" class="form-control" name="mphone" id="mphone" value="" placeholder="0912345678" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="partno">部門名稱</label>
+                                <select class="form-control" data-name="部門名稱" id="partno" name="partno" required>
+                                  <option value="" data-type="">選擇部門</option>
+                                  <?php foreach ($part_list as $key => $value) { ?>
+                                    <option value="<?= $value['partno'] ?>" data-type="<?= $value['partname'] ?>"><?= $value['partno'] ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="partname">　</label>
+                                <input type="text" class="form-control" name="partname" id="partname" value="" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="appno">職謂名稱</label>
+                                <select class="form-control" data-name="職謂名稱" id="appno" name="appno" required>
+                                  <option value="" data-type="">選擇職謂</option>
+                                  <?php foreach ($jobs_list as $key => $value) { ?>
+                                    <option value="<?= $value['appno'] ?>" data-type="<?= $value['appname'] ?>"><?= $value['appno'] ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="appname">　</label>
+                                <input type="text" class="form-control" name="appname" id="appname" value="" readonly>
                               </div>
                             </div>
                           </div>

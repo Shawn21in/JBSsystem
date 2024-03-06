@@ -45,7 +45,7 @@
 <script src="stylesheets/assets/plugins/nprogress/nprogress.js"></script>
 <link href="stylesheets/member.css" rel="stylesheet" />
 <!-- Javascript -->
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
 <script src="stylesheets/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="stylesheets/assets/plugins/simplebar/simplebar.min.js"></script>
 <script src='stylesheets/assets/plugins/charts/Chart.min.js'></script>
