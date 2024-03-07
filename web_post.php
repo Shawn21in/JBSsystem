@@ -1268,16 +1268,18 @@ if (!empty($_Type)) {
 				$Value['bornday2'] 		= tw2ad($Value['bornday']);
 				$Value['workday2'] 		=  tw2ad($Value['workday']);
 				$Value['expireday2'] 	=  tw2ad($Value['expireday']);
-				$tw_year = date('Y') - 1911;
-				$Value['buildday'] 		=  $tw_year . date('m-d');
-				$Value['buildday2'] 	= date('Y-m-d');
 				$employee = $CM->get_employee_data($Value['eid']);
 				if (!empty($employee)) {
 					$o_employid = $employee['employid'];
 					$o_no = $employee['no'];
+					$Value['buildday'] 		= $employee['buildday'];
+					$Value['buildday2'] 	= $employee['buildday2'];
 				} else {
 					$o_employid = '';
 					$o_no = '';
+					$tw_year = date('Y') - 1911;
+					$Value['buildday'] 		=  $tw_year . '-' . date('m-d');
+					$Value['buildday2'] 	= date('Y-m-d');
 				}
 				if ($o_employid != $Value['employid']) {
 					$db->Where = " WHERE employid = '" . $Value['employid'] . "'";

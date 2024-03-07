@@ -73,6 +73,15 @@ if (empty($employid)) { //判斷是否為編輯模式
             <div class="row no-gutters">
               <div class="col-lg-8 col-xl-12">
                 <div class="profile-content-right profile-right-spacing py-5">
+                  <div class="row">
+                    <div class="col-lg-10">
+                    </div>
+
+                    <div class="col-lg-2">
+                      <button type="button" class="btn btn-success mb-2 btn-pill mr-2" onclick="location.href='m_employeelist.php'">查看所有員工</button>
+                    </div>
+
+                  </div>
                   <ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="employee-tab" data-toggle="tab" href="#employee" role="tab" aria-controls="employee" aria-selected="true">基本資料設定</a>
@@ -99,15 +108,6 @@ if (empty($employid)) { //判斷是否為編輯模式
                       <div class="tab-pane-content mt-5">
                         <form id="form1" onsubmit="return false;">
                           <input type="hidden" name="eid" value="<?= $employee['eid'] ?>">
-                          <div class="row">
-                            <div class="col-lg-10">
-                            </div>
-
-                            <div class="col-lg-2">
-                              <button type="button" class="btn btn-success mb-2 btn-pill mr-2" onclick="location.href='m_employeelist.php'">查看所有員工</button>
-                            </div>
-
-                          </div>
                           <div class="row mb-2">
                             <div class="col-lg-2">
                               <div class="form-group">
@@ -410,6 +410,14 @@ if (empty($employid)) { //判斷是否為編輯模式
                               <div class="form-group">
                                 <label for="add2">通訊地址</label>
                                 <input type="text" data-name="通訊地址" maxlength="160" class="form-control" name="add2" id="add2" value="<?= $employee['add2'] ?>" placeholder="">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label for="buildday">建檔日期</label>
+                                <input type="text" data-name="建檔日期" maxlength="160" class="form-control" name="buildday" id="buildday" value="<?= $employee['buildday'] ?>" readonly>
                               </div>
                             </div>
                           </div>

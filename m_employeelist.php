@@ -5,9 +5,9 @@ if (!$_Login) {
   exit;
 }
 
-$_Title = '學歷編號列表';
+$_Title = '員工列表';
 
-$_No = 'education';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
+$_No = 'employee';           //按鈕列名稱，對應m_aside.php的<li data-no=" $_No ">
 
 $comp = GET_COMP_DATA();
 
