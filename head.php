@@ -30,7 +30,6 @@
 
 
 <script src="js/ani.js"></script>
-<script src="js/jquery-loading.js"></script>
 <script src="js/jquery.session.js"></script>
 <script src="js/web-checkinput.js?v=<?= date('YmdHis') ?>"></script>
 <script src="js/web-main.js?v=<?= date('YmdHis') ?>"></script>

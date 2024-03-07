@@ -9,14 +9,15 @@ $(function () {
         // console.log(n)
         $('input[name=appname]').val(n);
     })
-    $('select[name=attendanceno]').on('change', function () {
+    $('select[name=presenttype]').on('change', function () {
         let n = $(this).find('option:selected').data('type');
         // console.log(n)
-        $('input[name=attendancename]').val(n);
+        $('input[name=presentname]').val(n);
     })
     $(".datepicker-tw").datepicker({
         language: 'zh-TW',
         maxViewModel: 1,
         autoclose: true,
+        clearBtn: true,
     })
 })

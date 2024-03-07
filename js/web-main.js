@@ -4,8 +4,6 @@ function Post_JS(FormData, ExecUrl, Field) {
 	$.post(ExecUrl, FormData
 		, function (data) {
 
-			loading('close');
-
 			if (data.html_msg != '' && data.html_msg != null) {
 				console.log(data.html_msg)
 				swal.fire({
@@ -48,7 +46,7 @@ function Post_JS(FormData, ExecUrl, Field) {
 
 function Ajax_Post(FormData, ExecUrl, Field) {
 
-	loading('open');
+
 
 	$.ajax({
 		url: ExecUrl,
@@ -61,7 +59,6 @@ function Ajax_Post(FormData, ExecUrl, Field) {
 		processData: false,
 		success: function (data) {
 
-			loading('close');
 
 			if (data.html_msg != '' && data.html_msg != null) {
 
@@ -113,10 +110,10 @@ function loading(Type) {
 
 	if (Type == 'open') {
 
-		$(document).Loading({ _action: true });
+		// $(document).Loading({ _action: true });
 	} else if (Type == 'close') {
 
-		$(document).Loading({ _action: false });
+		// $(document).Loading({ _action: false });
 	}
 }
 

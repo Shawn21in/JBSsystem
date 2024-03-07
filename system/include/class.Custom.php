@@ -973,4 +973,45 @@ class Custom
 		}
 		return $rs;
 	}
+	/**
+	 * 員工基本資料
+	 * 
+	 * @param integer   $id 員工編號或流水號
+	 * 
+	 * @return array 
+	 */
+	function get_employee_data($id)
+	{
+
+		$Sheet = "employee";
+
+		$db = new MySQL();
+		$db->Where = "Where employid = '" . $id . "' OR eid = '" . $id . "'";
+		$db->Order_By = 'Order By eid asc';
+		$db->query_sql($Sheet, '*', 0, 1);
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs  = $row;
+		}
+		return $rs;
+	}
+	/**
+	 * 員工列表
+	 * 
+	 * @return array 
+	 */
+	function get_employee_list()
+	{
+
+		$Sheet = "employee";
+
+		$db = new MySQL();
+		$db->Order_By = 'Order By eid desc';
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count]  = $row;
+			$count++;
+		}
+		return $rs;
+	}
 }

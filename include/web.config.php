@@ -116,6 +116,7 @@ if ($website_open) {
 	$seclab1_db 	= 'seclab1';
 	$purchaser1_db 	= 'purchaser1';
 	$holidays_db 	= 'holidays';
+	$employee_db = 'employee';
 
 
 	//經銷商代號

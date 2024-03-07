@@ -1205,6 +1205,194 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "employee_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['cono'] 		= $_POST['cono'];
+			$Value['coname1'] 		= $_POST['coname1'];
+			$Value['employid'] 		= $_POST['employid'];
+			$Value['employname'] 		= $_POST['employname'];
+			$Value['no'] 		= $_POST['no'];
+			$Value['id'] 		= $_POST['id'];
+
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				//從POST傳值
+				$Value['eid'] 			= $_POST['eid']; //若是編輯已有的資料，該欄位回傳不會是空值
+				$Value['EngName'] 		= $_POST['EngName'];
+				$Value['sex'] 			= $_POST['sex'];
+				$Value['marry'] 		= $_POST['marry'];
+				$Value['blood'] 		= $_POST['blood'];
+				$Value['nationality'] 	= $_POST['nationality'];
+				$Value['born'] 			= $_POST['born'];
+				$Value['bornday'] 		= $_POST['bornday'];
+				$Value['email'] 		= $_POST['email'];
+				$Value['address'] 		= $_POST['address'];
+				$Value['tel'] 			= $_POST['tel'];
+				$Value['fax'] 			= $_POST['fax'];
+				$Value['mphone'] 		= $_POST['mphone'];
+				$Value['partno'] 		= $_POST['partno'];
+				$Value['partname'] 		= $_POST['partname'];
+				$Value['appno'] 		= $_POST['appno'];
+				$Value['appname'] 		= $_POST['appname'];
+				$Value['presenttype'] 	= $_POST['presenttype'];
+				$Value['presentname'] = $_POST['presentname'];
+				$Value['workday'] 		= $_POST['workday'];
+				$Value['expireday'] 	= $_POST['expireday'];
+				$Value['contact'] 		= $_POST['contact'];
+				$Value['contactrelation'] 		= $_POST['contactrelation'];
+				$Value['contacttel1'] 	= $_POST['contacttel1'];
+				$Value['contacttel2'] 	= $_POST['contacttel2'];
+				$Value['contactadd'] 	= $_POST['contactadd'];
+				$Value['pro'] 			= $_POST['pro'];
+				$Value['add1'] 			= $_POST['add1'];
+				$Value['add2'] 			= $_POST['add2'];
+				//後端另外處理
+				$Value['bornday2'] 		= tw2ad($Value['bornday']);
+				$Value['workday2'] 		=  tw2ad($Value['workday']);
+				$Value['expireday2'] 	=  tw2ad($Value['expireday']);
+				$tw_year = date('Y') - 1911;
+				$Value['buildday'] 		=  $tw_year . date('m-d');
+				$Value['buildday2'] 	= date('Y-m-d');
+				$employee = $CM->get_employee_data($Value['eid']);
+				if (!empty($employee)) {
+					$o_employid = $employee['employid'];
+					$o_no = $employee['no'];
+				} else {
+					$o_employid = '';
+					$o_no = '';
+				}
+				if ($o_employid != $Value['employid']) {
+					$db->Where = " WHERE employid = '" . $Value['employid'] . "'";
+					$db->query_sql($employee_db, '*');
+					if ($row = $db->query_fetch()) {
+						$_html_msg 	= '員工編號已存在，請更換一個後再儲存';
+						break;
+					}
+				}
+				if ($o_no != $Value['no'] && !empty($Value['no'])) {
+					$db->Where = " WHERE no = '" . $Value['no'] . "'";
+					$db->query_sql($employee_db, '*');
+					if ($row = $db->query_fetch()) {
+						$_html_msg 	= '卡片編號已存在，請更換一個後再儲存';
+						break;
+					}
+				}
+				$employee_data = array(
+					'cono' 				=> $Value['cono'],
+					'coname1' 			=> $Value['coname1'],
+					'employid' 			=> $Value['employid'],
+					'employname' 		=> $Value['employname'],
+					'no' 				=> $Value['no'],
+					'id' 				=> $Value['id'],
+					'EngName' 			=> $Value['EngName'],
+					'sex' 				=> $Value['sex'],
+					'marry' 			=> $Value['marry'],
+					'blood' 			=> $Value['blood'],
+					'nationality' 		=> $Value['nationality'],
+					'born' 				=> $Value['born'],
+					'bornday' 			=> $Value['bornday'],
+					'bornday2' 			=> $Value['bornday2'],
+					'email' 			=> $Value['email'],
+					'address' 			=> $Value['address'],
+					'tel' 				=> $Value['tel'],
+					'fax' 				=> $Value['fax'],
+					'mphone' 			=> $Value['mphone'],
+					'partno' 			=> $Value['partno'],
+					'partname' 			=> $Value['partname'],
+					'appno' 			=> $Value['appno'],
+					'appname' 			=> $Value['appname'],
+					'presenttype' 		=> $Value['presenttype'],
+					'presentname' 		=> $Value['presentname'],
+					'workday' 			=> $Value['workday'],
+					'workday2' 			=> $Value['workday2'],
+					'expireday' 		=> $Value['expireday'],
+					'expireday2' 		=> $Value['expireday2'],
+					'contact' 			=> $Value['contact'],
+					'contactrelation' 	=> $Value['contactrelation'],
+					'contacttel1' 		=> $Value['contacttel1'],
+					'contacttel2' 		=> $Value['contacttel2'],
+					'contactadd' 		=> $Value['contactadd'],
+					'pro' 				=> $Value['pro'],
+					'add1' 				=> $Value['add1'],
+					'add2' 				=> $Value['add2'],
+					'add1' 				=> $Value['add1'],
+					'buildday'			=> $Value['buildday'],
+					'buildday2'			=> $Value['buildday2'],
+				);
+				$db->Where = " WHERE  eid = '" . $Value['eid'] . "'";
+				$db->query_sql($employee_db, '*');
+				if ($row = $db->query_fetch()) {
+					$db->query_data($employee_db, $employee_data, 'UPDATE');
+				} else {
+					$db->query_data($employee_db, $employee_data, 'INSERT');
+				}
+				if ($Value['eid']) {
+					if (!empty($db->Error)) {
+						$_html_msg 	= '儲存失敗，請重新整理後再試試';
+					} else {
+						$_html_msg 	= '儲存成功！';
+						$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $Value['employid'], 'employee');
+					}
+				} else {
+					if (!empty($db->Error)) {
+						$_html_msg 	= '新增失敗，請重新整理後再試試';
+					} else {
+						$_html_msg 	= '新增成功！';
+						$_html_eval = 'Reload();';
+					}
+				}
+			}
+			break;
+		case "employee_del":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['eid'] 		= GDC($_POST['eid'], 'employee')['v'];
+			foreach ($Value as $key => $val) {
+				if (empty($val)) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$db->Where = " WHERE eid = '" . $Value['eid'] . "'";
+				$db->query_delete($employee_db);
+				if (!empty($db->Error)) {
+					$_html_msg 	= '刪除失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '刪除成功！';
+					$_html_eval = 'Reload()';
+				}
+			}
+			break;
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {

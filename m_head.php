@@ -62,7 +62,6 @@
 <script src="stylesheets/assets/options/optionswitcher.js"></script>
 
 <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
-<script src="js/jquery-loading.js"></script>
 <script src="system/assets/jquery/jquery-address.js"></script>
 <script src="js/ani.js?v=<?= $version ?>"></script>
 <script src="js/web-main.js?v=<?= $version ?>"></script>
