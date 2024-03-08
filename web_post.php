@@ -1395,6 +1395,67 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "salary_edit":
+			if (!$_Login) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['eid'] 			= intval($_POST['eid']);
+			$employee = $CM->get_employee_data($Value['eid']);
+			$Value['sandtype'] 		= $_POST['sandtype'];
+			$Value['standardday'] 	= $_POST['standardday'];
+			$Value['standardhour'] 	= $_POST['standardhour'];
+			$Value['monthmny'] 		= $_POST['monthmny'];
+			$Value['daymny'] 		= $_POST['daymny'];
+			$Value['hourmny'] 		= $_POST['hourmny'];
+			$Value['taxmny'] 		= $_POST['taxmny'];
+			$Value['starttype'] 	= !empty($_POST['starttype']) ? '1' : '0';
+			$Value['resttype'] 		= !empty($_POST['resttype']) ? '1' : '0';
+			$Value['bankno'] 		= $_POST['bankno'];
+			$Value['bankno2'] 		= $_POST['bankno2'];
+			$Value['bankname'] 		= $_POST['bankname'];
+			$Value['bankname2'] 	= $_POST['bankname2'];
+			$Value['huming'] 		= $_POST['huming'];
+			$Value['huming2'] 		= $_POST['huming2'];
+			$Value['bankid'] 		= $_POST['bankid'];
+			$Value['bankid2'] 		= $_POST['bankid2'];
+			if (empty($employee)) { //判斷資料完整度
+				$_html_msg = '請先產生員工資料後再進行';
+				break;
+			} else {
+				$employee_data = array(
+					'sandtype' 				=> $Value['sandtype'],
+					'standardday' 			=> $Value['standardday'],
+					'standardhour' 			=> $Value['standardhour'],
+					'monthmny' 				=> $Value['monthmny'],
+					'daymny' 				=> $Value['daymny'],
+					'hourmny' 				=> $Value['hourmny'],
+					'taxmny' 				=> $Value['taxmny'],
+					'starttype' 			=> $Value['starttype'],
+					'resttype' 				=> $Value['resttype'],
+					'bankno' 				=> $Value['bankno'],
+					'bankno2' 				=> $Value['bankno2'],
+					'bankname' 				=> $Value['bankname'],
+					'bankname2' 			=> $Value['bankname2'],
+					'huming' 				=> $Value['huming'],
+					'huming2' 				=> $Value['huming2'],
+					'bankid' 				=> $Value['bankid'],
+					'bankid2' 				=> $Value['bankid2'],
+				);
+				$db->Where = " WHERE  eid = '" . $Value['eid'] . "'";
+				$db->query_data($employee_db, $employee_data, 'UPDATE');
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+				}
+			}
+			break;
 		case "plan_change":
 			if ($_Login) {
 				switch ($_state) {

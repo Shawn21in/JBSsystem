@@ -154,9 +154,15 @@ $(document).ready(function (e) {
 		}
 	});
 	$('.saveBtn').click(function () {
-		if (form_check('form1')) {
+		let no = $(this).data('no') //單頁有多個表單時
+		let form1 = 'form1';
+		if (no !== undefined) {
+			form1 = 'form' + no;
+		}
+		// console.log(form1)
+		if (form_check(form1)) {
 			var type = $(this).attr('data-type');
-			var field = $('#form1');
+			var field = $('#' + form1);
 			var Form_Data = '';
 			Form_Data += field.serialize();
 			Form_Data += '&_type=' + type;

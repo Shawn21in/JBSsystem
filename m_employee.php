@@ -73,7 +73,7 @@ if (empty($employid)) { //判斷是否為編輯模式
         <div class="content">
           <div class="bg-white border rounded">
             <div class="row no-gutters">
-              <div class="col-lg-8 col-xl-12">
+              <div class="col-xl-12">
                 <div class="profile-content-right profile-right-spacing py-5">
                   <div class="row">
                     <div class="col-lg-10">
@@ -444,19 +444,19 @@ if (empty($employid)) { //判斷是否為編輯模式
                                 <ul class="list-unstyled list-inline">
                                   <li class="d-inline-block mr-3">
                                     <label class="control control-radio">月薪
-                                      <input type="radio" name="sandtype" value="月薪" <?= $employee['sandtype'] == '月薪' || $employee['sandtype'] == '' ? 'checked' : '' ?> />
+                                      <input type="radio" name="sandtype" value="1" <?= $employee['sandtype'] == '1' || $employee['sandtype'] == '' ? 'checked' : '' ?> />
                                       <div class="control-indicator"></div>
                                     </label>
                                   </li>
                                   <li class="d-inline-block mr-3">
-                                    <label class="control control-radio">日新
-                                      <input type="radio" name="sandtype" value="日新" <?= $employee['sandtype'] == '日薪' ? 'checked' : '' ?> />
+                                    <label class="control control-radio">日薪
+                                      <input type="radio" name="sandtype" value="2" <?= $employee['sandtype'] == '2' ? 'checked' : '' ?> />
                                       <div class="control-indicator"></div>
                                     </label>
                                   </li>
                                   <li class="d-inline-block mr-3">
                                     <label class="control control-radio">時薪
-                                      <input type="radio" name="sandtype" value="時薪" <?= $employee['sandtype'] == '時薪' ? 'checked' : '' ?> />
+                                      <input type="radio" name="sandtype" value="3" <?= $employee['sandtype'] == '3' ? 'checked' : '' ?> />
                                       <div class="control-indicator"></div>
                                     </label>
                                   </li>
@@ -466,13 +466,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="standardday">基準天數</label>
-                                <input type="text" data-name="基準天數" maxlength="10" class="form-control" name="standardday" id="standardday" placeholder="ex:30" value="<?= $employee['standardday'] ? $employee['standardday'] : '30' ?>">
+                                <input type="number" data-name="基準天數" class="form-control" step="0.0001" name="standardday" id="standardday" placeholder="ex:30" value="<?= $employee['standardday'] ? $employee['standardday'] : '30' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="standardhour">基準時數</label>
-                                <input type="text" data-name="基準時數" maxlength="10" class="form-control" name="standardhour" id="standardhour" placeholder="ex:8" value="<?= $employee['standardhour'] ? $employee['standardhour'] : '8' ?>">
+                                <input type="number" data-name="基準時數" class="form-control" step="0.1" name="standardhour" id="standardhour" placeholder="ex:8" value="<?= $employee['standardhour'] ? $employee['standardhour'] : '8' ?>" required>
                               </div>
                             </div>
                           </div>
@@ -481,25 +481,25 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="monthmny">月薪金額</label>
-                                <input type="text" data-name="月薪金額" maxlength="10" class="form-control" name="monthmny" id="monthmny" value="<?= $employee['contact'] ?>">
+                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="daymny">換算日薪</label>
-                                <input type="text" data-name="換算日薪" maxlength="10" class="form-control" name="daymny" id="daymny" value="<?= $employee['contactrelation'] ?>">
+                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="hourmny">換算時薪</label>
-                                <input type="text" data-name="換算時薪" maxlength="16" class="form-control" name="hourmny" id="hourmny" value="<?= $employee['contacttel1'] ?>">
+                                <input type="number" data-name="換算時薪" class="form-control" step="0.0001" name="hourmny" id="hourmny" value="<?= $employee['hourmny'] ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="taxmny">扣繳稅額</label>
-                                <input type="text" data-name="扣繳稅額" maxlength="16" class="form-control" name="taxmny" id="taxmny" value="<?= $employee['contacttel2'] ?>">
+                                <input type="number" data-name="扣繳稅額" class="form-control" step="0.0001" name="taxmny" id="taxmny" value="<?= $employee['taxmny'] ?>" required>
                               </div>
                             </div>
                           </div>
@@ -507,7 +507,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2">
                               <label>上班打卡</label>
                               <label class="switch switch-primary switch-pill form-control-label">
-                                <input type="checkbox" class="switch-input form-check-input" value="on" checked>
+                                <input type="checkbox" class="switch-input form-check-input" name="starttype" value="1" checked>
                                 <span class="switch-label"></span>
                                 <span class="switch-handle"></span>
                               </label>
@@ -515,7 +515,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2">
                               <label>休息打卡</label>
                               <label class="switch switch-primary switch-pill form-control-label">
-                                <input type="checkbox" class="switch-input form-check-input" value="on" checked>
+                                <input type="checkbox" class="switch-input form-check-input" name="resttype" value="1" checked>
                                 <span class="switch-label"></span>
                                 <span class="switch-handle"></span>
                               </label>
@@ -544,14 +544,14 @@ if (empty($employid)) { //判斷是否為編輯模式
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
-                                <label for="thuming">戶名</label>
-                                <input type="text" data-name="戶名" maxlength="16" class="form-control" name="thuming" id="thuming" value="<?= $employee['thuming'] ?>">
+                                <label for="huming">戶名</label>
+                                <input type="text" data-name="戶名" maxlength="15" class="form-control" name="huming" id="huming" value="<?= $employee['huming'] ?>">
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="bankid">銀行帳號</label>
-                                <input type="text" data-name="銀行帳號" maxlength="16" class="form-control" name="bankid" id="bankid" value="<?= $employee['bankid'] ?>">
+                                <input type="text" data-name="銀行帳號" maxlength="30" class="form-control" name="bankid" id="bankid" value="<?= $employee['bankid'] ?>">
                               </div>
                             </div>
                           </div>
@@ -578,19 +578,19 @@ if (empty($employid)) { //判斷是否為編輯模式
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
-                                <label for="thuming2">戶名</label>
-                                <input type="text" data-name="戶名" maxlength="16" class="form-control" name="thuming2" id="thuming2" value="<?= $employee['thuming2'] ?>">
+                                <label for="huming2">戶名</label>
+                                <input type="text" data-name="戶名" maxlength="15" class="form-control" name="huming2" id="huming2" value="<?= $employee['huming2'] ?>">
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="bankid2">銀行帳號</label>
-                                <input type="text" data-name="銀行帳號" maxlength="16" class="form-control" name="bankid2" id="bankid2" value="<?= $employee['bankid2'] ?>">
+                                <input type="text" data-name="銀行帳號" maxlength="30" class="form-control" name="bankid2" id="bankid2" value="<?= $employee['bankid2'] ?>">
                               </div>
                             </div>
                           </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="employee_edit">儲存</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="2" data-type="salary_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
                           </div>
                         </form>
                       </div>
