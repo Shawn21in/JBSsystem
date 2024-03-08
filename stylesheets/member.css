@@ -65,3 +65,8 @@
 .fit_container {
   width: fit-content;
 }
+
+/* ------employee-------- */
+.em_title {
+  border-bottom: 1px solid #e5e9f2;
+}

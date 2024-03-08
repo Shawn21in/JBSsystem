@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-07 09:21:34
+-- 產生時間： 2024-03-08 06:27:55
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -315,6 +315,23 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `presentname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別名稱',
   `buildday` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '建立日期(民國)',
   `buildday2` date DEFAULT NULL COMMENT '建立日期(西元)',
+  `sandtype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '薪資方式',
+  `monthmny` decimal(19,4) DEFAULT NULL COMMENT '月薪金額',
+  `daymny` decimal(19,4) DEFAULT NULL COMMENT '換算日薪',
+  `hourmny` decimal(19,4) DEFAULT NULL COMMENT '換算時薪',
+  `taxmny` decimal(19,4) DEFAULT NULL COMMENT '扣繳稅額',
+  `standardday` decimal(19,4) DEFAULT NULL COMMENT '基準天數',
+  `standardhour` decimal(10,1) DEFAULT NULL COMMENT '基準時數',
+  `starttype` bit(1) DEFAULT NULL COMMENT '上班打卡',
+  `resttype` bit(1) DEFAULT NULL COMMENT '休息打卡',
+  `bankno` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
+  `bankname` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
+  `huming` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
+  `bankid` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
+  `bankno2` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
+  `bankname2` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
+  `huming2` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
+  `bankid2` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
   PRIMARY KEY (`eid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -322,10 +339,10 @@ CREATE TABLE IF NOT EXISTS `employee` (
 -- 傾印資料表的資料 `employee`
 --
 
-INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`) VALUES
-(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07'),
-(7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07'),
-(6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07');
+INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`, `sandtype`, `monthmny`, `daymny`, `hourmny`, `taxmny`, `standardday`, `standardhour`, `starttype`, `resttype`, `bankno`, `bankname`, `huming`, `bankid`, `bankno2`, `bankname2`, `huming2`, `bankid2`) VALUES
+(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -611,7 +628,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, 'd4327847777ca451b2f5bc661cfc53e2', '2019-08-12 21:27:51', '2024-03-07 14:13:02', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '90fedbf99d3dc74c77fc9707bb59a2d2', '2019-08-12 21:27:51', '2024-03-08 09:05:39', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -750,7 +767,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=651 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=653 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1409,7 +1426,9 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (647, '2024-03-07 16:58:17', '系統管理員', '1', '', 'UPDATE employee SET `cono` = \'01\',`coname1` = \'庫點子\',`employid` = \'A111\',`employname` = \'張先生\',`no` = \'A001\',`id` = \'A123456\',`EngName` = \'ZHANG,XIAN-SHENG\',`sex` = \'男\',`marry` = \'已\',`blood` = \'AB\',`nationality` = \'台灣\',`born` = \'台中市\',`bornday` = \'80-01-01\',`bornday2` = \'1991-01-01\',`email` = \'g@gmail.com\',`address` = \'407台中市西屯區中工二路120號\',`tel` = \'0512345678\',`fax` = \'0412345678\',`mphone` = \'0912345678\',`partno` = \'WD\',`partname` = \'網設部\',`appno` = \'\',`appname` = \'\',`presenttype` = \'G\',`presentname` = \'G1\',`workday` = \'80-01-01\',`workday2` = \'1991-01-01\',`expireday` = \'\',`expireday2` = \'1911--\',`contact` = \'\',`contactrelation` = \'\',`contacttel1` = \'\',`contacttel2` = \'\',`contactadd` = \'\',`pro` = \'\',`add1` = \'\',`add2` = \'\',`buildday` = \'11303-07\',`buildday2` = \'2024-03-07\'  WHERE  eid = \'7\';', 'UPDATE', '/jp/web_post.php'),
 (648, '2024-03-07 16:58:38', '系統管理員', '1', '', 'UPDATE employee SET `cono` = \'01\',`coname1` = \'庫點子\',`employid` = \'A111\',`employname` = \'張先生\',`no` = \'A001\',`id` = \'A123456\',`EngName` = \'ZHANG,XIAN-SHENG\',`sex` = \'男\',`marry` = \'已\',`blood` = \'AB\',`nationality` = \'台灣\',`born` = \'台中市\',`bornday` = \'80-01-01\',`bornday2` = \'1991-01-01\',`email` = \'g@gmail.com\',`address` = \'407台中市西屯區中工二路120號\',`tel` = \'0512345678\',`fax` = \'0412345678\',`mphone` = \'0912345678\',`partno` = \'WD\',`partname` = \'網設部\',`appno` = \'BE\',`appname` = \'後端工程師\',`presenttype` = \'G\',`presentname` = \'G1\',`workday` = \'80-01-01\',`workday2` = \'1991-01-01\',`expireday` = \'\',`expireday2` = \'1911--\',`contact` = \'張太太\',`contactrelation` = \'妻子\',`contacttel1` = \'0912345678\',`contacttel2` = \'0912345678\',`contactadd` = \'407台中市西屯區中工二路120號\',`pro` = \'test\',`add1` = \'407台中市西屯區中工二路120號\',`add2` = \'407台中市西屯區中工二路120號\',`buildday` = \'11303-07\',`buildday2` = \'2024-03-07\'  WHERE  eid = \'7\';', 'UPDATE', '/jp/web_post.php'),
 (649, '2024-03-07 17:19:08', '系統管理員', '1', '', 'INSERT INTO employee (`cono`,`coname1`,`employid`,`employname`,`no`,`id`,`EngName`,`sex`,`marry`,`blood`,`nationality`,`born`,`bornday`,`bornday2`,`email`,`address`,`tel`,`fax`,`mphone`,`partno`,`partname`,`appno`,`appname`,`presenttype`,`presentname`,`workday`,`workday2`,`expireday`,`expireday2`,`contact`,`contactrelation`,`contacttel1`,`contacttel2`,`contactadd`,`pro`,`add1`,`add2`,`buildday`,`buildday2`) VALUES (\'01\',\'庫點子\',\'C111\',\'豬大仙\',\'C001\',\'A12345678\',\'ZHANG,XIAN-SHENG\',\'女\',\'未\',\'B\',\'台灣\',\'台中市\',\'102-07-18\',\'2013-07-18\',\'gmail@gmail.com\',\'407台中市西屯區中工二路120號\',\'0912345678\',\'0412345678\',\'0912345678\',\'\',\'\',\'\',\'\',\'\',\'\',\'80-01-01\',\'1991-01-01\',\'\',\'1911--\',\'\',\'\',\'\',\'\',\'\',\'\',\'\',\'\',\'113-03-07\',\'2024-03-07\');', 'INSERT', '/jp/web_post.php'),
-(650, '2024-03-07 17:19:30', '系統管理員', '1', '', 'UPDATE employee SET `cono` = \'01\',`coname1` = \'庫點子\',`employid` = \'C111\',`employname` = \'豬大仙\',`no` = \'C001\',`id` = \'A12345678\',`EngName` = \'ZHANG,XIAN-SHENG\',`sex` = \'女\',`marry` = \'未\',`blood` = \'B\',`nationality` = \'台灣\',`born` = \'台中市\',`bornday` = \'102-07-18\',`bornday2` = \'2013-07-18\',`email` = \'gmail@gmail.com\',`address` = \'407台中市西屯區中工二路120號\',`tel` = \'0912345678\',`fax` = \'0412345678\',`mphone` = \'0912345678\',`partno` = \'WD\',`partname` = \'網設部\',`appno` = \'BE\',`appname` = \'後端工程師\',`presenttype` = \'B\',`presentname` = \'B1\',`workday` = \'80-01-01\',`workday2` = \'1991-01-01\',`expireday` = \'\',`expireday2` = \'1911--\',`contact` = \'張太太\',`contactrelation` = \'妻子\',`contacttel1` = \'0912345678\',`contacttel2` = \'0912345678\',`contactadd` = \'407台中市西屯區中工二路120號\',`pro` = \'test\',`add1` = \'407台中市西屯區中工二路120號\',`add2` = \'407台中市西屯區中工二路120號\',`buildday` = \'113-03-07\',`buildday2` = \'2024-03-07\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php');
+(650, '2024-03-07 17:19:30', '系統管理員', '1', '', 'UPDATE employee SET `cono` = \'01\',`coname1` = \'庫點子\',`employid` = \'C111\',`employname` = \'豬大仙\',`no` = \'C001\',`id` = \'A12345678\',`EngName` = \'ZHANG,XIAN-SHENG\',`sex` = \'女\',`marry` = \'未\',`blood` = \'B\',`nationality` = \'台灣\',`born` = \'台中市\',`bornday` = \'102-07-18\',`bornday2` = \'2013-07-18\',`email` = \'gmail@gmail.com\',`address` = \'407台中市西屯區中工二路120號\',`tel` = \'0912345678\',`fax` = \'0412345678\',`mphone` = \'0912345678\',`partno` = \'WD\',`partname` = \'網設部\',`appno` = \'BE\',`appname` = \'後端工程師\',`presenttype` = \'B\',`presentname` = \'B1\',`workday` = \'80-01-01\',`workday2` = \'1991-01-01\',`expireday` = \'\',`expireday2` = \'1911--\',`contact` = \'張太太\',`contactrelation` = \'妻子\',`contacttel1` = \'0912345678\',`contacttel2` = \'0912345678\',`contactadd` = \'407台中市西屯區中工二路120號\',`pro` = \'test\',`add1` = \'407台中市西屯區中工二路120號\',`add2` = \'407台中市西屯區中工二路120號\',`buildday` = \'113-03-07\',`buildday2` = \'2024-03-07\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(651, '2024-03-08 08:55:59', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(652, '2024-03-08 09:05:39', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'90fedbf99d3dc74c77fc9707bb59a2d2\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php');
 
 -- --------------------------------------------------------
 

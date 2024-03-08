@@ -17,6 +17,8 @@ $part_list = $CM->GET_PART_DATA();
 
 $attd_list = $CM->GET_ATTENDANCE_LIST();
 
+$bank_list = $CM->GET_BANK_DATA();
+
 $Input   = GDC($_GET['c'], 'employee');
 
 $employid = $Input['v'];
@@ -88,7 +90,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">薪資設定</a>
+                      <a class="nav-link" id="salary-tab" data-toggle="tab" href="#salary" role="tab" aria-controls="salary" aria-selected="false">薪資設定</a>
                     </li>
 
                     <li class="nav-item">
@@ -428,31 +430,167 @@ if (empty($employid)) { //判斷是否為編輯模式
                       </div>
                     </div>
 
-                    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    <div class="tab-pane fade" id="salary" role="tabpanel" aria-labelledby="salary-tab">
                       <div class="tab-pane-content mt-5">
                         <form id="form2" onsubmit="return false;">
-                          <div class="form-group mb-4">
-                            <label for="account">帳號</label>
-                            <input type="text" class="form-control" id="account" value="<?= $_MemberData['Company_Acc'] ?>" readonly>
+                          <input type="hidden" name="eid" value="<?= $employee['eid'] ?>">
+                          <div class="em_title mb-2">
+                            <h2>薪資設定</h2>
                           </div>
-                          <div class="form-group mb-4">
-                            <label for="oldPassword">舊密碼 *</label>
-                            <input type="password" data-name="舊密碼" name="oldPassword" class="form-control" id="oldPassword" required>
+                          <div class="row mb-2">
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">薪資方式</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">月薪
+                                      <input type="radio" name="sandtype" value="月薪" <?= $employee['sandtype'] == '月薪' || $employee['sandtype'] == '' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">日新
+                                      <input type="radio" name="sandtype" value="日新" <?= $employee['sandtype'] == '日薪' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">時薪
+                                      <input type="radio" name="sandtype" value="時薪" <?= $employee['sandtype'] == '時薪' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="standardday">基準天數</label>
+                                <input type="text" data-name="基準天數" maxlength="10" class="form-control" name="standardday" id="standardday" placeholder="ex:30" value="<?= $employee['standardday'] ? $employee['standardday'] : '30' ?>">
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="standardhour">基準時數</label>
+                                <input type="text" data-name="基準時數" maxlength="10" class="form-control" name="standardhour" id="standardhour" placeholder="ex:8" value="<?= $employee['standardhour'] ? $employee['standardhour'] : '8' ?>">
+                              </div>
+                            </div>
                           </div>
 
-                          <div class="form-group mb-4">
-                            <label for="newPassword">新密碼 *</label>
-                            <input type="password" data-name="新密碼" name="newPassword" class="form-control" id="newPassword" required>
+                          <div class="row mb-2">
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="monthmny">月薪金額</label>
+                                <input type="text" data-name="月薪金額" maxlength="10" class="form-control" name="monthmny" id="monthmny" value="<?= $employee['contact'] ?>">
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="daymny">換算日薪</label>
+                                <input type="text" data-name="換算日薪" maxlength="10" class="form-control" name="daymny" id="daymny" value="<?= $employee['contactrelation'] ?>">
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="hourmny">換算時薪</label>
+                                <input type="text" data-name="換算時薪" maxlength="16" class="form-control" name="hourmny" id="hourmny" value="<?= $employee['contacttel1'] ?>">
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="taxmny">扣繳稅額</label>
+                                <input type="text" data-name="扣繳稅額" maxlength="16" class="form-control" name="taxmny" id="taxmny" value="<?= $employee['contacttel2'] ?>">
+                              </div>
+                            </div>
                           </div>
-
-                          <div class="form-group mb-4">
-                            <label for="conPassword">重新輸入新密碼 *</label>
-                            <input type="password" data-name="重新輸入新密碼" name="conPassword" class="form-control" id="conPassword" required>
-                            <span class="d-block mt-1 text-danger">此欄位需與新密碼完全相同。</span>
+                          <div class="row mb-6">
+                            <div class="col-lg-2">
+                              <label>上班打卡</label>
+                              <label class="switch switch-primary switch-pill form-control-label">
+                                <input type="checkbox" class="switch-input form-check-input" value="on" checked>
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                              </label>
+                            </div>
+                            <div class="col-lg-2">
+                              <label>休息打卡</label>
+                              <label class="switch switch-primary switch-pill form-control-label">
+                                <input type="checkbox" class="switch-input form-check-input" value="on" checked>
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                              </label>
+                            </div>
                           </div>
-
+                          <div class="em_title mb-2">
+                            <h2>銀行帳號1</h2>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="bankno">銀行名稱</label>
+                                <select class="form-control" data-name="銀行名稱" id="bankno" name="bankno">
+                                  <option value="" data-type="">選擇銀行</option>
+                                  <?php foreach ($bank_list as $key => $value) { ?>
+                                    <option value="<?= $value['bankno'] ?>" data-type="<?= $value['bankname'] ?>" <?= $employee['bankno'] == $value['bankno'] ? 'selected' : '' ?>><?= $value['bankno'] ?> <?= $value['bankname'] ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="bankname">　</label>
+                                <input type="text" class="form-control" name="bankname" id="bankname" value="<?= $employee['bankname'] ?>" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="thuming">戶名</label>
+                                <input type="text" data-name="戶名" maxlength="16" class="form-control" name="thuming" id="thuming" value="<?= $employee['thuming'] ?>">
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="bankid">銀行帳號</label>
+                                <input type="text" data-name="銀行帳號" maxlength="16" class="form-control" name="bankid" id="bankid" value="<?= $employee['bankid'] ?>">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="em_title mb-2">
+                            <h2>銀行帳號2</h2>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="bankno2">銀行名稱</label>
+                                <select class="form-control" data-name="銀行名稱" id="bankno2" name="bankno2">
+                                  <option value="" data-type="">選擇銀行</option>
+                                  <?php foreach ($bank_list as $key => $value) { ?>
+                                    <option value="<?= $value['bankno'] ?>" data-type="<?= $value['bankname'] ?>" <?= $employee['bankno2'] == $value['bankno'] ? 'selected' : '' ?>><?= $value['bankno'] ?> <?= $value['bankname'] ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="bankname2">　</label>
+                                <input type="text" class="form-control" name="bankname2" id="bankname2" value="<?= $employee['bankname2'] ?>" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="thuming2">戶名</label>
+                                <input type="text" data-name="戶名" maxlength="16" class="form-control" name="thuming2" id="thuming2" value="<?= $employee['thuming2'] ?>">
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="bankid2">銀行帳號</label>
+                                <input type="text" data-name="銀行帳號" maxlength="16" class="form-control" name="bankid2" id="bankid2" value="<?= $employee['bankid2'] ?>">
+                              </div>
+                            </div>
+                          </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill pwBtn" data-type="pw_edit">儲存</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="employee_edit">儲存</button>
                           </div>
                         </form>
                       </div>
