@@ -63,4 +63,51 @@ $(function () {
             }
         }
     })
+
+    // ----------------------加班設定----------------------
+
+    $('input[name=overtime]').on('change', function () {
+        let k = $(this).val();
+        // console.log(t)
+        if (k == '1') {
+            $('input[name=jiabanbudashi]').prop('readonly', false);
+        } else {
+            $('input[name=jiabanbudashi]').prop('readonly', true);
+        }
+    })
+    $('input[name=otway]').on('change', function () {
+        let t = $(this).val();
+        let k = $('input[name=jiabanbudadan]').prop('checked');
+        let j = $('input[name=overtime]:checked').val();
+        if (t == '2') {
+            $('input[name=overtime]').prop('disabled', false);
+            $('input[name=jiabanbudadan]').prop('disabled', true);
+            $('.otdiv').css('opacity', '0.5');
+            if (j == '1') {
+                $('input[name=jiabanbudashi]').prop('readonly', false);
+            }
+        } else {
+            $('input[name=jiabanbudadan]').prop('disabled', false);
+            $('.otdiv').css('opacity', '');
+            if (k) {
+                $('input[name=overtime]').prop('disabled', false);
+            } else {
+                $('input[name=jiabanbudashi]').prop('readonly', true);
+                $('input[name=overtime]').prop('disabled', true);
+            }
+        }
+    })
+    $('input[name=jiabanbudadan]').on('click', function () {
+        let k = $(this).prop('checked');
+        let j = $('input[name=overtime]:checked').val();
+        if (k) {
+            $('input[name=overtime]').prop('disabled', false);
+            if (j == '1') {
+                $('input[name=jiabanbudashi]').prop('readonly', false);
+            }
+        } else {
+            $('input[name=jiabanbudashi]').prop('readonly', true);
+            $('input[name=overtime]').prop('disabled', true);
+        }
+    })
 })

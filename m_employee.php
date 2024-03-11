@@ -94,7 +94,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">加班設定</a>
+                      <a class="nav-link" id="overtime-tab" data-toggle="tab" href="#overtime" role="tab" aria-controls="overtime" aria-selected="false">加班設定</a>
                     </li>
 
                     <li class="nav-item">
@@ -591,6 +591,240 @@ if (empty($employid)) { //判斷是否為編輯模式
                           </div>
                           <div class="d-flex justify-content-end mt-5">
                             <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="2" data-type="salary_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="overtime" role="tabpanel" aria-labelledby="overtime-tab">
+                      <div class="tab-pane-content mt-5">
+                        <form id="form3" onsubmit="return false;">
+                          <input type="hidden" name="eid" value="<?= $employee['eid'] ?>">
+                          <div class="em_title mb-2">
+                            <h2>加班費</h2>
+                          </div>
+                          <div class="row mb-6">
+                            <div class="col-lg-2 form-group">
+                              <label>是否支付加班</label>
+                              <label class="switch switch-primary switch-pill form-control-label">
+                                <input type="checkbox" class="switch-input form-check-input" name="overtimetype" value="1" <?= $employee['overtimetype'] == '1' ? 'checked' : '' ?>>
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                              </label>
+                            </div>
+                            <div class="col-lg-5">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">計算方式</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">固定金額
+                                      <input type="radio" name="overtimemnytype" value="1" <?= $employee['overtimemnytype'] == '1' || $employee['overtimemnytype'] == '' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">時薪比例
+                                      <input type="radio" name="overtimemnytype" value="2" <?= $employee['overtimemnytype'] == '2' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">全薪計算
+                                      <input type="radio" name="overtimemnytype" value="3" <?= $employee['overtimemnytype'] == '3' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>一般加班費</label></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="normalovertimeMny">金額</label>
+                                <input type="number" data-name="金額" class="form-control" name="normalovertimeMny" id="normalovertimeMny" value="<?= $employee['normalovertimeMny'] ? $employee['normalovertimeMny'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="normalovertimerate">比例%</label>
+                                <input type="number" data-name="比例%" class="form-control" step="0.01" name="normalovertimerate" id="normalovertimerate" value="<?= $employee['normalovertimerate'] ? $employee['normalovertimerate'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>小於(含)2小時</label></div>
+                          </div>
+
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>延長加班費</label></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="extendovertimemny"></label>
+                                <input type="number" data-name="金額" class="form-control" name="extendovertimemny" id="extendovertimemny" value="<?= $employee['extendovertimemny'] ? $employee['extendovertimemny'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="extendovertimerate"></label>
+                                <input type="number" data-name="比例%" class="form-control" step="0.01" name="extendovertimerate" id="extendovertimerate" value="<?= $employee['extendovertimerate'] ? $employee['extendovertimerate'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>超過2小時</label></div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>例假日加班費</label></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="holidayovertimemny"></label>
+                                <input type="number" data-name="金額" class="form-control" name="holidayovertimemny" id="holidayovertimemny" value="<?= $employee['holidayovertimemny'] ? $employee['holidayovertimemny'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="holidayovertimerate"></label>
+                                <input type="number" data-name="比例%" class="form-control" step="0.01" name="holidayovertimerate" id="holidayovertimerate" value="<?= $employee['holidayovertimerate'] ? $employee['holidayovertimerate'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>每小時</label></div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>國定日加班費</label></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="publicholidayovertimemny"></label>
+                                <input type="number" data-name="金額" class="form-control" name="publicholidayovertimemny" id="publicholidayovertimemny" value="<?= $employee['publicholidayovertimemny'] ? $employee['publicholidayovertimemny'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="publicholidayovertimerate"></label>
+                                <input type="number" data-name="比例%" class="form-control" step="0.01" name="publicholidayovertimerate" id="publicholidayovertimerate" value="<?= $employee['publicholidayovertimerate'] ? $employee['publicholidayovertimerate'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>每小時</label></div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>休息日加班費</label></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="restovertimemny1"></label>
+                                <input type="number" data-name="金額" class="form-control" name="restovertimemny1" id="restovertimemny1" value="<?= $employee['restovertimemny1'] ? $employee['restovertimemny1'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="resthourrate1"></label>
+                                <input type="number" data-name="比例%" class="form-control" step="0.01" name="resthourrate1" id="resthourrate1" value="<?= $employee['resthourrate1'] ? $employee['resthourrate1'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>1~2小時</label></div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-inline font-weight-bold"></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="restovertimemny2"></label>
+                                <input type="number" data-name="金額" class="form-control" name="restovertimemny2" id="restovertimemny2" value="<?= $employee['restovertimemny2'] ? $employee['restovertimemny2'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="resthourrate2"></label>
+                                <input type="number" data-name="比例%" class="form-control" step="0.01" name="resthourrate2" id="resthourrate2" value="<?= $employee['resthourrate2'] ? $employee['resthourrate2'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>3~8小時</label></div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-2 form-inline font-weight-bold"></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="restovertimemny3"></label>
+                                <input type="number" data-name="金額" class="form-control" name="restovertimemny3" id="restovertimemny3" value="<?= $employee['restovertimemny3'] ? $employee['restovertimemny3'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="resthourrate3"></label>
+                                <input type="number" data-name="比例%" class="form-control" step="0.01" name="resthourrate3" id="resthourrate3" value="<?= $employee['resthourrate3'] ? $employee['resthourrate3'] : '0' ?>" required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>8小時以上</label></div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-5">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">加班方式</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">一般情況
+                                      <input type="radio" name="otway" value="1" <?= $employee['otway'] == '1' || $employee['otway'] == '' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">加班單並行
+                                      <input type="radio" name="otway" value="2" <?= $employee['otway'] == '2' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-6">
+                            <div class="col-lg-2 form-group otdiv">
+                              <label class="otlabel">不計算加班單</label>
+                              <label class="switch switch-primary switch-pill form-control-label">
+                                <input type="checkbox" class="switch-input form-check-input" name="jiabanbudadan" value="1" <?= $employee['jiabanbudadan'] == '1' || empty($employee['jiabanbudadan']) ? 'checked' : '' ?>>
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                              </label>
+                            </div>
+                            <div class="col-lg-5">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">　</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">依據員工出勤曆的加班時段
+                                      <input type="radio" name="overtime" value="2" <?= $employee['overtime'] == '2' || $employee['overtime'] == '' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">超過
+                                      <input type="radio" name="overtime" value="1" <?= $employee['overtime'] == '1' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="jiabanbudashi"></label>
+                                <input type="number" data-name="超過分鐘加班" class="form-control" name="jiabanbudashi" id="jiabanbudashi" value="<?= $employee['jiabanbudashi'] ? $employee['jiabanbudashi'] : '0' ?>" readonly required>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>分鐘算加班</label></div>
+                          </div>
+                          <div class="row mb-6">
+                            <div class="col-lg-2 form-group">
+                              <label>是否加班給誤餐費</label>
+                              <label class="switch switch-primary switch-pill form-control-label">
+                                <input type="checkbox" class="switch-input form-check-input" name="mealflag" value="1" <?= $employee['mealflag'] == '1' ? 'checked' : '' ?>>
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                              </label>
+                            </div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label for="mealmny">金額</label>
+                                <input type="number" data-name="誤餐費金額" class="form-control" name="mealmny" id="mealmny" value="<?= $employee['mealmny'] ? $employee['mealmny'] : '0' ?>" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-end mt-5">
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="3" data-type="salary_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
                           </div>
                         </form>
                       </div>
