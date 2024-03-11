@@ -13,6 +13,8 @@ $_Type  = $_POST['_type']; //主執行case
 
 $_POST = arr_filter($_POST); //簡易輸入過濾
 
+$is_verify = $_MemberData['Company_Verify'] == $_POST['token'] ? true : false;
+
 ob_start();
 
 if (!empty($_Type)) {
@@ -254,7 +256,7 @@ if (!empty($_Type)) {
 
 			//會員資料修改-公司
 		case "mem_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -317,7 +319,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "pw_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -358,7 +360,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "bank_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -401,7 +403,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "bank_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -433,7 +435,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "education_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -476,7 +478,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "education_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -508,7 +510,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "jobs_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -551,7 +553,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "jobs_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -583,7 +585,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "part_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -626,7 +628,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "part_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -658,7 +660,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "family_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -701,7 +703,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "family_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -733,7 +735,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "reason_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -776,7 +778,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "reason_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -808,7 +810,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "deduction_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -853,7 +855,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "deduction_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -885,7 +887,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "seclab_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -929,7 +931,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "purchaser_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -971,7 +973,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "attendance_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -1069,7 +1071,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "attendance_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -1101,7 +1103,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "holidays_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -1133,7 +1135,7 @@ if (!empty($_Type)) {
 						$db->Where = " WHERE niandu = '" . $Value['niandu'] . "'";
 						$db->query_sql($holidays_db, '*');
 						if ($row = $db->query_fetch()) {
-							$_html_msg 	= '假別編號已存在，請更換一個後再儲存';
+							$_html_msg 	= '年度已存在，請更換一個後再儲存';
 							break;
 						}
 					}
@@ -1143,7 +1145,7 @@ if (!empty($_Type)) {
 					$db->Where = " WHERE niandu = '" . $Value['niandu'] . "'";
 					$db->query_sql($holidays_db, '*');
 					if ($row = $db->query_fetch()) {
-						$_html_msg 	= '假別編號已存在，請更換一個後再儲存';
+						$_html_msg 	= '年度已存在，請更換一個後再儲存';
 						break;
 					}
 				}
@@ -1174,7 +1176,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "holidays_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -1206,7 +1208,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "employee_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -1364,7 +1366,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "employee_del":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -1396,7 +1398,7 @@ if (!empty($_Type)) {
 			}
 			break;
 		case "salary_edit":
-			if (!$_Login) {
+			if (!$_Login || !$is_verify) {
 				$_html_msg = '請先登入帳號！';
 				$_html_href = "index.php";
 				break;
@@ -1456,143 +1458,6 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
-		case "plan_change":
-			if ($_Login) {
-				switch ($_state) {
-					case 'company':
-						break;
-						break;
-					case 'member':
-						$_html_msg = '請先登入帳號！';
-						$_html_href = "index.php";
-						break;
-					default:
-						$_html_msg = '請先登入帳號！';
-						$_html_href = "index.php";
-						break;
-				}
-			} else {
-				$_html_msg = '請先登入帳號！';
-				$_html_href = "index.php";
-				break;
-			}
-			$_html_msg = '';
-			$_html_msg_array = array();
-			$value = array();
-			$Value['invoice_address'] 	= trim($_POST['invoice_address']);
-			foreach ($Value as $key => $val) {
-				if (empty($val)) {
-					array_push($_html_msg_array, '資料填寫不完整');
-					break;
-				}
-			}
-			if (!empty($_html_msg_array)) { //判斷資料完整度
-				foreach ($_html_msg_array as $hma) {
-					$_html_msg = $hma;
-					break;
-				}
-			} else {
-				$Value['invoice_type'] 		= trim($_POST['invoice_type']);
-				$Value['plan'] 		= trim($_POST['plan']);
-				$_CompanyPlanData = array(
-					'CS_CID' 	 	 		=> $_MemberData['Company_ID'],
-					'CS_Plan'	  	 		=> $Value['plan'],
-					'CS_Invoice_type' 		=> $Value['invoice_type'],
-					'CS_Invoice_Address' 	=> $Value['invoice_address'],
-					'CS_Is_Pay' 			=> 0,
-					'CS_Sdate' 	 			=> $sdate
-				);
-				$db->query_data($cs_db, $_CompanyPlanData, 'INSERT');
-				if (!empty($db->Error)) {
-					$_html_msg 	= '提交失敗，請稍等一下再提交!';
-					break;
-				} else {
-					$_html_msg 	= '提交成功！';
-					$_html_href = 'com_profile.php';
-				}
-			}
-			break;
-
-		case "msg_save":
-
-			$_html_msg 	= '';
-			$Value 		= array();
-
-			$Value['Name'] 		= substr(trim($_POST['con_name']), 0, 30); //名字
-			$Value['Tel'] 		= substr(trim($_POST['tel']), 0, 20); //電話
-			$Value['Email'] 	= trim($_POST['email']); //信箱
-			$Value['Content'] 	= trim($_POST['content']);
-			$Value['Verify'] 	= 'CT' . strtoupper(dechex(time()));
-
-			// $Value['formcodes'] 	= trim($_POST['formcodes']);
-			//$formscode 			= $_SESSION[$_Website]['website']['formcode'];//驗證碼
-
-			$_html_msg = '';
-			/*
-			if( strtolower($Value['formcodes']) != strtolower($formscode) || empty($Value['formcodes']) || empty($formscode) ){
-				
-				$_html_msg 	= '驗證碼錯誤';
-				break;
-			}
-			*/
-			foreach ($Value as $key => $val) {
-
-				if (empty($val)) {
-
-					$_html_msg 	= '資料填寫不完整';
-					break;
-				}
-			}
-
-			if (empty($_html_msg)) {
-
-				$db_data = array(
-					'CT_Name'		=> $Value['Name'],
-					'CT_Tel' 		=> $Value['Tel'],
-					'CT_Email' 		=> $Value['Email'],
-					'CT_Content'	=> $Value['Content'],
-					'CT_Verify'		=> $Value['Verify'],
-					'CT_Sdate'		=> $sdate
-				);
-
-				$db->query_data('web_contact', $db_data, 'INSERT');
-
-				if (!empty($db->Error)) {
-
-					$_html_msg 	= '留言失敗, 請重新操作';
-				} else {
-
-					$FromName = !empty($_setting_['WO_SendName']) ? $_setting_['WO_SendName'] : '本網站';
-
-					//收件人姓名 收件人信箱
-					// $mailto = array(
-					// 	$Value['Name'] => $Value['Email']
-					// );
-
-					// $sbody = get_MailBody('custom_contact',$Value['Verify']);
-
-
-					//寄給客戶
-					// $Send_TF = SendMail($_setting_, '您在 '.$FromName. ' 留言內容, 此信件為系統發出信件，請勿直接回覆', $sbody, $mailto);
-
-					$_html_msg 	= '留言成功， 我們會盡快與您聯絡';
-
-					if (!empty($_setting_['WO_Email'])) {
-
-						$mailto = array(
-							$FromName => $_setting_['WO_Email']
-						);
-						$sbody = get_MailBody('admin_contact', $Value['Verify']);
-
-						//寄給管理者
-						$Send_TF = SendMail($_setting_, '您有新的留言內容, 此信件為系統發出信件，請勿直接回覆', $sbody, $mailto);
-					}
-				}
-			}
-
-			$_html_href = 'contact.php';
-			break;
-
 		case "mlogin":
 
 
@@ -1648,7 +1513,8 @@ if (!empty($_Type)) {
 
 						$_html_msg 	= '帳號未啟用';
 					} else {
-						$db->query_data($company_db, array('Company_PW' => $pwd, 'Company_RePwd' => '', 'Company_Is_RePwd' => 0), 'UPDATE');
+						$token = bin2hex(random_bytes(16));
+						$db->query_data($company_db, array('Company_PW' => $pwd, 'Company_RePwd' => '', 'Company_Is_RePwd' => 0, 'Company_Verify' => $token), 'UPDATE');
 						$_html_msg 	= '歡迎 ' . $row['Company_Name'] . ' 回來';
 						$_SESSION[$_Website]['website']['company_id']    = $row['Company_ID'];
 						$_SESSION[$_Website]['website']['type']    = 'company';
@@ -1807,169 +1673,6 @@ if (!empty($_Type)) {
 			break;
 
 			//---會員資料修改
-		case "member_edit":
-
-			global $_MemberData;
-
-			$_html_msg 			= '';
-			$db 				= new MySQL();
-			$Change_PWD 		= false;
-			$Value 				= array();
-
-			//-----------------------recaptcha------------------------------------
-
-			if (!empty($_POST['recaptchaResponse'])) {
-
-				$RC = new ReCaptcha();
-				$RC->Verify($_POST['recaptchaResponse']);
-
-				if ($RC->rs != "success") {
-
-					$_html_msg 	= '驗證碼連接失敗';
-					break;
-				}
-			}
-			//-------------------------------------------------------------------
-
-			if (!empty($_POST['memed_pwd']) && !empty($_POST['memed_repwd'])) {
-
-				$Value['new_pwd'] 			= md5(Turnencode(trim($_POST['memed_pwd']), 'password'));
-				$Value['new_repwd'] 		= md5(Turnencode(trim($_POST['memed_repwd']), 'password'));
-
-				if ($Value['new_pwd'] != $Value['new_repwd']) {
-
-					$_html_msg 	= '輸入之確認密碼與密碼不相同';
-					break;
-				}
-
-				$Change_PWD 				= true;
-			}
-
-
-			$Value['Member_ID'] 		= trim($_MemberData['Member_ID']);
-			$Value['member_name']		= trim($_POST['mem_name']);
-			$Value['member_mobile'] 	= trim($_POST['mem_mobile']);
-			$Value['member_city'] 		= trim($_POST['mem_city']);
-			$Value['member_county'] 	= trim($_POST['mem_county']);
-			$Value['member_address']	= trim($_POST['mem_address']);
-			//$Value['formcodes'] 		= trim($_POST['formcodes']);
-			//$formscode 					= $_SESSION[$_Website]['website']['formcode'];//驗證碼
-			/*
-			if( strtolower($Value['formcodes']) != strtolower($formscode) || empty($Value['formcodes']) || empty($formscode) ){
-				
-				$_html_msg 	= '驗證碼錯誤';
-				break;
-			}*/
-
-			//判斷空值
-			foreach ($Value as $key => $val) {
-
-				if (empty($val)) {
-
-					$_html_msg 	= '資料填寫不完全';
-					break;
-				}
-			}
-
-			if (empty($_html_msg)) {
-
-				if ($Change_PWD) {
-
-					$db_data = array(
-						'Member_Pwd'		=> $Value['new_pwd'],
-						'Member_Name'		=> $Value['member_name'],
-						'Member_Mobile' 	=> $Value['member_mobile'],
-						'Member_City' 		=> $Value['member_city'],
-						'Member_County'		=> $Value['member_county'],
-						'Member_Address'	=> $Value['member_address'],
-						'Member_Edate'		=> $sdate,
-					);
-				} else {
-
-					$db_data = array(
-						'Member_Name'		=> $Value['member_name'],
-						'Member_Mobile' 	=> $Value['member_mobile'],
-						'Member_City' 		=> $Value['member_city'],
-						'Member_County'		=> $Value['member_county'],
-						'Member_Address'	=> $Value['member_address'],
-						'Member_Edate'		=> $sdate,
-					);
-				}
-
-				$db->Where = "Where Member_ID = '" . $db->val_check($Value['Member_ID']) . "'";
-				$db->query_data($member_db, $db_data, 'UPDATE');
-
-				if (!empty($db->Error)) {
-
-					$_html_msg 	= '會員資料修改失敗, 請重新操作';
-					break;
-				} else {
-
-					$_html_msg 	= '會員資料修改成功';
-					$_html_href = 'member.php';
-				}
-			}
-
-			break;
-
-			//---匯款帳號回傳
-		case "pay_dataUpdate":
-
-			global $_setting_;
-
-			$_html_msg 			= '';
-			$db 				= new MySQL();
-			$Value 				= array();
-
-			$Value['pay_code'] 		= trim($_POST['pay_code']);
-			$Value['pay_date'] 		= trim($_POST['pay_date']);
-			$Value['oid'] 			= trim($_POST['oid']);
-
-
-			foreach ($Value as $key => $val) {
-
-				if (empty($val)) {
-
-					$_html_msg 	= '資料填寫不完整';
-					break;
-				}
-			}
-
-			if (empty($_html_msg)) {
-
-				$db_data = array(
-
-					'Orderm_card5no' => $Value['pay_code'],
-					'Orderm_payTime' => $Value['pay_date']
-				);
-
-				$db->Where = "Where Orderm_ID = '" . $db->val_check($Value['oid']) . "'";
-				$db->query_data("web_ordermain", $db_data, 'UPDATE');
-
-				if (!empty($db->Error)) {
-
-					$_html_msg 	= '上傳失敗, 請重新操作';
-				} else {
-
-					$FromName = !empty($_setting_['WO_SendName']) ? $_setting_['WO_SendName'] : '本網站';
-
-					$mailto = array(
-						$FromName => $_setting_['WO_Email']
-					);
-
-					$sbody = '提醒您！您有一筆訂單已回填匯款帳號。';
-
-					//寄給管理者
-					$Send_TF = SendMail($_setting_, $sbody, $sbody, $mailto);
-
-					$_html_eval = 'Reload()';
-					$_html_msg 	= '匯款資訊更新成功';
-				}
-			}
-
-			break;
-
-			//---忘記密碼
 		case "send_forget_pw":
 
 			global $member_db, $_setting_;

@@ -157,6 +157,8 @@ if ($website_open) {
 		if (!empty($_MemberData)) {
 			$_Login = true;
 			$_state = 'member';
+		} else {
+			$_Login = false;
 		}
 	} elseif (!empty($_SESSION[$_Website]['website']['company_id'])) {
 		$_MemberData = GET_COM_DATA($_SESSION[$_Website]['website']['company_id']);
@@ -164,6 +166,8 @@ if ($website_open) {
 			$_Login = true;
 			$_state = 'company';
 			$_MemberFun = $plan_fun[$_MemberData['Company_Plan']];
+		} else {
+			$_Login = false;
 		}
 	}
 

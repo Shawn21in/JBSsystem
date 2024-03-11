@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-11 02:19:31
+-- 產生時間： 2024-03-11 05:51:25
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
 
 INSERT INTO `bank` (`bankno`, `bankname`) VALUES
 ('822', '中國信託商業銀行'),
-('000', '中央信託局'),
+('000', '中央銀行'),
 ('001', '中央信託局'),
 ('003', '交通銀行'),
 ('004', '臺灣銀行'),
@@ -767,7 +767,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=669 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=677 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1444,7 +1444,16 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (665, '2024-03-11 10:05:55', '系統管理員', '1', '', 'UPDATE employee SET `sandtype` = \'3\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'001\',`bankno2` = \'048\',`bankname` = \'中央信託局\',`bankname2` = \'臺灣工業銀行\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
 (666, '2024-03-11 10:06:02', '系統管理員', '1', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'1\',`resttype` = \'1\',`bankno` = \'001\',`bankno2` = \'048\',`bankname` = \'中央信託局\',`bankname2` = \'臺灣工業銀行\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
 (667, '2024-03-11 10:06:10', '系統管理員', '1', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'1\',`resttype` = \'1\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
-(668, '2024-03-11 10:06:17', '系統管理員', '1', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php');
+(668, '2024-03-11 10:06:17', '系統管理員', '1', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(669, '2024-03-11 10:36:55', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'d21accbbe34a598a1c318c56a483a3db\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(670, '2024-03-11 11:18:46', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php');
+INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_COMMENT`, `ML_SQL_CON`, `ML_SQL_EXEC_TYPE`, `ML_EXEC_FILE`) VALUES
+(671, '2024-03-11 11:40:48', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(672, '2024-03-11 11:41:13', '系統管理員', '1', '', 'UPDATE comp SET `cono` = \'01\',`coname1` = \'庫點子\',`coname2` = \'庫點子文創資訊產業有限公司\',`coper` = \'廖石龍\',`couno` = \'04235868\',`cotel1` = \'0423586802\',`cofax1` = \'0423586807\',`coaddr1` = \'407台中市西屯區中工二路120號\',`coemail` = \'bmidp888@gmail.com\',`laobaono` = \'1234\',`jianbaono` = \'1234\'  WHERE  1 = 1;', 'UPDATE', '/jp/web_post.php'),
+(673, '2024-03-11 11:45:56', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\'  WHERE  1 = 1 ;', 'UPDATE', '/jp/web_post.php'),
+(674, '2024-03-11 11:46:04', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'000\',`bankname` = \'中央信託局\'  WHERE  bankno = \'000\';', 'UPDATE', '/jp/web_post.php'),
+(675, '2024-03-11 11:46:16', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'003\',`bankname` = \'交通銀行\'  WHERE  bankno = \'003\';', 'UPDATE', '/jp/web_post.php'),
+(676, '2024-03-11 11:46:45', '系統管理員', '1', '', 'UPDATE bank SET `bankno` = \'000\',`bankname` = \'中央銀行\'  WHERE  bankno = \'000\';', 'UPDATE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -1922,7 +1931,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'CT657C0CCA', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'd21accbbe34a598a1c318c56a483a3db', 1);
 
 -- --------------------------------------------------------
 

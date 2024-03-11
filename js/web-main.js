@@ -138,7 +138,9 @@ $(document).ready(function (e) {
 			var type = $(this).attr('data-type');
 			var field = $('#form2');
 			var Form_Data = '';
+			var token = $('input[name=token]').val();
 			Form_Data += field.serialize();
+			Form_Data += '&token=' + token;
 			Form_Data += '&_type=' + type;
 			Post_JS(Form_Data, Exec_Url);
 		}
@@ -148,7 +150,9 @@ $(document).ready(function (e) {
 			var type = $(this).attr('data-type');
 			var field = $('#form1');
 			var Form_Data = '';
+			var token = $('input[name=token]').val();
 			Form_Data += field.serialize();
+			Form_Data += '&token=' + token;
 			Form_Data += '&_type=' + type;
 			Post_JS(Form_Data, Exec_Url);
 		}
@@ -164,7 +168,9 @@ $(document).ready(function (e) {
 			var type = $(this).attr('data-type');
 			var field = $('#' + form1);
 			var Form_Data = '';
+			var token = $('input[name=token]').val();
 			Form_Data += field.serialize();
+			Form_Data += '&token=' + token;
 			Form_Data += '&_type=' + type;
 			Post_JS(Form_Data, Exec_Url);
 		}
@@ -173,7 +179,9 @@ $(document).ready(function (e) {
 		var type = $(this).attr('data-type');
 		var field = $(this).closest('form');
 		var Form_Data = '';
+		var token = $('input[name=token]').val();
 		Form_Data += field.serialize();
+		Form_Data += '&token=' + token;
 		Form_Data += '&_type=' + type;
 		Post_JS(Form_Data, Exec_Url);
 	});
