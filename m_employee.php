@@ -481,13 +481,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="monthmny">月薪金額</label>
-                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" required>
+                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" <?= $employee['sandtype'] == '2' || $employee['sandtype'] == '3' ? 'readonly' : '' ?> required>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="daymny">換算日薪</label>
-                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" required>
+                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" <?= $employee['sandtype'] == '3' ? 'readonly' : '' ?> required>
                               </div>
                             </div>
                             <div class="col-lg-3">
@@ -507,7 +507,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2">
                               <label>上班打卡</label>
                               <label class="switch switch-primary switch-pill form-control-label">
-                                <input type="checkbox" class="switch-input form-check-input" name="starttype" value="1" checked>
+                                <input type="checkbox" class="switch-input form-check-input" name="starttype" value="1" <?= $employee['starttype'] == '1' ? 'checked' : '' ?>>
                                 <span class="switch-label"></span>
                                 <span class="switch-handle"></span>
                               </label>
@@ -515,7 +515,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2">
                               <label>休息打卡</label>
                               <label class="switch switch-primary switch-pill form-control-label">
-                                <input type="checkbox" class="switch-input form-check-input" name="resttype" value="1" checked>
+                                <input type="checkbox" class="switch-input form-check-input" name="resttype" value="1" <?= $employee['resttype'] == '1' ? 'checked' : '' ?>>
                                 <span class="switch-label"></span>
                                 <span class="switch-handle"></span>
                               </label>
