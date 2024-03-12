@@ -1458,6 +1458,77 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "overtime_edit":
+			if (!$_Login || !$is_verify) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['eid'] 			= intval($_POST['eid']);
+			$employee = $CM->get_employee_data($Value['eid']);
+			$Value['overtimetype'] 				= !empty($_POST['overtimetype']) ? '1' : '0';
+			$Value['overtimemnytype'] 			= $_POST['overtimemnytype'];
+			$Value['normalovertimemny'] 		= $_POST['normalovertimemny'];
+			$Value['normalovertimerate'] 		= $_POST['normalovertimerate'];
+			$Value['extendovertimemny'] 		= $_POST['extendovertimemny'];
+			$Value['extendovertimerate'] 		= $_POST['extendovertimerate'];
+			$Value['holidayovertimemny'] 		= $_POST['holidayovertimemny'];
+			$Value['holidayovertimerate'] 		= $_POST['holidayovertimerate'];
+			$Value['publicholidayovertimemny'] 	= $_POST['publicholidayovertimemny'];
+			$Value['publicholidayovertimerate'] = $_POST['publicholidayovertimerate'];
+			$Value['restovertimemny1'] 			= $_POST['restovertimemny1'];
+			$Value['restovertimemny2'] 			= $_POST['restovertimemny2'];
+			$Value['restovertimemny3'] 			= $_POST['restovertimemny3'];
+			$Value['resthourrate1'] 		= $_POST['resthourrate1'];
+			$Value['resthourrate2'] 		= $_POST['resthourrate2'];
+			$Value['resthourrate3'] 		= $_POST['resthourrate3'];
+			$Value['otway'] 					= $_POST['otway'];
+			$Value['jiabanbudadan'] 			= !empty($_POST['jiabanbudadan']) ? '1' : '0';
+			$Value['overtime'] 					= $_POST['overtime'];
+			$Value['jiabanbudashi'] 			= !empty($_POST['jiabanbudashi']) && $_POST['overtime'] == '1' ? $_POST['jiabanbudashi'] : '0';
+			$Value['mealflag'] 					= !empty($_POST['mealflag']) ? '1' : '0';
+			$Value['mealmny'] 					= !empty($_POST['mealflag']) && !empty($_POST['mealmny']) ? $_POST['mealmny'] : '0';
+			if (empty($employee)) { //判斷資料完整度
+				$_html_msg = '請先產生員工資料後再進行';
+				break;
+			} else {
+				$employee_data = array(
+					'overtimetype' 				=> $Value['overtimetype'],
+					'overtimemnytype' 			=> $Value['overtimemnytype'],
+					'normalovertimemny' 		=> $Value['normalovertimemny'],
+					'normalovertimerate' 		=> $Value['normalovertimerate'],
+					'extendovertimemny' 		=> $Value['extendovertimemny'],
+					'extendovertimerate' 		=> $Value['extendovertimerate'],
+					'holidayovertimemny' 		=> $Value['holidayovertimemny'],
+					'holidayovertimerate' 		=> $Value['holidayovertimerate'],
+					'publicholidayovertimemny' 	=> $Value['publicholidayovertimemny'],
+					'publicholidayovertimerate' => $Value['publicholidayovertimerate'],
+					'restovertimemny1' 			=> $Value['restovertimemny1'],
+					'restovertimemny2' 			=> $Value['restovertimemny2'],
+					'restovertimemny3' 			=> $Value['restovertimemny3'],
+					'resthourrate1' 			=> $Value['resthourrate1'],
+					'resthourrate2' 			=> $Value['resthourrate2'],
+					'resthourrate3' 			=> $Value['resthourrate3'],
+					'otway' 					=> $Value['otway'],
+					'jiabanbudadan' 			=> $Value['jiabanbudadan'],
+					'overtime' 					=> $Value['overtime'],
+					'jiabanbudashi' 			=> $Value['jiabanbudashi'],
+					'mealflag' 					=> $Value['mealflag'],
+					'mealmny' 					=> $Value['mealmny'],
+				);
+				$db->Where = " WHERE  eid = '" . $Value['eid'] . "'";
+				$db->query_data($employee_db, $employee_data, 'UPDATE');
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+				}
+			}
+			break;
 		case "mlogin":
 
 

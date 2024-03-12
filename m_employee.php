@@ -641,31 +641,30 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2 form-inline font-weight-bold"><label>一般加班費</label></div>
                             <div class="col-lg-3">
                               <div class="form-group">
-                                <label for="normalovertimeMny">金額</label>
-                                <input type="number" data-name="金額" class="form-control mny" name="normalovertimeMny" id="normalovertimeMny" value="<?= $employee['normalovertimeMny'] ? $employee['normalovertimeMny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?> required>
+                                <label for="normalovertimemny">金額</label>
+                                <input type="number" data-name="金額" class="form-control mny" name="normalovertimemny" id="normalovertimemny" value="<?= $employee['normalovertimemny'] ? $employee['normalovertimemny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="normalovertimerate">比例%</label>
-                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="normalovertimerate" id="normalovertimerate" value="<?= $employee['normalovertimerate'] ? $employee['normalovertimerate'] : '1.34' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="normalovertimerate" id="normalovertimerate" value="<?= $employee['normalovertimerate'] ? $employee['normalovertimerate'] : '1.34' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>小於(含)2小時</label></div>
                           </div>
-
                           <div class="row mb-2">
                             <div class="col-lg-2 form-inline font-weight-bold"><label>延長加班費</label></div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="extendovertimemny"></label>
-                                <input type="number" data-name="金額" class="form-control mny" name="extendovertimemny" id="extendovertimemny" value="<?= $employee['extendovertimemny'] ? $employee['extendovertimemny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="金額" class="form-control mny" name="extendovertimemny" id="extendovertimemny" value="<?= $employee['extendovertimemny'] ? $employee['extendovertimemny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="extendovertimerate"></label>
-                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="extendovertimerate" id="extendovertimerate" value="<?= $employee['extendovertimerate'] ? $employee['extendovertimerate'] : '1.67' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="extendovertimerate" id="extendovertimerate" value="<?= $employee['extendovertimerate'] ? $employee['extendovertimerate'] : '1.67' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>超過2小時</label></div>
@@ -675,13 +674,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="holidayovertimemny"></label>
-                                <input type="number" data-name="金額" class="form-control mny" name="holidayovertimemny" id="holidayovertimemny" value="<?= $employee['holidayovertimemny'] ? $employee['holidayovertimemny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="金額" class="form-control mny" name="holidayovertimemny" id="holidayovertimemny" value="<?= $employee['holidayovertimemny'] ? $employee['holidayovertimemny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="holidayovertimerate"></label>
-                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="holidayovertimerate" id="holidayovertimerate" value="<?= $employee['holidayovertimerate'] ? $employee['holidayovertimerate'] : '2.00' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="holidayovertimerate" id="holidayovertimerate" value="<?= $employee['holidayovertimerate'] ? $employee['holidayovertimerate'] : '2.00' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>每小時</label></div>
@@ -691,13 +690,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="publicholidayovertimemny"></label>
-                                <input type="number" data-name="金額" class="form-control mny" name="publicholidayovertimemny" id="publicholidayovertimemny" value="<?= $employee['publicholidayovertimemny'] ? $employee['publicholidayovertimemny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="金額" class="form-control mny" name="publicholidayovertimemny" id="publicholidayovertimemny" value="<?= $employee['publicholidayovertimemny'] ? $employee['publicholidayovertimemny'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="publicholidayovertimerate"></label>
-                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="publicholidayovertimerate" id="publicholidayovertimerate" value="<?= $employee['publicholidayovertimerate'] ? $employee['publicholidayovertimerate'] : '2.00' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="publicholidayovertimerate" id="publicholidayovertimerate" value="<?= $employee['publicholidayovertimerate'] ? $employee['publicholidayovertimerate'] : '2.00' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>每小時</label></div>
@@ -707,13 +706,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="restovertimemny1"></label>
-                                <input type="number" data-name="金額" class="form-control mny" name="restovertimemny1" id="restovertimemny1" value="<?= $employee['restovertimemny1'] ? $employee['restovertimemny1'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="金額" class="form-control mny" name="restovertimemny1" id="restovertimemny1" value="<?= $employee['restovertimemny1'] ? $employee['restovertimemny1'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="resthourrate1"></label>
-                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="resthourrate1" id="resthourrate1" value="<?= $employee['resthourrate1'] ? $employee['resthourrate1'] : '1.34' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="resthourrate1" id="resthourrate1" value="<?= $employee['resthourrate1'] ? $employee['resthourrate1'] : '1.34' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>1~2小時</label></div>
@@ -723,13 +722,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="restovertimemny2"></label>
-                                <input type="number" data-name="金額" class="form-control mny" name="restovertimemny2" id="restovertimemny2" value="<?= $employee['restovertimemny2'] ? $employee['restovertimemny2'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="金額" class="form-control mny" name="restovertimemny2" id="restovertimemny2" value="<?= $employee['restovertimemny2'] ? $employee['restovertimemny2'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="resthourrate2"></label>
-                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="resthourrate2" id="resthourrate2" value="<?= $employee['resthourrate2'] ? $employee['resthourrate2'] : '1.67' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="resthourrate2" id="resthourrate2" value="<?= $employee['resthourrate2'] ? $employee['resthourrate2'] : '1.67' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>3~8小時</label></div>
@@ -739,13 +738,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="restovertimemny3"></label>
-                                <input type="number" data-name="金額" class="form-control mny" name="restovertimemny3" id="restovertimemny3" value="<?= $employee['restovertimemny3'] ? $employee['restovertimemny3'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="金額" class="form-control mny" name="restovertimemny3" id="restovertimemny3" value="<?= $employee['restovertimemny3'] ? $employee['restovertimemny3'] : '0' ?>" <?= $employee['overtimemnytype'] == '1' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="resthourrate3"></label>
-                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="resthourrate3" id="resthourrate3" value="<?= $employee['resthourrate3'] ? $employee['resthourrate3'] : '2.67' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="比例%" class="form-control rate" step="0.01" name="resthourrate3" id="resthourrate3" value="<?= $employee['resthourrate3'] ? $employee['resthourrate3'] : '2.67' ?>" <?= $employee['overtimemnytype'] == '3' || $employee['overtimemnytype'] == '2' || $employee['overtimemnytype'] == '' ? '' : 'readonly' ?>>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>8小時以上</label></div>
@@ -772,10 +771,10 @@ if (empty($employid)) { //判斷是否為編輯模式
                             </div>
                           </div>
                           <div class="row mb-6">
-                            <div class="col-lg-2 form-group otdiv">
+                            <div class="col-lg-2 form-group otdiv" <?= $employee['otway'] == '2' ? 'style="opacity:0.5";' : '' ?>>
                               <label class="otlabel">不計算加班單</label>
                               <label class="switch switch-primary switch-pill form-control-label">
-                                <input type="checkbox" class="switch-input form-check-input" name="jiabanbudadan" value="1" <?= $employee['jiabanbudadan'] == '1' || empty($employee['jiabanbudadan']) ? 'checked' : '' ?>>
+                                <input type="checkbox" class="switch-input form-check-input" name="jiabanbudadan" value="1" <?= $employee['jiabanbudadan'] == '1' ? 'checked' : '' ?> <?= $employee['otway'] == '2' ? 'disabled' : '' ?>>
                                 <span class="switch-label"></span>
                                 <span class="switch-handle"></span>
                               </label>
@@ -786,13 +785,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                                 <ul class="list-unstyled list-inline">
                                   <li class="d-inline-block mr-3">
                                     <label class="control control-radio">依據員工出勤曆的加班時段
-                                      <input type="radio" name="overtime" value="2" <?= $employee['overtime'] == '2' || $employee['overtime'] == '' ? 'checked' : '' ?> />
+                                      <input type="radio" name="overtime" value="2" <?= $employee['overtime'] == '2' || $employee['overtime'] == '' ? 'checked' : '' ?> <?= $employee['jiabanbudadan'] == '1' || $employee['otway'] == '2' ? '' : 'disabled' ?> />
                                       <div class="control-indicator"></div>
                                     </label>
                                   </li>
                                   <li class="d-inline-block mr-3">
                                     <label class="control control-radio">超過
-                                      <input type="radio" name="overtime" value="1" <?= $employee['overtime'] == '1' ? 'checked' : '' ?> />
+                                      <input type="radio" name="overtime" value="1" <?= $employee['overtime'] == '1' ? 'checked' : '' ?> <?= $employee['jiabanbudadan'] == '1' || $employee['otway'] == '2' ? '' : 'disabled' ?> />
                                       <div class="control-indicator"></div>
                                     </label>
                                   </li>
@@ -802,7 +801,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="jiabanbudashi"></label>
-                                <input type="number" data-name="超過分鐘加班" class="form-control" name="jiabanbudashi" id="jiabanbudashi" value="<?= $employee['jiabanbudashi'] ? $employee['jiabanbudashi'] : '0' ?>" readonly required>
+                                <input type="number" data-name="超過分鐘加班" class="form-control" name="jiabanbudashi" id="jiabanbudashi" value="<?= $employee['jiabanbudashi'] ? $employee['jiabanbudashi'] : '0' ?>" <?= $employee['overtime'] == '1' ? '' : 'readonly' ?> required>
                               </div>
                             </div>
                             <div class="col-lg-2 form-inline font-weight-bold"><label>分鐘算加班</label></div>
@@ -824,7 +823,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             </div>
                           </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="3" data-type="salary_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="3" data-type="overtime_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
                           </div>
                         </form>
                       </div>
