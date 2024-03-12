@@ -110,4 +110,24 @@ $(function () {
             $('input[name=overtime]').prop('disabled', true);
         }
     })
+    $('input[name=overtimemnytype]').on('change', function () {
+        let o = $(this).val();
+        switch (o) {
+            case '1':
+                $('.mny').prop('readonly', false);
+                $('.rate').prop('readonly', true);
+                $('.rate').val('0');
+                break;
+            case '2':
+                $('.rate').prop('readonly', false);
+                $('.mny').prop('readonly', true);
+                $('.mny').val('0');
+                break;
+            case '3':
+                $('.rate').prop('readonly', false);
+                $('.mny').prop('readonly', true);
+                $('.mny').val('0');
+                break;
+        }
+    })
 })
