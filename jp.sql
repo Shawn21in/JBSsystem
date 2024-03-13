@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-12 06:34:27
+-- 產生時間： 2024-03-13 09:27:24
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -362,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
 --
 
 INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`, `sandtype`, `monthmny`, `daymny`, `hourmny`, `taxmny`, `standardday`, `standardhour`, `starttype`, `resttype`, `bankno`, `bankname`, `huming`, `bankid`, `bankno2`, `bankname2`, `huming2`, `bankid2`, `overtimetype`, `overtimemnytype`, `normalovertimemny`, `normalovertimerate`, `extendovertimemny`, `extendovertimerate`, `holidayovertimemny`, `holidayovertimerate`, `publicholidayovertimemny`, `publicholidayovertimerate`, `restovertimemny1`, `restovertimemny2`, `restovertimemny3`, `resthourrate1`, `resthourrate2`, `resthourrate3`, `otway`, `jiabanbudadan`, `overtime`, `jiabanbudashi`, `mealflag`, `mealmny`) VALUES
-(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 0, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '1', 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 50.0000, 60.0000, 70.0000, 0.0, 0.0, 0.0, 1, 1, 1, 200.0000, 0, 0.0000),
+(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 0, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000),
 (7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -552,16 +552,17 @@ CREATE TABLE IF NOT EXISTS `purchaser1` (
   `purchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '健保費',
   `employerPurchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額',
   PRIMARY KEY (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `purchaser1`
 --
 
 INSERT INTO `purchaser1` (`pid`, `purchaserno`, `purchasermny`, `purchaserhmny`, `employerPurchaserhmny`) VALUES
-(5, 1, 4.0000, 4.0000, NULL),
-(6, 2, 23.0000, 32.0000, NULL),
-(7, 3, 44.0000, 55.0000, NULL);
+(8, 1, 27440.0000, 426.0000, NULL),
+(9, 2, 27600.0000, 428.0000, NULL),
+(10, 3, 28800.0000, 447.0000, NULL),
+(11, 4, 30300.0000, 470.0000, NULL);
 
 -- --------------------------------------------------------
 
@@ -605,17 +606,17 @@ CREATE TABLE IF NOT EXISTS `seclab1` (
   `employerSeclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國雇主負擔',
   `employerForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞雇主負擔',
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `seclab1`
 --
 
 INSERT INTO `seclab1` (`sid`, `seclabNo`, `seclabMny`, `seclablMny`, `ForeignMny`, `employerSeclablMny`, `employerForeignMny`) VALUES
-(28, 1, 2.0000, 2.0000, 2.0000, 0.0000, 0.0000),
-(29, 2, 3.0000, 3.0000, 3.0000, 0.0000, 0.0000),
-(30, 3, 7.0000, 7.0000, 7.0000, 0.0000, 0.0000),
-(31, 4, 8.0000, 8.0000, 8.0000, 0.0000, 0.0000);
+(32, 1, 27470.0000, 659.0000, 604.0000, 0.0000, 0.0000),
+(33, 2, 27600.0000, 662.0000, 607.0000, 0.0000, 0.0000),
+(34, 3, 28800.0000, 692.0000, 634.0000, 0.0000, 0.0000),
+(35, 4, 30030.0000, 728.0000, 667.0000, 0.0000, 0.0000);
 
 -- --------------------------------------------------------
 
@@ -789,7 +790,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=700 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=719 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1498,7 +1499,26 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (696, '2024-03-12 14:32:51', '', '', '', 'UPDATE employee SET `overtimetype` = \'1\',`overtimemnytype` = \'3\',`normalovertimemny` = \'0\',`normalovertimerate` = \'10\',`extendovertimemny` = \'0\',`extendovertimerate` = \'20\',`holidayovertimemny` = \'0\',`holidayovertimerate` = \'30\',`publicholidayovertimemny` = \'0\',`publicholidayovertimerate` = \'40\',`restovertimemny1` = \'0\',`restovertimemny2` = \'0\',`restovertimemny3` = \'0\',`resthourrate1` = \'50\',`resthourrate2` = \'60\',`resthourrate3` = \'70\',`otway` = \'1\',`jiabanbudadan` = \'0\',`overtime` = \'\',`jiabanbudashi` = \'0\',`mealflag` = \'1\',`mealmny` = \'1230\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
 (697, '2024-03-12 14:33:02', '', '', '', 'UPDATE employee SET `overtimetype` = \'1\',`overtimemnytype` = \'3\',`normalovertimemny` = \'0\',`normalovertimerate` = \'10\',`extendovertimemny` = \'0\',`extendovertimerate` = \'20\',`holidayovertimemny` = \'0\',`holidayovertimerate` = \'30\',`publicholidayovertimemny` = \'0\',`publicholidayovertimerate` = \'40\',`restovertimemny1` = \'0\',`restovertimemny2` = \'0\',`restovertimemny3` = \'0\',`resthourrate1` = \'50\',`resthourrate2` = \'60\',`resthourrate3` = \'70\',`otway` = \'1\',`jiabanbudadan` = \'1\',`overtime` = \'1\',`jiabanbudashi` = \'200\',`mealflag` = \'1\',`mealmny` = \'1230\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
 (698, '2024-03-12 14:33:31', '', '', '', 'UPDATE employee SET `overtimetype` = \'1\',`overtimemnytype` = \'1\',`normalovertimemny` = \'10\',`normalovertimerate` = \'0\',`extendovertimemny` = \'20\',`extendovertimerate` = \'0\',`holidayovertimemny` = \'30\',`holidayovertimerate` = \'0\',`publicholidayovertimemny` = \'40\',`publicholidayovertimerate` = \'0\',`restovertimemny1` = \'50\',`restovertimemny2` = \'60\',`restovertimemny3` = \'70\',`resthourrate1` = \'0\',`resthourrate2` = \'0\',`resthourrate3` = \'0\',`otway` = \'1\',`jiabanbudadan` = \'1\',`overtime` = \'1\',`jiabanbudashi` = \'200\',`mealflag` = \'0\',`mealmny` = \'1230\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
-(699, '2024-03-12 14:34:16', '', '', '', 'UPDATE employee SET `overtimetype` = \'1\',`overtimemnytype` = \'1\',`normalovertimemny` = \'10\',`normalovertimerate` = \'0\',`extendovertimemny` = \'20\',`extendovertimerate` = \'0\',`holidayovertimemny` = \'30\',`holidayovertimerate` = \'0\',`publicholidayovertimemny` = \'40\',`publicholidayovertimerate` = \'0\',`restovertimemny1` = \'50\',`restovertimemny2` = \'60\',`restovertimemny3` = \'70\',`resthourrate1` = \'0\',`resthourrate2` = \'0\',`resthourrate3` = \'0\',`otway` = \'1\',`jiabanbudadan` = \'1\',`overtime` = \'1\',`jiabanbudashi` = \'200\',`mealflag` = \'0\',`mealmny` = \'0\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php');
+(699, '2024-03-12 14:34:16', '', '', '', 'UPDATE employee SET `overtimetype` = \'1\',`overtimemnytype` = \'1\',`normalovertimemny` = \'10\',`normalovertimerate` = \'0\',`extendovertimemny` = \'20\',`extendovertimerate` = \'0\',`holidayovertimemny` = \'30\',`holidayovertimerate` = \'0\',`publicholidayovertimemny` = \'40\',`publicholidayovertimerate` = \'0\',`restovertimemny1` = \'50\',`restovertimemny2` = \'60\',`restovertimemny3` = \'70\',`resthourrate1` = \'0\',`resthourrate2` = \'0\',`resthourrate3` = \'0\',`otway` = \'1\',`jiabanbudadan` = \'1\',`overtime` = \'1\',`jiabanbudashi` = \'200\',`mealflag` = \'0\',`mealmny` = \'0\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(700, '2024-03-12 14:38:37', '', '', '', 'UPDATE employee SET `overtimetype` = \'0\',`overtimemnytype` = \'1\',`normalovertimemny` = \'10\',`normalovertimerate` = \'0\',`extendovertimemny` = \'20\',`extendovertimerate` = \'0\',`holidayovertimemny` = \'30\',`holidayovertimerate` = \'0\',`publicholidayovertimemny` = \'40\',`publicholidayovertimerate` = \'0\',`restovertimemny1` = \'50\',`restovertimemny2` = \'60\',`restovertimemny3` = \'70\',`resthourrate1` = \'0\',`resthourrate2` = \'0\',`resthourrate3` = \'0\',`otway` = \'1\',`jiabanbudadan` = \'1\',`overtime` = \'1\',`jiabanbudashi` = \'200\',`mealflag` = \'0\',`mealmny` = \'0\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(701, '2024-03-12 17:40:43', '', '', '', 'UPDATE employee SET `overtimetype` = \'1\',`overtimemnytype` = \'2\',`normalovertimemny` = \'0\',`normalovertimerate` = \'10\',`extendovertimemny` = \'0\',`extendovertimerate` = \'20\',`holidayovertimemny` = \'0\',`holidayovertimerate` = \'30\',`publicholidayovertimemny` = \'0\',`publicholidayovertimerate` = \'40\',`restovertimemny1` = \'0\',`restovertimemny2` = \'0\',`restovertimemny3` = \'0\',`resthourrate1` = \'50\',`resthourrate2` = \'60\',`resthourrate3` = \'70\',`otway` = \'1\',`jiabanbudadan` = \'1\',`overtime` = \'2\',`jiabanbudashi` = \'0\',`mealflag` = \'1\',`mealmny` = \'50\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(702, '2024-03-12 17:41:00', '', '', '', 'UPDATE employee SET `overtimetype` = \'1\',`overtimemnytype` = \'2\',`normalovertimemny` = \'0\',`normalovertimerate` = \'10\',`extendovertimemny` = \'0\',`extendovertimerate` = \'20\',`holidayovertimemny` = \'0\',`holidayovertimerate` = \'30\',`publicholidayovertimemny` = \'0\',`publicholidayovertimerate` = \'40\',`restovertimemny1` = \'0\',`restovertimemny2` = \'0\',`restovertimemny3` = \'0\',`resthourrate1` = \'50\',`resthourrate2` = \'60\',`resthourrate3` = \'70\',`otway` = \'1\',`jiabanbudadan` = \'0\',`overtime` = \'\',`jiabanbudashi` = \'0\',`mealflag` = \'1\',`mealmny` = \'50\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(703, '2024-03-13 08:57:52', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'66d4ca0c83537e0c443f8fae04f12c26\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(704, '2024-03-13 11:55:46', '', '', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'1\',`resttype` = \'1\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(705, '2024-03-13 11:55:51', '', '', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(706, '2024-03-13 14:09:36', '', '', '', 'UPDATE employee SET `sandtype` = \'3\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(707, '2024-03-13 14:09:41', '', '', '', 'UPDATE employee SET `sandtype` = \'2\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(708, '2024-03-13 14:09:44', '', '', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(709, '2024-03-13 15:50:02', '', '', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(710, '2024-03-13 15:50:02', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'1\',\'27470\',\'659\',\'604\');', 'INSERT', '/jp/web_post.php'),
+(711, '2024-03-13 15:50:02', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'2\',\'27600\',\'662\',\'607\');', 'INSERT', '/jp/web_post.php'),
+(712, '2024-03-13 15:50:02', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'3\',\'28800\',\'692\',\'634\');', 'INSERT', '/jp/web_post.php'),
+(713, '2024-03-13 15:50:02', '', '', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`) VALUES (\'4\',\'30030\',\'728\',\'667\');', 'INSERT', '/jp/web_post.php'),
+(714, '2024-03-13 15:51:40', '', '', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(715, '2024-03-13 15:51:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`) VALUES (\'1\',\'426\',\'27440\');', 'INSERT', '/jp/web_post.php'),
+(716, '2024-03-13 15:51:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`) VALUES (\'2\',\'428\',\'27600\');', 'INSERT', '/jp/web_post.php'),
+(717, '2024-03-13 15:51:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`) VALUES (\'3\',\'447\',\'28800\');', 'INSERT', '/jp/web_post.php'),
+(718, '2024-03-13 15:51:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`) VALUES (\'4\',\'470\',\'30300\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -1976,7 +1996,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '3f34ce32a8356d4209136d277f40efc6', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '66d4ca0c83537e0c443f8fae04f12c26', 1);
 
 -- --------------------------------------------------------
 

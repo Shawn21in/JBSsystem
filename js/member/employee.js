@@ -130,4 +130,47 @@ $(function () {
                 break;
         }
     })
+
+    // ----------------------加班設定----------------------
+    var status = $('input[name=insuredperson]:checked').val();//投保人身分判斷
+    $('input[name=insuredperson]').on('change', function () {
+        status = $(this).val();
+        $('#seclabNo').trigger('change');
+    })
+    $('#seclabNo').on('change', function () {
+        let mny = $(this).find('option:selected').data('type');
+        let smny = $(this).find('option:selected').data('self' + status);
+        console.log('self' + status)
+        $('#lmoney').val(mny);
+        $('#selflmoney').val(smny);
+    })
+    $('#seclabtno').on('change', function () {
+        let mny = $(this).find('option:selected').data('type');
+        let srate = $('#selfrate').val();
+        $('#tmoney').val(mny);
+        if (srate != '') {
+            $('#selftmoney').val(mny * srate / 100);
+        }
+    })
+    $('#selfrate').focusout(function () {
+        let srate = $(this).val();
+        let mny = $('#seclabtno').find('option:selected').data('type');
+        if (mny != '') {
+            $('#selftmoney').val(mny * srate / 100);
+        }
+    })
+    $('#purchaserno').on('change', function () {
+        let mny = $(this).find('option:selected').data('type');
+        let smny = $(this).find('option:selected').data('self');
+        $('#hmoney').val(mny);
+        $('#selfhmoney').val(smny);
+    })
+    $('#insuredsum').focusout(function () {
+        let psum = $(this).val();
+        $('#insuredmny').val($('#selfhmoney').val() * psum);
+    })
+    $('#tuixiuselfmny').focusout(function () {
+        let tmny = $(this).val();
+        $('#tuixiugerenmny').val(tmny * 6 / 100);
+    })
 })

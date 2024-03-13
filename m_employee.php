@@ -19,6 +19,10 @@ $attd_list = $CM->GET_ATTENDANCE_LIST();
 
 $bank_list = $CM->GET_BANK_DATA();
 
+$seclab1_list = $CM->GET_SECLAB1_DATA();
+
+$purchaser1_list = $CM->GET_PURCHASER1_DATA();
+
 $Input   = GDC($_GET['c'], 'employee');
 
 $employid = $Input['v'];
@@ -98,7 +102,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">勞健保設定</a>
+                      <a class="nav-link" id="insurance-tab" data-toggle="tab" href="#insurance" role="tab" aria-controls="insurance" aria-selected="false">勞健保設定</a>
                     </li>
 
                     <li class="nav-item">
@@ -481,13 +485,13 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="monthmny">月薪金額</label>
-                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" <?= $employee['sandtype'] == '2' || $employee['sandtype'] == '3' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" <?= $employee['sandtype'] == '2' || $employee['sandtype'] == '3' ? 'readonly' : '' ?> required>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="daymny">換算日薪</label>
-                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" <?= $employee['sandtype'] == '3' ? '' : 'readonly' ?> required>
+                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" <?= $employee['sandtype'] == '3' ? 'readonly' : '' ?> required>
                               </div>
                             </div>
                             <div class="col-lg-3">
@@ -824,6 +828,194 @@ if (empty($employid)) { //判斷是否為編輯模式
                           </div>
                           <div class="d-flex justify-content-end mt-5">
                             <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="3" data-type="overtime_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="insurance" role="tabpanel" aria-labelledby="insurance-tab">
+                      <div class="tab-pane-content mt-5">
+                        <form id="form4" onsubmit="return false;">
+                          <input type="hidden" name="eid" value="<?= $employee['eid'] ?>">
+                          <div class="em_title mb-2">
+                            <h2>勞健保</h2>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-5">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">投保者身分</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">本籍員工
+                                      <input type="radio" name="insuredperson" value="1" <?= $employee['insuredperson'] == '1' || empty($employee['insuredperson'])  ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">外籍員工
+                                      <input type="radio" name="insuredperson" value="2" <?= $employee['insuredperson'] == '2' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="seclabNo">勞保投保金額</label>
+                                <select class="form-control" data-name="勞保投保金額" id="seclabNo" name="seclabNo">
+                                  <option value="" data-type="">選擇等級</option>
+                                  <?php foreach ($seclab1_list as $key => $value) { ?>
+                                    <option value="<?= $value['seclabNo'] ?>" data-type="<?= $value['seclabMny'] ?>" data-self1="<?= $value['seclablMny'] ?>" data-self2="<?= $value['ForeignMny'] ?>" <?= $employee['seclabNo'] == $value['seclabNo'] ? 'selected' : '' ?>><?= 'Lv' . $value['seclabNo'] . '→' . intval($value['seclabMny']) ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="lmoney">薪資</label>
+                                <input type="number" class="form-control" name="lmoney" id="lmoney" value="<?= $employee['lmoney'] ?>" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-2"></div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="selflmoney">自付金額</label>
+                                <input type="number" class="form-control" name="selflmoney" id="selflmoney" value="<?= $employee['selflmoney'] ?>">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="seclabtno">勞退自提金額</label>
+                                <select class="form-control" data-name="勞保投保金額" id="seclabtno" name="seclabtno">
+                                  <option value="" data-type="">選擇等級</option>
+                                  <?php foreach ($seclab1_list as $key => $value) { ?>
+                                    <option value="<?= $value['seclabNo'] ?>" data-type="<?= $value['seclabMny'] ?>" data-self1="<?= $value['seclablMny'] ?>" data-self2="<?= $value['ForeignMny'] ?>" <?= $employee['seclabtno'] == $value['seclabNo'] ? 'selected' : '' ?>><?= 'Lv' . $value['seclabNo'] . '→' . intval($value['seclabMny']) ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="tmoney">薪資</label>
+                                <input type="number" class="form-control" name="tmoney" id="tmoney" value="<?= $employee['tmoney'] ?>" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+                              <div class="form-group">
+                                <label for="selfrate">比例(%)</label>
+                                <input type="number" class="form-control" name="selfrate" id="selfrate" value="<?= $employee['selfrate'] ?>">
+                              </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="selftmoney">自付金額</label>
+                                <input type="number" class="form-control" name="selftmoney" id="selftmoney" value="<?= $employee['selftmoney'] ?>">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+
+                            <div class="col-lg-2 form-pill">
+                              <div class="form-group">
+                                <label for="purchaserno">健保投保金額</label>
+                                <select class="form-control" data-name="健保投保金額" id="purchaserno" name="purchaserno">
+                                  <option value="" data-type="">選擇等級</option>
+                                  <?php foreach ($purchaser1_list as $key => $value) { ?>
+                                    <option value="<?= $value['purchaserno'] ?>" data-type="<?= $value['purchasermny'] ?>" data-self="<?= $value['purchaserhmny'] ?>" <?= $employee['purchaserno'] == $value['purchaserno'] ? 'selected' : '' ?>><?= 'Lv' . $value['purchaserno'] . '→' . intval($value['purchasermny']) ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="hmoney">薪資</label>
+                                <input type="number" class="form-control" name="hmoney" id="hmoney" value="<?= $employee['hmoney'] ?>" readonly>
+                              </div>
+                            </div>
+                            <div class="col-lg-2">
+
+                            </div>
+
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="selfhmoney">自付金額</label>
+                                <input type="number" class="form-control" name="selfhmoney" id="selfhmoney" value="<?= $employee['selfhmoney'] ?>">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <div class="form-group">
+                                  <label for="insuredsum">健保眷屬人數</label>
+                                  <input type="number" class="form-control" name="insuredsum" id="insuredsum" value="<?= $employee['insuredsum'] ?>">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="insuredmny">自付金額</label>
+                                <input type="number" class="form-control" name="insuredmny" id="insuredmny" value="<?= $employee['insuredmny'] ?>">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="em_title mb-2">
+                            <h2>退休金提撥基準</h2>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <div class="form-group">
+                                  <label for="tuixiuselfmny">雇主負擔比例</label>
+                                  <input type="number" class="form-control" name="tuixiuselfmny" id="tuixiuselfmny" value="<?= $employee['tuixiuselfmny'] ?>">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 form-inline font-weight-bold"><label>X 6%</label></div>
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <div class="form-group">
+                                  <label for="tuixiugerenmny">雇主負擔金額</label>
+                                  <input type="number" class="form-control" name="tuixiugerenmny" id="tuixiugerenmny" value="<?= $employee['tuixiugerenmny'] ?>">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="em_title mb-2">
+                            <h2>雇主負擔勞健保</h2>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <div class="form-group">
+                                  <label for="employerlmny">雇主負擔比例</label>
+                                  <input type="number" class="form-control" name="employerlmny" id="employerlmny" value="<?= $employee['employerlmny'] ?>">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <div class="form-group">
+                                  <label for="employerhmny">雇主負擔金額</label>
+                                  <input type="number" class="form-control" name="employerhmny" id="employerhmny" value="<?= $employee['employerhmny'] ?>">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-end mt-5">
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="4" data-type="overtime_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
                           </div>
                         </form>
                       </div>
