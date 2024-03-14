@@ -1529,6 +1529,67 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "insurance_edit":
+			if (!$_Login || !$is_verify) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$Value['eid'] 			= intval($_POST['eid']);
+			$employee = $CM->get_employee_data($Value['eid']);
+			$Value['insuredperson'] 			= $_POST['insuredperson'];
+			$Value['seclabno'] 					= $_POST['seclabno'];
+			$Value['seclabtno'] 				= $_POST['seclabtno'];
+			$Value['purchaserno'] 				= $_POST['purchaserno'];
+			$Value['lmoney'] 					= $_POST['lmoney'];
+			$Value['tmoney'] 					= $_POST['tmoney'];
+			$Value['hmoney'] 					= $_POST['hmoney'];
+			$Value['selflmoney'] 				= $_POST['selflmoney'];
+			$Value['selftmoney'] 				= $_POST['selftmoney'];
+			$Value['selfhmoney'] 				= $_POST['selfhmoney'];
+			$Value['selftrate'] 				= $_POST['selftrate'];
+			$Value['insuredsum'] 				= $_POST['insuredsum'];
+			$Value['insuredmny'] 				= $_POST['insuredmny'];
+			$Value['tuixiuselfmny'] 			= $_POST['tuixiuselfmny'];
+			$Value['tuixiugerenmny'] 			= $_POST['tuixiugerenmny'];
+			$Value['employerlmny'] 				= $_POST['employerlmny'];
+			$Value['employerhmny'] 				= $_POST['employerhmny'];
+			if (empty($employee)) { //判斷資料完整度
+				$_html_msg = '請先產生員工資料後再進行';
+				break;
+			} else {
+				$employee_data = array(
+					'insuredperson' 				=> $Value['insuredperson'],
+					'seclabno' 			=> $Value['seclabno'],
+					'seclabtno' 		=> $Value['seclabtno'],
+					'purchaserno' 		=> $Value['purchaserno'],
+					'lmoney' 		=> $Value['lmoney'],
+					'tmoney' 		=> $Value['tmoney'],
+					'hmoney' 		=> $Value['hmoney'],
+					'selflmoney' 		=> $Value['selflmoney'],
+					'selftmoney' 	=> $Value['selftmoney'],
+					'selfhmoney' => $Value['selfhmoney'],
+					'selftrate' 			=> $Value['selftrate'],
+					'insuredsum' 			=> $Value['insuredsum'],
+					'insuredmny' 			=> $Value['insuredmny'],
+					'tuixiuselfmny' 			=> $Value['tuixiuselfmny'],
+					'tuixiugerenmny' 			=> $Value['tuixiugerenmny'],
+					'employerlmny' 			=> $Value['employerlmny'],
+					'employerhmny' 					=> $Value['employerhmny'],
+				);
+				$db->Where = " WHERE  eid = '" . $Value['eid'] . "'";
+				$db->query_data($employee_db, $employee_data, 'UPDATE');
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+				}
+			}
+			break;
 		case "mlogin":
 
 

@@ -135,9 +135,9 @@ $(function () {
     var status = $('input[name=insuredperson]:checked').val();//投保人身分判斷
     $('input[name=insuredperson]').on('change', function () {
         status = $(this).val();
-        $('#seclabNo').trigger('change');
+        $('#seclabno').trigger('change');
     })
-    $('#seclabNo').on('change', function () {
+    $('#seclabno').on('change', function () {
         let mny = $(this).find('option:selected').data('type');
         let smny = $(this).find('option:selected').data('self' + status);
         console.log('self' + status)
@@ -146,13 +146,13 @@ $(function () {
     })
     $('#seclabtno').on('change', function () {
         let mny = $(this).find('option:selected').data('type');
-        let srate = $('#selfrate').val();
+        let srate = $('#selftrate').val();
         $('#tmoney').val(mny);
         if (srate != '') {
             $('#selftmoney').val(mny * srate / 100);
         }
     })
-    $('#selfrate').focusout(function () {
+    $('#selftrate').focusout(function () {
         let srate = $(this).val();
         let mny = $('#seclabtno').find('option:selected').data('type');
         if (mny != '') {

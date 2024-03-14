@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-14 01:44:41
+-- 產生時間： 2024-03-14 03:24:45
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -278,8 +278,8 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `eid` int NOT NULL AUTO_INCREMENT,
   `employid` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
   `employname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工姓名',
-  `cono` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司編號',
-  `coname1` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
+  `cono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司編號',
+  `coname1` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
   `appno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職位編號',
   `appname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職位名稱',
   `partno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門編號',
@@ -315,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `presentname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別名稱',
   `buildday` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '建立日期(民國)',
   `buildday2` date DEFAULT NULL COMMENT '建立日期(西元)',
-  `sandtype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '薪資方式',
+  `sandtype` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '薪資方式',
   `monthmny` decimal(19,4) DEFAULT NULL COMMENT '月薪金額',
   `daymny` decimal(19,4) DEFAULT NULL COMMENT '換算日薪',
   `hourmny` decimal(19,4) DEFAULT NULL COMMENT '換算時薪',
@@ -324,16 +324,16 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `standardhour` decimal(10,1) DEFAULT NULL COMMENT '基準時數',
   `starttype` tinyint(1) DEFAULT NULL COMMENT '上班打卡',
   `resttype` tinyint(1) DEFAULT NULL COMMENT '休息打卡',
-  `bankno` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
-  `bankname` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
-  `huming` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
-  `bankid` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
-  `bankno2` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
-  `bankname2` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
-  `huming2` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
-  `bankid2` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
+  `bankno` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
+  `bankname` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
+  `huming` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
+  `bankid` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
+  `bankno2` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
+  `bankname2` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
+  `huming2` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
+  `bankid2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
   `overtimetype` tinyint(1) DEFAULT NULL COMMENT '是否支付加班',
-  `overtimemnytype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '計算方式',
+  `overtimemnytype` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '計算方式',
   `normalovertimemny` decimal(19,4) DEFAULT NULL COMMENT '一般加班費-金額',
   `normalovertimerate` decimal(19,4) DEFAULT NULL COMMENT '一般加班費-比例',
   `extendovertimemny` decimal(19,4) DEFAULT NULL COMMENT '延長加班費-金額',
@@ -354,10 +354,10 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `jiabanbudashi` decimal(19,4) DEFAULT NULL COMMENT '加班時間',
   `mealflag` tinyint(1) DEFAULT NULL COMMENT '是否加班給誤餐費',
   `mealmny` decimal(19,4) DEFAULT NULL COMMENT '誤餐費金額',
-  `insuredperson` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '投保者身分',
-  `seclabno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞保投保編號',
-  `seclabtno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞退自提編號',
-  `purchaserno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保編號',
+  `insuredperson` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '投保者身分',
+  `seclabno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞保投保編號',
+  `seclabtno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞退自提編號',
+  `purchaserno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保編號',
   `lmoney` decimal(19,4) DEFAULT NULL COMMENT '勞保投保金額',
   `tmoney` decimal(19,4) DEFAULT NULL COMMENT '勞退自提金額',
   `hmoney` decimal(19,4) DEFAULT NULL COMMENT '健保投保金額',
@@ -379,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
 --
 
 INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`, `sandtype`, `monthmny`, `daymny`, `hourmny`, `taxmny`, `standardday`, `standardhour`, `starttype`, `resttype`, `bankno`, `bankname`, `huming`, `bankid`, `bankno2`, `bankname2`, `huming2`, `bankid2`, `overtimetype`, `overtimemnytype`, `normalovertimemny`, `normalovertimerate`, `extendovertimemny`, `extendovertimerate`, `holidayovertimemny`, `holidayovertimerate`, `publicholidayovertimemny`, `publicholidayovertimerate`, `restovertimemny1`, `restovertimemny2`, `restovertimemny3`, `resthourrate1`, `resthourrate2`, `resthourrate3`, `otway`, `jiabanbudadan`, `overtime`, `jiabanbudashi`, `mealflag`, `mealmny`, `insuredperson`, `seclabno`, `seclabtno`, `purchaserno`, `lmoney`, `tmoney`, `hmoney`, `selflmoney`, `selftmoney`, `selfhmoney`, `selftrate`, `insuredsum`, `insuredmny`, `tuixiuselfmny`, `tuixiugerenmny`, `employerlmny`, `employerhmny`) VALUES
-(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 0, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 0, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000, '2', '1', '2', '3', 27470.0000, 27600.0000, 28800.0000, 604.0000, 1380.0000, 447.0000, 5.0000, 4.0000, 1788.0000, 30000.0000, 1800.0000, 500.0000, 600.0000),
 (7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -807,7 +807,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=720 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=724 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1536,7 +1536,11 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (716, '2024-03-13 15:51:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`) VALUES (\'2\',\'428\',\'27600\');', 'INSERT', '/jp/web_post.php'),
 (717, '2024-03-13 15:51:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`) VALUES (\'3\',\'447\',\'28800\');', 'INSERT', '/jp/web_post.php'),
 (718, '2024-03-13 15:51:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`) VALUES (\'4\',\'470\',\'30300\');', 'INSERT', '/jp/web_post.php'),
-(719, '2024-03-14 08:45:28', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'b7ad408e6c35ab6f9f64fc640ab9d1ec\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php');
+(719, '2024-03-14 08:45:28', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'b7ad408e6c35ab6f9f64fc640ab9d1ec\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(720, '2024-03-14 10:55:44', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'659\',`selftmoney` = \'1380\',`selfhmoney` = \'447\',`selftrate` = \'\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(721, '2024-03-14 10:58:14', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'1\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'659\',`selftmoney` = \'1104\',`selfhmoney` = \'447\',`selftrate` = \'\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(722, '2024-03-14 10:59:05', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'1\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'659\',`selftmoney` = \'1380\',`selfhmoney` = \'447\',`selftrate` = \'5\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(723, '2024-03-14 11:12:37', '', '', '', 'UPDATE employee SET `insuredperson` = \'2\',`seclabno` = \'1\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'604\',`selftmoney` = \'1380\',`selfhmoney` = \'447\',`selftrate` = \'5\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

@@ -485,25 +485,25 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="monthmny">月薪金額</label>
-                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" <?= $employee['sandtype'] == '2' || $employee['sandtype'] == '3' ? 'readonly' : '' ?> required>
+                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" <?= $employee['sandtype'] == '2' || $employee['sandtype'] == '3' ? 'readonly' : '' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="daymny">換算日薪</label>
-                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" <?= $employee['sandtype'] == '3' ? 'readonly' : '' ?> required>
+                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" <?= $employee['sandtype'] == '3' ? 'readonly' : '' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="hourmny">換算時薪</label>
-                                <input type="number" data-name="換算時薪" class="form-control" step="0.0001" name="hourmny" id="hourmny" value="<?= $employee['hourmny'] ?>" required>
+                                <input type="number" data-name="換算時薪" class="form-control" step="0.0001" name="hourmny" id="hourmny" value="<?= $employee['hourmny'] ?>">
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="taxmny">扣繳稅額</label>
-                                <input type="number" data-name="扣繳稅額" class="form-control" step="0.0001" name="taxmny" id="taxmny" value="<?= $employee['taxmny'] ?>" required>
+                                <input type="number" data-name="扣繳稅額" class="form-control" step="0.0001" name="taxmny" id="taxmny" value="<?= $employee['taxmny'] ?>">
                               </div>
                             </div>
                           </div>
@@ -864,11 +864,11 @@ if (empty($employid)) { //判斷是否為編輯模式
 
                             <div class="col-lg-2 form-pill">
                               <div class="form-group">
-                                <label for="seclabNo">勞保投保金額</label>
-                                <select class="form-control" data-name="勞保投保金額" id="seclabNo" name="seclabNo">
+                                <label for="seclabno">勞保投保金額</label>
+                                <select class="form-control" data-name="勞保投保金額" id="seclabno" name="seclabno">
                                   <option value="" data-type="">選擇等級</option>
                                   <?php foreach ($seclab1_list as $key => $value) { ?>
-                                    <option value="<?= $value['seclabNo'] ?>" data-type="<?= $value['seclabMny'] ?>" data-self1="<?= $value['seclablMny'] ?>" data-self2="<?= $value['ForeignMny'] ?>" <?= $employee['seclabNo'] == $value['seclabNo'] ? 'selected' : '' ?>><?= 'Lv' . $value['seclabNo'] . '→' . intval($value['seclabMny']) ?></option>
+                                    <option value="<?= $value['seclabNo'] ?>" data-type="<?= $value['seclabMny'] ?>" data-self1="<?= $value['seclablMny'] ?>" data-self2="<?= $value['ForeignMny'] ?>" <?= $employee['seclabno'] == $value['seclabNo'] ? 'selected' : '' ?>><?= 'Lv' . $value['seclabNo'] . '→' . intval($value['seclabMny']) ?></option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -911,8 +911,8 @@ if (empty($employid)) { //判斷是否為編輯模式
                             </div>
                             <div class="col-lg-2">
                               <div class="form-group">
-                                <label for="selfrate">比例(%)</label>
-                                <input type="number" class="form-control" name="selfrate" id="selfrate" value="<?= $employee['selfrate'] ?>">
+                                <label for="selftrate">比例(%)</label>
+                                <input type="number" class="form-control" name="selftrate" id="selftrate" value="<?= $employee['selftrate'] ?>">
                               </div>
                             </div>
 
@@ -1000,7 +1000,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-4">
                               <div class="form-group">
                                 <div class="form-group">
-                                  <label for="employerlmny">雇主負擔比例</label>
+                                  <label for="employerlmny">雇主負擔勞保</label>
                                   <input type="number" class="form-control" name="employerlmny" id="employerlmny" value="<?= $employee['employerlmny'] ?>">
                                 </div>
                               </div>
@@ -1008,14 +1008,14 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-4">
                               <div class="form-group">
                                 <div class="form-group">
-                                  <label for="employerhmny">雇主負擔金額</label>
+                                  <label for="employerhmny">雇主負擔健保</label>
                                   <input type="number" class="form-control" name="employerhmny" id="employerhmny" value="<?= $employee['employerhmny'] ?>">
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="4" data-type="overtime_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="4" data-type="insurance_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
                           </div>
                         </form>
                       </div>
