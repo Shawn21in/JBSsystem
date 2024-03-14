@@ -56,9 +56,12 @@ $(function () {
     $('#monthmny,#daymny,#hourmny,#standardday,#standardhour').focusout(function () {
         let sday = $('#standardday').val();
         let shour = $('#standardhour').val();
+        let st = $('input[name=sandtype]:checked').val();
         if (sday != '') {
-            $('#daymny').val(Math.round($('#monthmny').val() / sday))
-            if (shour != '') {
+            if (st == '1') {
+                $('#daymny').val(Math.round($('#monthmny').val() / sday))
+            }
+            if (shour != '' && (st == '1' || st == '2')) {
                 $('#hourmny').val(Math.round($('#daymny').val() / shour))
             }
         }
@@ -131,7 +134,7 @@ $(function () {
         }
     })
 
-    // ----------------------加班設定----------------------
+    // ----------------------勞健保設定----------------------
     var status = $('input[name=insuredperson]:checked').val();//投保人身分判斷
     $('input[name=insuredperson]').on('change', function () {
         status = $(this).val();

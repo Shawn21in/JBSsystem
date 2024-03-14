@@ -485,25 +485,25 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="monthmny">月薪金額</label>
-                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ?>" <?= $employee['sandtype'] == '2' || $employee['sandtype'] == '3' ? 'readonly' : '' ?>>
+                                <input type="number" data-name="月薪金額" class="form-control" step="0.0001" name="monthmny" id="monthmny" value="<?= $employee['monthmny'] ? $employee['monthmny'] : 0 ?>" <?= $employee['sandtype'] == '2' || $employee['sandtype'] == '3' ? 'readonly' : '' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="daymny">換算日薪</label>
-                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ?>" <?= $employee['sandtype'] == '3' ? 'readonly' : '' ?>>
+                                <input type="number" data-name="換算日薪" class="form-control" step="0.0001" name="daymny" id="daymny" value="<?= $employee['daymny'] ? $employee['daymny'] : 0 ?>" <?= $employee['sandtype'] == '3' ? 'readonly' : '' ?>>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="hourmny">換算時薪</label>
-                                <input type="number" data-name="換算時薪" class="form-control" step="0.0001" name="hourmny" id="hourmny" value="<?= $employee['hourmny'] ?>">
+                                <input type="number" data-name="換算時薪" class="form-control" step="0.0001" name="hourmny" id="hourmny" value="<?= $employee['hourmny'] ? $employee['hourmny'] : 0 ?>">
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="taxmny">扣繳稅額</label>
-                                <input type="number" data-name="扣繳稅額" class="form-control" step="0.0001" name="taxmny" id="taxmny" value="<?= $employee['taxmny'] ?>">
+                                <input type="number" data-name="扣繳稅額" class="form-control" step="0.0001" name="taxmny" id="taxmny" value="<?= $employee['taxmny'] ? $employee['taxmny'] : 0 ?>">
                               </div>
                             </div>
                           </div>
@@ -1020,6 +1020,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                         </form>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
