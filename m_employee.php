@@ -23,6 +23,8 @@ $seclab1_list = $CM->GET_SECLAB1_DATA();
 
 $purchaser1_list = $CM->GET_PURCHASER1_DATA();
 
+$deduction_list = $CM->GET_DEDUCTION_DATA();
+
 $Input   = GDC($_GET['c'], 'employee');
 
 $employid = $Input['v'];
@@ -106,7 +108,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">固定加扣款</a>
+                      <a class="nav-link" id="deduction-tab" data-toggle="tab" href="#deduction" role="tab" aria-controls="deduction" aria-selected="false">固定加扣款</a>
                     </li>
                   </ul>
                   <div class="tab-content px-3 px-xl-5" id="myTabContent">
@@ -1020,7 +1022,69 @@ if (empty($employid)) { //判斷是否為編輯模式
                         </form>
                       </div>
                     </div>
-
+                    <div class="tab-pane fade" id="deduction" role="tabpanel" aria-labelledby="deduction-tab">
+                      <div class="tab-pane-content mt-5">
+                        <form id="form5" onsubmit="return false;">
+                          <input type="hidden" name="eid" value="<?= $employee['eid'] ?>">
+                          <div>
+                            <button type="button" class="mb-1 btn btn-outline-primary" id="addBtn">
+                              <i class=" mdi mdi-plus mr-1"></i> 新增</button>
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th scope="col">加扣款編號</th>
+                                  <th scope="col">加扣款名稱</th>
+                                  <th scope="col">加扣款金額</th>
+                                  <th scope="col">加入全薪金額</th>
+                                  <th scope="col">加入補充保費</th>
+                                  <th scope="col">套用公式</th>
+                                  <th scope="col">選項</th>
+                                </tr>
+                              </thead>
+                              <tbody class="datalist">
+                              </tbody>
+                            </table>
+                            <table class="invisible_table">
+                              <tbody>
+                                <tr>
+                                  <th scope="col">
+                                    <select name="deductionno[]" class="form-control">
+                                      <option value="" data-name="" data-mny="" selected disabled hidden>選擇編號</option>
+                                      <?php foreach ($deduction_list as $key => $value) { ?>
+                                        <option value="<?= $value['deductionno'] ?>" data-name="<?= $value['deductionname'] ?>" data-mny="<?= $value['dedmny'] ?>"><?= $value['deductionno'] ?></option>
+                                      <?php } ?>
+                                    </select>
+                                  </th>
+                                  <th scope="col"><input name="deductionname[]" type="text" class="form-control" readonly></th>
+                                  <th scope="col"><input name="dedmny[]" type="text" class="form-control" readonly></th>
+                                  <th scope="col">
+                                    <label class="switch switch-primary switch-pill form-control-label">
+                                      <input type="checkbox" class="switch-input form-check-input" name="mealflag" value="1">
+                                      <span class="switch-label"></span>
+                                      <span class="switch-handle"></span>
+                                    </label>
+                                  </th>
+                                  <th scope="col">
+                                    <label class="switch switch-primary switch-pill form-control-label">
+                                      <input type="checkbox" class="switch-input form-check-input" name="mealflag" value="1">
+                                      <span class="switch-label"></span>
+                                      <span class="switch-handle"></span>
+                                    </label>
+                                  </th>
+                                  <th scope="col"><input name="holidayName[]" type="text" class="form-control" readonly></th>
+                                  <th scope="col">
+                                    <a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a>
+                                  </th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="d-flex justify-content-end mt-5">
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="5" data-type="deduction_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

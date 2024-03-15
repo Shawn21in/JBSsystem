@@ -135,6 +135,7 @@ $(function () {
     })
 
     // ----------------------勞健保設定----------------------
+
     var status = $('input[name=insuredperson]:checked').val();//投保人身分判斷
     $('input[name=insuredperson]').on('change', function () {
         status = $(this).val();
@@ -175,5 +176,20 @@ $(function () {
     $('#tuixiuselfmny').focusout(function () {
         let tmny = $(this).val();
         $('#tuixiugerenmny').val(tmny * 6 / 100);
+    })
+
+    // ----------------------固定加扣款----------------------
+
+    $('#addBtn').on('click', function () {
+        $('#deduction .datalist').append($('.invisible_table tbody').html())
+    })
+    $(document).on('click', '.data_del', function () {
+        $(this).closest('tr').remove();
+    })
+    $(document).on('change', 'select[name^=deductionno]', function () {
+        let dname = $(this).find('option:selected').data('name');
+        let dmny = $(this).find('option:selected').data('mny');
+        $(this).closest('tr').find('input[name^=deductionname]').val(dname)
+        $(this).closest('tr').find('input[name^=dedmny]').val(dmny)
     })
 })
