@@ -216,6 +216,8 @@ $(document).ready(function (e) {
 				invalidElement.each(function (key, value) {
 					if ($(value).closest('.otherclass').length > 0) {
 						invalid_other = true;
+						$(value).removeClass('is-valid');
+						$(value).addClass('is-invalid');
 					} else {
 						invalid_list += $(value).data('name') + '<br/>';
 						$(value).removeClass('is-valid');
@@ -223,7 +225,7 @@ $(document).ready(function (e) {
 					}
 				})
 				if (invalid_other) {
-					invalid_list += "請檢查每個題目、答案及選項類型是否已填完";
+					invalid_list += "請檢查每個選項是否已填完";
 				}
 				Swal.fire({
 					title: "請確認是否填寫↓",

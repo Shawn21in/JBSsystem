@@ -108,7 +108,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" id="deduction-tab" data-toggle="tab" href="#deduction" role="tab" aria-controls="deduction" aria-selected="false">固定加扣款</a>
+                      <a class="nav-link" id="ededuction-tab" data-toggle="tab" href="#ededuction" role="tab" aria-controls="ededuction" aria-selected="false">固定加扣款</a>
                     </li>
                   </ul>
                   <div class="tab-content px-3 px-xl-5" id="myTabContent">
@@ -1022,7 +1022,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                         </form>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="deduction" role="tabpanel" aria-labelledby="deduction-tab">
+                    <div class="tab-pane fade" id="ededuction" role="tabpanel" aria-labelledby="ededuction-tab">
                       <div class="tab-pane-content mt-5">
                         <form id="form5" onsubmit="return false;">
                           <input type="hidden" name="eid" value="<?= $employee['eid'] ?>">
@@ -1040,49 +1040,49 @@ if (empty($employid)) { //判斷是否為編輯模式
                                   <th scope="col">選項</th>
                                 </tr>
                               </thead>
-                              <tbody class="datalist">
-                              </tbody>
-                            </table>
-                            <table class="invisible_table">
-                              <tbody>
-                                <tr>
-                                  <th scope="col">
-                                    <select name="deductionno[]" class="form-control">
-                                      <option value="" data-name="" data-mny="" selected disabled hidden>選擇編號</option>
-                                      <?php foreach ($deduction_list as $key => $value) { ?>
-                                        <option value="<?= $value['deductionno'] ?>" data-name="<?= $value['deductionname'] ?>" data-mny="<?= $value['dedmny'] ?>"><?= $value['deductionno'] ?></option>
-                                      <?php } ?>
-                                    </select>
-                                  </th>
-                                  <th scope="col"><input name="deductionname[]" type="text" class="form-control" readonly></th>
-                                  <th scope="col"><input name="dedmny[]" type="text" class="form-control" readonly></th>
-                                  <th scope="col">
-                                    <label class="switch switch-primary switch-pill form-control-label">
-                                      <input type="checkbox" class="switch-input form-check-input" name="dotype" value="1">
-                                      <span class="switch-label"></span>
-                                      <span class="switch-handle"></span>
-                                    </label>
-                                  </th>
-                                  <th scope="col">
-                                    <select name="jstype[]" class="form-control">
-                                      <option value="" selected disabled hidden>選擇公式</option>
-                                      <option value="0">固定金額</option>
-                                      <option value="1">金額*實際出勤天數</option>
-                                      <option value="2">日新*實際公休天數</option>
-                                      <option value="3">固定金額*實際公休天數</option>
-                                    </select>
-                                  </th>
-                                  <th scope="col">
-                                    <a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a>
-                                  </th>
-                                </tr>
+                              <tbody class="datalist otherclass">
                               </tbody>
                             </table>
                           </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="5" data-type="deduction_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="5" data-type="ededuction_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
                           </div>
                         </form>
+                        <table class="invisible_table">
+                          <tbody>
+                            <tr>
+                              <th scope="col">
+                                <select name="deductionno[]" class="form-control" data-name="加扣款編號" required>
+                                  <option value="" data-name="" data-mny="" selected disabled hidden>選擇編號</option>
+                                  <?php foreach ($deduction_list as $key => $value) { ?>
+                                    <option value="<?= $value['deductionno'] ?>" data-name="<?= $value['deductionname'] ?>" data-mny="<?= $value['dedmny'] ?>"><?= $value['deductionno'] ?></option>
+                                  <?php } ?>
+                                </select>
+                              </th>
+                              <th scope="col"><input name="deductionname[]" type="text" class="form-control" readonly></th>
+                              <th scope="col"><input name="deductionmny[]" type="text" class="form-control" readonly></th>
+                              <th scope="col">
+                                <label class="switch switch-primary switch-pill form-control-label">
+                                  <input type="checkbox" class="switch-input form-check-input" name="dotype[]" value="1">
+                                  <span class="switch-label"></span>
+                                  <span class="switch-handle"></span>
+                                </label>
+                              </th>
+                              <th scope="col">
+                                <select name="jstype[]" class="form-control" data-name="套用公式" required>
+                                  <option value="" selected disabled hidden>選擇公式</option>
+                                  <option value="0">固定金額</option>
+                                  <option value="1">金額*實際出勤天數</option>
+                                  <option value="2">日新*實際公休天數</option>
+                                  <option value="3">固定金額*實際公休天數</option>
+                                </select>
+                              </th>
+                              <th scope="col">
+                                <a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a>
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>

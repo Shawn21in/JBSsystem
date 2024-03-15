@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-15 07:16:10
+-- 產生時間： 2024-03-15 10:01:40
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -287,7 +287,15 @@ CREATE TABLE IF NOT EXISTS `employdeduction` (
   `jstype` varchar(4) DEFAULT NULL COMMENT '公式類別',
   `addh2` tinyint DEFAULT NULL COMMENT '加入補充保費',
   PRIMARY KEY (`edid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `employdeduction`
+--
+
+INSERT INTO `employdeduction` (`edid`, `employeid`, `deductionno`, `deductionname`, `deductionmny`, `recordno`, `dotype`, `jishu`, `jstype`, `addh2`) VALUES
+(1, '8', '12', 'test3', 1231.1234, NULL, 1, NULL, '2', NULL),
+(2, '8', '24', 'test3', 5556.0000, NULL, 0, NULL, '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -829,7 +837,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=731 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=734 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1569,7 +1577,10 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (727, '2024-03-14 13:37:54', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'1\',`seclabtno` = \'3\',`purchaserno` = \'\',`lmoney` = \'27470\',`tmoney` = \'28800\',`hmoney` = \'\',`selflmoney` = \'659\',`selftmoney` = \'1440\',`selfhmoney` = \'\',`selftrate` = \'5\',`insuredsum` = \'\',`insuredmny` = \'\',`tuixiuselfmny` = \'\',`tuixiugerenmny` = \'\',`employerlmny` = \'\',`employerhmny` = \'\'  WHERE  eid = \'7\';', 'UPDATE', '/jp/web_post.php'),
 (728, '2024-03-14 14:52:43', '', '', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'30\',`standardhour` = \'8\',`monthmny` = \'0\',`daymny` = \'0\',`hourmny` = \'0\',`taxmny` = \'0\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'\',`bankno2` = \'\',`bankname` = \'\',`bankname2` = \'\',`huming` = \'\',`huming2` = \'\',`bankid` = \'\',`bankid2` = \'\'  WHERE  eid = \'6\';', 'UPDATE', '/jp/web_post.php'),
 (729, '2024-03-14 16:18:35', '', '', '', 'INSERT INTO deduction (`deductionno`,`deductionname`,`dedmny`) VALUES (\'24\',\'test3\',\'5556\');', 'INSERT', '/jp/web_post.php'),
-(730, '2024-03-15 11:19:17', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'32c3d805f55e3fcd80650680b2b55380\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php');
+(730, '2024-03-15 11:19:17', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'32c3d805f55e3fcd80650680b2b55380\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(731, '2024-03-15 17:47:12', '', '', '', 'DELETE FROM employdeduction  WHERE  employeid = \'8\';', 'DELETE', '/jp/web_post.php'),
+(732, '2024-03-15 17:58:13', '', '', '', 'INSERT INTO employdeduction (`employeid`,`dotype`,`deductionno`,`deductionname`,`deductionmny`,`jstype`) VALUES (\'8\',\'1\',\'12\',\'test3\',\'1231.1234\',\'2\');', 'INSERT', '/jp/web_post.php'),
+(733, '2024-03-15 17:58:13', '', '', '', 'INSERT INTO employdeduction (`employeid`,`dotype`,`deductionno`,`deductionname`,`deductionmny`,`jstype`) VALUES (\'8\',\'0\',\'24\',\'test3\',\'5556\',\'0\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

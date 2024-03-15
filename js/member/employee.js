@@ -181,7 +181,10 @@ $(function () {
     // ----------------------固定加扣款----------------------
 
     $('#addBtn').on('click', function () {
-        $('#deduction .datalist').append($('.invisible_table tbody').html())
+        let count = $('.datalist tr').length;
+        let html = $('.invisible_table tbody').html();
+        html = html.replace('dotype[]', 'dotype[' + count + ']');
+        $('#ededuction .datalist').append(html)
     })
     $(document).on('click', '.data_del', function () {
         $(this).closest('tr').remove();
@@ -190,6 +193,6 @@ $(function () {
         let dname = $(this).find('option:selected').data('name');
         let dmny = $(this).find('option:selected').data('mny');
         $(this).closest('tr').find('input[name^=deductionname]').val(dname)
-        $(this).closest('tr').find('input[name^=dedmny]').val(dmny)
+        $(this).closest('tr').find('input[name^=deductionmny]').val(dmny)
     })
 })

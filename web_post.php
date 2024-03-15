@@ -13,7 +13,7 @@ $_Type  = $_POST['_type']; //主執行case
 
 $_POST = arr_filter($_POST); //簡易輸入過濾
 
-$is_verify = $_MemberData['Company_Verify'] == $_POST['token'] ? true : false;
+$is_verify = $_MemberData['Company_Verify'] == $_POST['token'] ? true : false; //檢查token，是否從正常管道寄送資料
 
 ob_start();
 
@@ -1585,6 +1585,51 @@ if (!empty($_Type)) {
 				if (!empty($db->Error)) {
 					$_html_msg 	= '儲存失敗，請重新整理後再試試';
 				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+				}
+			}
+			break;
+		case "ededuction_edit":
+			if (!$_Login || !$is_verify) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$value['eid'] 			= intval($_POST['eid']);
+			$employee = $CM->get_employee_data($value['eid']);
+			$value['dotype'] 			= $_POST['dotype'];
+			$value['deductionno'] 		= $_POST['deductionno'];
+			$value['deductionname'] 	= $_POST['deductionname'];
+			$value['deductionmny'] 			= $_POST['deductionmny'];
+			$value['jstype'] 			= $_POST['jstype'];
+			$len = count($value['deductionno']);
+			if (empty($employee)) { //判斷資料完整度
+				$_html_msg = '請先產生員工資料後再進行';
+				break;
+			} else {
+
+				// $db->Where = " WHERE  employeid = '" . $value['eid'] . "'";
+				// $db->query_delete($ed_db);
+				for ($i = 0; $i < $len; $i++) {
+					$ed_data = array(
+						'employeid' 		=> $value['eid'],
+						'dotype' 			=> !empty($value['dotype'][$i]) ? $value['dotype'][$i] : '0',
+						'deductionno' 		=> $value['deductionno'][$i],
+						'deductionname' 	=> $value['deductionname'][$i],
+						'deductionmny' 		=> $value['deductionmny'][$i],
+						'jstype' 			=> $value['jstype'][$i],
+					);
+					$db->query_data($ed_db, $ed_data, 'INSERT');
+					if (!empty($db->Error)) {
+						$_html_msg 	= '儲存失敗，請重新整理後再試試';
+						break;
+					}
+				}
+				if (empty($db->Error)) {
 					$_html_msg 	= '儲存成功！';
 					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
 				}
