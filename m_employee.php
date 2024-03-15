@@ -1036,7 +1036,6 @@ if (empty($employid)) { //判斷是否為編輯模式
                                   <th scope="col">加扣款名稱</th>
                                   <th scope="col">加扣款金額</th>
                                   <th scope="col">加入全薪金額</th>
-                                  <th scope="col">加入補充保費</th>
                                   <th scope="col">套用公式</th>
                                   <th scope="col">選項</th>
                                 </tr>
@@ -1059,19 +1058,20 @@ if (empty($employid)) { //判斷是否為編輯模式
                                   <th scope="col"><input name="dedmny[]" type="text" class="form-control" readonly></th>
                                   <th scope="col">
                                     <label class="switch switch-primary switch-pill form-control-label">
-                                      <input type="checkbox" class="switch-input form-check-input" name="mealflag" value="1">
+                                      <input type="checkbox" class="switch-input form-check-input" name="dotype" value="1">
                                       <span class="switch-label"></span>
                                       <span class="switch-handle"></span>
                                     </label>
                                   </th>
                                   <th scope="col">
-                                    <label class="switch switch-primary switch-pill form-control-label">
-                                      <input type="checkbox" class="switch-input form-check-input" name="mealflag" value="1">
-                                      <span class="switch-label"></span>
-                                      <span class="switch-handle"></span>
-                                    </label>
+                                    <select name="jstype[]" class="form-control">
+                                      <option value="" selected disabled hidden>選擇公式</option>
+                                      <option value="0">固定金額</option>
+                                      <option value="1">金額*實際出勤天數</option>
+                                      <option value="2">日新*實際公休天數</option>
+                                      <option value="3">固定金額*實際公休天數</option>
+                                    </select>
                                   </th>
-                                  <th scope="col"><input name="holidayName[]" type="text" class="form-control" readonly></th>
                                   <th scope="col">
                                     <a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a>
                                   </th>

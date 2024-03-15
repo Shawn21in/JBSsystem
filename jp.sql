@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-14 03:24:45
+-- 產生時間： 2024-03-15 07:16:10
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -239,7 +239,8 @@ CREATE TABLE IF NOT EXISTS `deduction` (
 --
 
 INSERT INTO `deduction` (`deductionno`, `deductionname`, `dedtype`, `dedmny`) VALUES
-('12', 'test3', NULL, 1231.1234);
+('12', 'test3', NULL, 1231.1234),
+('24', 'test3', NULL, 5556.0000);
 
 -- --------------------------------------------------------
 
@@ -266,6 +267,27 @@ INSERT INTO `education` (`educationno`, `educationname`) VALUES
 ('04', '二專'),
 ('05', '大學'),
 ('06', '碩士');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `employdeduction`
+--
+
+DROP TABLE IF EXISTS `employdeduction`;
+CREATE TABLE IF NOT EXISTS `employdeduction` (
+  `edid` int NOT NULL AUTO_INCREMENT,
+  `employeid` varchar(10) DEFAULT NULL COMMENT '員工編號',
+  `deductionno` varchar(10) DEFAULT NULL COMMENT '加扣款編號',
+  `deductionname` varchar(30) DEFAULT NULL COMMENT '加扣款名稱',
+  `deductionmny` decimal(19,4) DEFAULT NULL COMMENT '加扣款金額',
+  `recordno` int DEFAULT NULL COMMENT 'rec',
+  `dotype` tinyint DEFAULT NULL COMMENT '加入全薪金額',
+  `jishu` decimal(19,4) DEFAULT NULL,
+  `jstype` varchar(4) DEFAULT NULL COMMENT '公式類別',
+  `addh2` tinyint DEFAULT NULL COMMENT '加入補充保費',
+  PRIMARY KEY (`edid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -380,8 +402,8 @@ CREATE TABLE IF NOT EXISTS `employee` (
 
 INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`, `sandtype`, `monthmny`, `daymny`, `hourmny`, `taxmny`, `standardday`, `standardhour`, `starttype`, `resttype`, `bankno`, `bankname`, `huming`, `bankid`, `bankno2`, `bankname2`, `huming2`, `bankid2`, `overtimetype`, `overtimemnytype`, `normalovertimemny`, `normalovertimerate`, `extendovertimemny`, `extendovertimerate`, `holidayovertimemny`, `holidayovertimerate`, `publicholidayovertimemny`, `publicholidayovertimerate`, `restovertimemny1`, `restovertimemny2`, `restovertimemny3`, `resthourrate1`, `resthourrate2`, `resthourrate3`, `otway`, `jiabanbudadan`, `overtime`, `jiabanbudashi`, `mealflag`, `mealmny`, `insuredperson`, `seclabno`, `seclabtno`, `purchaserno`, `lmoney`, `tmoney`, `hmoney`, `selflmoney`, `selftmoney`, `selfhmoney`, `selftrate`, `insuredsum`, `insuredmny`, `tuixiuselfmny`, `tuixiugerenmny`, `employerlmny`, `employerhmny`) VALUES
 (8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 0, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000, '2', '1', '2', '3', 27470.0000, 27600.0000, 28800.0000, 604.0000, 1380.0000, 447.0000, 5.0000, 4.0000, 1788.0000, 30000.0000, 1800.0000, 500.0000, 600.0000),
-(7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '86-07-16', '1997-07-16', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '2', 0.0000, 5000.0000, 625.0000, 110.0000, 30.0000, 8.0, 0, 1, '052', '渣打國際商業銀行', '渣打國際', '012345678', '', '', '測試', '01234', 0, '1', 200.0000, 0.0000, 300.0000, 0.0000, 400.0000, 0.0000, 500.0000, 0.0000, 600.0000, 700.0000, 800.0000, 0.0, 0.0, 0.0, 2, 0, 1, 100.0000, 1, 50.0000, '1', '1', '3', '', 27470.0000, 28800.0000, 0.0000, 659.0000, 1440.0000, 0.0000, 5.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
+(6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -807,7 +829,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=724 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=731 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1540,7 +1562,14 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (720, '2024-03-14 10:55:44', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'659\',`selftmoney` = \'1380\',`selfhmoney` = \'447\',`selftrate` = \'\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
 (721, '2024-03-14 10:58:14', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'1\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'659\',`selftmoney` = \'1104\',`selfhmoney` = \'447\',`selftrate` = \'\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
 (722, '2024-03-14 10:59:05', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'1\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'659\',`selftmoney` = \'1380\',`selfhmoney` = \'447\',`selftrate` = \'5\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
-(723, '2024-03-14 11:12:37', '', '', '', 'UPDATE employee SET `insuredperson` = \'2\',`seclabno` = \'1\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'604\',`selftmoney` = \'1380\',`selfhmoney` = \'447\',`selftrate` = \'5\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php');
+(723, '2024-03-14 11:12:37', '', '', '', 'UPDATE employee SET `insuredperson` = \'2\',`seclabno` = \'1\',`seclabtno` = \'2\',`purchaserno` = \'3\',`lmoney` = \'27470\',`tmoney` = \'27600\',`hmoney` = \'28800\',`selflmoney` = \'604\',`selftmoney` = \'1380\',`selfhmoney` = \'447\',`selftrate` = \'5\',`insuredsum` = \'4\',`insuredmny` = \'1788\',`tuixiuselfmny` = \'30000\',`tuixiugerenmny` = \'1800\',`employerlmny` = \'500\',`employerhmny` = \'600\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(724, '2024-03-14 11:49:13', '', '', '', 'UPDATE employee SET `cono` = \'01\',`coname1` = \'庫點子\',`employid` = \'A111\',`employname` = \'張先生\',`no` = \'A001\',`id` = \'A123456\',`EngName` = \'ZHANG,XIAN-SHENG\',`sex` = \'男\',`marry` = \'已\',`blood` = \'AB\',`nationality` = \'台灣\',`born` = \'台中市\',`bornday` = \'80-01-01\',`bornday2` = \'1991-01-01\',`email` = \'g@gmail.com\',`address` = \'407台中市西屯區中工二路120號\',`tel` = \'0512345678\',`fax` = \'0412345678\',`mphone` = \'0912345678\',`partno` = \'WD\',`partname` = \'網設部\',`appno` = \'BE\',`appname` = \'後端工程師\',`presenttype` = \'G\',`presentname` = \'G1\',`workday` = \'86-07-16\',`workday2` = \'1997-07-16\',`expireday` = \'\',`expireday2` = \'1911--\',`contact` = \'張太太\',`contactrelation` = \'妻子\',`contacttel1` = \'0912345678\',`contacttel2` = \'0912345678\',`contactadd` = \'407台中市西屯區中工二路120號\',`pro` = \'test\',`add1` = \'407台中市西屯區中工二路120號\',`add2` = \'407台中市西屯區中工二路120號\',`buildday` = \'113-03-07\',`buildday2` = \'2024-03-07\'  WHERE  eid = \'7\';', 'UPDATE', '/jp/web_post.php'),
+(725, '2024-03-14 11:58:56', '', '', '', 'UPDATE employee SET `sandtype` = \'2\',`standardday` = \'30\',`standardhour` = \'8\',`monthmny` = \'0\',`daymny` = \'5000\',`hourmny` = \'625\',`taxmny` = \'110\',`starttype` = \'0\',`resttype` = \'1\',`bankno` = \'052\',`bankno2` = \'\',`bankname` = \'渣打國際商業銀行\',`bankname2` = \'\',`huming` = \'渣打國際\',`huming2` = \'測試\',`bankid` = \'012345678\',`bankid2` = \'01234\'  WHERE  eid = \'7\';', 'UPDATE', '/jp/web_post.php'),
+(726, '2024-03-14 11:59:44', '', '', '', 'UPDATE employee SET `overtimetype` = \'0\',`overtimemnytype` = \'1\',`normalovertimemny` = \'200\',`normalovertimerate` = \'0\',`extendovertimemny` = \'300\',`extendovertimerate` = \'0\',`holidayovertimemny` = \'400\',`holidayovertimerate` = \'0\',`publicholidayovertimemny` = \'500\',`publicholidayovertimerate` = \'0\',`restovertimemny1` = \'600\',`restovertimemny2` = \'700\',`restovertimemny3` = \'800\',`resthourrate1` = \'0\',`resthourrate2` = \'0\',`resthourrate3` = \'0\',`otway` = \'2\',`jiabanbudadan` = \'0\',`overtime` = \'1\',`jiabanbudashi` = \'100\',`mealflag` = \'1\',`mealmny` = \'50\'  WHERE  eid = \'7\';', 'UPDATE', '/jp/web_post.php'),
+(727, '2024-03-14 13:37:54', '', '', '', 'UPDATE employee SET `insuredperson` = \'1\',`seclabno` = \'1\',`seclabtno` = \'3\',`purchaserno` = \'\',`lmoney` = \'27470\',`tmoney` = \'28800\',`hmoney` = \'\',`selflmoney` = \'659\',`selftmoney` = \'1440\',`selfhmoney` = \'\',`selftrate` = \'5\',`insuredsum` = \'\',`insuredmny` = \'\',`tuixiuselfmny` = \'\',`tuixiugerenmny` = \'\',`employerlmny` = \'\',`employerhmny` = \'\'  WHERE  eid = \'7\';', 'UPDATE', '/jp/web_post.php'),
+(728, '2024-03-14 14:52:43', '', '', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'30\',`standardhour` = \'8\',`monthmny` = \'0\',`daymny` = \'0\',`hourmny` = \'0\',`taxmny` = \'0\',`starttype` = \'0\',`resttype` = \'0\',`bankno` = \'\',`bankno2` = \'\',`bankname` = \'\',`bankname2` = \'\',`huming` = \'\',`huming2` = \'\',`bankid` = \'\',`bankid2` = \'\'  WHERE  eid = \'6\';', 'UPDATE', '/jp/web_post.php'),
+(729, '2024-03-14 16:18:35', '', '', '', 'INSERT INTO deduction (`deductionno`,`deductionname`,`dedmny`) VALUES (\'24\',\'test3\',\'5556\');', 'INSERT', '/jp/web_post.php'),
+(730, '2024-03-15 11:19:17', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'32c3d805f55e3fcd80650680b2b55380\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -2018,7 +2047,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'b7ad408e6c35ab6f9f64fc640ab9d1ec', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '32c3d805f55e3fcd80650680b2b55380', 1);
 
 -- --------------------------------------------------------
 
