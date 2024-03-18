@@ -898,6 +898,8 @@ if (!empty($_Type)) {
 			$Value['seclabMny'] 		= $_POST['seclabMny'];
 			$Value['seclablMny'] 		= $_POST['seclablMny'];
 			$Value['ForeignMny'] 		= $_POST['ForeignMny'];
+			$Value['employerSeclablMny'] 		= $_POST['employerSeclablMny'];
+			$Value['employerForeignMny'] 		= $_POST['employerForeignMny'];
 			$len = count($Value['seclabMny']);
 			foreach ($Value as $key => $val) {
 				if (empty($val)) {
@@ -919,6 +921,8 @@ if (!empty($_Type)) {
 						'seclabMny' 			=> $Value['seclabMny'][$i],
 						'seclablMny' 			=> $Value['seclablMny'][$i],
 						'ForeignMny' 			=> $Value['ForeignMny'][$i],
+						'employerSeclablMny' 			=> $Value['employerSeclablMny'][$i],
+						'employerForeignMny' 			=> $Value['employerForeignMny'][$i],
 					);
 					$db->query_data($seclab1_db, $seclab_data, 'INSERT');
 				}
@@ -941,6 +945,7 @@ if (!empty($_Type)) {
 			$value = array();
 			$Value['purchaserhmny'] 		= $_POST['purchaserhmny'];
 			$Value['purchasermny'] 		= $_POST['purchasermny'];
+			$Value['employerPurchaserhmny'] 		= $_POST['employerPurchaserhmny'];
 			$len = count($Value['purchaserhmny']);
 			foreach ($Value as $key => $val) {
 				if (empty($val)) {
@@ -961,6 +966,7 @@ if (!empty($_Type)) {
 						'purchaserno'				=> (int)$i + 1,
 						'purchaserhmny' 			=> $Value['purchaserhmny'][$i],
 						'purchasermny' 			=> $Value['purchasermny'][$i],
+						'employerPurchaserhmny' 			=> $Value['employerPurchaserhmny'][$i],
 					);
 					$db->query_data($purchaser1_db, $purchaser_data, 'INSERT');
 				}

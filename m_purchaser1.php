@@ -78,6 +78,7 @@ $bank = $CM->GET_PURCHASER1_DATA();
                             <th scope="col">等級</th>
                             <th scope="col">投保金額</th>
                             <th scope="col">健保費</th>
+                            <th scope="col">雇主負擔金額</th>
                             <th scope="col">選項</th>
                           </tr>
                         </thead>
@@ -88,6 +89,7 @@ $bank = $CM->GET_PURCHASER1_DATA();
                               <td><?= $value['purchaserno'] ?></td>
                               <td><?= $value['purchasermny'] ?></td>
                               <td><?= $value['purchaserhmny'] ?></td>
+                              <td><?= $value['employerPurchaserhmny'] ?></td>
                             </tr>
                           <?php } ?>
                         </tbody>
@@ -97,6 +99,7 @@ $bank = $CM->GET_PURCHASER1_DATA();
                               <td class="no"><?= $value['purchaserno'] ?></td>
                               <td><input class="form-control" name="purchasermny[]" type="number" value="<?= $value['purchasermny'] ?>" step="any"></td>
                               <td><input class="form-control" name="purchaserhmny[]" type="number" value="<?= $value['purchaserhmny'] ?>" step="any"></td>
+                              <td><input class="form-control" name="employerPurchaserhmny[]" type="number" value="<?= $value['employerPurchaserhmny'] ?>" step="any"></td>
                               <td><a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a></td>
                             </tr>
                           <?php } ?>
@@ -109,6 +112,7 @@ $bank = $CM->GET_PURCHASER1_DATA();
                           <td class="no"></td>
                           <td><input class="form-control" name="purchasermny[]" type="number" value="" step="any"></td>
                           <td><input class="form-control" name="purchaserhmny[]" type="number" value="" step="any"></td>
+                          <td><input class="form-control" name="employerPurchaserhmny[]" type="number" value="" step="any"></td>
                           <td><a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a></td>
                         </tr>
                       </tbody>

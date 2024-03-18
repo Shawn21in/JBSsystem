@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-18 05:37:31
+-- 產生時間： 2024-03-18 09:44:37
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -409,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
 --
 
 INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`, `sandtype`, `monthmny`, `daymny`, `hourmny`, `taxmny`, `standardday`, `standardhour`, `starttype`, `resttype`, `bankno`, `bankname`, `huming`, `bankid`, `bankno2`, `bankname2`, `huming2`, `bankid2`, `overtimetype`, `overtimemnytype`, `normalovertimemny`, `normalovertimerate`, `extendovertimemny`, `extendovertimerate`, `holidayovertimemny`, `holidayovertimerate`, `publicholidayovertimemny`, `publicholidayovertimerate`, `restovertimemny1`, `restovertimemny2`, `restovertimemny3`, `resthourrate1`, `resthourrate2`, `resthourrate3`, `otway`, `jiabanbudadan`, `overtime`, `jiabanbudashi`, `mealflag`, `mealmny`, `insuredperson`, `seclabno`, `seclabtno`, `purchaserno`, `lmoney`, `tmoney`, `hmoney`, `selflmoney`, `selftmoney`, `selfhmoney`, `selftrate`, `insuredsum`, `insuredmny`, `tuixiuselfmny`, `tuixiugerenmny`, `employerlmny`, `employerhmny`) VALUES
-(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 0, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000, '2', '1', '2', '3', 27470.0000, 27600.0000, 28800.0000, 604.0000, 1380.0000, 447.0000, 5.0000, 4.0000, 1788.0000, 30000.0000, 1800.0000, 500.0000, 600.0000),
+(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 1, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000, '2', '1', '2', '3', 27470.0000, 27600.0000, 28800.0000, 604.0000, 1380.0000, 447.0000, 5.0000, 4.0000, 1788.0000, 30000.0000, 1800.0000, 500.0000, 600.0000),
 (7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '86-07-16', '1997-07-16', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '2', 0.0000, 5000.0000, 625.0000, 110.0000, 30.0000, 8.0, 0, 1, '052', '渣打國際商業銀行', '渣打國際', '012345678', '', '', '測試', '01234', 0, '1', 200.0000, 0.0000, 300.0000, 0.0000, 400.0000, 0.0000, 500.0000, 0.0000, 600.0000, 700.0000, 800.0000, 0.0, 0.0, 0.0, 2, 0, 1, 100.0000, 1, 50.0000, '1', '1', '3', '', 27470.0000, 28800.0000, 0.0000, 659.0000, 1440.0000, 0.0000, 5.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
 (6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -599,17 +599,17 @@ CREATE TABLE IF NOT EXISTS `purchaser1` (
   `purchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '健保費',
   `employerPurchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額',
   PRIMARY KEY (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `purchaser1`
 --
 
 INSERT INTO `purchaser1` (`pid`, `purchaserno`, `purchasermny`, `purchaserhmny`, `employerPurchaserhmny`) VALUES
-(8, 1, 27440.0000, 426.0000, NULL),
-(9, 2, 27600.0000, 428.0000, NULL),
-(10, 3, 28800.0000, 447.0000, NULL),
-(11, 4, 30300.0000, 470.0000, NULL);
+(12, 1, 27440.0000, 426.0000, 1329.0000),
+(13, 2, 27600.0000, 428.0000, 1336.0000),
+(14, 3, 28800.0000, 447.0000, 1394.0000),
+(15, 4, 30300.0000, 470.0000, 1466.0000);
 
 -- --------------------------------------------------------
 
@@ -653,17 +653,17 @@ CREATE TABLE IF NOT EXISTS `seclab1` (
   `employerSeclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國雇主負擔',
   `employerForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞雇主負擔',
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `seclab1`
 --
 
 INSERT INTO `seclab1` (`sid`, `seclabNo`, `seclabMny`, `seclablMny`, `ForeignMny`, `employerSeclablMny`, `employerForeignMny`) VALUES
-(32, 1, 27470.0000, 659.0000, 604.0000, 0.0000, 0.0000),
-(33, 2, 27600.0000, 662.0000, 607.0000, 0.0000, 0.0000),
-(34, 3, 28800.0000, 692.0000, 634.0000, 0.0000, 0.0000),
-(35, 4, 30030.0000, 728.0000, 667.0000, 0.0000, 0.0000);
+(40, 1, 27470.0000, 659.0000, 604.0000, 2307.0000, 2115.0000),
+(41, 2, 27600.0000, 662.0000, 607.0000, 2318.0000, 2125.0000),
+(42, 3, 28800.0000, 692.0000, 634.0000, 2420.0000, 2218.0000),
+(43, 4, 30030.0000, 728.0000, 667.0000, 2545.0000, 2333.0000);
 
 -- --------------------------------------------------------
 
@@ -837,7 +837,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=745 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=761 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1591,7 +1591,23 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (741, '2024-03-18 11:05:27', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
 (742, '2024-03-18 11:05:35', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
 (743, '2024-03-18 11:06:09', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
-(744, '2024-03-18 11:06:31', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk');
+(744, '2024-03-18 11:06:31', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
+(745, '2024-03-18 16:19:22', '系統管理員', '1', '', 'UPDATE employee SET `sandtype` = \'1\',`standardday` = \'25\',`standardhour` = \'4\',`monthmny` = \'30000\',`daymny` = \'1200\',`hourmny` = \'300\',`taxmny` = \'123\',`starttype` = \'1\',`resttype` = \'0\',`bankno` = \'008\',`bankno2` = \'000\',`bankname` = \'華南商業銀行\',`bankname2` = \'中央信託局\',`huming` = \'test\',`huming2` = \'test2\',`bankid` = \'123\',`bankid2` = \'321\'  WHERE  eid = \'8\';', 'UPDATE', '/jp/web_post.php'),
+(746, '2024-03-18 17:37:24', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(747, '2024-03-18 17:37:24', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'1\',\'27470\',\'659\',\'604\',\'230\',\'2307\');', 'INSERT', '/jp/web_post.php'),
+(748, '2024-03-18 17:37:24', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'2\',\'27600\',\'662\',\'607\',\'2307\',\'230\');', 'INSERT', '/jp/web_post.php'),
+(749, '2024-03-18 17:37:24', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'3\',\'28800\',\'692\',\'634\',\'1234\',\'1234\');', 'INSERT', '/jp/web_post.php'),
+(750, '2024-03-18 17:37:24', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'4\',\'30030\',\'728\',\'667\',\'4321\',\'4231\');', 'INSERT', '/jp/web_post.php'),
+(751, '2024-03-18 17:41:43', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(752, '2024-03-18 17:41:43', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'1\',\'27470\',\'659\',\'604\',\'2307\',\'2115\');', 'INSERT', '/jp/web_post.php'),
+(753, '2024-03-18 17:41:43', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'2\',\'27600\',\'662\',\'607\',\'2318\',\'2125\');', 'INSERT', '/jp/web_post.php'),
+(754, '2024-03-18 17:41:43', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'3\',\'28800\',\'692\',\'634\',\'2420\',\'2218\');', 'INSERT', '/jp/web_post.php'),
+(755, '2024-03-18 17:41:43', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'4\',\'30030\',\'728\',\'667\',\'2545\',\'2333\');', 'INSERT', '/jp/web_post.php'),
+(756, '2024-03-18 17:44:23', '系統管理員', '1', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(757, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27440\',\'1329\');', 'INSERT', '/jp/web_post.php'),
+(758, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
+(759, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
+(760, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 

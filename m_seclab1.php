@@ -79,6 +79,8 @@ $bank = $CM->GET_SECLAB1_DATA();
                             <th scope="col">投保金額</th>
                             <th scope="col">本國勞保費</th>
                             <th scope="col">外國勞保費</th>
+                            <th scope="col">本國雇主負擔</th>
+                            <th scope="col">外國雇主負擔</th>
                             <th scope="col">選項</th>
                           </tr>
                         </thead>
@@ -90,6 +92,8 @@ $bank = $CM->GET_SECLAB1_DATA();
                               <td><?= $value['seclabMny'] ?></td>
                               <td><?= $value['seclablMny'] ?></td>
                               <td><?= $value['ForeignMny'] ?></td>
+                              <td><?= $value['employerSeclablMny'] ?></td>
+                              <td><?= $value['employerForeignMny'] ?></td>
                             </tr>
                           <?php } ?>
                         </tbody>
@@ -100,6 +104,8 @@ $bank = $CM->GET_SECLAB1_DATA();
                               <td><input class="form-control" name="seclabMny[]" type="number" value="<?= $value['seclabMny'] ?>" step="any"></td>
                               <td><input class="form-control" name="seclablMny[]" type="number" value="<?= $value['seclablMny'] ?>" step="any"></td>
                               <td><input class="form-control" name="ForeignMny[]" type="number" value="<?= $value['ForeignMny'] ?>" step="any"></td>
+                              <td><input class="form-control" name="employerSeclablMny[]" type="number" value="<?= $value['employerSeclablMny'] ?>" step="any"></td>
+                              <td><input class="form-control" name="employerForeignMny[]" type="number" value="<?= $value['employerForeignMny'] ?>" step="any"></td>
                               <td><a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a></td>
                             </tr>
                           <?php } ?>
@@ -113,6 +119,8 @@ $bank = $CM->GET_SECLAB1_DATA();
                           <td><input class="form-control" name="seclabMny[]" type="number" value="" step="any"></td>
                           <td><input class="form-control" name="seclablMny[]" type="number" value="" step="any"></td>
                           <td><input class="form-control" name="ForeignMny[]" type="number" value="" step="any"></td>
+                          <td><input class="form-control" name="employerSeclablMny[]" type="number" value="" step="any"></td>
+                          <td><input class="form-control" name="employerForeignMny[]" type="number" value="" step="any"></td>
                           <td><a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a></td>
                         </tr>
                       </tbody>
