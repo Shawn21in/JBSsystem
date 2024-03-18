@@ -1014,4 +1014,26 @@ class Custom
 		}
 		return $rs;
 	}
+	/**
+	 * 員工-固定加扣款資料
+	 * 
+	 * @param integer   $id 員工編號
+	 * 
+	 * @return array 
+	 */
+	function get_employdeduction_list($id)
+	{
+
+		$Sheet = "employdeduction";
+
+		$db = new MySQL();
+		$db->Where = "Where employeid = '" . $id . "'";
+		$db->Order_By = 'Order By edid asc';
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count++]  = $row;
+		}
+		return $rs;
+	}
 }

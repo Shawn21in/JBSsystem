@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-15 10:01:40
+-- 產生時間： 2024-03-18 05:37:31
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -287,15 +287,15 @@ CREATE TABLE IF NOT EXISTS `employdeduction` (
   `jstype` varchar(4) DEFAULT NULL COMMENT '公式類別',
   `addh2` tinyint DEFAULT NULL COMMENT '加入補充保費',
   PRIMARY KEY (`edid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `employdeduction`
 --
 
 INSERT INTO `employdeduction` (`edid`, `employeid`, `deductionno`, `deductionname`, `deductionmny`, `recordno`, `dotype`, `jishu`, `jstype`, `addh2`) VALUES
-(1, '8', '12', 'test3', 1231.1234, NULL, 1, NULL, '2', NULL),
-(2, '8', '24', 'test3', 5556.0000, NULL, 0, NULL, '0', NULL);
+(4, '8', '24', 'test3', 5556.0000, NULL, 0, NULL, '2', NULL),
+(3, '8', '12', 'test3', 1231.1234, NULL, 1, NULL, '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -837,7 +837,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=734 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=745 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1580,7 +1580,18 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (730, '2024-03-15 11:19:17', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'32c3d805f55e3fcd80650680b2b55380\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
 (731, '2024-03-15 17:47:12', '', '', '', 'DELETE FROM employdeduction  WHERE  employeid = \'8\';', 'DELETE', '/jp/web_post.php'),
 (732, '2024-03-15 17:58:13', '', '', '', 'INSERT INTO employdeduction (`employeid`,`dotype`,`deductionno`,`deductionname`,`deductionmny`,`jstype`) VALUES (\'8\',\'1\',\'12\',\'test3\',\'1231.1234\',\'2\');', 'INSERT', '/jp/web_post.php'),
-(733, '2024-03-15 17:58:13', '', '', '', 'INSERT INTO employdeduction (`employeid`,`dotype`,`deductionno`,`deductionname`,`deductionmny`,`jstype`) VALUES (\'8\',\'0\',\'24\',\'test3\',\'5556\',\'0\');', 'INSERT', '/jp/web_post.php');
+(733, '2024-03-15 17:58:13', '', '', '', 'INSERT INTO employdeduction (`employeid`,`dotype`,`deductionno`,`deductionname`,`deductionmny`,`jstype`) VALUES (\'8\',\'0\',\'24\',\'test3\',\'5556\',\'0\');', 'INSERT', '/jp/web_post.php'),
+(734, '2024-03-18 08:55:30', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'e88f71363d2b58be536cb2d90e49a67a\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(735, '2024-03-18 09:05:03', '', '', '', 'DELETE FROM employdeduction  WHERE  employeid = \'8\';', 'DELETE', '/jp/web_post.php'),
+(736, '2024-03-18 09:05:03', '', '', '', 'INSERT INTO employdeduction (`employeid`,`dotype`,`deductionno`,`deductionname`,`deductionmny`,`jstype`) VALUES (\'8\',\'1\',\'12\',\'test3\',\'1231.1234\',\'1\');', 'INSERT', '/jp/web_post.php'),
+(737, '2024-03-18 09:05:03', '', '', '', 'INSERT INTO employdeduction (`employeid`,`dotype`,`deductionno`,`deductionname`,`deductionmny`,`jstype`) VALUES (\'8\',\'0\',\'24\',\'test3\',\'5556\',\'2\');', 'INSERT', '/jp/web_post.php'),
+(738, '2024-03-18 11:02:23', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'C111\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
+(739, '2024-03-18 11:02:29', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'C111\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
+(740, '2024-03-18 11:05:00', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
+(741, '2024-03-18 11:05:27', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
+(742, '2024-03-18 11:05:35', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
+(743, '2024-03-18 11:06:09', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk'),
+(744, '2024-03-18 11:06:31', '', '', 'Unknown column \'employid\' in \'where clause\'', 'SELECT * FROM employdeduction Where employid = \'8\'  Order By edid asc ;', 'ERROR', '/jp/m_employee.php?c=3J54ZWhk');
 
 -- --------------------------------------------------------
 
@@ -2058,7 +2069,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '32c3d805f55e3fcd80650680b2b55380', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'e88f71363d2b58be536cb2d90e49a67a', 1);
 
 -- --------------------------------------------------------
 

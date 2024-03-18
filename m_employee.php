@@ -33,8 +33,10 @@ if (empty($employid)) { //判斷是否為編輯模式
   $edit = 0;
 } else {
   $employee = $CM->get_employee_data($employid);
+  $ed_list = $CM->get_employdeduction_list($employee['eid']);
   $edit = 1;
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -1041,6 +1043,39 @@ if (empty($employid)) { //判斷是否為編輯模式
                                 </tr>
                               </thead>
                               <tbody class="datalist otherclass">
+                                <?php foreach ($ed_list as $edk => $edv) { ?>
+                                  <tr>
+                                    <th scope="col">
+                                      <select name="deductionno[]" class="form-control" data-name="加扣款編號" required>
+                                        <option value="" data-name="" data-mny="" <?= isset($edv['deductionno']) ? '' : 'selected' ?> disabled hidden>選擇編號</option>
+                                        <?php foreach ($deduction_list as $key => $value) { ?>
+                                          <option value="<?= $value['deductionno'] ?>" data-name="<?= $value['deductionname'] ?>" data-mny="<?= $value['dedmny'] ?>" <?= $edv['deductionno'] == $value['deductionno'] ? 'selected' : '' ?>><?= $value['deductionno'] ?></option>
+                                        <?php } ?>
+                                      </select>
+                                    </th>
+                                    <th scope="col"><input name="deductionname[]" type="text" class="form-control" value="<?= $edv['deductionname'] ?>" readonly></th>
+                                    <th scope="col"><input name="deductionmny[]" type="text" class="form-control" value="<?= $edv['deductionmny'] ?>" readonly></th>
+                                    <th scope="col">
+                                      <label class="switch switch-primary switch-pill form-control-label">
+                                        <input type="checkbox" class="switch-input form-check-input" name="dotype[]" value="1" <?= $edv['dotype'] == '1' ? 'checked' : '' ?>>
+                                        <span class="switch-label"></span>
+                                        <span class="switch-handle"></span>
+                                      </label>
+                                    </th>
+                                    <th scope="col">
+                                      <select name="jstype[]" class="form-control" data-name="套用公式" required>
+                                        <option value="" <?= isset($edv['jstype']) ? '' : 'selected' ?> disabled hidden>選擇公式</option>
+                                        <option value="0" <?= $edv['jstype'] == '0' ? 'selected' : '' ?>>固定金額</option>
+                                        <option value="1" <?= $edv['jstype'] == '1' ? 'selected' : '' ?>>金額*實際出勤天數</option>
+                                        <option value="2" <?= $edv['jstype'] == '2' ? 'selected' : '' ?>>日新*實際公休天數</option>
+                                        <option value="3" <?= $edv['jstype'] == '3' ? 'selected' : '' ?>>固定金額*實際公休天數</option>
+                                      </select>
+                                    </th>
+                                    <th scope="col">
+                                      <a href="javascript:void(0)" class="data_del"><span class="mdi mdi-delete mdi-18px"></span></a>
+                                    </th>
+                                  </tr>
+                                <?php } ?>
                               </tbody>
                             </table>
                           </div>

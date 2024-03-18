@@ -1612,8 +1612,8 @@ if (!empty($_Type)) {
 				break;
 			} else {
 
-				// $db->Where = " WHERE  employeid = '" . $value['eid'] . "'";
-				// $db->query_delete($ed_db);
+				$db->Where = " WHERE  employeid = '" . $value['eid'] . "'";
+				$db->query_delete($ed_db);
 				for ($i = 0; $i < $len; $i++) {
 					$ed_data = array(
 						'employeid' 		=> $value['eid'],
