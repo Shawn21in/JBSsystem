@@ -46,10 +46,13 @@ $(function () {
             case '2':
                 $('#monthmny').prop('readonly', true)
                 $('#daymny').prop('readonly', false)
+                $('#monthmny').val(0)
                 break;
             case '3':
                 $('#monthmny').prop('readonly', true)
                 $('#daymny').prop('readonly', true)
+                $('#monthmny').val(0)
+                $('#daymny').val(0)
                 break;
         }
     })
@@ -59,10 +62,10 @@ $(function () {
         let st = $('input[name=sandtype]:checked').val();
         if (sday != '') {
             if (st == '1') {
-                $('#daymny').val(Math.round($('#monthmny').val() / sday))
+                $('#daymny').val(Math.round(($('#monthmny').val() / sday) * 100) / 100)
             }
             if (shour != '' && (st == '1' || st == '2')) {
-                $('#hourmny').val(Math.round($('#daymny').val() / shour))
+                $('#hourmny').val(Math.round(($('#daymny').val() / shour) * 100) / 100)
             }
         }
     })
@@ -144,7 +147,7 @@ $(function () {
     $('#seclabno').on('change', function () {
         let mny = $(this).find('option:selected').data('type');
         let smny = $(this).find('option:selected').data('self' + status);
-        console.log('self' + status)
+        // console.log('self' + status)
         $('#lmoney').val(mny);
         $('#selflmoney').val(smny);
     })
@@ -153,14 +156,14 @@ $(function () {
         let srate = $('#selftrate').val();
         $('#tmoney').val(mny);
         if (srate != '') {
-            $('#selftmoney').val(mny * srate / 100);
+            $('#selftmoney').val(Math.round(mny * srate / 100));
         }
     })
     $('#selftrate').focusout(function () {
         let srate = $(this).val();
         let mny = $('#seclabtno').find('option:selected').data('type');
         if (mny != '') {
-            $('#selftmoney').val(mny * srate / 100);
+            $('#selftmoney').val(Math.round(mny * srate / 100));
         }
     })
     $('#purchaserno').on('change', function () {
@@ -171,11 +174,11 @@ $(function () {
     })
     $('#insuredsum').focusout(function () {
         let psum = $(this).val();
-        $('#insuredmny').val($('#selfhmoney').val() * psum);
+        $('#insuredmny').val(Math.round($('#selfhmoney').val() * psum));
     })
     $('#tuixiuselfmny').focusout(function () {
         let tmny = $(this).val();
-        $('#tuixiugerenmny').val(tmny * 6 / 100);
+        $('#tuixiugerenmny').val(Math.round(tmny * 6 / 100));
     })
 
     // ----------------------固定加扣款----------------------

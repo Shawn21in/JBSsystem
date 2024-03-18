@@ -163,14 +163,14 @@ if (empty($employid)) { //判斷是否為編輯模式
                           <div class="row mb-2">
                             <div class="col-lg-2">
                               <div class="form-group">
-                                <label for="no">卡片編號 *</label>
-                                <input type="text" data-name="卡片編號" maxlength="10" class="form-control" name="no" id="no" value="<?= $employee['no'] ?>" placeholder="EX:A001" required>
+                                <label for="no">卡片編號</label>
+                                <input type="text" data-name="卡片編號" maxlength="10" class="form-control" name="no" id="no" value="<?= $employee['no'] ?>" placeholder="EX:A001">
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
-                                <label for="id">身分證字號 *</label>
-                                <input type="text" data-name="身分證字號" maxlength="10" class="form-control" name="id" id="id" value="<?= $employee['id'] ?>" placeholder="EX:A12345678" required>
+                                <label for="id">身分證字號</label>
+                                <input type="text" data-name="身分證字號" maxlength="10" class="form-control" name="id" id="id" value="<?= $employee['id'] ?>" placeholder="EX:A12345678">
                               </div>
                             </div>
 
@@ -287,7 +287,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2 form-pill">
                               <div class="form-group">
                                 <label for="partno">部門名稱</label>
-                                <select class="form-control" data-name="部門名稱" id="partno" name="partno">
+                                <select class="form-control" data-name="部門名稱" id="partno" name="partno" required>
                                   <option value="" data-type="">選擇部門</option>
                                   <?php foreach ($part_list as $key => $value) { ?>
                                     <option value="<?= $value['partno'] ?>" data-type="<?= $value['partname'] ?>" <?= $employee['partno'] == $value['partno'] ? 'selected' : '' ?>><?= $value['partno'] ?></option>
@@ -325,7 +325,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2 form-pill">
                               <div class="form-group">
                                 <label for="presenttype">出勤類別</label>
-                                <select class="form-control" data-name="出勤類別" id="presenttype" name="presenttype">
+                                <select class="form-control" data-name="出勤類別" id="presenttype" name="presenttype" required>
                                   <option value="" data-type="">選擇班別</option>
                                   <?php foreach ($attd_list as $key => $value) { ?>
                                     <option value="<?= $value['attendanceno'] ?>" data-type="<?= $value['attendancename'] ?>" <?= $employee['presenttype'] == $value['attendanceno'] ? 'selected' : '' ?>><?= $value['attendanceno'] ?></option>
