@@ -147,9 +147,11 @@ $(function () {
     $('#seclabno').on('change', function () {
         let mny = $(this).find('option:selected').data('type');
         let smny = $(this).find('option:selected').data('self' + status);
+        let amny = $(this).find('option:selected').data('afford');
         // console.log('self' + status)
         $('#lmoney').val(mny);
         $('#selflmoney').val(smny);
+        $('#employerlmny').val(amny)
     })
     $('#seclabtno').on('change', function () {
         let mny = $(this).find('option:selected').data('type');
@@ -169,8 +171,10 @@ $(function () {
     $('#purchaserno').on('change', function () {
         let mny = $(this).find('option:selected').data('type');
         let smny = $(this).find('option:selected').data('self');
+        let amny = $(this).find('option:selected').data('afford');
         $('#hmoney').val(mny);
         $('#selfhmoney').val(smny);
+        $('#employerhmny').val(amny)
     })
     $('#insuredsum').focusout(function () {
         let psum = $(this).val();

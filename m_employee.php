@@ -872,7 +872,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                                 <select class="form-control" data-name="勞保投保金額" id="seclabno" name="seclabno">
                                   <option value="" data-type="">選擇等級</option>
                                   <?php foreach ($seclab1_list as $key => $value) { ?>
-                                    <option value="<?= $value['seclabNo'] ?>" data-type="<?= $value['seclabMny'] ?>" data-self1="<?= $value['seclablMny'] ?>" data-self2="<?= $value['ForeignMny'] ?>" <?= $employee['seclabno'] == $value['seclabNo'] ? 'selected' : '' ?>><?= 'Lv' . $value['seclabNo'] . '→' . intval($value['seclabMny']) ?></option>
+                                    <option value="<?= $value['seclabNo'] ?>" data-type="<?= $value['seclabMny'] ?>" data-self1="<?= $value['seclablMny'] ?>" data-self2="<?= $value['ForeignMny'] ?>" data-afford="<?= $value['employerSeclablMny'] ?>" <?= $employee['seclabno'] == $value['seclabNo'] ? 'selected' : '' ?>><?= 'Lv' . $value['seclabNo'] . '→' . intval($value['seclabMny']) ?></option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -935,7 +935,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                                 <select class="form-control" data-name="健保投保金額" id="purchaserno" name="purchaserno">
                                   <option value="" data-type="">選擇等級</option>
                                   <?php foreach ($purchaser1_list as $key => $value) { ?>
-                                    <option value="<?= $value['purchaserno'] ?>" data-type="<?= $value['purchasermny'] ?>" data-self="<?= $value['purchaserhmny'] ?>" <?= $employee['purchaserno'] == $value['purchaserno'] ? 'selected' : '' ?>><?= 'Lv' . $value['purchaserno'] . '→' . intval($value['purchasermny']) ?></option>
+                                    <option value="<?= $value['purchaserno'] ?>" data-type="<?= $value['purchasermny'] ?>" data-self="<?= $value['purchaserhmny'] ?>" data-afford="<?= $value['employerPurchaserhmny'] ?>" <?= $employee['purchaserno'] == $value['purchaserno'] ? 'selected' : '' ?>><?= 'Lv' . $value['purchaserno'] . '→' . intval($value['purchasermny']) ?></option>
                                   <?php } ?>
                                 </select>
                               </div>
