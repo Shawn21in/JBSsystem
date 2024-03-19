@@ -89,27 +89,9 @@
 
                     <ul class="collapse " id="app" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="" data-no="">
-                                <a class="sidenav-item-link" href="chat.html">
-                                    <span class="nav-text">Chat</span>
-                                </a>
-                            </li>
-
-                            <li class="" data-no="">
-                                <a class="sidenav-item-link" href="contacts.html">
-                                    <span class="nav-text">Contacts</span>
-                                </a>
-                            </li>
-
-                            <li class="" data-no="">
-                                <a class="sidenav-item-link" href="team.html">
-                                    <span class="nav-text">Team</span>
-                                </a>
-                            </li>
-
-                            <li class="" data-no="">
-                                <a class="sidenav-item-link" href="calendar.html">
-                                    <span class="nav-text">Calendar</span>
+                            <li class="" data-no="employeeattend">
+                                <a class="sidenav-item-link" href="m_employeeattend.php">
+                                    <span class="nav-text">員工出勤作業</span>
                                 </a>
                             </li>
                         </div>
