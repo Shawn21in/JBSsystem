@@ -21,8 +21,11 @@ $(function () {
         drag: function (event, ui) {
             $('.table-scroll').css('cursor', 'grabbing');
             var element = $(".table-scroll")[0];
+            // console.log(element.scrollWidth)
+            // console.log(element.scrollLeft)
+            // console.log(element.clientWidth)
             // 判斷是否已經滑到最右側
-            if (element.scrollWidth - element.scrollLeft <= element.clientWidth) {
+            if (element.scrollWidth - element.scrollLeft <= element.clientWidth + 1) {
                 $(".table-scroll").scrollLeft(element.clientWidth + 70);
                 $(".table").css('left', '0px');
                 return false;
