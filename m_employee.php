@@ -286,11 +286,11 @@ if (empty($employid)) { //判斷是否為編輯模式
 
                             <div class="col-lg-2 form-pill">
                               <div class="form-group">
-                                <label for="partno">部門名稱</label>
+                                <label for="partno">部門名稱 *</label>
                                 <select class="form-control" data-name="部門名稱" id="partno" name="partno" required>
                                   <option value="" data-type="">選擇部門</option>
                                   <?php foreach ($part_list as $key => $value) { ?>
-                                    <option value="<?= $value['partno'] ?>" data-type="<?= $value['partname'] ?>" <?= $employee['partno'] == $value['partno'] ? 'selected' : '' ?>><?= $value['partno'] ?></option>
+                                    <option value="<?= $value['partno'] ?>" data-type="<?= $value['partname'] ?>" <?= $employee['partno'] == $value['partno'] ? 'selected' : '' ?>><?= $value['partno'] ?>-<?= $value['partname'] ?></option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -308,7 +308,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                                 <select class="form-control" data-name="職謂名稱" id="appno" name="appno">
                                   <option value="" data-type="">選擇職謂</option>
                                   <?php foreach ($jobs_list as $key => $value) { ?>
-                                    <option value="<?= $value['appno'] ?>" data-type="<?= $value['appname'] ?>" <?= $employee['appno'] == $value['appno'] ? 'selected' : '' ?>><?= $value['appno'] ?></option>
+                                    <option value="<?= $value['appno'] ?>" data-type="<?= $value['appname'] ?>" <?= $employee['appno'] == $value['appno'] ? 'selected' : '' ?>><?= $value['appno'] ?>-<?= $value['appname'] ?></option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -324,11 +324,11 @@ if (empty($employid)) { //判斷是否為編輯模式
                           <div class="row mb-2">
                             <div class="col-lg-2 form-pill">
                               <div class="form-group">
-                                <label for="presenttype">出勤類別</label>
+                                <label for="presenttype">出勤類別 *</label>
                                 <select class="form-control" data-name="出勤類別" id="presenttype" name="presenttype" required>
                                   <option value="" data-type="">選擇班別</option>
                                   <?php foreach ($attd_list as $key => $value) { ?>
-                                    <option value="<?= $value['attendanceno'] ?>" data-type="<?= $value['attendancename'] ?>" <?= $employee['presenttype'] == $value['attendanceno'] ? 'selected' : '' ?>><?= $value['attendanceno'] ?></option>
+                                    <option value="<?= $value['attendanceno'] ?>" data-type="<?= $value['attendancename'] ?>" <?= $employee['presenttype'] == $value['attendanceno'] ? 'selected' : '' ?>><?= $value['attendanceno'] ?>-<?= $value['attendancename'] ?></option>
                                   <?php } ?>
                                 </select>
                               </div>
