@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-20 06:43:48
+-- 產生時間： 2024-03-20 09:59:04
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -427,9 +427,9 @@ CREATE TABLE IF NOT EXISTS `employeeattend` (
   `ndyear` varchar(4) DEFAULT NULL,
   `ndyear2` varchar(4) DEFAULT NULL,
   `ndweektype` varchar(4) DEFAULT NULL COMMENT '星期',
-  `nddate` varchar(10) DEFAULT NULL COMMENT '出勤日期',
+  `nddate` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '出勤日期-民國',
   `nddate1` datetime DEFAULT NULL,
-  `nddate2` varchar(10) DEFAULT NULL,
+  `nddate2` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '出勤日期-西元',
   `ndclassno` varchar(10) DEFAULT NULL,
   `ndclassname` int DEFAULT NULL,
   `ontime` varchar(4) DEFAULT NULL COMMENT '上班時間',
