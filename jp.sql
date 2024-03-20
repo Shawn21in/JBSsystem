@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-18 09:44:37
+-- 產生時間： 2024-03-20 06:43:48
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -416,6 +416,64 @@ INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `app
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `employeeattend`
+--
+
+DROP TABLE IF EXISTS `employeeattend`;
+CREATE TABLE IF NOT EXISTS `employeeattend` (
+  `eid` int NOT NULL AUTO_INCREMENT,
+  `employeid` varchar(10) DEFAULT NULL,
+  `employename` varchar(10) DEFAULT NULL,
+  `ndyear` varchar(4) DEFAULT NULL,
+  `ndyear2` varchar(4) DEFAULT NULL,
+  `ndweektype` varchar(4) DEFAULT NULL COMMENT '星期',
+  `nddate` varchar(10) DEFAULT NULL COMMENT '出勤日期',
+  `nddate1` datetime DEFAULT NULL,
+  `nddate2` varchar(10) DEFAULT NULL,
+  `ndclassno` varchar(10) DEFAULT NULL,
+  `ndclassname` int DEFAULT NULL,
+  `ontime` varchar(4) DEFAULT NULL COMMENT '上班時間',
+  `offtime` varchar(4) DEFAULT NULL COMMENT '下班時間',
+  `latetime` varchar(4) DEFAULT NULL,
+  `attendno` varchar(10) DEFAULT NULL COMMENT '出勤編號',
+  `attendname` varchar(20) DEFAULT NULL COMMENT '出勤名稱',
+  `addtime1` varchar(4) DEFAULT NULL,
+  `addtime2` varchar(4) DEFAULT NULL,
+  `daka` tinyint DEFAULT NULL,
+  `cuowutype` varchar(4) DEFAULT NULL,
+  `jiaritype` tinyint DEFAULT NULL,
+  `gongxiutype` varchar(5) DEFAULT NULL,
+  `restime1` varchar(4) DEFAULT NULL COMMENT '休息時間1起',
+  `restime2` varchar(4) DEFAULT NULL COMMENT '休息時間1末',
+  `restime3` varchar(4) DEFAULT NULL,
+  `restime4` varchar(4) DEFAULT NULL,
+  `addontime` varchar(4) DEFAULT NULL COMMENT '加班上班',
+  `addofftime` varchar(4) DEFAULT NULL COMMENT '加班下班',
+  `lock1` tinyint DEFAULT NULL,
+  `mend` decimal(19,4) DEFAULT NULL,
+  `isnearly` tinyint DEFAULT NULL COMMENT '不算早退',
+  `latemins` varchar(4) DEFAULT NULL COMMENT '遲到分數',
+  `latetimes` varchar(4) DEFAULT NULL,
+  `isabsent` tinyint DEFAULT NULL,
+  `ontime1` varchar(4) DEFAULT NULL,
+  `offtime1` varchar(4) DEFAULT NULL,
+  `attendday` varchar(4) DEFAULT NULL COMMENT '出勤日',
+  `worktime` varchar(10) DEFAULT NULL COMMENT '上班時數',
+  `jiabantime` varchar(10) DEFAULT NULL COMMENT '加班時數',
+  `qingjiatime` varchar(10) DEFAULT NULL COMMENT '請假時數',
+  `absenceno` varchar(10) DEFAULT NULL COMMENT '假別編號',
+  `absencename` varchar(20) DEFAULT NULL COMMENT '假別名稱',
+  `memo` text COMMENT '備註',
+  `jiabantime134` decimal(19,4) DEFAULT NULL,
+  `jiabantime167` decimal(19,4) DEFAULT NULL,
+  `jiabantime267` decimal(19,4) DEFAULT NULL,
+  `jiabantime001` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY (`eid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `family`
 --
 
@@ -698,7 +756,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, 'cf2611d1ea914ccff7029218eb07f217', '2019-08-12 21:27:51', '2024-03-11 10:02:43', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, 'c051823686396ccd30c76e195081f0a6', '2019-08-12 21:27:51', '2024-03-20 08:49:43', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -837,7 +895,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=761 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=767 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -1607,7 +1665,13 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (757, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27440\',\'1329\');', 'INSERT', '/jp/web_post.php'),
 (758, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
 (759, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
-(760, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php');
+(760, '2024-03-18 17:44:23', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php'),
+(761, '2024-03-19 08:54:01', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'dd8bb8e57f8f4264f53e625e86839856\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(762, '2024-03-19 09:07:16', '', '', '', 'UPDATE jobs SET `appno` = \'BE\',`appname` = \'後端工程師後端工程師後端工程師\'  WHERE  appno = \'BE\';', 'UPDATE', '/jp/web_post.php'),
+(763, '2024-03-19 09:07:28', '', '', '', 'UPDATE jobs SET `appno` = \'BE\',`appname` = \'後端工程師\'  WHERE  appno = \'BE\';', 'UPDATE', '/jp/web_post.php'),
+(764, '2024-03-19 18:03:43', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'370b173d89ca041f005a3296fd861014\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(765, '2024-03-20 08:36:15', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'9ccc011dfc2c0fd494665a99307dc09d\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(766, '2024-03-20 08:49:43', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'c051823686396ccd30c76e195081f0a6\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php');
 
 -- --------------------------------------------------------
 
@@ -2085,7 +2149,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'e88f71363d2b58be536cb2d90e49a67a', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '9ccc011dfc2c0fd494665a99307dc09d', 1);
 
 -- --------------------------------------------------------
 

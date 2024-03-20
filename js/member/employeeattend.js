@@ -38,16 +38,77 @@ $(function () {
         }
     });
     $('#niadu').on('change', function () {
-        let year = toString(parseInt($(this).val()) + 1911);
+        let year = parseInt($(this).val()) + 1911;
+        $('input[name=startdate]').val(year + "-01-01")
+        $('input[name=enddate]').val(year + "-12-31")
+        // console.log(year);
         $('#daterange').daterangepicker({
-            "minDate": "01/01/" + year,
-            "maxDate": "12/31/" + year,
+            startDate: "01/01/" + year,
+            endDate: "12/31/" + year,
+            minDate: "01/01/" + year,
+            maxDate: "12/31/" + year,
             locale: {
                 cancelLabel: 'Clear'
             }
-        })
+        }, function (start, end, label) {
+            $('input[name=startdate]').val(start.format('YYYY-MM-DD'))
+            $('input[name=enddate]').val(end.format('YYYY-MM-DD'))
+            // console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
     })
     $('#daterange').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
     });
+    $('.subBtn').on('click', function () {
+        if (form_check('generate_date')) {
+            let field = $('#generate_date');
+            let Form_Data = new Array();
+            let token = $('input[name=token]').val();
+            let token_array = { "name": "token", "value": token };
+            Form_Data = field.serializeArray();
+            Form_Data.push(token_array)
+            $.ajax({
+                url: 'ajax/generate_date.php',
+                type: "POST",
+                data: Form_Data,
+                beforeSend: function () {
+                    Swal.fire({
+                        title: "生成中...",
+                        html: `
+                        <div class="card-body d-flex align-items-center justify-content-center" style="height: 160px">
+                            <div class="sk-chase">
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                            </div>
+                        </div>
+                        `,
+                        showConfirmButton: false,
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    Swal.fire({
+                        title: "線上取得失敗，請重新試一次！",
+                    });
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var _msg = JSON.parse(data);
+                    console.log(_msg.html_content)
+                    if (_msg.html_status == '1') {
+                        swal.fire({
+                            title: "訊息",
+                            text: _msg.html_msg,
+                            icon: 'error'
+                        });
+                    } else {
+
+                    }
+
+                }
+            })
+        }
+    })
 })

@@ -123,7 +123,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
 
               <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion3">
                 <div class="card-body">
-                  <form id="form1" onsubmit="return false;">
+                  <form id="form2" onsubmit="return false;">
                     <input type="hidden" class="form-control" name="deductionid" value="<?= $deduction['deductionno'] ?>">
                     <div class="row mb-2">
                       <div class="col-lg-12">
@@ -281,16 +281,16 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                         </div>
 
                         <div class="modal-body">
-                          <form>
+                          <form id="generate_date" onsubmit="return false;">
                             <div class="form-group">
                               <label for="niadu">產生年度 *</label>
-                              <input type="number" class="form-control" id="niadu" aria-describedby="emailHelp" placeholder="EX: 113">
+                              <input type="number" class="form-control" name="niadu" id="niadu" aria-describedby="emailHelp" placeholder="EX: 113" data-name="產生年度" required>
                             </div>
 
                             <div class="form-group">
-                              <label for="deductionname">選擇員工 *</label>
+                              <label for="gen_ed">選擇員工 *</label>
                               <div>
-                                <select data-placeholder="查看編號及姓名" id="gen_ed" class="form-control" multiple>
+                                <select data-placeholder="查看編號及姓名" id="gen_ed" class="form-control" name="eid[]" data-name="選擇員工" required multiple>
                                   <option value=""></option>
                                   <?php foreach ($employee_list as $key => $value) { ?>
                                     <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
@@ -301,7 +301,9 @@ if (empty($deductionno)) { //判斷是否為編輯模式
 
                             <div class="form-group">
                               <label for="daterange">日期範圍 *</label>
-                              <input type="text" class="form-control" id="daterange" aria-describedby="emailHelp" readonly>
+                              <input type="hidden" class="form-control" name="startdate">
+                              <input type="hidden" class="form-control" name="enddate">
+                              <input type="text" class="form-control" id="daterange" name="daterange" aria-describedby="emailHelp" readonly>
                             </div>
 
                             <!-- <div class="form-check pl-0">
@@ -310,7 +312,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                                 <div class="control-indicator"></div>
                               </label>
                             </div> -->
-                            <button type="submit" class="btn btn-primary">產生</button>
+                            <button type="button" class="btn btn-primary subBtn">產生</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           </form>
                         </div>

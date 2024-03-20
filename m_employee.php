@@ -139,7 +139,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                             <div class="col-lg-2">
                               <div class="form-group">
                                 <label for="employid">員工編號 *</label>
-                                <input type="text" data-name="員工編號" maxlength="10" class="form-control" name="employid" id="employid" value="<?= $employee['employid'] ?>" placeholder="EX:A001" required>
+                                <input type="text" data-name="員工編號" maxlength="10" class="form-control" name="employid" id="employid" value="<?= $employee['employid'] ?>" placeholder="EX:A001" <?= $edit ? 'readonly' : '' ?> required>
                               </div>
                             </div>
 
