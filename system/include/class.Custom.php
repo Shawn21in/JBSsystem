@@ -1036,4 +1036,35 @@ class Custom
 		}
 		return $rs;
 	}
+	/**
+	 * 員工-固定加扣款資料
+	 * 
+	 * @param string   $id 員工編號
+	 * 
+	 * @param string   $year 年度(民國)
+	 * 
+	 * @param string   $month 月份，若未填則抓整年度，參數可填1 2 3..12。只可填一個數字
+	 * 
+	 * @return array 
+	 */
+	function get_employeeattend_list($id, $year, $month = '')
+	{
+
+		$Sheet = "employeeattend";
+
+		$db = new MySQL();
+		$db->Where = "Where employeid = '" . $id . "' AND ndyear = '" . $year . "'";
+		if (!empty($month)) {
+			$smonth = $month >= 9 ? $month : '0' . $month;					//該月份初
+			$emonth = ($month + 1) >= 9 ? ($month + 1) : '0' . ($month + 1); //下月份初
+			$db->Where .= " AND  nddate > " . $year . $smonth . "00 AND nddate < " . $year . $emonth . "00";
+		}
+		$db->Order_By = 'Order By nddate asc';
+		$db->query_sql($Sheet, '*');
+		$count = 0;
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs[$count++]  = $row;
+		}
+		return $rs;
+	}
 }

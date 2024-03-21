@@ -1,5 +1,5 @@
 $(function () {
-    $("#employ").chosen({
+    $("#search_eid").chosen({
         width: "50%",
         search_contains: true,
     });
@@ -59,6 +59,104 @@ $(function () {
     $('#daterange').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
     });
+    $('#searchBtn').on('click', function () {
+        if (form_check('form1')) {
+            let field = $('#form1');
+            let Form_Data = new Array();
+            let token = $('input[name=token]').val();
+            let token_array = { "name": "token", "value": token };
+            Form_Data = field.serializeArray();
+            Form_Data.push(token_array)
+            // console.log(Form_Data);
+            $.ajax({
+                url: 'ajax/search_date.php',
+                type: "POST",
+                data: Form_Data,
+                beforeSend: function () {
+                    Swal.fire({
+                        title: "查詢中...",
+                        html: `
+                            <div class="card-body d-flex align-items-center justify-content-center" style="height: 160px">
+                                <div class="sk-chase">
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                </div>
+                            </div>
+                            `,
+                        showConfirmButton: false,
+                        isDismissed: true
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    Swal.close()
+                    Swal.fire({
+                        title: "線上取得失敗，請重新試一次！",
+                    });
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var _msg = JSON.parse(data);
+                    console.log(_msg.html_content)
+                    Swal.close()
+                    if (_msg.html_status == '1') {
+                        swal.fire({
+                            title: "訊息",
+                            text: _msg.html_msg,
+                            icon: 'error'
+                        });
+                    } else {
+                        for (let i = 1; i <= 12; i++) {
+                            let content = Object.values(_msg.html_content[i])
+                            let month_html = '';
+                            content.forEach(function (value, index, array) {
+                                month_html += '<tr>';
+                                month_html += '<th scope="col">';
+                                month_html += value.ndweektype;
+                                month_html += '</th>';
+                                month_html += '<th scope="col">';
+                                month_html += value.nddate;
+                                month_html += '</th>';
+                                month_html += '<th scope="col">';
+                                month_html += '<select class="form-control" name="attendday[]" style="width:unset">';
+                                month_html += '<option value="工作日"' + (value.attendday == '工作日' ? 'selected' : '') + '>工作日</option>';
+                                month_html += '<option value="休息日"' + (value.attendday == '休息日' ? 'selected' : '') + '>休息日</option>';
+                                month_html += '<option value="例假日"' + (value.attendday == '例假日' ? 'selected' : '') + '>例假日</option>';
+                                month_html += '<option value="國定日"' + (value.attendday == '國定日' ? 'selected' : '') + '>國定日</option>';
+                                month_html += '<option value="空班日"' + (value.attendday == '空班日' ? 'selected' : '') + '>空班日</option>';
+                                month_html += '</select>';
+                                month_html += '</th>';
+                                month_html += '<th scope="col">';
+                                month_html += '<label class="switch switch-primary switch-pill form-control-label">'
+                                month_html += '<input type="checkbox" class="switch-input form-check-input" name="isearly[]" value="1" ' + (value.isearly == '1' ? 'checked' : '') + '>'
+                                month_html += '<span class="switch-label"></span>';
+                                month_html += '<span class="switch-handle"></span>';
+                                month_html += '</label>';
+                                month_html += '</th>';
+                                month_html += '<th scope="col">';
+                                month_html += value.nddate;
+                                month_html += '</th>';
+                                month_html += '<th scope="col">';
+                                month_html += value.attendname;
+                                month_html += '</th>';
+                                month_html += '</tr>';
+                            })
+                            $('.month' + i).html(month_html);
+                        }
+
+                        swal.fire({
+                            title: "訊息",
+                            text: _msg.html_msg,
+                            icon: 'success'
+                        });
+                    }
+
+                }
+            })
+        }
+    })
     $('.subBtn').on('click', function () {
         if (form_check('generate_date')) {
             let field = $('#generate_date');
@@ -111,6 +209,8 @@ $(function () {
                             title: "訊息",
                             text: _msg.html_msg,
                             icon: 'success'
+                        }).then((result) => {
+                            location.reload();
                         });
                     }
 

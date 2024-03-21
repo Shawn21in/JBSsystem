@@ -49,8 +49,6 @@ if (empty($_html_msg)) {
             $nddate = $nddate2 - 19110000;
             $ontime = '';
             $offtime = '';
-            $attendno = '';
-            $attendname = '';
             $daka = 0;
             $jiaritype = 1;
             $restime1 = '';
@@ -90,8 +88,6 @@ if (empty($_html_msg)) {
                             $offtime = $ed['offtime'];
                             $restime1 = $ed['resttime1'];
                             $restime2 = $ed['resttime2'];
-                            $attendno = $ed['attendanceno'];
-                            $attendname = $ed['attendancename'];
                             $jiaritype = 0;
                             if ($employee['starttype']) {
                                 $daka = 1;
@@ -117,8 +113,6 @@ if (empty($_html_msg)) {
                             $offtime = $ed['offtime'];
                             $restime1 = $ed['resttime1'];
                             $restime2 = $ed['resttime2'];
-                            $attendno = $ed['attendanceno'];
-                            $attendname = $ed['attendancename'];
                             $jiaritype = 0;
                             if ($employee['starttype']) {
                                 $daka = 1;

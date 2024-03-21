@@ -25,6 +25,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
   $edit = 1;
 }
 
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="tw">
@@ -72,6 +73,11 @@ if (empty($deductionno)) { //判斷是否為編輯模式
       <div class="content-wrapper">
         <div class="content">
           <div id="accordion3" class="accordion accordion-bordered ">
+            <div class="d-flex justify-content-end col-lg-12 ">
+              <button type="button" class="btn btn-primary mb-2 mr-2" data-toggle="modal" data-target="#gen_date">
+                產生員工出勤曆
+              </button>
+            </div>
             <!-- 人員選擇 -->
             <div class="card card-default">
               <div class="card-header" id="heading1">
@@ -83,20 +89,19 @@ if (empty($deductionno)) { //判斷是否為編輯模式
               <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion3">
                 <div class="card-body">
                   <form id="form1" onsubmit="return false;">
-                    <input type="hidden" class="form-control" name="deductionid" value="<?= $deduction['deductionno'] ?>">
                     <div class="row mb-2">
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="deductionno">年度 *</label>
-                          <input type="number" data-name="年度" class="form-control" name="deductionno" id="deductionno" value="" placeholder="Ex:113" required>
+                          <label for="search_niandu">年度 *</label>
+                          <input type="number" data-name="年度" class="form-control" name="search_niandu" id="search_niandu" value="" placeholder="Ex:113" required>
                         </div>
                       </div>
                     </div>
 
-                    <div class="form-group mb-4">
+                    <div class="form-group" style="margin-bottom:210px;">
                       <label for="deductionname">選擇員工 *</label>
                       <div>
-                        <select data-placeholder="查看編號及姓名" id="employ" class="form-control">
+                        <select data-placeholder="查看編號及姓名" data-name="選擇員工" name="search_eid" id="search_eid" class="form-control" required>
                           <option value=""></option>
                           <?php foreach ($employee_list as $key => $value) { ?>
                             <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
@@ -105,7 +110,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                       </div>
                     </div>
                     <div class="d-flex justify-content-end mt-5">
-                      <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="deduction_edit">
+                      <button type="button" class="btn btn-primary mb-2 btn-pill" id="searchBtn">
                         查看
                       </button>
                     </div>
@@ -253,14 +258,33 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                             <th scope="col">備註</th>
                           </tr>
                         </thead>
-                        <tbody class="datalist">
+                        <tbody class="month1">
+                        </tbody>
+                        <tbody class="month2" style="display:none;">
+                        </tbody>
+                        <tbody class="month3" style="display:none;">
+                        </tbody>
+                        <tbody class="month4" style="display:none;">
+                        </tbody>
+                        <tbody class="month5" style="display:none;">
+                        </tbody>
+                        <tbody class="month6" style="display:none;">
+                        </tbody>
+                        <tbody class="month7" style="display:none;">
+                        </tbody>
+                        <tbody class="month8" style="display:none;">
+                        </tbody>
+                        <tbody class="month9" style="display:none;">
+                        </tbody>
+                        <tbody class="month10" style="display:none;">
+                        </tbody>
+                        <tbody class="month11" style="display:none;">
+                        </tbody>
+                        <tbody class="month12" style="display:none;">
                         </tbody>
                       </table>
                     </div>
                     <div class="d-flex justify-content-end mt-5">
-                      <button type="button" class="btn btn-primary mb-2 mr-2 btn-pill" data-toggle="modal" data-target="#gen_date">
-                        產生員工出勤曆
-                      </button>
                       <button type="button" class="btn btn-success mb-2 mr-2 btn-pill saveBtn" data-type="deduction_edit" disabled>
                         儲存修改
                       </button>
@@ -269,54 +293,54 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                       </button>
                     </div>
                   </form>
-                  <!-- Form Modal -->
-                  <div class="modal fade" id="gen_date" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalFormTitle">產生員工出勤曆</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                </div>
+              </div>
+              <!-- Form Modal -->
+              <div class="modal fade" id="gen_date" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalFormTitle">產生員工出勤曆</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body">
+                      <form id="generate_date" onsubmit="return false;">
+                        <div class="form-group">
+                          <label for="niadu">產生年度 *</label>
+                          <input type="number" class="form-control" name="niadu" id="niadu" aria-describedby="emailHelp" placeholder="EX: 113" data-name="產生年度" required>
                         </div>
 
-                        <div class="modal-body">
-                          <form id="generate_date" onsubmit="return false;">
-                            <div class="form-group">
-                              <label for="niadu">產生年度 *</label>
-                              <input type="number" class="form-control" name="niadu" id="niadu" aria-describedby="emailHelp" placeholder="EX: 113" data-name="產生年度" required>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="gen_ed">選擇員工 *</label>
-                              <div>
-                                <select data-placeholder="查看編號及姓名" id="gen_ed" class="form-control" name="eid[]" data-name="選擇員工" required multiple>
-                                  <option value=""></option>
-                                  <?php foreach ($employee_list as $key => $value) { ?>
-                                    <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
-                                  <?php } ?>
-                                </select>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="daterange">日期範圍 *</label>
-                              <input type="hidden" class="form-control" name="startdate">
-                              <input type="hidden" class="form-control" name="enddate">
-                              <input type="text" class="form-control" id="daterange" name="daterange" aria-describedby="emailHelp" readonly>
-                            </div>
-
-                            <div class="form-check pl-0">
-                              <label class="control control-checkbox">是否填入預設時間
-                                <input type="checkbox" name="default" />
-                                <div class="control-indicator"></div>
-                              </label>
-                            </div>
-                            <button type="button" class="btn btn-primary subBtn">產生</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                          </form>
+                        <div class="form-group">
+                          <label for="gen_ed">選擇員工 *</label>
+                          <div>
+                            <select data-placeholder="查看編號及姓名" id="gen_ed" class="form-control" name="eid[]" data-name="選擇員工" required multiple>
+                              <option value=""></option>
+                              <?php foreach ($employee_list as $key => $value) { ?>
+                                <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
                         </div>
-                      </div>
+
+                        <div class="form-group">
+                          <label for="daterange">日期範圍 *</label>
+                          <input type="hidden" class="form-control" name="startdate">
+                          <input type="hidden" class="form-control" name="enddate">
+                          <input type="text" class="form-control" id="daterange" name="daterange" aria-describedby="emailHelp" readonly>
+                        </div>
+
+                        <div class="form-check pl-0">
+                          <label class="control control-checkbox">是否填入預設時間
+                            <input type="checkbox" name="default" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </div>
+                        <button type="button" class="btn btn-primary subBtn">產生</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </form>
                     </div>
                   </div>
                 </div>
