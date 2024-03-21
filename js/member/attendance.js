@@ -26,7 +26,7 @@ $(function () {
             // console.log(element.clientWidth)
             // 判斷是否已經滑到最右側
             if (element.scrollWidth - element.scrollLeft <= element.clientWidth + 1) {
-                $(".table-scroll").scrollLeft(element.clientWidth + 70);
+                $(".table-scroll").scrollLeft(element.scrollWidth);
                 $(".table").css('left', '0px');
                 return false;
             }

@@ -139,7 +139,10 @@ if (empty($_html_msg)) {
                 'restime1'                 => $restime1,
                 'restime2'                 => $restime2,
                 'attendday'                => $attendday,
-                'memo'                     => $memo
+                'memo'                     => $memo,
+                'addontime'                => '',
+                'addofftime'               => '',
+                'absencename'              => ''
             );
             $db->query_data($ea_db, $ea_data, 'INSERT');
         }

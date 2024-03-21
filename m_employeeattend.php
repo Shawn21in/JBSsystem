@@ -133,16 +133,16 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                     <div class="row mb-2">
                       <div class="col-lg-12">
                         <div class="form-group">
-                          <label for="deductionno">年度 *</label>
-                          <input type="number" class="form-control" name="deductionno" id="deductionno" value="" placeholder="Ex:113" readonly>
+                          <label for="niandu">年度 *</label>
+                          <input type="number" class="form-control" name="niandu" id="niandu" value="" placeholder="Ex:113" readonly>
                         </div>
                       </div>
                     </div>
                     <div class="row mb-2">
                       <div class="col-lg-12">
                         <div class="form-group">
-                          <label for="deductionno">員工 *</label>
-                          <input type="number" class="form-control" name="deductionno" id="deductionno" value="" placeholder="Ex:113" readonly>
+                          <label for="employid">員工 *</label>
+                          <input type="number" class="form-control" name="employid" id="employid" value="" placeholder="Ex:113" readonly>
                         </div>
                       </div>
                     </div>
@@ -153,7 +153,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                           <ul class="list-unstyled list-inline">
                             <li class="d-inline-block mr-3">
                               <label class="control control-radio">1月
-                                <input type="radio" name="month" value="1" />
+                                <input type="radio" name="month" value="1" checked />
                                 <div class="control-indicator"></div>
                               </label>
                             </li>
@@ -258,29 +258,29 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                             <th scope="col">備註</th>
                           </tr>
                         </thead>
-                        <tbody class="month1">
+                        <tbody class="month1 mon">
                         </tbody>
-                        <tbody class="month2" style="display:none;">
+                        <tbody class="month2 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month3" style="display:none;">
+                        <tbody class="month3 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month4" style="display:none;">
+                        <tbody class="month4 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month5" style="display:none;">
+                        <tbody class="month5 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month6" style="display:none;">
+                        <tbody class="month6 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month7" style="display:none;">
+                        <tbody class="month7 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month8" style="display:none;">
+                        <tbody class="month8 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month9" style="display:none;">
+                        <tbody class="month9 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month10" style="display:none;">
+                        <tbody class="month10 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month11" style="display:none;">
+                        <tbody class="month11 mon" style="display:none;">
                         </tbody>
-                        <tbody class="month12" style="display:none;">
+                        <tbody class="month12 mon" style="display:none;">
                         </tbody>
                       </table>
                     </div>

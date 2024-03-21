@@ -17,8 +17,8 @@ $(function () {
             // console.log(element.scrollLeft)
             // console.log(element.clientWidth)
             // 判斷是否已經滑到最右側
-            if (element.scrollWidth - element.scrollLeft <= element.clientWidth + 1) {
-                $(".table-scroll").scrollLeft(element.clientWidth + 70);
+            if (element.scrollWidth - element.scrollLeft <= element.clientWidth) {
+                $(".table-scroll").scrollLeft(element.scrollWidth);
                 $(".table").css('left', '0px');
                 return false;
             }
@@ -108,18 +108,19 @@ $(function () {
                             icon: 'error'
                         });
                     } else {
+                        let attdlist = Object.values(_msg.html_content['attdlist'])
                         for (let i = 1; i <= 12; i++) {
                             let content = Object.values(_msg.html_content[i])
                             let month_html = '';
                             content.forEach(function (value, index, array) {
                                 month_html += '<tr>';
-                                month_html += '<th scope="col">';
+                                month_html += '<th>';
                                 month_html += value.ndweektype;
                                 month_html += '</th>';
-                                month_html += '<th scope="col">';
+                                month_html += '<th>';
                                 month_html += value.nddate;
                                 month_html += '</th>';
-                                month_html += '<th scope="col">';
+                                month_html += '<th>';
                                 month_html += '<select class="form-control" name="attendday[]" style="width:unset">';
                                 month_html += '<option value="工作日"' + (value.attendday == '工作日' ? 'selected' : '') + '>工作日</option>';
                                 month_html += '<option value="休息日"' + (value.attendday == '休息日' ? 'selected' : '') + '>休息日</option>';
@@ -128,18 +129,65 @@ $(function () {
                                 month_html += '<option value="空班日"' + (value.attendday == '空班日' ? 'selected' : '') + '>空班日</option>';
                                 month_html += '</select>';
                                 month_html += '</th>';
-                                month_html += '<th scope="col">';
+                                month_html += '<th>';
                                 month_html += '<label class="switch switch-primary switch-pill form-control-label">'
                                 month_html += '<input type="checkbox" class="switch-input form-check-input" name="isearly[]" value="1" ' + (value.isearly == '1' ? 'checked' : '') + '>'
                                 month_html += '<span class="switch-label"></span>';
                                 month_html += '<span class="switch-handle"></span>';
                                 month_html += '</label>';
                                 month_html += '</th>';
-                                month_html += '<th scope="col">';
-                                month_html += value.nddate;
+                                month_html += '<th>';
+                                month_html += '<select class="form-control" name="attendno[]" style="width:unset">';
+                                attdlist.forEach(function (value2, index2, array2) {
+                                    month_html += '<option value="' + value2.attendanceno + '"' + (value2.attendanceno == value.attendno ? 'selected' : '') + '>' + value2.attendanceno + '-' + value2.attendancename + '</option>';
+                                })
+                                month_html += '</select>';
                                 month_html += '</th>';
-                                month_html += '<th scope="col">';
+                                month_html += '<th>';
                                 month_html += value.attendname;
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<label class="switch switch-primary switch-pill form-control-label">'
+                                month_html += '<input type="checkbox" class="switch-input form-check-input" name="daka[]" value="1" ' + (value.daka == '1' ? 'checked' : '') + '>'
+                                month_html += '<span class="switch-label"></span>';
+                                month_html += '<span class="switch-handle"></span>';
+                                month_html += '</label>';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="ontime" value="' + value.ontime + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="offtime" value="' + value.offtime + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="restime1" value="' + value.restime1 + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="restime2" value="' + value.restime2 + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="addontime" value="' + value.addontime + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="addofftime" value="' + value.addofftime + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="latemins" value="' + value.latemins + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="worktime" value="' + value.worktime + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="jiabantime" value="' + value.jiabantime + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="qingjiatime" value="' + value.qingjiatime + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="absencename" value="' + value.absencename + '">';
+                                month_html += '</th>';
+                                month_html += '<th>';
+                                month_html += '<input class="form-control" style="width:unset" name="memo" value="' + value.memo + '">';
                                 month_html += '</th>';
                                 month_html += '</tr>';
                             })
@@ -150,6 +198,8 @@ $(function () {
                             title: "訊息",
                             text: _msg.html_msg,
                             icon: 'success'
+                        }).then((result) => {
+                            $('#heading2 button').trigger('click');
                         });
                     }
 
