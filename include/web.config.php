@@ -118,6 +118,7 @@ if ($website_open) {
 	$holidays_db 	= 'holidays';
 	$employee_db = 'employee';
 	$ed_db = 'employdeduction';
+	$ea_db = 'employeeattend';
 
 
 	//經銷商代號

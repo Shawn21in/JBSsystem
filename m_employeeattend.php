@@ -306,12 +306,12 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                               <input type="text" class="form-control" id="daterange" name="daterange" aria-describedby="emailHelp" readonly>
                             </div>
 
-                            <!-- <div class="form-check pl-0">
+                            <div class="form-check pl-0">
                               <label class="control control-checkbox">是否填入預設時間
-                                <input type="checkbox" checked="checked" />
+                                <input type="checkbox" name="default" />
                                 <div class="control-indicator"></div>
                               </label>
-                            </div> -->
+                            </div>
                             <button type="button" class="btn btn-primary subBtn">產生</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           </form>

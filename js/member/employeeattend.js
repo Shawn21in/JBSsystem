@@ -87,16 +87,19 @@ $(function () {
                         </div>
                         `,
                         showConfirmButton: false,
+                        isDismissed: true
                     });
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
+                    Swal.close()
                     Swal.fire({
                         title: "線上取得失敗，請重新試一次！",
                     });
                 },
                 success: function (data, textStatus, jqXHR) {
                     var _msg = JSON.parse(data);
-                    console.log(_msg.html_content)
+                    // console.log(_msg.html_content)
+                    Swal.close()
                     if (_msg.html_status == '1') {
                         swal.fire({
                             title: "訊息",
@@ -104,7 +107,11 @@ $(function () {
                             icon: 'error'
                         });
                     } else {
-
+                        swal.fire({
+                            title: "訊息",
+                            text: _msg.html_msg,
+                            icon: 'success'
+                        });
                     }
 
                 }
