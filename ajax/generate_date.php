@@ -159,7 +159,14 @@ if (empty($_html_msg)) {
                 'addofftime'               => '',
                 'absencename'              => ''
             );
-            $db->query_data($ea_db, $ea_data, 'INSERT');
+            $db->Where = " WHERE  employeid = '" . $ea_data['employeid'] . "' AND nddate ='" . $nddate . "'";
+            $db->query_sql($ea_db, '*');
+            if ($row = $db->query_fetch()) {
+                $db->query_data($ea_db, $ea_data, 'UPDATE');
+            } else {
+                $db->query_data($ea_db, $ea_data, 'INSERT');
+            }
+            // $db->query_data($ea_db, $ea_data, 'INSERT');
         }
     }
     $_html_status = '2';
