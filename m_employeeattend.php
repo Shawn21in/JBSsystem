@@ -104,7 +104,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                         <select data-placeholder="查看編號及姓名" data-name="選擇員工" name="search_eid" id="search_eid" class="form-control" required>
                           <option value=""></option>
                           <?php foreach ($employee_list as $key => $value) { ?>
-                            <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
+                            <option value="<?= $value['eid'] ?>" data-na="<?= $value['employname'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
                           <?php } ?>
                         </select>
                       </div>
@@ -134,15 +134,16 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                       <div class="col-lg-12">
                         <div class="form-group">
                           <label for="niandu">年度 *</label>
-                          <input type="number" class="form-control" name="niandu" id="niandu" value="" placeholder="Ex:113" readonly>
+                          <input type="number" class="form-control" name="niandu" id="niandu" value="" readonly>
                         </div>
                       </div>
                     </div>
                     <div class="row mb-2">
                       <div class="col-lg-12">
                         <div class="form-group">
-                          <label for="employid">員工 *</label>
-                          <input type="number" class="form-control" name="employid" id="employid" value="" placeholder="Ex:113" readonly>
+                          <label for="employname">員工 *</label>
+                          <input type="hidden" class="form-control" name="employid" id="employid" value="" readonly>
+                          <input type="text" class="form-control" name="employname" id="employname" value="" readonly>
                         </div>
                       </div>
                     </div>
@@ -309,8 +310,8 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                     <div class="modal-body">
                       <form id="generate_date" onsubmit="return false;">
                         <div class="form-group">
-                          <label for="niadu">產生年度 *</label>
-                          <input type="number" class="form-control" name="niadu" id="niadu" aria-describedby="emailHelp" placeholder="EX: 113" data-name="產生年度" required>
+                          <label for="gen_niandu">產生年度 *</label>
+                          <input type="number" class="form-control" name="gen_niandu" id="gen_niandu" aria-describedby="emailHelp" placeholder="EX: 113" data-name="產生年度" required>
                         </div>
 
                         <div class="form-group">

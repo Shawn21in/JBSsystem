@@ -13,7 +13,7 @@ if (!$_Login) {
 $_POST = arr_filter($_POST); //簡易輸入過濾
 $is_verify = $_MemberData['Company_Verify'] == $_POST['token'] ? true : false; //檢查token，是否從正常管道寄送資料
 $value['eid']             = $_POST['eid'];
-$value['niadu']           = $_POST['niadu'];
+$value['gen_niandu']           = $_POST['gen_niandu'];
 $value['startdate']       = $_POST['startdate'];
 $value['enddate']         = $_POST['enddate'];
 //判斷POST參數是否正確
@@ -40,12 +40,27 @@ if (empty($_html_msg)) {
     foreach ($value['eid'] as $vid) {
         $employee = $CM->get_employee_data($vid);
         $attdance = $CM->GET_ATTENDANCE_DATA($employee['presenttype']);
-        $holidays = $CM->get_holidays_data($value['niadu']);
+        $holidays = $CM->get_holidays_data($value['gen_niandu']);
+        $workday2 = $employee['workday2'];      //到職日
+        $expireday2 =  $employee['expireday2'];   //離職日
+        $workday2_st = strtotime($employee['workday2']);
+        if ($employee['expireday2'] == '0000-00-00') {
+            $expireday2_st = '';
+        } else {
+            $expireday2_st = strtotime($employee['expireday2']);
+        }
         for ($i = 0; $i <= $datelen; $i++) {
+            $cday_st =  strtotime($sdate . ' +' . $i . ' day');
+            if ($cday_st < $workday2_st) {
+                continue;
+            }
+            if ($expireday2_st && $cday_st > $expireday2_st) {
+                continue;
+            }
             //-----------------可先存至陣列的值--------------
             $attendno =  $employee['presenttype'];
             $attendname = $employee['presentname'];
-            $nddate2 = date('Ymd', strtotime($sdate . ' +' . $i . ' day'));
+            $nddate2 = date('Ymd', $cday_st);
             $nddate = $nddate2 - 19110000;
             $ontime = '';
             $offtime = '';
@@ -56,7 +71,7 @@ if (empty($_html_msg)) {
             $attendday = '';
             $memo = '';
             //-----------------可先存至陣列的值--------------
-            $md_nddate2 = date('md', strtotime($sdate . ' +' . $i . ' day')); //取這天的月日
+            $md_nddate2 = date('md', $cday_st); //取這天的月日
             $int_ndweektype = date('w', strtotime($nddate2));
             //$week_states的 [7=>日]，但date函數為 [0=>日]。因此當date函數得出0時，自動轉換成7
             $ndweektype_id = $int_ndweektype == 0 ? 7 : $int_ndweektype;
@@ -125,8 +140,8 @@ if (empty($_html_msg)) {
             $ea_data = array(
                 'employeid'                => $employee['employid'],
                 'employename'              => $employee['employname'],
-                'ndyear'                   => $value['niadu'],
-                'ndyear2'                  => intval($value['niadu']) + 1911,
+                'ndyear'                   => $value['gen_niandu'],
+                'ndyear2'                  => intval($value['gen_niandu']) + 1911,
                 'ndweektype'               => $ndweektype,
                 'nddate'                   => $nddate,
                 'nddate2'                  => $nddate2,

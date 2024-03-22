@@ -48,7 +48,7 @@ if (empty($_html_msg)) {
         $_html_status = '2';
         $_html_msg = '取得成功';
     } else {
-        $_html_msg = '資料錯誤';
+        $_html_msg = '該年度尚未有任何資料';
         $_html_status = '1';
     }
 }

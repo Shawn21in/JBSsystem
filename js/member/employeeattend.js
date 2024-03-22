@@ -37,7 +37,7 @@ $(function () {
             $('.table-scroll').css('cursor', 'grab');
         }
     });
-    $('#niadu').on('change', function () {
+    $('#gen_niandu').on('change', function () {
         let year = parseInt($(this).val()) + 1911;
         $('input[name=startdate]').val(year + "-01-01")
         $('input[name=enddate]').val(year + "-12-31")
@@ -59,6 +59,7 @@ $(function () {
     $('#daterange').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
     });
+    //查詢出勤曆
     $('#searchBtn').on('click', function () {
         if (form_check('form1')) {
             let field = $('#form1');
@@ -109,6 +110,12 @@ $(function () {
                         });
                     } else {
                         let attdlist = Object.values(_msg.html_content['attdlist'])
+                        let niandu = $('#search_niandu').val();
+                        let eid = $('#search_eid').val()
+                        let ename = $('#search_eid option:selected').data('na')
+                        $('#niandu').val(niandu);
+                        $('#employid').val(eid);
+                        $('#employname').val(ename);
                         for (let i = 1; i <= 12; i++) {
                             let content = Object.values(_msg.html_content[i])
                             let month_html = '';
@@ -116,6 +123,7 @@ $(function () {
                                 month_html += '<tr>';
                                 month_html += '<th>';
                                 month_html += value.ndweektype;
+                                month_html += '<input class="form-control" type="hidden" style="width:unset" name="eid[]" value="' + value.attendname + '" readonly>';
                                 month_html += '</th>';
                                 month_html += '<th>';
                                 month_html += value.nddate;
@@ -144,7 +152,7 @@ $(function () {
                                 month_html += '</select>';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += value.attendname;
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="attendname[]" value="' + value.attendname + '" readonly>';
                                 month_html += '</th>';
                                 month_html += '<th>';
                                 month_html += '<label class="switch switch-primary switch-pill form-control-label">'
@@ -154,40 +162,40 @@ $(function () {
                                 month_html += '</label>';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="ontime" value="' + value.ontime + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="ontime[]" value="' + value.ontime + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="offtime" value="' + value.offtime + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="offtime[]" value="' + value.offtime + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="restime1" value="' + value.restime1 + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="restime1[]" value="' + value.restime1 + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="restime2" value="' + value.restime2 + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="restime2[]" value="' + value.restime2 + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="addontime" value="' + value.addontime + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="addontime[]" value="' + value.addontime + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="addofftime" value="' + value.addofftime + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="addofftime[]" value="' + value.addofftime + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="latemins" value="' + value.latemins + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="latemins[]" value="' + value.latemins + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="worktime" value="' + value.worktime + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="worktime[]" value="' + value.worktime + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="jiabantime" value="' + value.jiabantime + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="jiabantime[]" value="' + value.jiabantime + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="qingjiatime" value="' + value.qingjiatime + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="qingjiatime[]" value="' + value.qingjiatime + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="absencename" value="' + value.absencename + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="absencename[]" value="' + value.absencename + '">';
                                 month_html += '</th>';
                                 month_html += '<th>';
-                                month_html += '<input class="form-control" style="width:unset" name="memo" value="' + value.memo + '">';
+                                month_html += '<input class="form-control" type="text" style="width:unset" name="memo[]" value="' + value.memo + '">';
                                 month_html += '</th>';
                                 month_html += '</tr>';
                             })
@@ -207,6 +215,13 @@ $(function () {
             })
         }
     })
+    //切換月份
+    $('input[name=month]').on('change', function () {
+        let i = $(this).val();
+        $('.mon').hide();
+        $('.month' + i).show();
+    })
+    //產生員工出勤曆
     $('.subBtn').on('click', function () {
         if (form_check('generate_date')) {
             let field = $('#generate_date');
