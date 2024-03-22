@@ -4,7 +4,11 @@ $(function () {
         search_contains: true,
     });
     $("#gen_ed").chosen({
-        width: "100%",
+        width: "45%",
+        search_contains: true,
+    });
+    $("#gen_ed2").chosen({
+        width: "45%",
         search_contains: true,
     });
 
@@ -261,7 +265,7 @@ $(function () {
                 },
                 success: function (data, textStatus, jqXHR) {
                     var _msg = JSON.parse(data);
-                    // console.log(_msg.html_content)
+                    console.log(_msg.html_content)
                     Swal.close()
                     if (_msg.html_status == '1') {
                         swal.fire({

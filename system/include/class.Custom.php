@@ -1005,7 +1005,7 @@ class Custom
 		$Sheet = "employee";
 
 		$db = new MySQL();
-		$db->Order_By = 'Order By eid desc';
+		$db->Order_By = 'Order By employid asc';
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {

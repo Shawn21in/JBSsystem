@@ -316,8 +316,15 @@ if (empty($deductionno)) { //判斷是否為編輯模式
 
                         <div class="form-group">
                           <label for="gen_ed">選擇員工 *</label>
-                          <div>
-                            <select data-placeholder="查看編號及姓名" id="gen_ed" class="form-control" name="eid[]" data-name="選擇員工" required multiple>
+                          <div class="d-flex align-items-center">
+                            <select data-placeholder="查看編號及姓名" id="gen_ed" class="form-control" name="start_eid" data-name="選擇員工" required>
+                              <option value=""></option>
+                              <?php foreach ($employee_list as $key => $value) { ?>
+                                <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
+                              <?php } ?>
+                            </select>
+                            <div>～</div>
+                            <select data-placeholder="查看編號及姓名" id="gen_ed2" class="form-control" name="end_eid" data-name="選擇員工" required>
                               <option value=""></option>
                               <?php foreach ($employee_list as $key => $value) { ?>
                                 <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>

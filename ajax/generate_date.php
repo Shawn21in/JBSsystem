@@ -12,8 +12,9 @@ if (!$_Login) {
 }
 $_POST = arr_filter($_POST); //簡易輸入過濾
 $is_verify = $_MemberData['Company_Verify'] == $_POST['token'] ? true : false; //檢查token，是否從正常管道寄送資料
-$value['eid']             = $_POST['eid'];
-$value['gen_niandu']           = $_POST['gen_niandu'];
+$value['start_eid']       = $_POST['start_eid'];
+$value['end_eid']         = $_POST['end_eid'];
+$value['gen_niandu']      = $_POST['gen_niandu'];
 $value['startdate']       = $_POST['startdate'];
 $value['enddate']         = $_POST['enddate'];
 //判斷POST參數是否正確
@@ -37,17 +38,25 @@ if (!strtotime($sdate) || !strtotime($edate) || strtotime($sdate) > strtotime($e
 }
 if (empty($_html_msg)) {
     $datelen = (strtotime($edate) - strtotime($sdate)) / (60 * 60 * 24);
-    foreach ($value['eid'] as $vid) {
-        $employee = $CM->get_employee_data($vid);
-        $attdance = $CM->GET_ATTENDANCE_DATA($employee['presenttype']);
+    $employee_start = $CM->get_employee_data($value['start_eid']); //首個編號
+    $employee_end = $CM->get_employee_data($value['end_eid']);     //最後編號
+    $db->Where = " WHERE employid BETWEEN '" . $employee_start['employid'] . "' AND '" . $employee_end['employid'] . "'";
+    $db->Order_By = "Order By employid asc";
+    $db->query_sql($employee_db, '*');
+    $employee_arr = array();
+    while ($row = $db->query_fetch()) {
+        $employee_arr[] = $row;
+    }
+    foreach ($employee_arr as $vid) {
+        $attdance = $CM->GET_ATTENDANCE_DATA($vid['presenttype']);
         $holidays = $CM->get_holidays_data($value['gen_niandu']);
-        $workday2 = $employee['workday2'];      //到職日
-        $expireday2 =  $employee['expireday2'];   //離職日
-        $workday2_st = strtotime($employee['workday2']);
-        if ($employee['expireday2'] == '0000-00-00') {
+        $workday2 = $vid['workday2'];      //到職日
+        $expireday2 =  $vid['expireday2'];   //離職日
+        $workday2_st = strtotime($vid['workday2']);
+        if ($vid['expireday2'] == '0000-00-00') {
             $expireday2_st = '';
         } else {
-            $expireday2_st = strtotime($employee['expireday2']);
+            $expireday2_st = strtotime($vid['expireday2']);
         }
         for ($i = 0; $i <= $datelen; $i++) {
             $cday_st =  strtotime($sdate . ' +' . $i . ' day');
@@ -58,8 +67,8 @@ if (empty($_html_msg)) {
                 continue;
             }
             //-----------------可先存至陣列的值--------------
-            $attendno =  $employee['presenttype'];
-            $attendname = $employee['presentname'];
+            $attendno =  $vid['presenttype'];
+            $attendname = $vid['presentname'];
             $nddate2 = date('Ymd', $cday_st);
             $nddate = $nddate2 - 19110000;
             $ontime = '';
@@ -104,7 +113,7 @@ if (empty($_html_msg)) {
                             $restime1 = $ed['resttime1'];
                             $restime2 = $ed['resttime2'];
                             $jiaritype = 0;
-                            if ($employee['starttype']) {
+                            if ($vid['starttype']) {
                                 $daka = 1;
                             }
                         }
@@ -129,7 +138,7 @@ if (empty($_html_msg)) {
                             $restime1 = $ed['resttime1'];
                             $restime2 = $ed['resttime2'];
                             $jiaritype = 0;
-                            if ($employee['starttype']) {
+                            if ($vid['starttype']) {
                                 $daka = 1;
                             }
                         }
@@ -138,8 +147,8 @@ if (empty($_html_msg)) {
             }
             //-----------------計算班別、補班日--------------
             $ea_data = array(
-                'employeid'                => $employee['employid'],
-                'employename'              => $employee['employname'],
+                'employeid'                => $vid['employid'],
+                'employename'              => $vid['employname'],
                 'ndyear'                   => $value['gen_niandu'],
                 'ndyear2'                  => intval($value['gen_niandu']) + 1911,
                 'ndweektype'               => $ndweektype,
@@ -159,17 +168,18 @@ if (empty($_html_msg)) {
                 'addofftime'               => '',
                 'absencename'              => ''
             );
-            $db->Where = " WHERE  employeid = '" . $ea_data['employeid'] . "' AND nddate ='" . $nddate . "'";
-            $db->query_sql($ea_db, '*');
-            if ($row = $db->query_fetch()) {
-                $db->query_data($ea_db, $ea_data, 'UPDATE');
+            $db2 = new MySQL();
+            $db2->Where = " WHERE  employeid = '" . $ea_data['employeid'] . "' AND nddate ='" . $nddate . "'";
+            $db2->query_sql($ea_db, '*');
+            if ($row = $db2->query_fetch()) {
+                $db2->query_data($ea_db, $ea_data, 'UPDATE');
             } else {
-                $db->query_data($ea_db, $ea_data, 'INSERT');
+                $db2->query_data($ea_db, $ea_data, 'INSERT');
             }
-            // $db->query_data($ea_db, $ea_data, 'INSERT');
+            // $db2->query_data($ea_db, $ea_data, 'INSERT');
         }
     }
-    $_html_status = '2';
+    $_html_status = '1';
     $_html_msg = '生成成功';
 }
 

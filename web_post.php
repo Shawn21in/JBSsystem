@@ -1227,8 +1227,6 @@ if (!empty($_Type)) {
 			$Value['coname1'] 		= $_POST['coname1'];
 			$Value['employid'] 		= $_POST['employid'];
 			$Value['employname'] 		= $_POST['employname'];
-			$Value['no'] 		= $_POST['no'];
-			$Value['id'] 		= $_POST['id'];
 
 			foreach ($Value as $key => $val) {
 				if (empty($val)) {
@@ -1255,6 +1253,8 @@ if (!empty($_Type)) {
 				$Value['address'] 		= $_POST['address'];
 				$Value['tel'] 			= $_POST['tel'];
 				$Value['fax'] 			= $_POST['fax'];
+				$Value['no'] 		= $_POST['no'];
+				$Value['id'] 		= $_POST['id'];
 				$Value['mphone'] 		= $_POST['mphone'];
 				$Value['partno'] 		= $_POST['partno'];
 				$Value['partname'] 		= $_POST['partname'];
