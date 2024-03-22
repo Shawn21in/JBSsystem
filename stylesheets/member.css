@@ -83,3 +83,8 @@ input[type=number] {
 .em_title {
   border-bottom: 1px solid #e5e9f2;
 }
+
+/* ------employeeattend-------- */
+#employ_select .table th {
+  word-break: keep-all;
+}

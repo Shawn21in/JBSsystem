@@ -12,8 +12,8 @@ if (!$_Login) {
 }
 $_POST = arr_filter($_POST); //簡易輸入過濾
 $is_verify = $_MemberData['Company_Verify'] == $_POST['token'] ? true : false; //檢查token，是否從正常管道寄送資料
-$value['search_niandu']        = intval($_POST['search_niandu']);
-$value['search_eid']           = $_POST['search_eid'];
+$value['niandu']        = intval($_POST['niandu']);
+$value['eid']           = $_POST['eid'];
 //判斷POST參數是否正確
 if ($is_verify == false) {
     $_html_msg = '資料錯誤';
@@ -28,8 +28,8 @@ foreach ($value as $key => $val) {
 }
 
 if (empty($_html_msg)) {
-    $employee = $CM->get_employee_data($value['search_eid']);
-    $ea = $CM->get_employeeattend_list($employee['employid'], $value['search_niandu']);
+    $employee = $CM->get_employee_data($value['eid']);
+    $ea = $CM->get_employeeattend_list($employee['employid'], $value['niandu']);
     $attd_list = $CM->GET_ATTENDANCE_LIST();
     if (!empty($ea)) {
         for ($i = 1; $i <= 12; $i++) { //1~12月
