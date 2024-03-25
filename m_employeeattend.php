@@ -200,7 +200,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                         </tbody>
                       </table>
                     </div>
-                    <div class="table-scroll">
+                    <div class="table-scroll ea-table">
                       <table class="drag_me table table-hover table-bordered">
                         <thead>
                           <tr>
@@ -252,13 +252,18 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                       </table>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-end mt-5">
-                    <button type="button" class="btn btn-success mb-2 mr-2 btn-pill saveBtn" data-type="deduction_edit" disabled>
-                      儲存修改
+                  <div class="d-flex justify-content-between mt-5">
+                    <button type="button" class="btn btn-primary mb-2 mr-2 btn-pill" data-toggle="modal" data-target="#gen_date">
+                      產生員工出勤曆
                     </button>
-                    <button type="button" class="btn btn-danger mb-2 btn-pill saveBtn" data-type="deduction_edit" disabled>
-                      刪除該月份
-                    </button>
+                    <div>
+                      <button type="button" class="btn btn-success mb-2 mr-2 btn-pill saveBtn" data-type="deduction_edit" disabled>
+                        儲存修改
+                      </button>
+                      <button type="button" class="btn btn-danger mb-2 btn-pill saveBtn" data-type="deduction_edit" disabled>
+                        刪除該月份
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>

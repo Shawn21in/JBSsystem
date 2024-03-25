@@ -17,7 +17,7 @@ $value['eid']           = $_POST['eid'];
 //判斷POST參數是否正確
 if ($is_verify == false) {
     $_html_msg = '資料錯誤';
-    $_html_status = '';
+    $_html_status = '1';
 }
 foreach ($value as $key => $val) {
     if (empty($val)) {

@@ -85,6 +85,24 @@ input[type=number] {
 }
 
 /* ------employeeattend-------- */
+#employ_select {
+  overflow-y: scroll;
+  min-width: 200px;
+  height: 20em;
+}
+
 #employ_select .table th {
   word-break: keep-all;
+}
+
+#employ_select .table tr>th:first-child {
+  width: 20%;
+}
+
+.drag_me {
+  border: 1px solid;
+}
+
+.ea-table {
+  border: 1px solid;
 }
