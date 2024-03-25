@@ -1057,7 +1057,7 @@ if (empty($employid)) { //判斷是否為編輯模式
                                     <th scope="col"><input name="deductionmny[]" type="text" class="form-control" value="<?= $edv['deductionmny'] ?>" readonly></th>
                                     <th scope="col">
                                       <label class="switch switch-primary switch-pill form-control-label">
-                                        <input type="checkbox" class="switch-input form-check-input" name="dotype[]" value="1" <?= $edv['dotype'] == '1' ? 'checked' : '' ?>>
+                                        <input type="checkbox" class="switch-input form-check-input" name="dotype[<?= $edk ?>]" value="1" <?= $edv['dotype'] == '1' ? 'checked' : '' ?>>
                                         <span class="switch-label"></span>
                                         <span class="switch-handle"></span>
                                       </label>
