@@ -257,10 +257,10 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                     產生員工出勤曆
                   </button>
                   <div>
-                    <button type="button" class="btn btn-success mb-2 mr-2 btn-pill ea_saveBtn" disabled>
+                    <button type="button" class="btn btn-success mb-2 mr-2 btn-pill ea_saveBtn" data-type="employeeattend_save" disabled>
                       儲存該月份
                     </button>
-                    <button type="button" class="btn btn-danger mb-2 btn-pill ea_delBtn" disabled>
+                    <button type="button" class="btn btn-danger mb-2 btn-pill ea_delBtn" data-type="employeeattend_del" disabled>
                       刪除該月份
                     </button>
                   </div>
@@ -317,7 +317,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                             <div class="control-indicator"></div>
                           </label>
                         </div>
-                        <button type="button" class="btn btn-primary subBtn">產生</button>
+                        <button type="button" class="btn btn-primary subBtn" data-type="employeeattend_generate">產生</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                       </form>
                     </div>

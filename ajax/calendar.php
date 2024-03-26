@@ -8,7 +8,7 @@ $_html_content = '';
 //判斷目前是否為登入狀態，且判斷是否有使用該頁面的權限
 if (!$_Login) {
     $_html_msg =  "資料錯誤";
-    $_html_status = '0';
+    $_html_status = '1';
 }
 $_POST = arr_filter($_POST); //簡易輸入過濾
 

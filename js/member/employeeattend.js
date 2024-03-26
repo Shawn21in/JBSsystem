@@ -72,6 +72,7 @@ $(function () {
         let niandu_array = { "name": "niandu", "value": niandu };
         let token = $('input[name=token]').val();
         let token_array = { "name": "token", "value": token };
+        let action = { "name": "_type", "value": "employeeattend_search" };
         if (niandu == '') {
             swal.fire({
                 title: "請先填入年度",
@@ -83,10 +84,11 @@ $(function () {
         Form_Data.push(eid_array)
         Form_Data.push(niandu_array)
         Form_Data.push(token_array)
+        Form_Data.push(action)
         // console.log(Form_Data);
 
         $.ajax({
-            url: 'ajax/search_date.php',
+            url: 'ajax/ajax.php',
             type: "POST",
             data: Form_Data,
             beforeSend: function () {
@@ -131,6 +133,9 @@ $(function () {
                         icon: 'error'
                     });
                     $('.saveBtn').prop('disabled', true);
+                    //按鈕功能關閉
+                    $('.ea_saveBtn').prop('disabled', true);
+                    $('.ea_delBtn').prop('disabled', true);
                 } else {
                     let attdlist = Object.values(_msg.html_content['attdlist'])
                     let count = 0;
@@ -263,10 +268,12 @@ $(function () {
             let Form_Data = new Array();
             let token = $('input[name=token]').val();
             let token_array = { "name": "token", "value": token };
+            let action = { "name": "_type", "value": $(this).data('type') };
             Form_Data = field.serializeArray();
             Form_Data.push(token_array)
+            Form_Data.push(action)
             $.ajax({
-                url: 'ajax/generate_date.php',
+                url: 'ajax/ajax.php',
                 type: "POST",
                 data: Form_Data,
                 beforeSend: function () {
@@ -323,7 +330,7 @@ $(function () {
         if (form_check('form1')) {
             let field = $('#form1');
             let Form_Data = new Array();
-            let eid = $('input[name=employeid]').val();
+            let eid = $('input[name=employeid]:checked').val();
             let eid_array = { "name": "employeid", "value": eid };
             let niandu = $('input[name=niandu]').val();
             let niandu_array = { "name": "niandu", "value": niandu };
@@ -337,8 +344,10 @@ $(function () {
             Form_Data.push(eid_array)
             Form_Data.push(month_array)
             // console.log(Form_Data)
+            let action = { "name": "_type", "value": $(this).data('type') };
+            Form_Data.push(action)
             $.ajax({
-                url: 'ajax/save_date.php',
+                url: 'ajax/ajax.php',
                 type: "POST",
                 data: Form_Data,
                 beforeSend: function () {
@@ -390,7 +399,7 @@ $(function () {
     })
     //刪除出勤曆單月份
     $('.ea_delBtn').on('click', function () {
-        let eid = $('input[name=employeid]').val();
+        let eid = $('input[name=employeid]:checked').val();
         let eid_array = { "name": "employeid", "value": eid };
         let niandu = $('input[name=niandu]').val();
         let niandu_array = { "name": "niandu", "value": niandu };
@@ -398,6 +407,7 @@ $(function () {
         let month_array = { "name": "month", "value": month };
         let token = $('input[name=token]').val();
         let token_array = { "name": "token", "value": token };
+        let action = { "name": "_type", "value": $(this).data('type') };
         Swal.fire({
             title: "確定要刪除" + month + "月份的資料?",
             showDenyButton: true,
@@ -411,9 +421,10 @@ $(function () {
                 Form_Data.push(niandu_array)
                 Form_Data.push(eid_array)
                 Form_Data.push(month_array)
-                // console.log(Form_Data)
+                console.log(Form_Data)
+                Form_Data.push(action)
                 $.ajax({
-                    url: 'ajax/del_date.php',
+                    url: 'ajax/ajax.php',
                     type: "POST",
                     data: Form_Data,
                     beforeSend: function () {
