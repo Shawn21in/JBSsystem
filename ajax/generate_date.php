@@ -179,7 +179,7 @@ if (empty($_html_msg)) {
             // $db2->query_data($ea_db, $ea_data, 'INSERT');
         }
     }
-    $_html_status = '1';
+    $_html_status = '2';
     $_html_msg = '生成成功';
 }
 

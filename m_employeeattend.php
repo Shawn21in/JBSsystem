@@ -76,131 +76,130 @@ if (empty($deductionno)) { //判斷是否為編輯模式
             <!-- 出勤曆 -->
             <div class="card card-default">
               <div class="card-body">
-                <form id="form2" onsubmit="return false;">
-                  <input type="hidden" class="form-control" name="deductionid" value="<?= $deduction['deductionno'] ?>">
-                  <div class="em_title mb-2">
-                    <h2>員工出勤作業</h2>
-                  </div>
-                  <div class="row mb-2">
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <label for="niandu">年度 *</label>
-                        <input type="number" class="form-control" name="niandu" id="niandu" value="">
-                      </div>
+                <div class="em_title mb-2">
+                  <h2>員工出勤作業</h2>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="niandu">年度 *</label>
+                      <input type="number" class="form-control" name="niandu" id="niandu" value="">
                     </div>
                   </div>
-                  <div class="row mb-2">
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <label class="d-inline-block" for="">月份</label>
-                        <ul class="list-unstyled list-inline">
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">1月
-                              <input type="radio" name="month" value="1" checked />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label class="d-inline-block" for="">月份</label>
+                      <ul class="list-unstyled list-inline">
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">1月
+                            <input type="radio" name="month" value="1" checked />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
 
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">2月
-                              <input type="radio" name="month" value="2" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">3月
-                              <input type="radio" name="month" value="3" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">2月
+                            <input type="radio" name="month" value="2" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">3月
+                            <input type="radio" name="month" value="3" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
 
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">4月
-                              <input type="radio" name="month" value="4" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">5月
-                              <input type="radio" name="month" value="5" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">4月
+                            <input type="radio" name="month" value="4" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">5月
+                            <input type="radio" name="month" value="5" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
 
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">6月
-                              <input type="radio" name="month" value="6" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">7月
-                              <input type="radio" name="month" value="7" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">6月
+                            <input type="radio" name="month" value="6" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">7月
+                            <input type="radio" name="month" value="7" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
 
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">8月
-                              <input type="radio" name="month" value="8" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">9月
-                              <input type="radio" name="month" value="9" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">8月
+                            <input type="radio" name="month" value="8" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">9月
+                            <input type="radio" name="month" value="9" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
 
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">10月
-                              <input type="radio" name="month" value="10" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">11月
-                              <input type="radio" name="month" value="11" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">10月
+                            <input type="radio" name="month" value="10" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">11月
+                            <input type="radio" name="month" value="11" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
 
-                          <li class="d-inline-block mr-3">
-                            <label class="control control-radio">12月
-                              <input type="radio" name="month" value="12" />
-                              <div class="control-indicator"></div>
-                            </label>
-                          </li>
-                        </ul>
-                      </div>
+                        <li class="d-inline-block mr-3">
+                          <label class="control control-radio">12月
+                            <input type="radio" name="month" value="12" />
+                            <div class="control-indicator"></div>
+                          </label>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                  <div class="row mb-2 d-flex" style="flex-wrap:nowrap">
-                    <div id="employ_select" class="mr-2">
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">員工名稱</th>
+                </div>
+                <div class="row mb-2 d-flex" style="flex-wrap:nowrap">
+                  <div id="employ_select" class="mr-2">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">員工名稱</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($employee_list as $key => $value) { ?>
+                          <tr class="table-secondary">
+                            <td>
+                              <label class="control control-radio">
+                                <input type="radio" class="e_radio" name="employeid" value="<?= $value['employid'] ?>" />
+                                <div class="control-indicator"></div>
+                              </label>
+                            </td>
+                            <td><?= $value['employname'] ?></td>
                           </tr>
-                        </thead>
-                        <tbody>
-                          <?php foreach ($employee_list as $key => $value) { ?>
-                            <tr class="table-secondary">
-                              <td>
-                                <label class="control control-radio">
-                                  <input type="radio" class="e_radio" name="eid" value="<?= $value['employid'] ?>" />
-                                  <div class="control-indicator"></div>
-                                </label>
-                              </td>
-                              <td><?= $value['employname'] ?></td>
-                            </tr>
-                          <?php } ?>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="table-scroll ea-table">
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="table-scroll ea-table">
+                    <form id="form1" onsubmit="return false;">
                       <table class="drag_me table table-hover table-bordered">
                         <thead>
                           <tr>
@@ -250,22 +249,22 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                         <tbody class="month12 mon" style="display:none;">
                         </tbody>
                       </table>
-                    </div>
+                    </form>
                   </div>
-                  <div class="d-flex justify-content-between mt-5">
-                    <button type="button" class="btn btn-primary mb-2 mr-2 btn-pill" data-toggle="modal" data-target="#gen_date">
-                      產生員工出勤曆
+                </div>
+                <div class="d-flex justify-content-between mt-5">
+                  <button type="button" class="btn btn-primary mb-2 mr-2 btn-pill" data-toggle="modal" data-target="#gen_date">
+                    產生員工出勤曆
+                  </button>
+                  <div>
+                    <button type="button" class="btn btn-success mb-2 mr-2 btn-pill ea_saveBtn" disabled>
+                      儲存該月份
                     </button>
-                    <div>
-                      <button type="button" class="btn btn-success mb-2 mr-2 btn-pill saveBtn" data-type="deduction_edit" disabled>
-                        儲存修改
-                      </button>
-                      <button type="button" class="btn btn-danger mb-2 btn-pill saveBtn" data-type="deduction_edit" disabled>
-                        刪除該月份
-                      </button>
-                    </div>
+                    <button type="button" class="btn btn-danger mb-2 btn-pill ea_delBtn" disabled>
+                      刪除該月份
+                    </button>
                   </div>
-                </form>
+                </div>
               </div>
 
               <!-- Form Modal -->

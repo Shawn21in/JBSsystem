@@ -17,9 +17,9 @@ $(function () {
         drag: function (event, ui) {
             $('.table-scroll').css('cursor', 'grabbing');
             var element = $(".table-scroll")[0];
-            console.log(element.scrollWidth)
-            console.log(element.scrollLeft)
-            console.log(element.clientWidth)
+            // console.log(element.scrollWidth)
+            // console.log(element.scrollLeft)
+            // console.log(element.clientWidth)
             // 判斷是否已經滑到最右側
             if (element.scrollWidth - element.scrollLeft <= element.clientWidth + 1) {
                 $(".table-scroll").scrollLeft(element.scrollWidth);
@@ -64,7 +64,7 @@ $(function () {
         $(this).val('');
     });
     //查詢出勤曆
-    $('input[name=eid]').on('change', function () {
+    $('input[name=employeid]').on('change', function () {
         let Form_Data = new Array();
         let eid = $(this).val();
         let eid_array = { "name": "eid", "value": eid };
@@ -113,23 +113,27 @@ $(function () {
                 Swal.fire({
                     title: "線上取得失敗，請重新試一次！",
                 });
+                $('.ea_saveBtn').prop('disabled', true);
+                $('.ea_delBtn').prop('disabled', true);
             },
             success: function (data, textStatus, jqXHR) {
                 var _msg = JSON.parse(data);
                 // console.log(_msg.html_content)
                 Swal.close()
                 if (_msg.html_status == '1') {
-                    $('input[name=eid]').closest('tr').addClass('table-secondary')
-                    $('input[name=eid]').closest('tr').removeClass('table-primary')
-                    $('input[name=eid]:checked').prop('checked', false);
+                    $('input[name=employeid]').closest('tr').addClass('table-secondary')
+                    $('input[name=employeid]').closest('tr').removeClass('table-primary')
+                    $('input[name=employeid]:checked').prop('checked', false);
                     $('.mon').html('');
                     swal.fire({
                         title: "訊息",
                         text: _msg.html_msg,
                         icon: 'error'
                     });
+                    $('.saveBtn').prop('disabled', true);
                 } else {
                     let attdlist = Object.values(_msg.html_content['attdlist'])
+                    let count = 0;
                     for (let i = 1; i <= 12; i++) {
                         let content = Object.values(_msg.html_content[i])
                         let month_html = '';
@@ -137,13 +141,13 @@ $(function () {
                             month_html += '<tr>';
                             month_html += '<th>';
                             month_html += value.ndweektype;
-                            month_html += '<input class="form-control" type="hidden" style="width:unset" name="eid[]" value="' + value.attendname + '" readonly>';
+                            month_html += '<input class="form-control" type="hidden" style="width:unset" name="eid[' + index + ']" value="' + value.eid + '" disabled readonly>';
                             month_html += '</th>';
                             month_html += '<th>';
                             month_html += value.nddate;
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<select class="form-control" name="attendday[]" style="width:unset">';
+                            month_html += '<select class="form-control" name="attendday[' + index + ']" style="width:unset" disabled>';
                             month_html += '<option value="工作日"' + (value.attendday == '工作日' ? 'selected' : '') + '>工作日</option>';
                             month_html += '<option value="休息日"' + (value.attendday == '休息日' ? 'selected' : '') + '>休息日</option>';
                             month_html += '<option value="例假日"' + (value.attendday == '例假日' ? 'selected' : '') + '>例假日</option>';
@@ -153,72 +157,82 @@ $(function () {
                             month_html += '</th>';
                             month_html += '<th>';
                             month_html += '<label class="switch switch-primary switch-pill form-control-label">'
-                            month_html += '<input type="checkbox" class="switch-input form-check-input" name="isearly[]" value="1" ' + (value.isearly == '1' ? 'checked' : '') + '>'
+                            month_html += '<input type="checkbox" class="switch-input form-check-input" name="isnearly[' + index + ']" value="1" ' + (value.isnearly == '1' ? 'checked' : '') + ' disabled>'
                             month_html += '<span class="switch-label"></span>';
                             month_html += '<span class="switch-handle"></span>';
                             month_html += '</label>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<select class="form-control" name="attendno[]" style="width:unset">';
+                            month_html += '<select class="form-control" name="attendno[' + index + ']" style="width:unset" disabled>';
                             attdlist.forEach(function (value2, index2, array2) {
                                 month_html += '<option value="' + value2.attendanceno + '"' + (value2.attendanceno == value.attendno ? 'selected' : '') + '>' + value2.attendanceno + '-' + value2.attendancename + '</option>';
                             })
                             month_html += '</select>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="attendname[]" value="' + value.attendname + '" readonly>';
+                            month_html += '<input class="form-control" type="text" style="width:unset" name="attendname[' + index + ']" value="' + value.attendname + '" disabled readonly>';
                             month_html += '</th>';
                             month_html += '<th>';
                             month_html += '<label class="switch switch-primary switch-pill form-control-label">'
-                            month_html += '<input type="checkbox" class="switch-input form-check-input" name="daka[]" value="1" ' + (value.daka == '1' ? 'checked' : '') + '>'
+                            month_html += '<input type="checkbox" class="switch-input form-check-input" name="daka[' + index + ']" value="1" ' + (value.daka == '1' ? 'checked' : '') + ' disabled>'
                             month_html += '<span class="switch-label"></span>';
                             month_html += '<span class="switch-handle"></span>';
                             month_html += '</label>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="ontime[]" value="' + value.ontime + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="ontime[' + index + ']" value="' + value.ontime + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="offtime[]" value="' + value.offtime + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="offtime[' + index + ']" value="' + value.offtime + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="restime1[]" value="' + value.restime1 + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="restime1[' + index + ']" value="' + value.restime1 + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="restime2[]" value="' + value.restime2 + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="restime2[' + index + ']" value="' + value.restime2 + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="addontime[]" value="' + value.addontime + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="addontime[' + index + ']" value="' + value.addontime + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="addofftime[]" value="' + value.addofftime + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="addofftime[' + index + ']" value="' + value.addofftime + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="latemins[]" value="' + value.latemins + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="latemins[' + index + ']" value="' + value.latemins + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="worktime[]" value="' + value.worktime + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="worktime[' + index + ']" value="' + value.worktime + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="jiabantime[]" value="' + value.jiabantime + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="jiabantime[' + index + ']" value="' + value.jiabantime + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="qingjiatime[]" value="' + value.qingjiatime + '">';
+                            month_html += '<input class="form-control" type="number" style="width:unset" name="qingjiatime[' + index + ']" value="' + value.qingjiatime + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="absencename[]" value="' + value.absencename + '">';
+                            month_html += '<input class="form-control" type="text" style="width:unset" name="absencename[' + index + ']" value="' + value.absencename + '" disabled>';
                             month_html += '</th>';
                             month_html += '<th>';
-                            month_html += '<input class="form-control" type="text" style="width:unset" name="memo[]" value="' + value.memo + '">';
+                            month_html += '<input class="form-control" type="text" style="width:unset" name="memo[' + index + ']" value="' + value.memo + '" disabled>';
                             month_html += '</th>';
                             month_html += '</tr>';
+                            count++;
                         })
                         $('.month' + i).html(month_html);
                     }
-                    $('input[name=eid]').closest('tr').addClass('table-secondary')
-                    $('input[name=eid]').closest('tr').removeClass('table-primary')
-                    $('input[name=eid]:checked').closest('tr').addClass('table-primary')
-                    $('input[name=eid]:checked').closest('tr').removeClass('table-secondary')
+                    //提示選擇當前員工
+                    $('input[name=employeid]').closest('tr').addClass('table-secondary')
+                    $('input[name=employeid]').closest('tr').removeClass('table-primary')
+                    $('input[name=employeid]:checked').closest('tr').addClass('table-primary')
+                    $('input[name=employeid]:checked').closest('tr').removeClass('table-secondary')
+                    //按鈕功能開啟
+                    $('.ea_saveBtn').prop('disabled', false);
+                    $('.ea_delBtn').prop('disabled', false);
+                    //月份修改開啟
+                    let month = $('input[name=month]:checked').val();
+                    $('.month' + month).find('input').prop('disabled', false);
+                    $('.month' + month).find('select').prop('disabled', false);
+                    $('.month' + month).show();
                     swal.fire({
                         title: "訊息",
                         text: _msg.html_msg,
@@ -235,7 +249,11 @@ $(function () {
     //切換月份
     $('input[name=month]').on('change', function () {
         let i = $(this).val();
+        $('.mon').find('input').prop('disabled', true);
+        $('.mon').find('select').prop('disabled', true);
         $('.mon').hide();
+        $('.month' + i).find('input').prop('disabled', false);
+        $('.month' + i).find('select').prop('disabled', false);
         $('.month' + i).show();
     })
     //產生員工出勤曆
@@ -299,5 +317,152 @@ $(function () {
                 }
             })
         }
+    })
+    //儲存出勤曆修改
+    $('.ea_saveBtn').on('click', function () {
+        if (form_check('form1')) {
+            let field = $('#form1');
+            let Form_Data = new Array();
+            let eid = $('input[name=employeid]').val();
+            let eid_array = { "name": "employeid", "value": eid };
+            let niandu = $('input[name=niandu]').val();
+            let niandu_array = { "name": "niandu", "value": niandu };
+            let month = $('input[name=month]:checked').val();
+            let month_array = { "name": "month", "value": month };
+            let token = $('input[name=token]').val();
+            let token_array = { "name": "token", "value": token };
+            Form_Data = field.serializeArray();
+            Form_Data.push(token_array)
+            Form_Data.push(niandu_array)
+            Form_Data.push(eid_array)
+            Form_Data.push(month_array)
+            // console.log(Form_Data)
+            $.ajax({
+                url: 'ajax/save_date.php',
+                type: "POST",
+                data: Form_Data,
+                beforeSend: function () {
+                    Swal.fire({
+                        title: "儲存中...",
+                        html: `
+                        <div class="card-body d-flex align-items-center justify-content-center" style="height: 160px">
+                            <div class="sk-chase">
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                                <div class="sk-chase-dot"></div>
+                            </div>
+                        </div>
+                        `,
+                        showConfirmButton: false,
+                        isDismissed: true
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    Swal.close()
+                    Swal.fire({
+                        title: "線上取得失敗，請重新試一次！",
+                    });
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var _msg = JSON.parse(data);
+                    console.log(_msg.html_content)
+                    Swal.close()
+                    if (_msg.html_status == '1') {
+                        swal.fire({
+                            title: "訊息",
+                            text: _msg.html_msg,
+                            icon: 'error'
+                        });
+                    } else {
+                        swal.fire({
+                            title: "訊息",
+                            text: _msg.html_msg,
+                            icon: 'success'
+                        });
+                    }
+
+                }
+            })
+        }
+    })
+    //刪除出勤曆單月份
+    $('.ea_delBtn').on('click', function () {
+        let eid = $('input[name=employeid]').val();
+        let eid_array = { "name": "employeid", "value": eid };
+        let niandu = $('input[name=niandu]').val();
+        let niandu_array = { "name": "niandu", "value": niandu };
+        let month = $('input[name=month]:checked').val();
+        let month_array = { "name": "month", "value": month };
+        let token = $('input[name=token]').val();
+        let token_array = { "name": "token", "value": token };
+        Swal.fire({
+            title: "確定要刪除" + month + "月份的資料?",
+            showDenyButton: true,
+            confirmButtonText: "確定",
+            denyButtonText: "取消"
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                let Form_Data = new Array();
+                Form_Data.push(token_array)
+                Form_Data.push(niandu_array)
+                Form_Data.push(eid_array)
+                Form_Data.push(month_array)
+                // console.log(Form_Data)
+                $.ajax({
+                    url: 'ajax/del_date.php',
+                    type: "POST",
+                    data: Form_Data,
+                    beforeSend: function () {
+                        Swal.fire({
+                            title: "刪除中...",
+                            html: `
+                            <div class="card-body d-flex align-items-center justify-content-center" style="height: 160px">
+                                <div class="sk-chase">
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                </div>
+                            </div>
+                            `,
+                            showConfirmButton: false,
+                            isDismissed: true
+                        });
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        Swal.close()
+                        Swal.fire({
+                            title: "線上取得失敗，請重新試一次！",
+                        });
+                    },
+                    success: function (data, textStatus, jqXHR) {
+                        var _msg = JSON.parse(data);
+                        console.log(_msg.html_content)
+                        Swal.close()
+                        if (_msg.html_status == '1') {
+                            swal.fire({
+                                title: "訊息",
+                                text: _msg.html_msg,
+                                icon: 'error'
+                            });
+                        } else {
+                            swal.fire({
+                                title: "訊息",
+                                text: _msg.html_msg,
+                                icon: 'success'
+                            });
+                            $('.month' + month).html('');
+                        }
+
+                    }
+                })
+            }
+        });
     })
 })
