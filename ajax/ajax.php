@@ -334,6 +334,45 @@ if ($is_verify == false) {
                 $_html_msg = '生成成功';
             }
             break;
+        case 'employeeattend_attendswitch':
+            $value['eid']           = intval($_POST['eid']);
+            $value['attendno']     =  $_POST['attendno'];
+            $value['employeid']    = $_POST['employeid'];
+            //判斷POST參數是否正確
+            foreach ($value as $key => $val) {
+                if (empty($val)) {
+                    $_html_msg = '資料錯誤';
+                    $_html_status = '1';
+                    break;
+                }
+            }
+
+            if (empty($_html_msg)) {
+                $employee = $CM->get_employee_data($value['employeid']);
+                $ea = $CM->get_employeeattend_data($value['eid']);
+                $ea = $CM->get_employeeattend_data($value['eid']);
+                $attd = $CM->GET_ATTENDANCE_DATA($value['attendno']);
+                if (!empty($ea)) {
+                    $arr_week = array_map(function ($v) {
+                        global $ea;
+                        return $v['week'] == $ea['ndweektype'] ? $v : null;
+                    }, $attd);
+                    $exist_week = array_filter($arr_week, function ($v) {
+                        return !empty($v);
+                    });
+                    foreach ($exist_week as $ew) {
+                        $back_content = $ew;
+                    }
+                    $back_content['starttype'] = $employee['starttype'];
+                    $_html_content =  $back_content;
+                    $_html_status = '2';
+                    $_html_msg = '取得成功';
+                } else {
+                    $_html_msg = '該班別尚未有任何資料';
+                    $_html_status = '1';
+                }
+            }
+            break;
     }
 }
 

@@ -1037,7 +1037,7 @@ class Custom
 		return $rs;
 	}
 	/**
-	 * 員工-固定加扣款資料
+	 * 員工-出勤曆列表
 	 * 
 	 * @param string   $id 員工編號
 	 * 
@@ -1064,6 +1064,27 @@ class Custom
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
 			$rs[$count++]  = $row;
+		}
+		return $rs;
+	}
+
+	/**
+	 * 員工-出勤曆列表(只取單筆)
+	 * 
+	 * @param string   $eid 出勤曆編號
+	 * 
+	 * @return array 
+	 */
+	function get_employeeattend_data($eid)
+	{
+
+		$Sheet = "employeeattend";
+
+		$db = new MySQL();
+		$db->Where = "Where eid = '" . $eid . "'";
+		$db->query_sql($Sheet, '*');
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs  = $row;
 		}
 		return $rs;
 	}
