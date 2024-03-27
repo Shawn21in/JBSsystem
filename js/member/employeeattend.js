@@ -77,101 +77,101 @@ $(function () {
     $(document).on('change', 'select[name^=attendno]', function () {
         let current_col = $(this).closest('tr');
 
-        let Form_Data = new Array();
-        let eid = $(this).closest('tr').find('input[name^=eid]').val();//出勤曆編號
-        let eid_array = { "name": "eid", "value": eid };
-        let employeid = $('input[name^=employeid]:checked').val();//出勤曆編號
-        let employeid_array = { "name": "employeid", "value": employeid };
-        let attendno = $(this).val();
-        let attendno_array = { "name": "attendno", "value": attendno };
-        let token = $('input[name=token]').val();
-        let token_array = { "name": "token", "value": token };
-        let action = { "name": "_type", "value": "employeeattend_attendswitch" };
-        Form_Data.push(action)
-        Form_Data.push(eid_array)
-        Form_Data.push(employeid_array)
-        Form_Data.push(attendno_array)
-        Form_Data.push(token_array)
+        // let Form_Data = new Array();
+        // let eid = $(this).closest('tr').find('input[name^=eid]').val();//出勤曆編號
+        // let eid_array = { "name": "eid", "value": eid };
+        // let employeid = $('input[name^=employeid]:checked').val();//出勤曆編號
+        // let employeid_array = { "name": "employeid", "value": employeid };
+        // let attendno = $(this).val();
+        // let attendno_array = { "name": "attendno", "value": attendno };
+        // let token = $('input[name=token]').val();
+        // let token_array = { "name": "token", "value": token };
+        // let action = { "name": "_type", "value": "employeeattend_attendswitch" };
+        // Form_Data.push(action)
+        // Form_Data.push(eid_array)
+        // Form_Data.push(employeid_array)
+        // Form_Data.push(attendno_array)
+        // Form_Data.push(token_array)
         current_col.find('input[name^=attendname]').val($(this).find('option:selected').data('name'))
         // console.log(Form_Data)
-        $.ajax({
-            url: 'ajax/ajax.php',
-            type: "POST",
-            data: Form_Data,
-            beforeSend: function () {
-                Swal.fire({
-                    title: "修改中...",
-                    html: `
-                            <div class="card-body d-flex align-items-center justify-content-center" style="height: 160px">
-                                <div class="sk-chase">
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                </div>
-                            </div>
-                            `,
-                    showConfirmButton: false,
-                    isDismissed: true
-                });
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                Swal.close()
-                Swal.fire({
-                    title: "線上取得失敗，請重新試一次！",
-                });
-            },
-            success: function (data, textStatus, jqXHR) {
-                let _msg = JSON.parse(data);
-                // console.log(_msg.html_content)
-                // console.log(eid);
-                let content = _msg.html_content;
-                Swal.close()
-                if (_msg.html_status == '1') {
-                    swal.fire({
-                        title: "訊息",
-                        text: _msg.html_msg,
-                        icon: 'error'
-                    });
-                } else {
-                    // console.log(current_col);
-                    current_col.find('select[name^=attendday] option').prop('selected', false)
-                    current_col.find('select[name^=attendday] option').each(function (key, value) {
-                        if ($(value).val() == content['type']) {
-                            $(value).prop('selected', true)
-                        }
-                    })
-                    if (content['type'] == '工作日') {
-                        current_col.find('input[name^=ontime]').val(content['ontime'])
-                        current_col.find('input[name^=offtime]').val(content['offtime'])
-                        current_col.find('input[name^=restime1]').val(content['resttime1'])
-                        current_col.find('input[name^=restime2]').val(content['resttime2'])
-                    } else {
-                        current_col.find('input[name^=ontime]').val('')
-                        current_col.find('input[name^=offtime]').val('')
-                        current_col.find('input[name^=restime1]').val('')
-                        current_col.find('input[name^=restime2]').val('')
-                    }
+        // $.ajax({
+        //     url: 'ajax/ajax.php',
+        //     type: "POST",
+        //     data: Form_Data,
+        //     beforeSend: function () {
+        //         Swal.fire({
+        //             title: "修改中...",
+        //             html: `
+        //                     <div class="card-body d-flex align-items-center justify-content-center" style="height: 160px">
+        //                         <div class="sk-chase">
+        //                             <div class="sk-chase-dot"></div>
+        //                             <div class="sk-chase-dot"></div>
+        //                             <div class="sk-chase-dot"></div>
+        //                             <div class="sk-chase-dot"></div>
+        //                             <div class="sk-chase-dot"></div>
+        //                             <div class="sk-chase-dot"></div>
+        //                         </div>
+        //                     </div>
+        //                     `,
+        //             showConfirmButton: false,
+        //             isDismissed: true
+        //         });
+        //     },
+        //     error: function (jqXHR, textStatus, errorThrown) {
+        //         Swal.close()
+        //         Swal.fire({
+        //             title: "線上取得失敗，請重新試一次！",
+        //         });
+        //     },
+        //     success: function (data, textStatus, jqXHR) {
+        //         let _msg = JSON.parse(data);
+        //         // console.log(_msg.html_content)
+        //         // console.log(eid);
+        //         let content = _msg.html_content;
+        //         Swal.close()
+        //         if (_msg.html_status == '1') {
+        //             swal.fire({
+        //                 title: "訊息",
+        //                 text: _msg.html_msg,
+        //                 icon: 'error'
+        //             });
+        //         } else {
+        //             // console.log(current_col);
+        //             current_col.find('select[name^=attendday] option').prop('selected', false)
+        //             current_col.find('select[name^=attendday] option').each(function (key, value) {
+        //                 if ($(value).val() == content['type']) {
+        //                     $(value).prop('selected', true)
+        //                 }
+        //             })
+        //             if (content['type'] == '工作日') {
+        //                 current_col.find('input[name^=ontime]').val(content['ontime'])
+        //                 current_col.find('input[name^=offtime]').val(content['offtime'])
+        //                 current_col.find('input[name^=restime1]').val(content['resttime1'])
+        //                 current_col.find('input[name^=restime2]').val(content['resttime2'])
+        //             } else {
+        //                 current_col.find('input[name^=ontime]').val('')
+        //                 current_col.find('input[name^=offtime]').val('')
+        //                 current_col.find('input[name^=restime1]').val('')
+        //                 current_col.find('input[name^=restime2]').val('')
+        //             }
 
-                    if (content['starttype'] == '1' && content['type'] == '工作日') {
-                        current_col.find('input[name^=daka]').prop('checked', true);
-                    } else {
-                        current_col.find('input[name^=daka]').prop('checked', false);
-                    }
+        //             if (content['starttype'] == '1' && content['type'] == '工作日') {
+        //                 current_col.find('input[name^=daka]').prop('checked', true);
+        //             } else {
+        //                 current_col.find('input[name^=daka]').prop('checked', false);
+        //             }
 
-                    // swal.fire({
-                    //     title: "訊息",
-                    //     text: _msg.html_msg,
-                    //     icon: 'success'
-                    // }).then((result) => {
-                    //     $('#heading2 button').trigger('click');
-                    // });
-                }
+        //             // swal.fire({
+        //             //     title: "訊息",
+        //             //     text: _msg.html_msg,
+        //             //     icon: 'success'
+        //             // }).then((result) => {
+        //             //     $('#heading2 button').trigger('click');
+        //             // });
+        //         }
 
-            }
-        })
+        //     }
+        // })
     })
     //查詢出勤曆
     $('input[name=employeid],input[name=niandu]').on('change', function () {
