@@ -125,7 +125,7 @@ $(function () {
             },
             success: function (data, textStatus, jqXHR) {
                 let _msg = JSON.parse(data);
-                console.log(_msg.html_content)
+                // console.log(_msg.html_content)
                 // console.log(eid);
                 let content = _msg.html_content;
                 Swal.close()
@@ -143,12 +143,19 @@ $(function () {
                             $(value).prop('selected', true)
                         }
                     })
-                    current_col.find('input[name^=ontime]').val(content['ontime'])
-                    current_col.find('input[name^=offtime]').val(content['offtime'])
-                    current_col.find('input[name^=restime1]').val(content['resttime1'])
-                    current_col.find('input[name^=restime2]').val(content['resttime2'])
-                    current_col.find('input[name^=restime2]').val(content['resttime2'])
-                    if (content['starttype'] == '1') {
+                    if (content['type'] == '工作日') {
+                        current_col.find('input[name^=ontime]').val(content['ontime'])
+                        current_col.find('input[name^=offtime]').val(content['offtime'])
+                        current_col.find('input[name^=restime1]').val(content['resttime1'])
+                        current_col.find('input[name^=restime2]').val(content['resttime2'])
+                    } else {
+                        current_col.find('input[name^=ontime]').val('')
+                        current_col.find('input[name^=offtime]').val('')
+                        current_col.find('input[name^=restime1]').val('')
+                        current_col.find('input[name^=restime2]').val('')
+                    }
+
+                    if (content['starttype'] == '1' && content['type'] == '工作日') {
                         current_col.find('input[name^=daka]').prop('checked', true);
                     } else {
                         current_col.find('input[name^=daka]').prop('checked', false);
@@ -167,9 +174,9 @@ $(function () {
         })
     })
     //查詢出勤曆
-    $('input[name=employeid]').on('change', function () {
+    $('input[name=employeid],input[name=niandu]').on('change', function () {
         let Form_Data = new Array();
-        let eid = $(this).val();
+        let eid = $('input[name=employeid]:checked').val();
         let eid_array = { "name": "eid", "value": eid };
         let niandu = $('input[name=niandu]').val();
         let niandu_array = { "name": "niandu", "value": niandu };
@@ -181,7 +188,9 @@ $(function () {
                 title: "請先填入年度",
                 icon: "info"
             })
-            $(this).prop('checked', false);
+            $('input[name=employeid]:checked').prop('checked', false);
+            return false;
+        } else if (eid === undefined) {
             return false;
         }
         Form_Data.push(eid_array)
