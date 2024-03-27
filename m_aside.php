@@ -94,6 +94,11 @@
                                     <span class="nav-text">員工出勤作業</span>
                                 </a>
                             </li>
+                            <li class="" data-no="daka">
+                                <a class="sidenav-item-link" href="m_daka.php">
+                                    <span class="nav-text">打卡資料匯入</span>
+                                </a>
+                            </li>
                         </div>
                     </ul>
                 </li>
