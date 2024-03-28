@@ -437,7 +437,6 @@ if (empty($employid)) { //判斷是否為編輯模式
                         </form>
                       </div>
                     </div>
-
                     <div class="tab-pane fade" id="salary" role="tabpanel" aria-labelledby="salary-tab">
                       <div class="tab-pane-content mt-5">
                         <form id="form2" onsubmit="return false;">

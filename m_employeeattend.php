@@ -83,7 +83,7 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label for="niandu">年度 *</label>
-                      <input type="number" class="form-control" name="niandu" id="niandu" value="">
+                      <input type="number" class="form-control" name="niandu" id="niandu" value="<?= date("Y") - 1911 ?>">
                     </div>
                   </div>
                 </div>
