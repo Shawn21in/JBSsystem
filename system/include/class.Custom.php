@@ -1088,4 +1088,23 @@ class Custom
 		}
 		return $rs;
 	}
+	/**
+	 * 打卡資料設定
+	 * 
+	 * 
+	 * @return array 
+	 */
+	function get_cardset_data()
+	{
+
+		$Sheet = "cardset";
+
+		$db = new MySQL();
+		$db->Where = "Where 1=1";
+		$db->query_sql($Sheet, '*');
+		while ($row = $db->query_fetch('', 'assoc')) {
+			$rs  = $row;
+		}
+		return $rs;
+	}
 }

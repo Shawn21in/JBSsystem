@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-26 08:13:24
+-- 產生時間： 2024-03-28 06:07:29
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -144,6 +144,47 @@ INSERT INTO `bank` (`bankno`, `bankname`) VALUES
 ('814', '大眾商業銀行'),
 ('815', '日盛國際商業銀行'),
 ('816', '安泰商業銀行');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `cardset`
+--
+
+DROP TABLE IF EXISTS `cardset`;
+CREATE TABLE IF NOT EXISTS `cardset` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `years` decimal(5,0) DEFAULT NULL COMMENT '日期(年)起',
+  `yeare` decimal(5,0) DEFAULT NULL COMMENT '日期(年)末',
+  `months` decimal(5,0) DEFAULT NULL COMMENT '日期(月)起',
+  `monthe` decimal(5,0) DEFAULT NULL COMMENT '日期(月)末',
+  `days` decimal(5,0) DEFAULT NULL COMMENT '日期(日)起',
+  `daye` decimal(5,0) DEFAULT NULL COMMENT '日期(日)末',
+  `hours` decimal(5,0) DEFAULT NULL COMMENT '時間(時)起',
+  `houre` decimal(5,0) DEFAULT NULL COMMENT '時間(時)末',
+  `minutes` decimal(5,0) DEFAULT NULL COMMENT '時間(分)起',
+  `minutee` decimal(5,0) DEFAULT NULL COMMENT '時間(分)起',
+  `employees` decimal(5,0) DEFAULT NULL COMMENT '員工編(卡)號起',
+  `employeee` decimal(5,0) DEFAULT NULL COMMENT '員工編(卡)號末',
+  `discerns` decimal(5,0) DEFAULT NULL COMMENT '識別代碼起',
+  `discerne` decimal(5,0) DEFAULT NULL COMMENT '識別代碼末',
+  `yeartype` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年份格式',
+  `employeetype` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編(卡)號格式',
+  `ontimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '早上上班',
+  `restime1d` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '早上下班',
+  `restime2d` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午上班',
+  `offtimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午下班',
+  `addontimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班',
+  `addofftimed` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `cardset`
+--
+
+INSERT INTO `cardset` (`id`, `years`, `yeare`, `months`, `monthe`, `days`, `daye`, `hours`, `houre`, `minutes`, `minutee`, `employees`, `employeee`, `discerns`, `discerne`, `yeartype`, `employeetype`, `ontimed`, `restime1d`, `restime2d`, `offtimed`, `addontimed`, `addofftimed`) VALUES
+(1, 0, 3, 4, 5, 6, 7, 9, 10, 11, 12, 14, 17, 19, 20, '1', '1', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6');
 
 -- --------------------------------------------------------
 
@@ -4010,7 +4051,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '40bd36992bafe0bde79e41ccbcfea2d8', '2019-08-12 21:27:51', '2024-03-26 14:09:33', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '06c9b9d8765d6b352f2cc649f97f0804', '2019-08-12 21:27:51', '2024-03-27 09:13:37', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -4149,7 +4190,23 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+
+--
+-- 傾印資料表的資料 `sys_mysql_log`
+--
+
+INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_COMMENT`, `ML_SQL_CON`, `ML_SQL_EXEC_TYPE`, `ML_EXEC_FILE`) VALUES
+(1, '2024-03-27 08:40:24', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'d2edebea824e83d55c60f798fe0a29a2\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(2, '2024-03-27 08:41:42', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'978b9d82d1db958ff04a795d230ceeff\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(3, '2024-03-27 09:13:37', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'06c9b9d8765d6b352f2cc649f97f0804\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(4, '2024-03-27 09:13:46', '系統管理員', '1', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'3c75fca6b85770932691757095155866\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(5, '2024-03-28 08:34:04', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'697e4b68cd3a42622072a24cf72c7970\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(6, '2024-03-28 11:38:18', '', '', '', 'INSERT INTO cardset () VALUES ();', 'INSERT', '/jp/web_post.php'),
+(7, '2024-03-28 11:38:42', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'9\',`houre` = \'10\',`minutes` = \'11\',`minutee` = \'12\',`employees` = \'14\',`employeee` = \'17\',`employeetype` = \'1\',`discerns` = \'19\',`discerne` = \'20\',`ontimed` = \'\',`offtimed` = \'\',`restime1d` = \'\',`restime2d` = \'\',`addontimed` = \'\',`addofftimed` = \'\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(8, '2024-03-28 11:38:56', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'9\',`houre` = \'10\',`minutes` = \'11\',`minutee` = \'12\',`employees` = \'14\',`employeee` = \'17\',`employeetype` = \'1\',`discerns` = \'19\',`discerne` = \'20\',`ontimed` = \'A1\',`offtimed` = \'A4\',`restime1d` = \'A2\',`restime2d` = \'A3\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(9, '2024-03-28 11:50:44', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'2\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'9\',`houre` = \'10\',`minutes` = \'11\',`minutee` = \'12\',`employees` = \'14\',`employeee` = \'17\',`employeetype` = \'2\',`discerns` = \'19\',`discerne` = \'20\',`ontimed` = \'A1\',`offtimed` = \'A2\',`restime1d` = \'A2\',`restime2d` = \'A1\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(10, '2024-03-28 12:00:29', '', '', '', 'INSERT INTO cardset (`years`,`yeare`,`yeartype`,`months`,`monthe`,`days`,`daye`,`hours`,`houre`,`minutes`,`minutee`,`employees`,`employeee`,`employeetype`,`discerns`,`discerne`,`ontimed`,`offtimed`,`restime1d`,`restime2d`,`addontimed`,`addofftimed`) VALUES (\'0\',\'3\',\'1\',\'4\',\'5\',\'6\',\'7\',\'9\',\'10\',\'11\',\'12\',\'14\',\'17\',\'1\',\'19\',\'20\',\'A1\',\'A4\',\'A2\',\'A3\',\'A5\',\'A6\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -4627,7 +4684,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'bdaecc7992e0c9ab8fdf2f48c95dbeec', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '697e4b68cd3a42622072a24cf72c7970', 1);
 
 -- --------------------------------------------------------
 

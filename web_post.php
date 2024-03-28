@@ -1641,6 +1641,90 @@ if (!empty($_Type)) {
 				}
 			}
 			break;
+		case "cardset_edit":
+			if (!$_Login || !$is_verify) {
+				$_html_msg = '請先登入帳號！';
+				$_html_href = "index.php";
+				break;
+			}
+			$_html_msg = '';
+			$_html_msg_array = array();
+			$value = array();
+			$value['years'] 				= $_POST['years'];
+			$value['yeare'] 				= $_POST['yeare'];
+			$value['yeartype'] 				= $_POST['yeartype'];
+			$value['months'] 				= $_POST['months'];
+			$value['monthe'] 				= $_POST['monthe'];
+			$value['days'] 					= $_POST['days'];
+			$value['daye'] 					= $_POST['daye'];
+			$value['hours'] 				= $_POST['hours'];
+			$value['houre'] 				= $_POST['houre'];
+			$value['minutes'] 				= $_POST['minutes'];
+			$value['minutee'] 				= $_POST['minutee'];
+			$value['employees'] 			= $_POST['employees'];
+			$value['employeee'] 			= $_POST['employeee'];
+			$value['employeetype'] 			= $_POST['employeetype'];
+			$value['discerns'] 				= $_POST['discerns'];
+			$value['discerne'] 				= $_POST['discerne'];
+			foreach ($value as $key => $val) {
+				if ($val == null) {
+					array_push($_html_msg_array, '資料填寫不完整');
+					break;
+				}
+			}
+			if (!empty($_html_msg_array)) { //判斷資料完整度
+				foreach ($_html_msg_array as $hma) {
+					$_html_msg = $hma;
+					break;
+				}
+			} else {
+				$value['ontimed'] 				= $_POST['ontimed'];
+				$value['offtimed'] 				= $_POST['offtimed'];
+				$value['restime1d'] 				= $_POST['restime1d'];
+				$value['restime2d'] 				= $_POST['restime2d'];
+				$value['addontimed'] 				= $_POST['addontimed'];
+				$value['addofftimed'] 				= $_POST['addofftimed'];
+				$cardset_data = array(
+					'years' 			=> $value['years'],
+					'yeare' 			=> $value['yeare'],
+					'yeartype' 			=> $value['yeartype'],
+					'months' 			=> $value['months'],
+					'monthe' 			=> $value['monthe'],
+					'days' 				=> $value['days'],
+					'daye' 				=> $value['daye'],
+					'hours' 			=> $value['hours'],
+					'houre' 			=> $value['houre'],
+					'minutes' 			=> $value['minutes'],
+					'minutee' 			=> $value['minutee'],
+					'employees' 		=> $value['employees'],
+					'employeee' 		=> $value['employeee'],
+					'employeetype' 		=> $value['employeetype'],
+					'discerns' 			=> $value['discerns'],
+					'discerne' 			=> $value['discerne'],
+					'ontimed' 			=> $value['ontimed'],
+					'offtimed' 			=> $value['offtimed'],
+					'restime1d' 		=> $value['restime1d'],
+					'restime2d' 		=> $value['restime2d'],
+					'addontimed' 		=> $value['addontimed'],
+					'addofftimed' 		=> $value['addofftimed'],
+				);
+				$db2 = new Mysql();
+				$db2->Where = " WHERE  1=1";
+				$db2->query_sql($cardset_db, '*', 0, 1);
+				if ($row = $db2->query_fetch()) {
+					$db2->query_data($cardset_db, $cardset_data, 'UPDATE');
+				} else {
+					$db2->query_data($cardset_db, $cardset_data, 'INSERT');
+				}
+
+				if (!empty($db->Error)) {
+					$_html_msg 	= '儲存失敗，請重新整理後再試試';
+				} else {
+					$_html_msg 	= '儲存成功！';
+					$_html_href = "m_daka.php";
+				}
+			}
+			break;
 		case "mlogin":
 
 

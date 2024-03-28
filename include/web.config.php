@@ -119,6 +119,7 @@ if ($website_open) {
 	$employee_db = 'employee';
 	$ed_db = 'employdeduction';
 	$ea_db = 'employeeattend';
+	$cardset_db = 'cardset';
 
 
 	//經銷商代號

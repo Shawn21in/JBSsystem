@@ -11,6 +11,7 @@ $_No = 'daka';           //按鈕列名稱，對應m_aside.php的<li data-no=" $
 
 $comp = GET_COMP_DATA();
 
+$cardset = $CM->get_cardset_data();
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="tw">
@@ -21,9 +22,7 @@ $comp = GET_COMP_DATA();
   </script>
   <?php include('m_head.php'); ?>
   <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js" crossorigin="anonymous"></script>
-  <link href="js/datepicker-tw/bootstrap-datepicker3.min.css" rel="stylesheet" />
-  <script src="js/datepicker-tw/bootstrap-datepicker.js"></script>
-  <script src="js/member/employee.js"></script>
+  <script src="js/member/daka.js"></script>
 
 </head>
 
@@ -85,7 +84,7 @@ $comp = GET_COMP_DATA();
                             </div>
                           </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="">送出</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="" <?= empty($cardset) ? 'disabled' : '' ?>>送出</button>
                           </div>
                         </form>
                       </div>
@@ -93,63 +92,23 @@ $comp = GET_COMP_DATA();
 
                     <div class="tab-pane fade" id="cardset" role="tabpanel" aria-labelledby="cardset-tab">
                       <div class="tab-pane-content mt-5">
-                        <form id="form3" onsubmit="return false;">
+                        <form id="form2" onsubmit="return false;">
                           <div class="em_title mb-2">
                             <h2>打卡資料設定</h2>
-                          </div>
-                          <div class="row mb-2">
-                            <div class="col-lg-3">
-                              <div class="form-group">
-                                <label class="d-inline-block" for="">年份格式</label>
-                                <ul class="list-unstyled list-inline">
-                                  <li class="d-inline-block mr-3">
-                                    <label class="control control-radio">西元
-                                      <input type="radio" name="yeartype" value="1" <?= $employee['yeartype'] == '1'  ? 'checked' : '' ?> />
-                                      <div class="control-indicator"></div>
-                                    </label>
-                                  </li>
-                                  <li class="d-inline-block mr-3">
-                                    <label class="control control-radio">民國
-                                      <input type="radio" name="yeartype" value="2" <?= $employee['yeartype'] == '2' ? 'checked' : '' ?> />
-                                      <div class="control-indicator"></div>
-                                    </label>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                            <div class="col-lg-3">
-                              <div class="form-group">
-                                <label class="d-inline-block" for="">號碼判斷</label>
-                                <ul class="list-unstyled list-inline">
-                                  <li class="d-inline-block mr-3">
-                                    <label class="control control-radio">編號
-                                      <input type="radio" name="yeartype" value="1" <?= $employee['yeartype'] == '1'  ? 'checked' : '' ?> />
-                                      <div class="control-indicator"></div>
-                                    </label>
-                                  </li>
-                                  <li class="d-inline-block mr-3">
-                                    <label class="control control-radio">卡號
-                                      <input type="radio" name="yeartype" value="2" <?= $employee['yeartype'] == '2' ? 'checked' : '' ?> />
-                                      <div class="control-indicator"></div>
-                                    </label>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
                           </div>
                           <div class="row mb-2">
                             <div class="col-lg-2 form-inline font-weight-bold justify-content-end"><label>日期(年)：第</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="years"></label>
-                                <input type="number" data-name="日期(年)起" class="form-control" name="years" id="years" value="<?= $employee['years'] ? $employee['years'] : '0' ?>">
+                                <input type="number" data-name="日期(年)起" class="form-control" name="years" id="years" value="<?= $cardset['years'] ? $cardset['years'] : '0' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="yeare"></label>
-                                <input type="number" data-name="日期(年)末" class="form-control" name="yeare" id="yeare" value="<?= $employee['yeare'] ? $employee['yeare'] : '0' ?>">
+                                <input type="number" data-name="日期(年)末" class="form-control" name="yeare" id="yeare" value="<?= $cardset['yeare'] ? $cardset['yeare'] : '3' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -160,20 +119,39 @@ $comp = GET_COMP_DATA();
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>碼</label></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">年份格式</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">西元
+                                      <input type="radio" name="yeartype" value="1" <?= $cardset['yeartype'] == '1' || empty($cardset['yeartype'])  ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">民國
+                                      <input type="radio" name="yeartype" value="2" <?= $cardset['yeartype'] == '2' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
                           </div>
                           <div class="row mb-2">
                             <div class="col-lg-2 form-inline font-weight-bold justify-content-end"><label>(月)：第</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="months"></label>
-                                <input type="number" data-name="日期(月)起" class="form-control" name="months" id="months" value="<?= $employee['months'] ? $employee['months'] : '0' ?>">
+                                <input type="number" data-name="日期(月)起" class="form-control" name="months" id="months" value="<?= $cardset['months'] ? $cardset['months'] : '4' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="monthe"></label>
-                                <input type="number" data-name="日期(月)末" class="form-control" name="monthe" id="monthe" value="<?= $employee['monthe'] ? $employee['monthe'] : '0' ?>">
+                                <input type="number" data-name="日期(月)末" class="form-control" name="monthe" id="monthe" value="<?= $cardset['monthe'] ? $cardset['monthe'] : '5' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -190,14 +168,14 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="days"></label>
-                                <input type="number" data-name="日期(日)起" class="form-control" name="days" id="days" value="<?= $employee['days'] ? $employee['days'] : '0' ?>">
+                                <input type="number" data-name="日期(日)起" class="form-control" name="days" id="days" value="<?= $cardset['days'] ? $cardset['days'] : '6' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="daye"></label>
-                                <input type="number" data-name="日期(日)末" class="form-control" name="daye" id="daye" value="<?= $employee['daye'] ? $employee['daye'] : '0' ?>">
+                                <input type="number" data-name="日期(日)末" class="form-control" name="daye" id="daye" value="<?= $cardset['daye'] ? $cardset['daye'] : '7' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -214,14 +192,14 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="hours"></label>
-                                <input type="number" data-name="時間(時)起" class="form-control" name="hours" id="hours" value="<?= $employee['hours'] ? $employee['hours'] : '0' ?>">
+                                <input type="number" data-name="時間(時)起" class="form-control" name="hours" id="hours" value="<?= $cardset['hours'] ? $cardset['hours'] : '9' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="houre"></label>
-                                <input type="number" data-name="時間(時)末" class="form-control" name="houre" id="houre" value="<?= $employee['houre'] ? $employee['houre'] : '0' ?>">
+                                <input type="number" data-name="時間(時)末" class="form-control" name="houre" id="houre" value="<?= $cardset['houre'] ? $cardset['houre'] : '10' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -238,14 +216,14 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="minutes"></label>
-                                <input type="number" data-name="時間(分)起" class="form-control" name="minutes" id="minutes" value="<?= $employee['minutes'] ? $employee['minutes'] : '0' ?>">
+                                <input type="number" data-name="時間(分)起" class="form-control" name="minutes" id="minutes" value="<?= $cardset['minutes'] ? $cardset['minutes'] : '11' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="minutee"></label>
-                                <input type="number" data-name="時間(分)末" class="form-control" name="minutee" id="minutee" value="<?= $employee['minutee'] ? $employee['minutee'] : '0' ?>">
+                                <input type="number" data-name="時間(分)末" class="form-control" name="minutee" id="minutee" value="<?= $cardset['minutee'] ? $cardset['minutee'] : '12' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -262,38 +240,57 @@ $comp = GET_COMP_DATA();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="employees"></label>
-                                <input type="number" data-name="員工編(卡)號起" class="form-control" name="employees" id="employees" value="<?= $employee['employees'] ? $employee['employees'] : '0' ?>">
+                                <input type="number" data-name="員工編(卡)號起" class="form-control" name="employees" id="employees" value="<?= $cardset['employees'] ? $cardset['employees'] : '14' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="employeee"></label>
-                                <input type="number" data-name="員工編(卡)號末" class="form-control" name="employeee" id="employeee" value="<?= $employee['employeee'] ? $employee['employeee'] : '0' ?>">
+                                <input type="number" data-name="員工編(卡)號末" class="form-control" name="employeee" id="employeee" value="<?= $cardset['employeee'] ? $cardset['employeee'] : '17' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="employeesum"></label>
-                                <input type="number" class="form-control" name="employeesum" id="employeesum" readonly>
+                                <input type="number" class="form-control" name="employeesum" id="employeesum" value="" readonly>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>碼</label></div>
+                            <div class="col-lg-3">
+                              <div class="form-group">
+                                <label class="d-inline-block" for="">號碼判斷</label>
+                                <ul class="list-unstyled list-inline">
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">編號
+                                      <input type="radio" name="employeetype" value="1" <?= $cardset['employeetype'] == '1' || empty($cardset['employeetype'])  ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                  <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">卡號
+                                      <input type="radio" name="employeetype" value="2" <?= $cardset['employeetype'] == '2' ? 'checked' : '' ?> />
+                                      <div class="control-indicator"></div>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
                           </div>
                           <div class="row mb-2">
                             <div class="col-lg-2 form-inline font-weight-bold justify-content-end"><label>識別代碼：第</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="discerns"></label>
-                                <input type="number" data-name="識別代碼：第起" class="form-control" name="discerns" id="discerns" value="<?= $employee['discerns'] ? $employee['discerns'] : '0' ?>">
+                                <input type="number" data-name="識別代碼：第起" class="form-control" name="discerns" id="discerns" value="<?= $cardset['discerns'] ? $cardset['discerns'] : '19' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="discerne"></label>
-                                <input type="number" data-name="識別代碼：第末" class="form-control" name="discerne" id="discerne" value="<?= $employee['discerne'] ? $employee['discerne'] : '0' ?>">
+                                <input type="number" data-name="識別代碼：第末" class="form-control" name="discerne" id="discerne" value="<?= $cardset['discerne'] ? $cardset['discerne'] : '20' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -355,7 +352,7 @@ $comp = GET_COMP_DATA();
                             </div>
                           </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="3" data-type="overtime_edit" <?= $employid ? '' : 'disabled' ?>>儲存</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-no="2" data-type="cardset_edit">儲存</button>
                           </div>
                         </form>
                       </div>
