@@ -1,4 +1,5 @@
 $(function () {
+    var data_arr = new Array();
     $(window).on('load', function () {
         $('#yearsum').val($('#yeare').val() - $('#years').val() + 1)
         $('#monthsum').val($('#monthe').val() - $('#months').val() + 1)
@@ -132,16 +133,82 @@ $(function () {
                 icon: 'error'
             })
             $(this).val('');
+            $('#uploadBtn').prop('disabled', true);
+            data_arr = [];
             return false;
         }
         reader.readAsText(file);
 
         reader.onload = function () {
-            console.log(reader.result);
+            data_arr = reader.result.split('\r\n');
+            // console.log(data_arr);
+            $('#uploadBtn').prop('disabled', false);
         };
 
         reader.onerror = function () {
+            $('#uploadBtn').prop('disabled', true);
             console.log(reader.error);
+            data_arr = [];
         };
+    })
+    $('#uploadBtn').on('click', function () {
+        let Form_Data = new Array();
+        let token = $('input[name=token]').val();
+        let token_array = { "name": "token", "value": token };
+        let action = { "name": "_type", "value": "daka_upload" };
+        Form_Data.push({ "name": "data", "value": data_arr });
+        Form_Data.push(token_array)
+        Form_Data.push(action)
+        // console.log(Form_Data);
+
+        $.ajax({
+            url: 'ajax/ajax.php',
+            type: "POST",
+            data: Form_Data,
+            beforeSend: function () {
+                Swal.fire({
+                    title: "上傳中...",
+                    html: `
+                                <div class="card-body d-flex align-items-center justify-content-center" style="height: 160px">
+                                    <div class="sk-chase">
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                    </div>
+                                </div>
+                                `,
+                    showConfirmButton: false,
+                    isDismissed: true
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                Swal.close()
+                Swal.fire({
+                    title: "上傳失敗，請重新試一次！",
+                });
+            },
+            success: function (data, textStatus, jqXHR) {
+                var _msg = JSON.parse(data);
+                console.log(_msg.html_content)
+                Swal.close()
+                if (_msg.html_status == '1') {
+                    swal.fire({
+                        title: "訊息",
+                        text: _msg.html_msg,
+                        icon: 'error'
+                    });
+                } else {
+                    swal.fire({
+                        title: "訊息",
+                        text: _msg.html_msg,
+                        icon: 'success'
+                    });
+                }
+
+            }
+        })
     })
 })

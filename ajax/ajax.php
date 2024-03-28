@@ -373,6 +373,90 @@ if ($is_verify == false) {
                 }
             }
             break;
+        case 'daka_upload':
+            $value['data']     =  $_POST['data'];
+            $data = explode(',', $value['data']);
+            $cardset = $CM->get_cardset_data();
+            foreach ($data as $d) {
+                $year = substr($d, $cardset['years'], $cardset['yeare'] - $cardset['years'] + 1);
+                $month = substr($d, $cardset['months'], $cardset['monthe'] - $cardset['months'] + 1);
+                $day = substr($d, $cardset['days'], $cardset['daye'] - $cardset['days'] + 1);
+                $hour = substr($d, $cardset['hours'], $cardset['houre'] - $cardset['hours'] + 1);
+                $minute = substr($d, $cardset['minutes'], $cardset['minutee'] - $cardset['minutes'] + 1);
+                $employeeid = substr($d, $cardset['employees'], $cardset['employeee'] - $cardset['employees'] + 1);
+                $discern = substr($d, $cardset['discerns'], $cardset['discerne'] - $cardset['discerns'] + 1);
+                $yeartype = $cardset['yeartype']; //判斷西元或民國
+                $ymd = $yeartype == '1' ? $year . $month . $day : strval($year + 1911) . $month . $day;
+                $employeetype = $cardset['employeetype']; //判斷員工編號或獨立卡號
+                if ($employeetype == '1') {
+                    $eid = $employeeid;
+                } else {
+                    $db2 = new Mysql();
+                    $db2->Where = "Where no = '" . $employeeid . "'";
+                    if ($row = $db2->query_fetch()) {
+                        $eid = $row['no'];
+                    } else {
+                        continue; //卡片編號不存在
+                    }
+                }
+
+                if (strtotime($ymd)) {
+                    $on_or_off = 0;     //判斷是上班還是下班，1為上班、2為下班
+                    switch ($discern) { //判斷識別代碼
+                        case $cardset['ontimed']:
+                            $on_or_off = 1;
+                            $save_ea_data = array('ontime' => $hour . $minute);
+                            break;
+                        case $cardset['restime1d']:
+                            $on_or_off = 2;
+                            $save_ea_data = array('restime1' => $hour . $minute);
+                            break;
+                        case $cardset['restime2d']:
+                            $on_or_off = 1;
+                            $save_ea_data = array('restime2' => $hour . $minute);
+                            break;
+                        case $cardset['offtimed']:
+                            $on_or_off = 2;
+                            $save_ea_data = array('offtime' => $hour . $minute);
+                            break;
+                        case $cardset['addontimed']:
+                            $on_or_off = 1;
+                            $save_ea_data = array('addontime' => $hour . $minute);
+                            break;
+                        case $cardset['addofftimed']:
+                            $on_or_off = 2;
+                            $save_ea_data = array('addofftime' => $hour . $minute);
+                            break;
+                    }
+
+                    $db3 = new Mysql();
+                    $db3->Where = "Where employeid = '" . $eid . "' AND nddate2 = '" . $ymd . "' ";
+                    $db3->query_sql($ea_db, "*");
+                    if ($row = $db3->query_fetch()) {
+                        $cover = 0; //判斷是否要覆蓋資料
+                        foreach ($save_ea_data as $key2 => $value2) {
+                            if ($on_or_off == 1) {
+                                $cover = $value2 < $row[$key2] ? 1 : 0; //上班取最早來的時間
+                            } elseif ($on_or_off == 2) {
+                                $cover = $value2 > $row[$key2] ? 1 : 0; //下班取最晚走的時間
+                            } else {
+                                $cover = 1;
+                            }
+                            if ($cover) {
+                                $db3->query_data($ea_db, $save_ea_data, 'UPDATE'); //資料存在就覆蓋
+                            }
+                        }
+                    } else {
+                        $db3->query_data($ea_db, $save_ea_data, 'INSERT'); //資料不存在就新增
+                    }
+                } else {
+                    continue; //時間格式有問題
+                }
+            }
+            $_html_content =  $back_content;
+            $_html_status = '2';
+            $_html_msg = '上傳成功';
+            break;
     }
 }
 

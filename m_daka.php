@@ -84,7 +84,7 @@ $cardset = $CM->get_cardset_data();
                             </div>
                           </div>
                           <div class="d-flex justify-content-end mt-5">
-                            <button type="button" class="btn btn-primary mb-2 btn-pill saveBtn" data-type="" <?= empty($cardset) ? 'disabled' : '' ?>>送出</button>
+                            <button type="button" class="btn btn-primary mb-2 btn-pill" id="uploadBtn" disabled>送出</button>
                           </div>
                         </form>
                       </div>
@@ -324,14 +324,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-2">
                               <div class="form-group">
                                 <label for="restime2d"></label>
-                                <input type="text" data-name="下上" class="form-control" name="restime2d" id="restime2d" value="<?= $cardset['ontimed'] ?>">
+                                <input type="text" data-name="下上" class="form-control" name="restime2d" id="restime2d" value="<?= $cardset['restime2d'] ?>">
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold justify-content-end"><label>下下</label></div>
                             <div class="col-lg-2">
                               <div class="form-group">
                                 <label for="offtimed"></label>
-                                <input type="text" data-name="下下" class="form-control" name="offtimed" id="offtimed" value="<?= $cardset['restime1d'] ?>">
+                                <input type="text" data-name="下下" class="form-control" name="offtimed" id="offtimed" value="<?= $cardset['offtimed'] ?>">
                               </div>
                             </div>
                           </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-28 06:07:29
+-- 產生時間： 2024-03-28 09:10:15
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `cardset` (
 --
 
 INSERT INTO `cardset` (`id`, `years`, `yeare`, `months`, `monthe`, `days`, `daye`, `hours`, `houre`, `minutes`, `minutee`, `employees`, `employeee`, `discerns`, `discerne`, `yeartype`, `employeetype`, `ontimed`, `restime1d`, `restime2d`, `offtimed`, `addontimed`, `addofftimed`) VALUES
-(1, 0, 3, 4, 5, 6, 7, 9, 10, 11, 12, 14, 17, 19, 20, '1', '1', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6');
+(1, 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, '1', '1', 'A0', 'A3', 'A4', 'A1', 'A5', 'A6');
 
 -- --------------------------------------------------------
 
@@ -514,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `employeeattend` (
   `jiabantime267` decimal(19,4) DEFAULT NULL,
   `jiabantime001` decimal(19,4) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3227 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `employeeattend`
@@ -581,7 +581,7 @@ INSERT INTO `employeeattend` (`eid`, `employeid`, `employename`, `ndyear`, `ndye
 (58, 'A111', '張先生', '113', '2024', '二', '1130227', NULL, '20240227', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (59, 'A111', '張先生', '113', '2024', '三', '1130228', NULL, '20240228', NULL, NULL, '', '', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 1, NULL, '', '', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '國定日', '0', '0', '0', NULL, '', '和平紀念日', NULL, NULL, NULL, NULL),
 (60, 'A111', '張先生', '113', '2024', '四', '1130229', NULL, '20240229', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
-(61, 'A111', '張先生', '113', '2024', '五', '1130301', NULL, '20240301', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
+(61, 'A111', '張先生', '113', '2024', '五', '1130301', NULL, '20240301', NULL, NULL, '0830', '1855', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (62, 'A111', '張先生', '113', '2024', '六', '1130302', NULL, '20240302', NULL, NULL, '', '', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 1, NULL, '', '', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '例假日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (63, 'A111', '張先生', '113', '2024', '日', '1130303', NULL, '20240303', NULL, NULL, '', '', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 1, NULL, '', '', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '休息日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (64, 'A111', '張先生', '113', '2024', '一', '1130304', NULL, '20240304', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
@@ -608,8 +608,8 @@ INSERT INTO `employeeattend` (`eid`, `employeid`, `employename`, `ndyear`, `ndye
 (85, 'A111', '張先生', '113', '2024', '一', '1130325', NULL, '20240325', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (86, 'A111', '張先生', '113', '2024', '二', '1130326', NULL, '20240326', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (87, 'A111', '張先生', '113', '2024', '三', '1130327', NULL, '20240327', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
-(88, 'A111', '張先生', '113', '2024', '四', '1130328', NULL, '20240328', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
-(89, 'A111', '張先生', '113', '2024', '五', '1130329', NULL, '20240329', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
+(88, 'A111', '張先生', '113', '2024', '四', '1130328', NULL, '20240328', NULL, NULL, '0835', '1855', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1223', '2315', NULL, NULL, '1920', '1950', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
+(89, 'A111', '張先生', '113', '2024', '五', '1130329', NULL, '20240329', NULL, NULL, '0853', '1815', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (90, 'A111', '張先生', '113', '2024', '六', '1130330', NULL, '20240330', NULL, NULL, '', '', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 1, NULL, '', '', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '例假日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (91, 'A111', '張先生', '113', '2024', '日', '1130331', NULL, '20240331', NULL, NULL, '', '', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 1, NULL, '', '', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '休息日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (92, 'A111', '張先生', '113', '2024', '一', '1130401', NULL, '20240401', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
@@ -4051,7 +4051,7 @@ CREATE TABLE IF NOT EXISTS `sys_admin` (
 --
 
 INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Admin_Depart`, `Admin_Permissions`, `Group_ID`, `Depart_ID`, `Tables_ID`, `Admin_Code`, `Admin_Sdate`, `Admin_LastLogin`, `Admin_IP`, `Admin_Open`, `Admin_Checkbox`) VALUES
-(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, '06c9b9d8765d6b352f2cc649f97f0804', '2019-08-12 21:27:51', '2024-03-27 09:13:37', '61.218.134.131', 1, 1),
+(1, 'bm', '4e90bf5c6e89b179005004f6ef56fda1', '系統管理員', NULL, 255, 1, NULL, 0, 'a6c544cdda590b8fb38df61f796cb248', '2019-08-12 21:27:51', '2024-03-28 16:36:45', '61.218.134.131', 1, 1),
 (2, 'xingcloud', '3fe9acc5277ea28c3db57e4b71024ed2', '一般管理員', NULL, 0, 2, NULL, 0, 'a85fefb06a0317e2bb04b88aba7185aa', '2019-08-12 21:27:51', '2023-09-12 20:10:15', '27.105.64.246', 1, 0),
 (7, 'a810724@yahoo.com.tw', '3fe9acc5277ea28c3db57e4b71024ed2', '美編', NULL, 0, 6, NULL, NULL, '4c5baab89b82dd19dd7fed876e7dceb9', '2021-01-22 15:35:43', '2023-09-13 07:12:30', '27.105.64.246', 1, 0),
 (8, 'qq500124qq@yahoo.com', '3fe9acc5277ea28c3db57e4b71024ed2', '複製人員', NULL, 0, 6, NULL, NULL, NULL, '2021-01-22 15:38:33', NULL, NULL, 1, 0),
@@ -4190,7 +4190,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -4206,7 +4206,30 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (7, '2024-03-28 11:38:42', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'9\',`houre` = \'10\',`minutes` = \'11\',`minutee` = \'12\',`employees` = \'14\',`employeee` = \'17\',`employeetype` = \'1\',`discerns` = \'19\',`discerne` = \'20\',`ontimed` = \'\',`offtimed` = \'\',`restime1d` = \'\',`restime2d` = \'\',`addontimed` = \'\',`addofftimed` = \'\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
 (8, '2024-03-28 11:38:56', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'9\',`houre` = \'10\',`minutes` = \'11\',`minutee` = \'12\',`employees` = \'14\',`employeee` = \'17\',`employeetype` = \'1\',`discerns` = \'19\',`discerne` = \'20\',`ontimed` = \'A1\',`offtimed` = \'A4\',`restime1d` = \'A2\',`restime2d` = \'A3\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
 (9, '2024-03-28 11:50:44', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'2\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'9\',`houre` = \'10\',`minutes` = \'11\',`minutee` = \'12\',`employees` = \'14\',`employeee` = \'17\',`employeetype` = \'2\',`discerns` = \'19\',`discerne` = \'20\',`ontimed` = \'A1\',`offtimed` = \'A2\',`restime1d` = \'A2\',`restime2d` = \'A1\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
-(10, '2024-03-28 12:00:29', '', '', '', 'INSERT INTO cardset (`years`,`yeare`,`yeartype`,`months`,`monthe`,`days`,`daye`,`hours`,`houre`,`minutes`,`minutee`,`employees`,`employeee`,`employeetype`,`discerns`,`discerne`,`ontimed`,`offtimed`,`restime1d`,`restime2d`,`addontimed`,`addofftimed`) VALUES (\'0\',\'3\',\'1\',\'4\',\'5\',\'6\',\'7\',\'9\',\'10\',\'11\',\'12\',\'14\',\'17\',\'1\',\'19\',\'20\',\'A1\',\'A4\',\'A2\',\'A3\',\'A5\',\'A6\');', 'INSERT', '/jp/web_post.php');
+(10, '2024-03-28 12:00:29', '', '', '', 'INSERT INTO cardset (`years`,`yeare`,`yeartype`,`months`,`monthe`,`days`,`daye`,`hours`,`houre`,`minutes`,`minutee`,`employees`,`employeee`,`employeetype`,`discerns`,`discerne`,`ontimed`,`offtimed`,`restime1d`,`restime2d`,`addontimed`,`addofftimed`) VALUES (\'0\',\'3\',\'1\',\'4\',\'5\',\'6\',\'7\',\'9\',\'10\',\'11\',\'12\',\'14\',\'17\',\'1\',\'19\',\'20\',\'A1\',\'A4\',\'A2\',\'A3\',\'A5\',\'A6\');', 'INSERT', '/jp/web_post.php'),
+(11, '2024-03-28 16:12:09', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A1\',`offtimed` = \'A2\',`restime1d` = \'A2\',`restime2d` = \'A1\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(12, '2024-03-28 16:15:16', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'2\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A1\',`offtimed` = \'A2\',`restime1d` = \'A2\',`restime2d` = \'A1\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(13, '2024-03-28 16:16:37', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'2\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A1\',`offtimed` = \'A0\',`restime1d` = \'A2\',`restime2d` = \'A3\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(14, '2024-03-28 16:16:53', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'2\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(15, '2024-03-28 16:18:30', '', '', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(16, '2024-03-28 16:36:20', '', '', '', 'INSERT INTO employeeattend (`ontime`) VALUES (\'1853\');', 'INSERT', '/jp/ajax/ajax.php'),
+(17, '2024-03-28 16:36:20', '', '', '', 'INSERT INTO employeeattend (`offtime`) VALUES (\'2315\');', 'INSERT', '/jp/ajax/ajax.php'),
+(18, '2024-03-28 16:36:20', '', '', '', 'INSERT INTO employeeattend (`ontime`) VALUES (\'0853\');', 'INSERT', '/jp/ajax/ajax.php'),
+(19, '2024-03-28 16:36:20', '', '', '', 'INSERT INTO employeeattend (`offtime`) VALUES (\'1815\');', 'INSERT', '/jp/ajax/ajax.php'),
+(20, '2024-03-28 16:36:45', '', '', '', 'UPDATE sys_admin SET `Admin_Code` = \'a6c544cdda590b8fb38df61f796cb248\',`Admin_LastLogin` = NOW(),`Admin_IP` = \'61.218.134.131\'  WHERE Admin_ID = \'1\';', 'UPDATE', '/jp/system/post/SPOST_Login.php'),
+(21, '2024-03-28 16:38:48', '系統管理員', '1', '', 'UPDATE employeeattend SET `ontime` = \'1853\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(22, '2024-03-28 16:38:48', '系統管理員', '1', '', 'UPDATE employeeattend SET `offtime` = \'2315\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(23, '2024-03-28 16:38:48', '系統管理員', '1', '', 'UPDATE employeeattend SET `ontime` = \'0853\' Where employeid = \'A111\' AND nddate2 = \'20240329\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(24, '2024-03-28 16:38:48', '系統管理員', '1', '', 'UPDATE employeeattend SET `offtime` = \'1815\' Where employeid = \'A111\' AND nddate2 = \'20240329\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(25, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `ontime` = \'0835\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(26, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `offtime` = \'1855\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(27, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `ontime` = \'0853\' Where employeid = \'A111\' AND nddate2 = \'20240329\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(28, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `offtime` = \'1815\' Where employeid = \'A111\' AND nddate2 = \'20240329\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(29, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `restime1` = \'1223\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(30, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `restime2` = \'2315\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(31, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `addontime` = \'1920\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(32, '2024-03-28 16:46:08', '系統管理員', '1', '', 'UPDATE employeeattend SET `addofftime` = \'1950\' Where employeid = \'A111\' AND nddate2 = \'20240328\' ;', 'UPDATE', '/jp/ajax/ajax.php'),
+(33, '2024-03-28 17:07:04', '系統管理員', '1', '', 'UPDATE employeeattend SET `offtime` = \'1855\' Where employeid = \'A111\' AND nddate2 = \'20240301\' ;', 'UPDATE', '/jp/ajax/ajax.php');
 
 -- --------------------------------------------------------
 
