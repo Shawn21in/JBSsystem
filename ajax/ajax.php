@@ -393,13 +393,13 @@ if ($is_verify == false) {
                 } else {
                     $db2 = new Mysql();
                     $db2->Where = "Where no = '" . $employeeid . "'";
+                    $db2->query_sql($employee_db, "*");
                     if ($row = $db2->query_fetch()) {
-                        $eid = $row['no'];
+                        $eid = $row['employid'];
                     } else {
                         continue; //卡片編號不存在
                     }
                 }
-
                 if (strtotime($ymd)) {
                     $on_or_off = 0;     //判斷是上班還是下班，1為上班、2為下班
                     switch ($discern) { //判斷識別代碼
@@ -487,8 +487,8 @@ if ($is_verify == false) {
                     }
                 }
             }
-            // $_html_content =  $test;
-            $_html_status = '1';
+            // $_html_content =  '1';
+            $_html_status = '2';
             $_html_msg = '上傳成功';
             break;
     }

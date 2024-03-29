@@ -205,6 +205,8 @@ $(function () {
                         title: "訊息",
                         text: _msg.html_msg,
                         icon: 'success'
+                    }).then((result) => {
+                        location.reload();
                     });
                 }
 
