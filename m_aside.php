@@ -103,7 +103,7 @@
                     </ul>
                 </li>
 
-                <li class="has-sub ">
+                <!-- <li class="has-sub ">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components" aria-expanded="false" aria-controls="components">
                         <i class="mdi mdi-folder-multiple-outline"></i>
                         <span class="nav-text">薪資作業</span> <b class="caret"></b>
@@ -291,7 +291,7 @@
                             </li>
                         </div>
                     </ul>
-                </li>
+                </li> -->
 
             </ul>
         </div>

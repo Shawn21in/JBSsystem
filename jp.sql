@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-29 03:34:20
+-- 產生時間： 2024-03-29 09:57:20
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `cardset` (
   `restime2d` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午上班',
   `offtimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午下班',
   `addontimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班',
-  `addofftimed` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班',
+  `addofftimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `cardset` (
 --
 
 INSERT INTO `cardset` (`id`, `years`, `yeare`, `months`, `monthe`, `days`, `daye`, `hours`, `houre`, `minutes`, `minutee`, `employees`, `employeee`, `discerns`, `discerne`, `yeartype`, `employeetype`, `ontimed`, `restime1d`, `restime2d`, `offtimed`, `addontimed`, `addofftimed`) VALUES
-(1, 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, '1', '1', 'A0', 'A3', 'A4', 'A1', 'A5', 'A6');
+(1, 10, 13, 6, 7, 8, 9, 14, 15, 16, 17, 2, 5, 0, 1, '1', '1', 'A0', 'A3', 'A4', 'A1', 'A5', 'A6');
 
 -- --------------------------------------------------------
 
@@ -514,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `employeeattend` (
   `jiabantime267` decimal(19,4) DEFAULT NULL,
   `jiabantime001` decimal(19,4) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3233 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `employeeattend`
@@ -3765,8 +3765,9 @@ INSERT INTO `employeeattend` (`eid`, `employeid`, `employename`, `ndyear`, `ndye
 (3224, 'B111', '陳小姐', '110', '2021', '三', '1101229', NULL, '20211229', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (3225, 'B111', '陳小姐', '110', '2021', '四', '1101230', NULL, '20211230', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
 (3226, 'B111', '陳小姐', '110', '2021', '五', '1101231', NULL, '20211231', NULL, NULL, '0830', '1800', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 0, NULL, '1200', '1330', NULL, NULL, '', '', NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
-(3231, 'A111', '張先生', '111', '2022', '二', '1110301', NULL, '20220301', NULL, NULL, '0835', '1855', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 0, NULL, '', '', NULL, NULL, '', '', NULL, NULL, 0, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, 'null', '', NULL, NULL, NULL, NULL),
-(3232, 'A112', '肆佰', '111', '2022', '二', '1110301', NULL, '20220301', NULL, NULL, '0908', '1815', NULL, 'A', 'A1', NULL, NULL, 0, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, NULL, '', NULL, NULL, NULL, NULL);
+(3237, 'A111', '張先生', '111', '2022', '三', '1110302', NULL, '20220302', NULL, NULL, '0835', '1855', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
+(3238, 'B111', '陳小姐', '111', '2022', '三', '1110302', NULL, '20220302', NULL, NULL, '0908', '1815', NULL, 'G', 'G1', NULL, NULL, 0, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL),
+(3239, 'A111', '張先生', '111', '2022', '一', '1110328', NULL, '20220328', NULL, NULL, '0812', '1835', NULL, 'G', 'G1', NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, '工作日', '0', '0', '0', NULL, '', '', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3954,17 +3955,26 @@ CREATE TABLE IF NOT EXISTS `purchaser1` (
   `purchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '健保費',
   `employerPurchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額',
   PRIMARY KEY (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `purchaser1`
 --
 
 INSERT INTO `purchaser1` (`pid`, `purchaserno`, `purchasermny`, `purchaserhmny`, `employerPurchaserhmny`) VALUES
-(12, 1, 27440.0000, 426.0000, 1329.0000),
-(13, 2, 27600.0000, 428.0000, 1336.0000),
-(14, 3, 28800.0000, 447.0000, 1394.0000),
-(15, 4, 30300.0000, 470.0000, 1466.0000);
+(20, 1, 27470.0000, 426.0000, 1329.0000),
+(21, 2, 27600.0000, 428.0000, 1336.0000),
+(22, 3, 28800.0000, 447.0000, 1394.0000),
+(23, 4, 30300.0000, 470.0000, 1466.0000),
+(24, 5, 31800.0000, 493.0000, 1539.0000),
+(25, 6, 33300.0000, 516.0000, 1611.0000),
+(26, 7, 34800.0000, 540.0000, 1684.0000),
+(27, 8, 36300.0000, 563.0000, 1757.0000),
+(28, 9, 38200.0000, 592.0000, 1849.0000),
+(29, 10, 40100.0000, 622.0000, 1940.0000),
+(30, 11, 42000.0000, 651.0000, 2032.0000),
+(31, 12, 43900.0000, 681.0000, 2124.0000),
+(32, 13, 45800.0000, 710.0000, 2216.0000);
 
 -- --------------------------------------------------------
 
@@ -4008,17 +4018,26 @@ CREATE TABLE IF NOT EXISTS `seclab1` (
   `employerSeclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國雇主負擔',
   `employerForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞雇主負擔',
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `seclab1`
 --
 
 INSERT INTO `seclab1` (`sid`, `seclabNo`, `seclabMny`, `seclablMny`, `ForeignMny`, `employerSeclablMny`, `employerForeignMny`) VALUES
-(40, 1, 27470.0000, 659.0000, 604.0000, 2307.0000, 2115.0000),
-(41, 2, 27600.0000, 662.0000, 607.0000, 2318.0000, 2125.0000),
-(42, 3, 28800.0000, 692.0000, 634.0000, 2420.0000, 2218.0000),
-(43, 4, 30030.0000, 728.0000, 667.0000, 2545.0000, 2333.0000);
+(44, 1, 27470.0000, 659.0000, 604.0000, 2307.0000, 2115.0000),
+(45, 2, 27600.0000, 662.0000, 607.0000, 2318.0000, 2125.0000),
+(46, 3, 28800.0000, 692.0000, 634.0000, 2420.0000, 2218.0000),
+(47, 4, 30030.0000, 728.0000, 667.0000, 2545.0000, 2333.0000),
+(48, 5, 31800.0000, 764.0000, 700.0000, 2672.0000, 2449.0000),
+(49, 6, 33300.0000, 800.0000, 733.0000, 2797.0000, 2564.0000),
+(50, 7, 34800.0000, 836.0000, 766.0000, 2924.0000, 2680.0000),
+(51, 8, 36300.0000, 872.0000, 799.0000, 3049.0000, 2795.0000),
+(52, 9, 38200.0000, 916.0000, 840.0000, 3208.0000, 2941.0000),
+(53, 10, 40100.0000, 962.0000, 882.0000, 3369.0000, 3088.0000),
+(54, 11, 42000.0000, 1008.0000, 924.0000, 3528.0000, 3234.0000),
+(55, 12, 43900.0000, 1054.0000, 966.0000, 3687.0000, 3380.0000),
+(56, 13, 45800.0000, 1100.0000, 1008.0000, 3848.0000, 3527.0000);
 
 -- --------------------------------------------------------
 
@@ -4192,7 +4211,68 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+
+--
+-- 傾印資料表的資料 `sys_mysql_log`
+--
+
+INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_COMMENT`, `ML_SQL_CON`, `ML_SQL_EXEC_TYPE`, `ML_EXEC_FILE`) VALUES
+(1, '2024-03-29 13:41:07', '系統管理員', '1', '', 'INSERT INTO employeeattend (`employeid`,`employename`,`ndyear`,`ndyear2`,`ndweektype`,`nddate`,`nddate2`,`attendno`,`attendname`,`daka`,`jiaritype`,`attendday`,`memo`,`absencename`,`ontime`,`offtime`) VALUES (\'A111\',\'張先生\',\'111\',\'2022\',\'三\',\'1110302\',\'20220302\',\'G\',\'G1\',\'1\',\'1\',\'工作日\',\'\',\'\',\'0835\',\'1855\');', 'INSERT', '/jp/ajax/ajax.php'),
+(2, '2024-03-29 13:41:07', '系統管理員', '1', '', 'INSERT INTO employeeattend (`employeid`,`employename`,`ndyear`,`ndyear2`,`ndweektype`,`nddate`,`nddate2`,`attendno`,`attendname`,`daka`,`jiaritype`,`attendday`,`memo`,`absencename`,`ontime`,`offtime`) VALUES (\'A112\',\'肆佰\',\'111\',\'2022\',\'三\',\'1110302\',\'20220302\',\'A\',\'A1\',\'0\',\'1\',\'工作日\',\'\',\'\',\'0908\',\'1815\');', 'INSERT', '/jp/ajax/ajax.php'),
+(3, '2024-03-29 13:41:23', '系統管理員', '1', '', 'UPDATE employeeattend SET `ontime` = \'0835\',`offtime` = \'1855\',`attendno` = \'G\',`attendname` = \'G1\',`daka` = \'1\',`isnearly` = \'0\',`jiaritype` = \'0\',`jiabantime` = \'0\',`latemins` = \'0\',`restime1` = \'\',`restime2` = \'\',`attendday` = \'工作日\',`memo` = \'\',`qingjiatime` = \'0\',`worktime` = \'0\',`addontime` = \'\',`addofftime` = \'\',`absencename` = \'\'  WHERE  employeid = \'A111\' AND eid =\'3231\';', 'UPDATE', '/jp/ajax/ajax.php'),
+(4, '2024-03-29 13:41:23', '系統管理員', '1', '', 'UPDATE employeeattend SET `ontime` = \'0835\',`offtime` = \'1855\',`attendno` = \'G\',`attendname` = \'G1\',`daka` = \'1\',`isnearly` = \'0\',`jiaritype` = \'0\',`jiabantime` = \'0\',`latemins` = \'0\',`restime1` = \'\',`restime2` = \'\',`attendday` = \'工作日\',`memo` = \'\',`qingjiatime` = \'0\',`worktime` = \'0\',`addontime` = \'\',`addofftime` = \'\',`absencename` = \'\'  WHERE  employeid = \'A111\' AND eid =\'3233\';', 'UPDATE', '/jp/ajax/ajax.php'),
+(5, '2024-03-29 13:54:16', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'2\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(6, '2024-03-29 13:55:14', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'1\',`yeare` = \'3\',`yeartype` = \'2\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(7, '2024-03-29 13:55:20', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'2\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(8, '2024-03-29 13:55:37', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'1\',`yeare` = \'3\',`yeartype` = \'2\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(9, '2024-03-29 13:56:35', '系統管理員', '1', '', 'DELETE FROM employeeattend  WHERE  employeid = \'A111\' AND ndyear =\'111\' AND nddate BETWEEN \'1110300\' AND \'1110331\';', 'DELETE', '/jp/ajax/ajax.php'),
+(10, '2024-03-29 13:56:39', '系統管理員', '1', '', 'DELETE FROM employeeattend  WHERE  employeid = \'A112\' AND ndyear =\'111\' AND nddate BETWEEN \'1110300\' AND \'1110331\';', 'DELETE', '/jp/ajax/ajax.php'),
+(11, '2024-03-29 13:59:42', '系統管理員', '1', '', 'INSERT INTO employeeattend (`employeid`,`employename`,`ndyear`,`ndyear2`,`ndweektype`,`nddate`,`nddate2`,`attendno`,`attendname`,`daka`,`jiaritype`,`attendday`,`memo`,`absencename`,`ontime`,`offtime`) VALUES (\'A111\',\'張先生\',\'111\',\'2022\',\'三\',\'1110302\',\'20220302\',\'G\',\'G1\',\'1\',\'1\',\'工作日\',\'\',\'\',\'0835\',\'1855\');', 'INSERT', '/jp/ajax/ajax.php'),
+(12, '2024-03-29 13:59:42', '系統管理員', '1', '', 'INSERT INTO employeeattend (`employeid`,`employename`,`ndyear`,`ndyear2`,`ndweektype`,`nddate`,`nddate2`,`attendno`,`attendname`,`daka`,`jiaritype`,`attendday`,`memo`,`absencename`,`ontime`,`offtime`) VALUES (\'A112\',\'肆佰\',\'111\',\'2022\',\'三\',\'1110302\',\'20220302\',\'A\',\'A1\',\'0\',\'1\',\'工作日\',\'\',\'\',\'0908\',\'1815\');', 'INSERT', '/jp/ajax/ajax.php'),
+(13, '2024-03-29 14:04:52', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'1\',`yeare` = \'3\',`yeartype` = \'2\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'2\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(14, '2024-03-29 14:14:01', '系統管理員', '1', '', 'DELETE FROM employeeattend  WHERE  employeid = \'A111\' AND ndyear =\'111\' AND nddate BETWEEN \'1110300\' AND \'1110331\';', 'DELETE', '/jp/ajax/ajax.php'),
+(15, '2024-03-29 14:14:06', '系統管理員', '1', '', 'DELETE FROM employeeattend  WHERE  employeid = \'A112\' AND ndyear =\'111\' AND nddate BETWEEN \'1110300\' AND \'1110331\';', 'DELETE', '/jp/ajax/ajax.php'),
+(16, '2024-03-29 14:28:32', '系統管理員', '1', '', 'INSERT INTO employeeattend (`employeid`,`employename`,`ndyear`,`ndyear2`,`ndweektype`,`nddate`,`nddate2`,`attendno`,`attendname`,`daka`,`jiaritype`,`attendday`,`memo`,`absencename`,`ontime`,`offtime`) VALUES (\'A111\',\'張先生\',\'111\',\'2022\',\'三\',\'1110302\',\'20220302\',\'G\',\'G1\',\'1\',\'1\',\'工作日\',\'\',\'\',\'0835\',\'1855\');', 'INSERT', '/jp/ajax/ajax.php'),
+(17, '2024-03-29 14:28:32', '系統管理員', '1', '', 'INSERT INTO employeeattend (`employeid`,`employename`,`ndyear`,`ndyear2`,`ndweektype`,`nddate`,`nddate2`,`attendno`,`attendname`,`daka`,`jiaritype`,`attendday`,`memo`,`absencename`,`ontime`,`offtime`) VALUES (\'B111\',\'陳小姐\',\'111\',\'2022\',\'三\',\'1110302\',\'20220302\',\'G\',\'G1\',\'0\',\'1\',\'工作日\',\'\',\'\',\'0908\',\'1815\');', 'INSERT', '/jp/ajax/ajax.php'),
+(18, '2024-03-29 14:52:05', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'1\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(19, '2024-03-29 15:09:02', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'0\',`yeare` = \'3\',`yeartype` = \'1\',`months` = \'4\',`monthe` = \'5\',`days` = \'6\',`daye` = \'7\',`hours` = \'8\',`houre` = \'9\',`minutes` = \'10\',`minutee` = \'11\',`employees` = \'12\',`employeee` = \'15\',`employeetype` = \'1\',`discerns` = \'16\',`discerne` = \'17\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(20, '2024-03-29 16:15:42', '系統管理員', '1', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(21, '2024-03-29 16:15:42', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27470\',\'1329\');', 'INSERT', '/jp/web_post.php'),
+(22, '2024-03-29 16:15:42', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
+(23, '2024-03-29 16:15:42', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
+(24, '2024-03-29 16:15:42', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php'),
+(25, '2024-03-29 17:13:20', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'10\',`yeare` = \'13\',`yeartype` = \'1\',`months` = \'6\',`monthe` = \'7\',`days` = \'8\',`daye` = \'9\',`hours` = \'14\',`houre` = \'15\',`minutes` = \'16\',`minutee` = \'17\',`employees` = \'2\',`employeee` = \'5\',`employeetype` = \'1\',`discerns` = \'0\',`discerne` = \'1\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(26, '2024-03-29 17:13:42', '系統管理員', '1', '', 'UPDATE cardset SET `years` = \'10\',`yeare` = \'13\',`yeartype` = \'1\',`months` = \'6\',`monthe` = \'7\',`days` = \'8\',`daye` = \'9\',`hours` = \'14\',`houre` = \'15\',`minutes` = \'16\',`minutee` = \'17\',`employees` = \'2\',`employeee` = \'5\',`employeetype` = \'1\',`discerns` = \'0\',`discerne` = \'1\',`ontimed` = \'A0\',`offtimed` = \'A1\',`restime1d` = \'A3\',`restime2d` = \'A4\',`addontimed` = \'A5\',`addofftimed` = \'A6\'  WHERE  1=1;', 'UPDATE', '/jp/web_post.php'),
+(27, '2024-03-29 17:19:57', '系統管理員', '1', '', 'INSERT INTO employeeattend (`employeid`,`employename`,`ndyear`,`ndyear2`,`ndweektype`,`nddate`,`nddate2`,`attendno`,`attendname`,`daka`,`jiaritype`,`attendday`,`memo`,`absencename`,`ontime`,`offtime`) VALUES (\'A111\',\'張先生\',\'111\',\'2022\',\'一\',\'1110328\',\'20220328\',\'G\',\'G1\',\'1\',\'1\',\'工作日\',\'\',\'\',\'0812\',\'1835\');', 'INSERT', '/jp/ajax/ajax.php'),
+(28, '2024-03-29 17:52:06', '系統管理員', '1', '', 'DELETE FROM seclab1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(29, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'1\',\'27470\',\'659\',\'604\',\'2307\',\'2115\');', 'INSERT', '/jp/web_post.php'),
+(30, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'2\',\'27600\',\'662\',\'607\',\'2318\',\'2125\');', 'INSERT', '/jp/web_post.php'),
+(31, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'3\',\'28800\',\'692\',\'634\',\'2420\',\'2218\');', 'INSERT', '/jp/web_post.php'),
+(32, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'4\',\'30030\',\'728\',\'667\',\'2545\',\'2333\');', 'INSERT', '/jp/web_post.php'),
+(33, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'5\',\'31800\',\'764\',\'700\',\'2672\',\'2449\');', 'INSERT', '/jp/web_post.php'),
+(34, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'6\',\'33300\',\'800\',\'733\',\'2797\',\'2564\');', 'INSERT', '/jp/web_post.php'),
+(35, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'7\',\'34800\',\'836\',\'766\',\'2924\',\'2680\');', 'INSERT', '/jp/web_post.php'),
+(36, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'8\',\'36300\',\'872\',\'799\',\'3049\',\'2795\');', 'INSERT', '/jp/web_post.php'),
+(37, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'9\',\'38200\',\'916\',\'840\',\'3208\',\'2941\');', 'INSERT', '/jp/web_post.php'),
+(38, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'10\',\'40100\',\'962\',\'882\',\'3369\',\'3088\');', 'INSERT', '/jp/web_post.php'),
+(39, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'11\',\'42000\',\'1008\',\'924\',\'3528\',\'3234\');', 'INSERT', '/jp/web_post.php'),
+(40, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'12\',\'43900\',\'1054\',\'966\',\'3687\',\'3380\');', 'INSERT', '/jp/web_post.php'),
+(41, '2024-03-29 17:52:06', '系統管理員', '1', '', 'INSERT INTO seclab1 (`seclabNo`,`seclabMny`,`seclablMny`,`ForeignMny`,`employerSeclablMny`,`employerForeignMny`) VALUES (\'13\',\'45800\',\'1100\',\'1008\',\'3848\',\'3527\');', 'INSERT', '/jp/web_post.php'),
+(42, '2024-03-29 17:55:25', '系統管理員', '1', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(43, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27470\',\'1329\');', 'INSERT', '/jp/web_post.php'),
+(44, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
+(45, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
+(46, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php'),
+(47, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'5\',\'493\',\'31800\',\'1539\');', 'INSERT', '/jp/web_post.php'),
+(48, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'6\',\'516\',\'33300\',\'1611\');', 'INSERT', '/jp/web_post.php'),
+(49, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'7\',\'540\',\'34800\',\'1684\');', 'INSERT', '/jp/web_post.php'),
+(50, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'8\',\'563\',\'36300\',\'1757\');', 'INSERT', '/jp/web_post.php'),
+(51, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'9\',\'592\',\'38200\',\'1849\');', 'INSERT', '/jp/web_post.php'),
+(52, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'10\',\'622\',\'40100\',\'1940\');', 'INSERT', '/jp/web_post.php'),
+(53, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'11\',\'651\',\'42000\',\'2032\');', 'INSERT', '/jp/web_post.php'),
+(54, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
+(55, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
