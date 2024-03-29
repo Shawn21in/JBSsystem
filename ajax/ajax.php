@@ -327,7 +327,6 @@ if ($is_verify == false) {
                         } else {
                             $db2->query_data($ea_db, $ea_data, 'INSERT');
                         }
-                        // $db2->query_data($ea_db, $ea_data, 'INSERT');
                     }
                 }
                 $_html_status = '2';
@@ -377,6 +376,7 @@ if ($is_verify == false) {
             $value['data']     =  $_POST['data'];
             $data = explode(',', $value['data']);
             $cardset = $CM->get_cardset_data();
+            $tem_ea_arr = array(); //負責保留篩選後的資料
             foreach ($data as $d) {
                 $year = substr($d, $cardset['years'], $cardset['yeare'] - $cardset['years'] + 1);
                 $month = substr($d, $cardset['months'], $cardset['monthe'] - $cardset['months'] + 1);
@@ -427,34 +427,68 @@ if ($is_verify == false) {
                             $on_or_off = 2;
                             $save_ea_data = array('addofftime' => $hour . $minute);
                             break;
+                        default:
+                            break;
                     }
-
-                    $db3 = new Mysql();
-                    $db3->Where = "Where employeid = '" . $eid . "' AND nddate2 = '" . $ymd . "' ";
-                    $db3->query_sql($ea_db, "*");
-                    if ($row = $db3->query_fetch()) {
-                        $cover = 0; //判斷是否要覆蓋資料
+                    if ($on_or_off == 0) continue;
+                    if (isset($tem_ea_arr[$eid])) {
+                        //儲存的陣列格式解釋，若單筆資料為日期20240328編號A111，則陣列顯示$tem_ea_arr[A111][20240328]
                         foreach ($save_ea_data as $key2 => $value2) {
-                            if ($on_or_off == 1) {
-                                $cover = $value2 < $row[$key2] ? 1 : 0; //上班取最早來的時間
-                            } elseif ($on_or_off == 2) {
-                                $cover = $value2 > $row[$key2] ? 1 : 0; //下班取最晚走的時間
+                            if (isset($tem_ea_arr[$eid][$ymd][$key2])) {
+                                if ($on_or_off == 1) {
+                                    $tem_ea_arr[$eid][$ymd][$key2] = $value2 < $tem_ea_arr[$eid][$ymd][$key2] ? $value2 : $tem_ea_arr[$eid][$ymd][$key2];
+                                } elseif ($on_or_off == 2) {
+                                    $tem_ea_arr[$eid][$ymd][$key2] = $value2 > $tem_ea_arr[$eid][$ymd][$key2] ? $value2 : $tem_ea_arr[$eid][$ymd][$key2];
+                                }
                             } else {
-                                $cover = 1;
-                            }
-                            if ($cover) {
-                                $db3->query_data($ea_db, $save_ea_data, 'UPDATE'); //資料存在就覆蓋
+                                $tem_ea_arr[$eid][$ymd][$key2] = $value2;
                             }
                         }
                     } else {
-                        $db3->query_data($ea_db, $save_ea_data, 'INSERT'); //資料不存在就新增
+                        $tem_ea_arr[$eid][$ymd] = $save_ea_data;
                     }
                 } else {
                     continue; //時間格式有問題
                 }
             }
-            $_html_content =  $back_content;
-            $_html_status = '2';
+            foreach ($tem_ea_arr as $tk => $tv) { //tk => 編號 ex:A111、A112
+                foreach ($tv as $datek => $timev) { //datek => 日期 ex:20240329、20240330
+                    $db3 = new Mysql();
+                    $db3->Where = "Where employeid = '" . $tk . "' AND nddate2 = '" . $datek . "' ";
+                    $db3->query_sql($ea_db, "*");
+                    if ($row = $db3->query_fetch()) { //資料存在就覆蓋
+                        $db3->query_data($ea_db, $timev, 'UPDATE');
+                    } else { //資料不存在就新增
+                        $employee = $CM->get_employee_data($tk);
+                        if (!empty($employee)) {
+                            $int_ndweektype = date('w', strtotime($datek));
+                            //$week_states的 [7=>日]，但date函數為 [0=>日]。因此當date函數得出0時，自動轉換成7
+                            $ndweektype_id = $int_ndweektype == 0 ? 7 : $int_ndweektype;
+                            $ndweektype = $week_states[$ndweektype_id];
+                            $ea_data = array(
+                                'employeid'                => $tk,
+                                'employename'              => $employee['employname'],
+                                'ndyear'                   => date('Y', strtotime($datek)) - 1911,
+                                'ndyear2'                  => date('Y', strtotime($datek)),
+                                'ndweektype'               => $ndweektype,
+                                'nddate'                   => (int)$datek - 19110000,
+                                'nddate2'                  => $datek,
+                                'attendno'                 => $employee['presenttype'],
+                                'attendname'               => $employee['presentname'],
+                                'daka'                     => $employee['starttype'],
+                                'jiaritype'                => 1,
+                                'attendday'                => '工作日',
+                                'memo'                     => '',
+                                'absencename'              => ''
+                            );
+                            $result = array_merge($ea_data, $timev);
+                            $db3->query_data($ea_db, $result, 'INSERT');
+                        }
+                    }
+                }
+            }
+            // $_html_content =  $test;
+            $_html_status = '1';
             $_html_msg = '上傳成功';
             break;
     }
