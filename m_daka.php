@@ -101,14 +101,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="years"></label>
-                                <input type="number" data-name="日期(年)起" class="form-control" name="years" id="years" value="<?= $cardset['years'] ? $cardset['years'] : '0' ?>" required>
+                                <input type="number" data-name="日期(年)起" class="form-control" name="years" id="years" value="<?= isset($cardset['years']) ? $cardset['years'] : '0' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="yeare"></label>
-                                <input type="number" data-name="日期(年)末" class="form-control" name="yeare" id="yeare" value="<?= $cardset['yeare'] ? $cardset['yeare'] : '3' ?>" required>
+                                <input type="number" data-name="日期(年)末" class="form-control" name="yeare" id="yeare" value="<?= isset($cardset['yeare']) ? $cardset['yeare'] : '3' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -144,14 +144,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="months"></label>
-                                <input type="number" data-name="日期(月)起" class="form-control" name="months" id="months" value="<?= $cardset['months'] ? $cardset['months'] : '4' ?>" required>
+                                <input type="number" data-name="日期(月)起" class="form-control" name="months" id="months" value="<?= isset($cardset['months']) ? $cardset['months'] : '4' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="monthe"></label>
-                                <input type="number" data-name="日期(月)末" class="form-control" name="monthe" id="monthe" value="<?= $cardset['monthe'] ? $cardset['monthe'] : '5' ?>" required>
+                                <input type="number" data-name="日期(月)末" class="form-control" name="monthe" id="monthe" value="<?= isset($cardset['monthe']) ? $cardset['monthe'] : '5' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -168,14 +168,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="days"></label>
-                                <input type="number" data-name="日期(日)起" class="form-control" name="days" id="days" value="<?= $cardset['days'] ? $cardset['days'] : '6' ?>" required>
+                                <input type="number" data-name="日期(日)起" class="form-control" name="days" id="days" value="<?= isset($cardset['days']) ? $cardset['days'] : '6' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="daye"></label>
-                                <input type="number" data-name="日期(日)末" class="form-control" name="daye" id="daye" value="<?= $cardset['daye'] ? $cardset['daye'] : '7' ?>" required>
+                                <input type="number" data-name="日期(日)末" class="form-control" name="daye" id="daye" value="<?= isset($cardset['daye']) ? $cardset['daye'] : '7' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -192,14 +192,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="hours"></label>
-                                <input type="number" data-name="時間(時)起" class="form-control" name="hours" id="hours" value="<?= $cardset['hours'] ? $cardset['hours'] : '9' ?>" required>
+                                <input type="number" data-name="時間(時)起" class="form-control" name="hours" id="hours" value="<?= isset($cardset['hours']) ? $cardset['hours'] : '9' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="houre"></label>
-                                <input type="number" data-name="時間(時)末" class="form-control" name="houre" id="houre" value="<?= $cardset['houre'] ? $cardset['houre'] : '10' ?>" required>
+                                <input type="number" data-name="時間(時)末" class="form-control" name="houre" id="houre" value="<?= isset($cardset['houre']) ? $cardset['houre'] : '10' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -216,14 +216,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="minutes"></label>
-                                <input type="number" data-name="時間(分)起" class="form-control" name="minutes" id="minutes" value="<?= $cardset['minutes'] ? $cardset['minutes'] : '11' ?>" required>
+                                <input type="number" data-name="時間(分)起" class="form-control" name="minutes" id="minutes" value="<?= isset($cardset['minutes']) ? $cardset['minutes'] : '11' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="minutee"></label>
-                                <input type="number" data-name="時間(分)末" class="form-control" name="minutee" id="minutee" value="<?= $cardset['minutee'] ? $cardset['minutee'] : '12' ?>" required>
+                                <input type="number" data-name="時間(分)末" class="form-control" name="minutee" id="minutee" value="<?= isset($cardset['minutee']) ? $cardset['minutee'] : '12' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -240,14 +240,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="employees"></label>
-                                <input type="number" data-name="員工編(卡)號起" class="form-control" name="employees" id="employees" value="<?= $cardset['employees'] ? $cardset['employees'] : '14' ?>" required>
+                                <input type="number" data-name="員工編(卡)號起" class="form-control" name="employees" id="employees" value="<?= isset($cardset['employees']) ? $cardset['employees'] : '14' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="employeee"></label>
-                                <input type="number" data-name="員工編(卡)號末" class="form-control" name="employeee" id="employeee" value="<?= $cardset['employeee'] ? $cardset['employeee'] : '17' ?>" required>
+                                <input type="number" data-name="員工編(卡)號末" class="form-control" name="employeee" id="employeee" value="<?= isset($cardset['employeee']) ? $cardset['employeee'] : '17' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
@@ -283,14 +283,14 @@ $cardset = $CM->get_cardset_data();
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="discerns"></label>
-                                <input type="number" data-name="識別代碼：第起" class="form-control" name="discerns" id="discerns" value="<?= $cardset['discerns'] ? $cardset['discerns'] : '19' ?>" required>
+                                <input type="number" data-name="識別代碼：第起" class="form-control" name="discerns" id="discerns" value="<?= isset($cardset['discerns']) ? $cardset['discerns'] : '19' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位至</label></div>
                             <div class="col-lg-1">
                               <div class="form-group">
                                 <label for="discerne"></label>
-                                <input type="number" data-name="識別代碼：第末" class="form-control" name="discerne" id="discerne" value="<?= $cardset['discerne'] ? $cardset['discerne'] : '20' ?>" required>
+                                <input type="number" data-name="識別代碼：第末" class="form-control" name="discerne" id="discerne" value="<?= isset($cardset['discerne']) ? $cardset['discerne'] : '20' ?>" required>
                               </div>
                             </div>
                             <div class="col-lg-1 form-inline font-weight-bold"><label>位，共</label></div>
