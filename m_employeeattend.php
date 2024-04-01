@@ -188,11 +188,11 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                           <tr class="table-secondary">
                             <td>
                               <label class="control control-radio">
-                                <input type="radio" class="e_radio" name="employeid" value="<?= $value['employid'] ?>" />
+                                <input type="radio" class="e_radio" name="employeid" value="<?= $value['employeid'] ?>" />
                                 <div class="control-indicator"></div>
                               </label>
                             </td>
-                            <td><?= $value['employname'] ?></td>
+                            <td><?= $value['employename'] ?></td>
                           </tr>
                         <?php } ?>
                       </tbody>
@@ -291,14 +291,14 @@ if (empty($deductionno)) { //判斷是否為編輯模式
                             <select data-placeholder="查看編號及姓名" id="gen_ed" class="form-control" name="start_eid" data-name="選擇員工" required>
                               <option value=""></option>
                               <?php foreach ($employee_list as $key => $value) { ?>
-                                <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
+                                <option value="<?= $value['eid'] ?>"><?= $value['employeid'] ?> <?= $value['employename'] ?></option>
                               <?php } ?>
                             </select>
                             <div>～</div>
                             <select data-placeholder="查看編號及姓名" id="gen_ed2" class="form-control" name="end_eid" data-name="選擇員工" required>
                               <option value=""></option>
                               <?php foreach ($employee_list as $key => $value) { ?>
-                                <option value="<?= $value['eid'] ?>"><?= $value['employid'] ?> <?= $value['employname'] ?></option>
+                                <option value="<?= $value['eid'] ?>"><?= $value['employeid'] ?> <?= $value['employename'] ?></option>
                               <?php } ?>
                             </select>
                           </div>

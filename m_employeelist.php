@@ -89,8 +89,8 @@ $employee_list = $CM->get_employee_list();
                       <tbody class="datalist">
                         <?php foreach ($employee_list as $key => $value) { ?>
                           <tr>
-                            <td><?= $value['employid'] ?></td>
-                            <td><?= $value['employname'] ?></td>
+                            <td><?= $value['employeid'] ?></td>
+                            <td><?= $value['employename'] ?></td>
                             <td><?= $value['sex'] ?></td>
                             <td><?= $value['no'] ?></td>
                             <td><?= $value['partname'] ?></td>
@@ -99,7 +99,7 @@ $employee_list = $CM->get_employee_list();
                             <td><?= $value['expireday'] == '' ? '在職' : '離職' ?></td>
                             <td>
                               <form onsubmit="return false;">
-                                <a href="m_employee.php?c=<?php echo OEncrypt('v=' . $value['employid'], 'employee'); ?>"><span class="mdi mdi-pencil mdi-18px"></span></a>
+                                <a href="m_employee.php?c=<?php echo OEncrypt('v=' . $value['employeid'], 'employee'); ?>"><span class="mdi mdi-pencil mdi-18px"></span></a>
                                 <input type="hidden" name="eid" value="<?= rawurldecode(OEncrypt('v=' . $value['eid'], 'employee')) ?>">
                                 <a href="javascript:void(0)" class="delBtn" data-type="employee_del"><span class="mdi mdi-delete mdi-18px"></span></a>
                               </form>

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1:3306
--- 產生時間： 2024-04-01 06:12:20
--- 伺服器版本： 8.2.0
--- PHP 版本： 7.4.33
+-- 主機： localhost:3306
+-- 產生時間： 2024 年 04 月 01 日 15:32
+-- 伺服器版本： 5.5.68-MariaDB
+-- PHP 版本： 8.2.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,31 +24,58 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `absence`
+--
+
+CREATE TABLE `absence` (
+  `absenceno` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '假別編號',
+  `absencename` varchar(20) DEFAULT NULL COMMENT '假別名稱'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `absence`
+--
+
+INSERT INTO `absence` (`absenceno`, `absencename`) VALUES
+('110', '公假'),
+('120', '病假'),
+('130', '事假'),
+('140', '婚假'),
+('150', '喪假'),
+('160', '特休'),
+('170', '生理假'),
+('180', '補假'),
+('190', '育嬰假'),
+('200', '點召假'),
+('210', '無薪假'),
+('220', '產假');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `attendance`
 --
 
-DROP TABLE IF EXISTS `attendance`;
-CREATE TABLE IF NOT EXISTS `attendance` (
-  `attendanceid` int NOT NULL AUTO_INCREMENT,
-  `attendanceno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '班別編號',
-  `attendancename` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別名稱',
-  `week` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '星期(一~日)',
-  `classno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `classname` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ontime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上班時間',
-  `offtime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下班時間',
-  `addontime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班時間',
-  `addofftime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班時間',
-  `latetime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '遲到起計時間',
-  `resttime1` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第一次休息起',
-  `resttime2` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第一次休息迄',
-  `resttime3` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第二次休息起',
-  `resttime4` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第二次休息迄',
-  `worktime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤分鐘數',
-  `mealtime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '誤餐時間',
-  `type` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '設定出勤日(工作日、休息日、例假日)',
-  PRIMARY KEY (`attendanceid`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `attendance` (
+  `attendanceid` int(11) NOT NULL,
+  `attendanceno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '班別編號',
+  `attendancename` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別名稱',
+  `week` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '星期(一~日)',
+  `classno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `classname` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ontime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上班時間',
+  `offtime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下班時間',
+  `addontime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班時間',
+  `addofftime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班時間',
+  `latetime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '遲到起計時間',
+  `resttime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第一次休息起',
+  `resttime2` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第一次休息迄',
+  `resttime3` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第二次休息起',
+  `resttime4` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '第二次休息迄',
+  `worktime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤分鐘數',
+  `mealtime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '誤餐時間',
+  `type` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '設定出勤日(工作日、休息日、例假日)'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `attendance`
@@ -90,11 +117,9 @@ INSERT INTO `attendance` (`attendanceid`, `attendanceno`, `attendancename`, `wee
 -- 資料表結構 `bank`
 --
 
-DROP TABLE IF EXISTS `bank`;
-CREATE TABLE IF NOT EXISTS `bank` (
-  `bankno` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '銀行編號',
-  `bankname` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
-  PRIMARY KEY (`bankno`)
+CREATE TABLE `bank` (
+  `bankno` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '銀行編號',
+  `bankname` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -151,9 +176,8 @@ INSERT INTO `bank` (`bankno`, `bankname`) VALUES
 -- 資料表結構 `cardset`
 --
 
-DROP TABLE IF EXISTS `cardset`;
-CREATE TABLE IF NOT EXISTS `cardset` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cardset` (
+  `id` int(11) NOT NULL,
   `years` decimal(5,0) DEFAULT NULL COMMENT '日期(年)起',
   `yeare` decimal(5,0) DEFAULT NULL COMMENT '日期(年)末',
   `months` decimal(5,0) DEFAULT NULL COMMENT '日期(月)起',
@@ -168,16 +192,15 @@ CREATE TABLE IF NOT EXISTS `cardset` (
   `employeee` decimal(5,0) DEFAULT NULL COMMENT '員工編(卡)號末',
   `discerns` decimal(5,0) DEFAULT NULL COMMENT '識別代碼起',
   `discerne` decimal(5,0) DEFAULT NULL COMMENT '識別代碼末',
-  `yeartype` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年份格式',
-  `employeetype` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編(卡)號格式',
-  `ontimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '早上上班',
-  `restime1d` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '早上下班',
-  `restime2d` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午上班',
-  `offtimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午下班',
-  `addontimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班',
-  `addofftimed` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `yeartype` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年份格式',
+  `employeetype` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編(卡)號格式',
+  `ontimed` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '早上上班',
+  `restime1d` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '早上下班',
+  `restime2d` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午上班',
+  `offtimed` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下午下班',
+  `addontimed` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班',
+  `addofftimed` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `cardset`
@@ -192,65 +215,63 @@ INSERT INTO `cardset` (`id`, `years`, `yeare`, `months`, `monthe`, `days`, `daye
 -- 資料表結構 `comp`
 --
 
-DROP TABLE IF EXISTS `comp`;
-CREATE TABLE IF NOT EXISTS `comp` (
-  `cono` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '公司編號',
-  `coname1` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司簡號',
-  `coname2` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
-  `coper` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '負 責 人',
-  `couno` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '統一編號',
-  `cotel1` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電    話',
-  `cofax1` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '傳    真',
-  `coaddr1` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地    址',
-  `cowww` char(68) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '網路地址',
-  `coemail` char(68) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電子信箱',
-  `comemo1` char(68) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '備    註',
-  `xa1no` char(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `xa1name` char(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `copaths` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `copatha` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `copathc` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+CREATE TABLE `comp` (
+  `cono` char(2) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '公司編號',
+  `coname1` char(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司簡號',
+  `coname2` char(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
+  `coper` char(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '負 責 人',
+  `couno` char(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '統一編號',
+  `cotel1` char(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電    話',
+  `cofax1` char(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '傳    真',
+  `coaddr1` char(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地    址',
+  `cowww` char(68) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '網路地址',
+  `coemail` char(68) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電子信箱',
+  `comemo1` char(68) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '備    註',
+  `xa1no` char(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `xa1name` char(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copaths` char(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copatha` char(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copathc` char(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk11` decimal(1,0) DEFAULT NULL,
-  `colnk11no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk11no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk12` decimal(1,0) DEFAULT NULL,
-  `colnk12no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk12no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk13` decimal(1,0) DEFAULT NULL,
-  `colnk13no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk13no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk14` decimal(1,0) DEFAULT NULL,
-  `colnk14no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk14no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk15` decimal(1,0) DEFAULT NULL,
-  `colnk15no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk15no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk16` decimal(1,0) DEFAULT NULL,
-  `colnk16no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk16no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk17` decimal(1,0) DEFAULT NULL,
-  `colnk17no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk17no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk18` decimal(1,0) DEFAULT NULL,
-  `colnk18no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk18no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk19` decimal(1,0) DEFAULT NULL,
-  `colnk19no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk19no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk1a` decimal(1,0) DEFAULT NULL,
-  `colnk1ano` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk1ano` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk21` decimal(1,0) DEFAULT NULL,
-  `colnk21no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk21no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk22` decimal(1,0) DEFAULT NULL,
-  `colnk22no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk22no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk23` decimal(1,0) DEFAULT NULL,
-  `colnk23no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk23no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk24` decimal(1,0) DEFAULT NULL,
-  `colnk24no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk24no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk25` decimal(1,0) DEFAULT NULL,
-  `colnk25no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk25no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk26` decimal(1,0) DEFAULT NULL,
-  `colnk26no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk26no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk27` decimal(1,0) DEFAULT NULL,
-  `colnk27no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk27no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk28` decimal(1,0) DEFAULT NULL,
-  `colnk28no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colnk28no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colnk29` decimal(1,0) DEFAULT NULL,
-  `colnk29no` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `laobaono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞保投保代號',
-  `jianbaono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保代號',
-  PRIMARY KEY (`cono`)
+  `colnk29no` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `laobaono` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞保投保代號',
+  `jianbaono` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保代號'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -266,13 +287,11 @@ INSERT INTO `comp` (`cono`, `coname1`, `coname2`, `coper`, `couno`, `cotel1`, `c
 -- 資料表結構 `deduction`
 --
 
-DROP TABLE IF EXISTS `deduction`;
-CREATE TABLE IF NOT EXISTS `deduction` (
+CREATE TABLE `deduction` (
   `deductionno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '加扣款編號',
-  `deductionname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加扣款名稱',
-  `dedtype` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加(減)項',
-  `dedmny` decimal(19,4) DEFAULT NULL COMMENT '加扣款金額',
-  PRIMARY KEY (`deductionno`)
+  `deductionname` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加扣款名稱',
+  `dedtype` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加(減)項',
+  `dedmny` decimal(19,4) DEFAULT NULL COMMENT '加扣款金額'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -289,11 +308,9 @@ INSERT INTO `deduction` (`deductionno`, `deductionname`, `dedtype`, `dedmny`) VA
 -- 資料表結構 `education`
 --
 
-DROP TABLE IF EXISTS `education`;
-CREATE TABLE IF NOT EXISTS `education` (
-  `educationno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '學歷編號',
-  `educationname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '學歷名稱',
-  PRIMARY KEY (`educationno`)
+CREATE TABLE `education` (
+  `educationno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '學歷編號',
+  `educationname` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '學歷名稱'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -315,20 +332,18 @@ INSERT INTO `education` (`educationno`, `educationname`) VALUES
 -- 資料表結構 `employdeduction`
 --
 
-DROP TABLE IF EXISTS `employdeduction`;
-CREATE TABLE IF NOT EXISTS `employdeduction` (
-  `edid` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `employdeduction` (
+  `edid` int(11) NOT NULL,
   `employeid` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
   `deductionno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加扣款編號',
   `deductionname` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加扣款名稱',
   `deductionmny` decimal(19,4) DEFAULT NULL COMMENT '加扣款金額',
-  `recordno` int DEFAULT NULL COMMENT 'rec',
-  `dotype` tinyint DEFAULT NULL COMMENT '加入全薪金額',
+  `recordno` int(11) DEFAULT NULL COMMENT 'rec',
+  `dotype` tinyint(4) DEFAULT NULL COMMENT '加入全薪金額',
   `jishu` decimal(19,4) DEFAULT NULL,
   `jstype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公式類別',
-  `addh2` tinyint DEFAULT NULL COMMENT '加入補充保費',
-  PRIMARY KEY (`edid`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `addh2` tinyint(4) DEFAULT NULL COMMENT '加入補充保費'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `employdeduction`
@@ -346,49 +361,48 @@ INSERT INTO `employdeduction` (`edid`, `employeid`, `deductionno`, `deductionnam
 -- 資料表結構 `employee`
 --
 
-DROP TABLE IF EXISTS `employee`;
-CREATE TABLE IF NOT EXISTS `employee` (
-  `eid` int NOT NULL AUTO_INCREMENT,
-  `employid` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
-  `employname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工姓名',
-  `cono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司編號',
-  `coname1` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
-  `appno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職位編號',
-  `appname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職位名稱',
-  `partno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門編號',
-  `partname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門名稱',
-  `no` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '卡片編號',
-  `id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '身份證字號',
-  `sex` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '性別',
-  `EngName` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '英文名子',
-  `marry` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '婚姻狀態',
-  `blood` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '血型',
-  `nationality` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '國籍',
-  `born` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '籍貫',
-  `address` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '住址，等同add',
-  `tel` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話',
-  `fax` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '傳真',
-  `bornday` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出生日期(民國)',
+CREATE TABLE `employee` (
+  `eid` int(11) NOT NULL,
+  `employeid` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
+  `employename` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工姓名',
+  `cono` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司編號',
+  `coname1` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
+  `appno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職位編號',
+  `appname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職位名稱',
+  `partno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門編號',
+  `partname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門名稱',
+  `no` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '卡片編號',
+  `id` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '身份證字號',
+  `sex` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '性別',
+  `EngName` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '英文名子',
+  `marry` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '婚姻狀態',
+  `blood` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '血型',
+  `nationality` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '國籍',
+  `born` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '籍貫',
+  `address` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '住址，等同add',
+  `tel` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話',
+  `fax` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '傳真',
+  `bornday` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出生日期(民國)',
   `bornday2` date DEFAULT NULL COMMENT '出生日期(西元)',
-  `workday` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '入職日期(民國)',
+  `workday` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '入職日期(民國)',
   `workday2` date DEFAULT NULL COMMENT '入職日期(西元)',
-  `expireday` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '離職日期(民國)',
+  `expireday` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '離職日期(民國)',
   `expireday2` date DEFAULT NULL COMMENT '離職日期(西元)',
-  `mphone` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '行動電話',
-  `pro` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '專長',
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電子信箱',
-  `add1` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶籍地址',
-  `add2` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '通訊地址',
-  `contact` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '緊急聯絡人',
-  `contactrelation` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡人關係',
-  `contacttel1` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話',
-  `contacttel2` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話2',
-  `contactadd` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡地址',
-  `presenttype` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別編號',
-  `presentname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別名稱',
-  `buildday` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '建立日期(民國)',
+  `mphone` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '行動電話',
+  `pro` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '專長',
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電子信箱',
+  `add1` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶籍地址',
+  `add2` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '通訊地址',
+  `contact` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '緊急聯絡人',
+  `contactrelation` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡人關係',
+  `contacttel1` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話',
+  `contacttel2` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話2',
+  `contactadd` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡地址',
+  `presenttype` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別編號',
+  `presentname` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別名稱',
+  `buildday` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '建立日期(民國)',
   `buildday2` date DEFAULT NULL COMMENT '建立日期(西元)',
-  `sandtype` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '薪資方式',
+  `sandtype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '薪資方式',
   `monthmny` decimal(19,4) DEFAULT NULL COMMENT '月薪金額',
   `daymny` decimal(19,4) DEFAULT NULL COMMENT '換算日薪',
   `hourmny` decimal(19,4) DEFAULT NULL COMMENT '換算時薪',
@@ -397,16 +411,16 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `standardhour` decimal(10,1) DEFAULT NULL COMMENT '基準時數',
   `starttype` tinyint(1) DEFAULT NULL COMMENT '上班打卡',
   `resttype` tinyint(1) DEFAULT NULL COMMENT '休息打卡',
-  `bankno` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
-  `bankname` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
-  `huming` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
-  `bankid` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
-  `bankno2` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
-  `bankname2` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
-  `huming2` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
-  `bankid2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
+  `bankno` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
+  `bankname` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
+  `huming` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
+  `bankid` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
+  `bankno2` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行編號',
+  `bankname2` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
+  `huming2` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '戶名',
+  `bankid2` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
   `overtimetype` tinyint(1) DEFAULT NULL COMMENT '是否支付加班',
-  `overtimemnytype` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '計算方式',
+  `overtimemnytype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '計算方式',
   `normalovertimemny` decimal(19,4) DEFAULT NULL COMMENT '一般加班費-金額',
   `normalovertimerate` decimal(19,4) DEFAULT NULL COMMENT '一般加班費-比例',
   `extendovertimemny` decimal(19,4) DEFAULT NULL COMMENT '延長加班費-金額',
@@ -423,14 +437,14 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `resthourrate3` decimal(10,1) DEFAULT NULL COMMENT '休息日加班費-比例8hup',
   `otway` tinyint(1) DEFAULT NULL COMMENT '加班方式',
   `jiabanbudadan` tinyint(1) DEFAULT NULL COMMENT '是否不計算加班單',
-  `overtime` int DEFAULT NULL COMMENT '加班判斷',
+  `overtime` int(11) DEFAULT NULL COMMENT '加班判斷',
   `jiabanbudashi` decimal(19,4) DEFAULT NULL COMMENT '加班時間',
   `mealflag` tinyint(1) DEFAULT NULL COMMENT '是否加班給誤餐費',
   `mealmny` decimal(19,4) DEFAULT NULL COMMENT '誤餐費金額',
-  `insuredperson` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '投保者身分',
-  `seclabno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞保投保編號',
-  `seclabtno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞退自提編號',
-  `purchaserno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保編號',
+  `insuredperson` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '投保者身分',
+  `seclabno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞保投保編號',
+  `seclabtno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '勞退自提編號',
+  `purchaserno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '健保投保編號',
   `lmoney` decimal(19,4) DEFAULT NULL COMMENT '勞保投保金額',
   `tmoney` decimal(19,4) DEFAULT NULL COMMENT '勞退自提金額',
   `hmoney` decimal(19,4) DEFAULT NULL COMMENT '健保投保金額',
@@ -444,19 +458,21 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `tuixiugerenmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額',
   `employerlmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔勞保',
   `employerhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔健保',
-  PRIMARY KEY (`eid`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `webid` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'app帳號',
+  `webpassword` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'app密碼',
+  `firebaseToken` text COLLATE utf8mb4_unicode_ci COMMENT '推播firebaseToken'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `employee`
 --
 
-INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`, `sandtype`, `monthmny`, `daymny`, `hourmny`, `taxmny`, `standardday`, `standardhour`, `starttype`, `resttype`, `bankno`, `bankname`, `huming`, `bankid`, `bankno2`, `bankname2`, `huming2`, `bankid2`, `overtimetype`, `overtimemnytype`, `normalovertimemny`, `normalovertimerate`, `extendovertimemny`, `extendovertimerate`, `holidayovertimemny`, `holidayovertimerate`, `publicholidayovertimemny`, `publicholidayovertimerate`, `restovertimemny1`, `restovertimemny2`, `restovertimemny3`, `resthourrate1`, `resthourrate2`, `resthourrate3`, `otway`, `jiabanbudadan`, `overtime`, `jiabanbudashi`, `mealflag`, `mealmny`, `insuredperson`, `seclabno`, `seclabtno`, `purchaserno`, `lmoney`, `tmoney`, `hmoney`, `selflmoney`, `selftmoney`, `selfhmoney`, `selftrate`, `insuredsum`, `insuredmny`, `tuixiuselfmny`, `tuixiugerenmny`, `employerlmny`, `employerhmny`) VALUES
-(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '112-10-30', '2023-10-30', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 1, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000, '2', '1', '2', '3', 27470.0000, 27600.0000, 28800.0000, 604.0000, 1380.0000, 447.0000, 5.0000, 4.0000, 1788.0000, 30000.0000, 1800.0000, 500.0000, 600.0000),
-(7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '110-12-18', '2021-12-18', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '2', 0.0000, 5000.0000, 625.0000, 110.0000, 30.0000, 8.0, 1, 1, '052', '渣打國際商業銀行', '渣打國際', '012345678', '', '', '測試', '01234', 0, '1', 200.0000, 0.0000, 300.0000, 0.0000, 400.0000, 0.0000, 500.0000, 0.0000, 600.0000, 700.0000, 800.0000, 0.0, 0.0, 0.0, 2, 0, 1, 100.0000, 1, 50.0000, '1', '1', '3', '', 27470.0000, 28800.0000, 0.0000, 659.0000, 1440.0000, 0.0000, 5.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '110-03-04', '2021-03-04', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'A112', '肆佰', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', '', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'A', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '104-03-05', '2015-03-05', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'A', 'A1', '113-03-22', '2024-03-22', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'A113', '阿里88', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', '', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'A', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '104-11-26', '2015-11-26', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-22', '2024-03-22', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 1, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `employee` (`eid`, `employeid`, `employename`, `cono`, `coname1`, `appno`, `appname`, `partno`, `partname`, `no`, `id`, `sex`, `EngName`, `marry`, `blood`, `nationality`, `born`, `address`, `tel`, `fax`, `bornday`, `bornday2`, `workday`, `workday2`, `expireday`, `expireday2`, `mphone`, `pro`, `email`, `add1`, `add2`, `contact`, `contactrelation`, `contacttel1`, `contacttel2`, `contactadd`, `presenttype`, `presentname`, `buildday`, `buildday2`, `sandtype`, `monthmny`, `daymny`, `hourmny`, `taxmny`, `standardday`, `standardhour`, `starttype`, `resttype`, `bankno`, `bankname`, `huming`, `bankid`, `bankno2`, `bankname2`, `huming2`, `bankid2`, `overtimetype`, `overtimemnytype`, `normalovertimemny`, `normalovertimerate`, `extendovertimemny`, `extendovertimerate`, `holidayovertimemny`, `holidayovertimerate`, `publicholidayovertimemny`, `publicholidayovertimerate`, `restovertimemny1`, `restovertimemny2`, `restovertimemny3`, `resthourrate1`, `resthourrate2`, `resthourrate3`, `otway`, `jiabanbudadan`, `overtime`, `jiabanbudashi`, `mealflag`, `mealmny`, `insuredperson`, `seclabno`, `seclabtno`, `purchaserno`, `lmoney`, `tmoney`, `hmoney`, `selflmoney`, `selftmoney`, `selfhmoney`, `selftrate`, `insuredsum`, `insuredmny`, `tuixiuselfmny`, `tuixiugerenmny`, `employerlmny`, `employerhmny`, `webid`, `webpassword`, `firebaseToken`) VALUES
+(8, 'C111', '豬大仙', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'C001', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '102-07-18', '2013-07-18', '112-10-30', '2023-10-30', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-07', '2024-03-07', '1', 30000.0000, 1200.0000, 300.0000, 123.0000, 25.0000, 4.0, 1, 0, '008', '華南商業銀行', 'test', '123', '000', '中央信託局', 'test2', '321', 1, '2', 0.0000, 10.0000, 0.0000, 20.0000, 0.0000, 30.0000, 0.0000, 40.0000, 0.0000, 0.0000, 0.0000, 50.0, 60.0, 70.0, 1, 0, 0, 0.0000, 1, 50.0000, '2', '1', '2', '3', 27470.0000, 27600.0000, 28800.0000, 604.0000, 1380.0000, 447.0000, 5.0000, 4.0000, 1788.0000, 30000.0000, 1800.0000, 500.0000, 600.0000, 'C111', 'C111', 'c8ytekxJqEMVkRBQ6JREwL:APA91bFPzjtLW7MZgL_aB5WqvhLHe-CTdVQZRit7J97LZN6KrIduCNXG6-cX9pR4qwauO0b93ZBjn--p3YLV7-CYOmNs-rxKu6TTv08Tfj29xOzsqtaDpxur8T2ehzgNrJ00nL_LC13A'),
+(7, 'A111', '張先生', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'A001', 'A123456', '男', 'ZHANG,XIAN-SHENG', '已', 'AB', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '110-12-18', '2021-12-18', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '2', 0.0000, 5000.0000, 625.0000, 110.0000, 30.0000, 8.0, 1, 1, '052', '渣打國際商業銀行', '渣打國際', '012345678', '', '', '測試', '01234', 0, '1', 200.0000, 0.0000, 300.0000, 0.0000, 400.0000, 0.0000, 500.0000, 0.0000, 600.0000, 700.0000, 800.0000, 0.0, 0.0, 0.0, 2, 0, 1, 100.0000, 1, 50.0000, '1', '1', '3', '', 27470.0000, 28800.0000, 0.0000, 659.0000, 1440.0000, 0.0000, 5.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, NULL),
+(6, 'B111', '陳小姐', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', 'TEST', 'A123456', '女', 'ZHANG,XIAN-SHENG', '未', 'B', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '80-01-01', '1991-01-01', '110-03-04', '2021-03-04', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'G', 'G1', '113-03-07', '2024-03-07', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'A112', '肆佰', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', '', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'A', '台灣', '台中市', '407台中市西屯區中工二路120號', '0912345678', '0412345678', '104-03-05', '2015-03-05', '80-01-01', '1991-01-01', '', '0000-00-00', '0912345678', 'test', 'g@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'A', 'A1', '113-03-22', '2024-03-22', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'A113', '阿里88', '01', '庫點子', 'BE', '後端工程師', 'WD', '網設部', '', 'A12345678', '女', 'ZHANG,XIAN-SHENG', '未', 'A', '台灣', '台中市', '407台中市西屯區中工二路120號', '0512345678', '0412345678', '80-01-01', '1991-01-01', '104-11-26', '2015-11-26', '', '0000-00-00', '0912345678', 'test', 'gmail@gmail.com', '407台中市西屯區中工二路120號', '407台中市西屯區中工二路120號', '張太太', '妻子', '0912345678', '0912345678', '407台中市西屯區中工二路120號', 'B', 'B1', '113-03-22', '2024-03-22', '1', 0.0000, 0.0000, 0.0000, 0.0000, 30.0000, 8.0, 1, 0, '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -464,29 +480,28 @@ INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `app
 -- 資料表結構 `employeeattend`
 --
 
-DROP TABLE IF EXISTS `employeeattend`;
-CREATE TABLE IF NOT EXISTS `employeeattend` (
-  `eid` int NOT NULL AUTO_INCREMENT,
-  `employeid` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
-  `employename` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工姓名',
-  `ndyear` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度(民國)',
-  `ndyear2` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度(西元)',
+CREATE TABLE `employeeattend` (
+  `eid` int(11) NOT NULL,
+  `employeid` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
+  `employename` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工姓名',
+  `ndyear` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度(民國)',
+  `ndyear2` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度(西元)',
   `ndweektype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '星期',
-  `nddate` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日期-民國',
+  `nddate` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日期-民國',
   `nddate1` datetime DEFAULT NULL,
-  `nddate2` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日期-西元',
+  `nddate2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日期-西元',
   `ndclassno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ndclassname` int DEFAULT NULL,
+  `ndclassname` int(11) DEFAULT NULL,
   `ontime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上班時間',
   `offtime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下班時間',
-  `latetime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '遲到時間',
+  `latetime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '遲到時間',
   `attendno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤編號',
   `attendname` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤名稱',
-  `addtime1` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班時間起',
-  `addtime2` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班時間末',
-  `daka` tinyint DEFAULT NULL COMMENT '是否需要打卡',
+  `addtime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班時間起',
+  `addtime2` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班時間末',
+  `daka` tinyint(4) DEFAULT NULL COMMENT '是否需要打卡',
   `cuowutype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jiaritype` tinyint DEFAULT NULL COMMENT 'true-當日日期是放假日;false-當日日期不是放假日。',
+  `jiaritype` tinyint(4) DEFAULT NULL COMMENT 'true-當日日期是放假日;false-當日日期不是放假日。',
   `gongxiutype` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `restime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '休息時間1起',
   `restime2` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '休息時間1末',
@@ -494,27 +509,26 @@ CREATE TABLE IF NOT EXISTS `employeeattend` (
   `restime4` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `addontime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班',
   `addofftime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班',
-  `lock1` tinyint DEFAULT NULL,
+  `lock1` tinyint(4) DEFAULT NULL,
   `mend` decimal(19,4) DEFAULT NULL,
-  `isnearly` tinyint DEFAULT NULL COMMENT '不算早退',
-  `latemins` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '遲到分數',
+  `isnearly` tinyint(4) DEFAULT NULL COMMENT '不算早退',
+  `latemins` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '遲到分數',
   `latetimes` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `isabsent` tinyint DEFAULT NULL,
+  `isabsent` tinyint(4) DEFAULT NULL,
   `ontime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `offtime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `attendday` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日',
-  `worktime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '上班時數',
-  `jiabantime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '加班時數',
-  `qingjiatime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '請假時數',
+  `worktime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '上班時數',
+  `jiabantime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '加班時數',
+  `qingjiatime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '請假時數',
   `absenceno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '假別編號',
   `absencename` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '假別名稱',
   `memo` text COLLATE utf8mb4_unicode_ci COMMENT '備註',
   `jiabantime134` decimal(19,4) DEFAULT NULL,
   `jiabantime167` decimal(19,4) DEFAULT NULL,
   `jiabantime267` decimal(19,4) DEFAULT NULL,
-  `jiabantime001` decimal(19,4) DEFAULT NULL,
-  PRIMARY KEY (`eid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `jiabantime001` decimal(19,4) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `employeeattend`
@@ -3775,11 +3789,9 @@ INSERT INTO `employeeattend` (`eid`, `employeid`, `employename`, `ndyear`, `ndye
 -- 資料表結構 `family`
 --
 
-DROP TABLE IF EXISTS `family`;
-CREATE TABLE IF NOT EXISTS `family` (
-  `relationno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `relationship` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`relationno`)
+CREATE TABLE `family` (
+  `relationno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `relationship` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3803,16 +3815,14 @@ INSERT INTO `family` (`relationno`, `relationship`) VALUES
 -- 資料表結構 `holidays`
 --
 
-DROP TABLE IF EXISTS `holidays`;
-CREATE TABLE IF NOT EXISTS `holidays` (
-  `holidayid` int NOT NULL AUTO_INCREMENT,
-  `holiday` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期',
-  `holidayName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期名稱',
-  `niandu` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度',
-  `attendanceno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別',
-  `AttendDay` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期型態(國定日、休息日等)',
-  PRIMARY KEY (`holidayid`)
-) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `holidays` (
+  `holidayid` int(11) NOT NULL,
+  `holiday` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期',
+  `holidayName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期名稱',
+  `niandu` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度',
+  `attendanceno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別',
+  `AttendDay` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期型態(國定日、休息日等)'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `holidays`
@@ -3884,11 +3894,9 @@ INSERT INTO `holidays` (`holidayid`, `holiday`, `holidayName`, `niandu`, `attend
 -- 資料表結構 `jobs`
 --
 
-DROP TABLE IF EXISTS `jobs`;
-CREATE TABLE IF NOT EXISTS `jobs` (
-  `appno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `appname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職稱',
-  PRIMARY KEY (`appno`)
+CREATE TABLE `jobs` (
+  `appno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `appname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職稱'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3904,14 +3912,12 @@ INSERT INTO `jobs` (`appno`, `appname`) VALUES
 -- 資料表結構 `mod_recaptcha`
 --
 
-DROP TABLE IF EXISTS `mod_recaptcha`;
-CREATE TABLE IF NOT EXISTS `mod_recaptcha` (
-  `Admin_ID` int NOT NULL COMMENT '管理者',
+CREATE TABLE `mod_recaptcha` (
+  `Admin_ID` int(11) NOT NULL COMMENT '管理者',
   `Recaptcha_JS_url` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JS引用路徑',
   `Recaptcha_API_url` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'API路徑',
   `Recaptcha_SiteKey` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公鑰',
-  `Recaptcha_SecretKey` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '私鑰',
-  PRIMARY KEY (`Admin_ID`)
+  `Recaptcha_SecretKey` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '私鑰'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='驗證碼資料表';
 
 --
@@ -3927,11 +3933,9 @@ INSERT INTO `mod_recaptcha` (`Admin_ID`, `Recaptcha_JS_url`, `Recaptcha_API_url`
 -- 資料表結構 `part`
 --
 
-DROP TABLE IF EXISTS `part`;
-CREATE TABLE IF NOT EXISTS `part` (
-  `partno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '部門編號',
-  `partname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門名稱',
-  PRIMARY KEY (`partno`)
+CREATE TABLE `part` (
+  `partno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '部門編號',
+  `partname` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門名稱'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3947,15 +3951,13 @@ INSERT INTO `part` (`partno`, `partname`) VALUES
 -- 資料表結構 `purchaser1`
 --
 
-DROP TABLE IF EXISTS `purchaser1`;
-CREATE TABLE IF NOT EXISTS `purchaser1` (
-  `pid` int NOT NULL AUTO_INCREMENT COMMENT 'IDENTITY(1,1)',
-  `purchaserno` int DEFAULT NULL COMMENT '等級',
+CREATE TABLE `purchaser1` (
+  `pid` int(11) NOT NULL COMMENT 'IDENTITY(1,1)',
+  `purchaserno` int(11) DEFAULT NULL COMMENT '等級',
   `purchasermny` decimal(19,4) DEFAULT NULL COMMENT '投保金額',
   `purchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '健保費',
-  `employerPurchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額',
-  PRIMARY KEY (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=133 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `employerPurchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `purchaser1`
@@ -4019,11 +4021,9 @@ INSERT INTO `purchaser1` (`pid`, `purchaserno`, `purchasermny`, `purchaserhmny`,
 -- 資料表結構 `reason`
 --
 
-DROP TABLE IF EXISTS `reason`;
-CREATE TABLE IF NOT EXISTS `reason` (
-  `reasonno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `reason` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`reasonno`)
+CREATE TABLE `reason` (
+  `reasonno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reason` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4045,17 +4045,15 @@ INSERT INTO `reason` (`reasonno`, `reason`) VALUES
 -- 資料表結構 `seclab1`
 --
 
-DROP TABLE IF EXISTS `seclab1`;
-CREATE TABLE IF NOT EXISTS `seclab1` (
-  `sid` int NOT NULL AUTO_INCREMENT COMMENT 'IDENTITY(1,1)',
-  `seclabNo` int DEFAULT NULL COMMENT '等級',
+CREATE TABLE `seclab1` (
+  `sid` int(11) NOT NULL COMMENT 'IDENTITY(1,1)',
+  `seclabNo` int(11) DEFAULT NULL COMMENT '等級',
   `seclabMny` decimal(19,4) DEFAULT '0.0000' COMMENT '投保金額',
   `seclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國勞保費(個人)',
   `ForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞勞保費',
   `employerSeclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國雇主負擔',
-  `employerForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞雇主負擔',
-  PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `employerForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞雇主負擔'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `seclab1`
@@ -4082,27 +4080,23 @@ INSERT INTO `seclab1` (`sid`, `seclabNo`, `seclabMny`, `seclablMny`, `ForeignMny
 -- 資料表結構 `sys_admin`
 --
 
-DROP TABLE IF EXISTS `sys_admin`;
-CREATE TABLE IF NOT EXISTS `sys_admin` (
-  `Admin_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sys_admin` (
+  `Admin_ID` int(10) UNSIGNED NOT NULL,
   `Admin_Acc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '管理者帳號',
   `Admin_Pwd` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '管理者密碼',
   `Admin_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '管理者名稱',
   `Admin_Depart` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門',
-  `Admin_Permissions` tinyint UNSIGNED DEFAULT '0' COMMENT '管理者權限',
-  `Group_ID` tinyint UNSIGNED DEFAULT NULL COMMENT '管理者群組',
+  `Admin_Permissions` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '管理者權限',
+  `Group_ID` tinyint(3) UNSIGNED DEFAULT NULL COMMENT '管理者群組',
   `Depart_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門',
-  `Tables_ID` int UNSIGNED DEFAULT NULL COMMENT '管理者資料庫',
+  `Tables_ID` int(10) UNSIGNED DEFAULT NULL COMMENT '管理者資料庫',
   `Admin_Code` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '登入碼',
   `Admin_Sdate` datetime DEFAULT '1911-00-00 00:00:00' COMMENT '建立時間',
   `Admin_LastLogin` datetime DEFAULT NULL COMMENT '最後登入日期',
   `Admin_IP` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '登入IP',
-  `Admin_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
-  `Admin_Checkbox` tinyint UNSIGNED DEFAULT '0' COMMENT '切換資料庫啟用',
-  PRIMARY KEY (`Admin_ID`),
-  UNIQUE KEY `Admin_Acc` (`Admin_Acc`),
-  KEY `Admin_Code` (`Admin_Code`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統管理員表';
+  `Admin_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `Admin_Checkbox` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '切換資料庫啟用'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統管理員表';
 
 --
 -- 傾印資料表的資料 `sys_admin`
@@ -4122,13 +4116,11 @@ INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Ad
 -- 資料表結構 `sys_download`
 --
 
-DROP TABLE IF EXISTS `sys_download`;
-CREATE TABLE IF NOT EXISTS `sys_download` (
+CREATE TABLE `sys_download` (
   `DL_Session` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '下載碼',
   `DL_DownLoadInfo` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下載資訊',
   `DL_DownLoadPath` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '檔案路徑',
-  `DL_DownLoadUrl` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下載位址',
-  PRIMARY KEY (`DL_Session`)
+  `DL_DownLoadUrl` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下載位址'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='下載資料表';
 
 -- --------------------------------------------------------
@@ -4137,14 +4129,12 @@ CREATE TABLE IF NOT EXISTS `sys_download` (
 -- 資料表結構 `sys_group`
 --
 
-DROP TABLE IF EXISTS `sys_group`;
-CREATE TABLE IF NOT EXISTS `sys_group` (
-  `Group_ID` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '群組ID',
+CREATE TABLE `sys_group` (
+  `Group_ID` int(10) UNSIGNED NOT NULL COMMENT '群組ID',
   `Group_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '群組名稱',
-  `Group_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '群組級別',
-  `Group_MenuUse` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '群組目錄權限',
-  PRIMARY KEY (`Group_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統群組表';
+  `Group_Lv` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '群組級別',
+  `Group_MenuUse` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '群組目錄權限'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統群組表';
 
 --
 -- 傾印資料表的資料 `sys_group`
@@ -4161,16 +4151,15 @@ INSERT INTO `sys_group` (`Group_ID`, `Group_Name`, `Group_Lv`, `Group_MenuUse`) 
 -- 資料表結構 `sys_menu`
 --
 
-DROP TABLE IF EXISTS `sys_menu`;
-CREATE TABLE IF NOT EXISTS `sys_menu` (
+CREATE TABLE `sys_menu` (
   `Menu_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '目錄編號',
   `Menu_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄名稱',
-  `Menu_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
+  `Menu_Lv` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '目錄層級',
   `Menu_Exec` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔',
   `Menu_Path` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔位置',
-  `Menu_Sort` int DEFAULT '0' COMMENT '目錄排序',
+  `Menu_Sort` int(11) DEFAULT '0' COMMENT '目錄排序',
   `Menu_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層類別',
-  `Menu_Permissions` tinyint UNSIGNED DEFAULT '0' COMMENT '目錄權限',
+  `Menu_Permissions` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '目錄權限',
   `Menu_Smallpic` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄小圖示',
   `Menu_TableName` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表名稱',
   `Menu_TableName1` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '擴充資料表名稱',
@@ -4182,23 +4171,21 @@ CREATE TABLE IF NOT EXISTS `sys_menu` (
   `Menu_TablePre1` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '擴充資料表前輟',
   `Menu_TablePre2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類資料表前輟',
   `Menu_OrderBy` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '自定義排序',
-  `Menu_ClassMax` tinyint UNSIGNED DEFAULT '1' COMMENT '分類最大層數',
+  `Menu_ClassMax` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '分類最大層數',
   `Menu_Mode` tinyint(1) DEFAULT '0' COMMENT '目錄模式',
   `Menu_Model` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄模組',
   `Menu_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄連結',
   `Menu_CstSnPre` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '自定編號前輟',
   `Menu_CstSnType` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '自訂編號種類',
-  `Menu_CstSnNum` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '自訂編號流水碼數',
-  `Menu_Add` tinyint UNSIGNED DEFAULT '0' COMMENT '允許新增資料',
-  `Menu_Edt` tinyint UNSIGNED DEFAULT '0' COMMENT '允許編輯資料',
-  `Menu_Del` tinyint UNSIGNED DEFAULT '0' COMMENT '允許刪除資料',
-  `Menu_View` tinyint UNSIGNED DEFAULT '0' COMMENT '允許檢視資料',
-  `Menu_Albums_Edt` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '允許編輯相片',
-  `Menu_Albums_Mpc` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '允許設封面圖',
-  `Menu_SysUse` tinyint UNSIGNED DEFAULT '0' COMMENT '系統使用',
-  `Menu_SysAdminUse` tinyint UNSIGNED DEFAULT '0' COMMENT '系統管理員使用',
-  PRIMARY KEY (`Menu_ID`),
-  KEY `Menu_Exec` (`Menu_Exec`)
+  `Menu_CstSnNum` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '自訂編號流水碼數',
+  `Menu_Add` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '允許新增資料',
+  `Menu_Edt` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '允許編輯資料',
+  `Menu_Del` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '允許刪除資料',
+  `Menu_View` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '允許檢視資料',
+  `Menu_Albums_Edt` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '允許編輯相片',
+  `Menu_Albums_Mpc` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '允許設封面圖',
+  `Menu_SysUse` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '系統使用',
+  `Menu_SysAdminUse` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '系統管理員使用'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統目錄表';
 
 --
@@ -4232,23 +4219,16 @@ INSERT INTO `sys_menu` (`Menu_ID`, `Menu_Name`, `Menu_Lv`, `Menu_Exec`, `Menu_Pa
 -- 資料表結構 `sys_mysql_log`
 --
 
-DROP TABLE IF EXISTS `sys_mysql_log`;
-CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
-  `ML_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sys_mysql_log` (
+  `ML_ID` int(10) UNSIGNED NOT NULL,
   `ML_DATE` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '建立時間',
   `ML_USER` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '使用者',
   `ML_DATA_ID` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料ID',
   `ML_COMMENT` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '註解',
   `ML_SQL_CON` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '執行內容',
   `ML_SQL_EXEC_TYPE` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '訊息種類',
-  `ML_EXEC_FILE` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔案',
-  PRIMARY KEY (`ML_ID`),
-  KEY `ML_DATE` (`ML_DATE`),
-  KEY `ML_USER` (`ML_USER`),
-  KEY `ML_DATA_ID` (`ML_DATA_ID`),
-  KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
-  KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`(250))
-) ENGINE=MyISAM AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
+  `ML_EXEC_FILE` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔案'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -4311,109 +4291,12 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (54, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
 (55, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php'),
 (56, '2024-04-01 08:53:54', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'e5fb614c4d353db87ea7fdfbdc0689fb\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
-(57, '2024-04-01 11:36:28', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'71ef1f7762761f8f435c02e6d4f40d8e\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
-(58, '2024-04-01 12:01:32', '', '', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
-(59, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27470\',\'1329\');', 'INSERT', '/jp/web_post.php'),
-(60, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
-(61, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
-(62, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php'),
-(63, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'5\',\'493\',\'31800\',\'1539\');', 'INSERT', '/jp/web_post.php'),
-(64, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'6\',\'516\',\'33300\',\'1611\');', 'INSERT', '/jp/web_post.php'),
-(65, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'7\',\'540\',\'34800\',\'1684\');', 'INSERT', '/jp/web_post.php'),
-(66, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'8\',\'563\',\'36300\',\'1757\');', 'INSERT', '/jp/web_post.php'),
-(67, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'9\',\'592\',\'38200\',\'1849\');', 'INSERT', '/jp/web_post.php'),
-(68, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'10\',\'622\',\'40100\',\'1940\');', 'INSERT', '/jp/web_post.php'),
-(69, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'11\',\'651\',\'42000\',\'2032\');', 'INSERT', '/jp/web_post.php'),
-(70, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
-(71, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php'),
-(72, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'14\',\'748\',\'48200\',\'2332\');', 'INSERT', '/jp/web_post.php'),
-(73, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'15\',\'822\',\'50600\',\'2449\');', 'INSERT', '/jp/web_post.php'),
-(74, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'16\',\'859\',\'53000\',\'2565\');', 'INSERT', '/jp/web_post.php'),
-(75, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'17\',\'\',\'55400\',\'2681\');', 'INSERT', '/jp/web_post.php'),
-(76, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'18\',\'\',\'57800\',\'2797\');', 'INSERT', '/jp/web_post.php'),
-(77, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'19\',\'\',\'60800\',\'2942\');', 'INSERT', '/jp/web_post.php'),
-(78, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'20\',\'\',\'63800\',\'3087\');', 'INSERT', '/jp/web_post.php'),
-(79, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'21\',\'\',\'66800\',\'3233\');', 'INSERT', '/jp/web_post.php'),
-(80, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'22\',\'\',\'69800\',\'3378\');', 'INSERT', '/jp/web_post.php'),
-(81, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'23\',\'\',\'72800\',\'3523\');', 'INSERT', '/jp/web_post.php'),
-(82, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'24\',\'\',\'76500\',\'3702\');', 'INSERT', '/jp/web_post.php'),
-(83, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'25\',\'\',\'80200\',\'3881\');', 'INSERT', '/jp/web_post.php'),
-(84, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'26\',\'\',\'83900\',\'4060\');', 'INSERT', '/jp/web_post.php'),
-(85, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'27\',\'\',\'87600\',\'4239\');', 'INSERT', '/jp/web_post.php'),
-(86, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'28\',\'\',\'92100\',\'4457\');', 'INSERT', '/jp/web_post.php'),
-(87, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'29\',\'\',\'96600\',\'4675\');', 'INSERT', '/jp/web_post.php'),
-(88, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'30\',\'\',\'101100\',\'4892\');', 'INSERT', '/jp/web_post.php'),
-(89, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'31\',\'\',\'105600\',\'5110\');', 'INSERT', '/jp/web_post.php'),
-(90, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'32\',\'\',\'110100\',\'5328\');', 'INSERT', '/jp/web_post.php'),
-(91, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'33\',\'\',\'115500\',\'5589\');', 'INSERT', '/jp/web_post.php'),
-(92, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'34\',\'\',\'120900\',\'5850\');', 'INSERT', '/jp/web_post.php'),
-(93, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'35\',\'\',\'126300\',\'6112\');', 'INSERT', '/jp/web_post.php'),
-(94, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'36\',\'\',\'131700\',\'6373\');', 'INSERT', '/jp/web_post.php'),
-(95, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'37\',\'\',\'137100\',\'6634\');', 'INSERT', '/jp/web_post.php'),
-(96, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'38\',\'\',\'142500\',\'6896\');', 'INSERT', '/jp/web_post.php'),
-(97, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'39\',\'\',\'147900\',\'7157\');', 'INSERT', '/jp/web_post.php'),
-(98, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'40\',\'\',\'150000\',\'7259\');', 'INSERT', '/jp/web_post.php'),
-(99, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'41\',\'\',\'156400\',\'7568\');', 'INSERT', '/jp/web_post.php'),
-(100, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'42\',\'\',\'162800\',\'7878\');', 'INSERT', '/jp/web_post.php'),
-(101, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'43\',\'\',\'169200\',\'8188\');', 'INSERT', '/jp/web_post.php'),
-(102, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'44\',\'\',\'175600\',\'8497\');', 'INSERT', '/jp/web_post.php'),
-(103, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'45\',\'\',\'182000\',\'8807\');', 'INSERT', '/jp/web_post.php'),
-(104, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'46\',\'\',\'189500\',\'9170\');', 'INSERT', '/jp/web_post.php'),
-(105, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'47\',\'\',\'197000\',\'9533\');', 'INSERT', '/jp/web_post.php'),
-(106, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'48\',\'\',\'204500\',\'9896\');', 'INSERT', '/jp/web_post.php'),
-(107, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'49\',\'\',\'212000\',\'10259\');', 'INSERT', '/jp/web_post.php'),
-(108, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'50\',\'\',\'219500\',\'10622\');', 'INSERT', '/jp/web_post.php'),
-(109, '2024-04-01 13:50:40', '', '', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
-(110, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27470\',\'1329\');', 'INSERT', '/jp/web_post.php'),
-(111, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
-(112, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
-(113, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php'),
-(114, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'5\',\'493\',\'31800\',\'1539\');', 'INSERT', '/jp/web_post.php'),
-(115, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'6\',\'516\',\'33300\',\'1611\');', 'INSERT', '/jp/web_post.php'),
-(116, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'7\',\'540\',\'34800\',\'1684\');', 'INSERT', '/jp/web_post.php'),
-(117, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'8\',\'563\',\'36300\',\'1757\');', 'INSERT', '/jp/web_post.php'),
-(118, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'9\',\'592\',\'38200\',\'1849\');', 'INSERT', '/jp/web_post.php'),
-(119, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'10\',\'622\',\'40100\',\'1940\');', 'INSERT', '/jp/web_post.php'),
-(120, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'11\',\'651\',\'42000\',\'2032\');', 'INSERT', '/jp/web_post.php'),
-(121, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
-(122, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php'),
-(123, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'14\',\'748\',\'48200\',\'2332\');', 'INSERT', '/jp/web_post.php'),
-(124, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'15\',\'785\',\'50600\',\'2449\');', 'INSERT', '/jp/web_post.php'),
-(125, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'16\',\'822\',\'53000\',\'2565\');', 'INSERT', '/jp/web_post.php'),
-(126, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'17\',\'859\',\'55400\',\'2681\');', 'INSERT', '/jp/web_post.php'),
-(127, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'18\',\'896\',\'57800\',\'2797\');', 'INSERT', '/jp/web_post.php'),
-(128, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'19\',\'943\',\'60800\',\'2942\');', 'INSERT', '/jp/web_post.php'),
-(129, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'20\',\'990\',\'63800\',\'3087\');', 'INSERT', '/jp/web_post.php'),
-(130, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'21\',\'1036\',\'66800\',\'3233\');', 'INSERT', '/jp/web_post.php'),
-(131, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'22\',\'1083\',\'69800\',\'3378\');', 'INSERT', '/jp/web_post.php'),
-(132, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'23\',\'1129\',\'72800\',\'3523\');', 'INSERT', '/jp/web_post.php'),
-(133, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'24\',\'1187\',\'76500\',\'3702\');', 'INSERT', '/jp/web_post.php'),
-(134, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'25\',\'1244\',\'80200\',\'3881\');', 'INSERT', '/jp/web_post.php'),
-(135, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'26\',\'1301\',\'83900\',\'4060\');', 'INSERT', '/jp/web_post.php'),
-(136, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'27\',\'1359\',\'87600\',\'4239\');', 'INSERT', '/jp/web_post.php'),
-(137, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'28\',\'1428\',\'92100\',\'4457\');', 'INSERT', '/jp/web_post.php'),
-(138, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'29\',\'1498\',\'96600\',\'4675\');', 'INSERT', '/jp/web_post.php'),
-(139, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'30\',\'1568\',\'101100\',\'4892\');', 'INSERT', '/jp/web_post.php'),
-(140, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'31\',\'1638\',\'105600\',\'5110\');', 'INSERT', '/jp/web_post.php'),
-(141, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'32\',\'1708\',\'110100\',\'5328\');', 'INSERT', '/jp/web_post.php'),
-(142, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'33\',\'1791\',\'115500\',\'5589\');', 'INSERT', '/jp/web_post.php'),
-(143, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'34\',\'1875\',\'120900\',\'5850\');', 'INSERT', '/jp/web_post.php'),
-(144, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'35\',\'1959\',\'126300\',\'6112\');', 'INSERT', '/jp/web_post.php'),
-(145, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'36\',\'2043\',\'131700\',\'6373\');', 'INSERT', '/jp/web_post.php'),
-(146, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'37\',\'2126\',\'137100\',\'6634\');', 'INSERT', '/jp/web_post.php'),
-(147, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'38\',\'2210\',\'142500\',\'6896\');', 'INSERT', '/jp/web_post.php'),
-(148, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'39\',\'2294\',\'147900\',\'7157\');', 'INSERT', '/jp/web_post.php'),
-(149, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'40\',\'2327\',\'150000\',\'7259\');', 'INSERT', '/jp/web_post.php'),
-(150, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'41\',\'2426\',\'156400\',\'7568\');', 'INSERT', '/jp/web_post.php'),
-(151, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'42\',\'2525\',\'162800\',\'7878\');', 'INSERT', '/jp/web_post.php'),
-(152, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'43\',\'2624\',\'169200\',\'8188\');', 'INSERT', '/jp/web_post.php'),
-(153, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'44\',\'2724\',\'175600\',\'8497\');', 'INSERT', '/jp/web_post.php'),
-(154, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'45\',\'2823\',\'182000\',\'8807\');', 'INSERT', '/jp/web_post.php'),
-(155, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'46\',\'2939\',\'189500\',\'9170\');', 'INSERT', '/jp/web_post.php'),
-(156, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'47\',\'3055\',\'197000\',\'9533\');', 'INSERT', '/jp/web_post.php'),
-(157, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'48\',\'3172\',\'204500\',\'9896\');', 'INSERT', '/jp/web_post.php'),
-(158, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'49\',\'3288\',\'212000\',\'10259\');', 'INSERT', '/jp/web_post.php'),
-(159, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'50\',\'3404\',\'219500\',\'10622\');', 'INSERT', '/jp/web_post.php');
+(57, '2024-04-01 11:28:54', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'1e887aa63ad85b7532c0662ff76e12c1\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/web_post.php'),
+(58, '2024-04-01 11:30:01', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'824576581dc0453c5de3d10d3a8955d2\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/web_post.php'),
+(59, '2024-04-01 11:38:58', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'a6145c0b6903da1165f1fad0774b3351\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/web_post.php'),
+(60, '2024-04-01 15:28:33', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'cf68d667107b49c87d81a8f313820ea4\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/web_post.php'),
+(61, '2024-04-01 15:28:46', '', '', 'Unknown column \'employid\' in \'order clause\'', 'SELECT * FROM employee   Order By employid asc ;', 'ERROR', '/m_employeelist.php'),
+(62, '2024-04-01 15:28:50', '', '', 'Unknown column \'employid\' in \'order clause\'', 'SELECT * FROM employee   Order By employid asc ;', 'ERROR', '/m_employeeattend.php');
 
 -- --------------------------------------------------------
 
@@ -4421,12 +4304,11 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 -- 資料表結構 `sys_tables`
 --
 
-DROP TABLE IF EXISTS `sys_tables`;
-CREATE TABLE IF NOT EXISTS `sys_tables` (
-  `Tables_ID` int UNSIGNED NOT NULL COMMENT '資料庫ID',
+CREATE TABLE `sys_tables` (
+  `Tables_ID` int(10) UNSIGNED NOT NULL COMMENT '資料庫ID',
   `Tables_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料庫名稱',
   `Tables_Name1` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料庫中文名稱',
-  `Tables_Open` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '資料庫啟用'
+  `Tables_Open` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '資料庫啟用'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統資料庫表';
 
 --
@@ -4442,30 +4324,28 @@ INSERT INTO `sys_tables` (`Tables_ID`, `Tables_Name`, `Tables_Name1`, `Tables_Op
 -- 資料表結構 `sys_tables_option`
 --
 
-DROP TABLE IF EXISTS `sys_tables_option`;
-CREATE TABLE IF NOT EXISTS `sys_tables_option` (
+CREATE TABLE `sys_tables_option` (
   `TO_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表名稱',
   `TO_Field` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表欄位',
   `TO_Comment1` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位註解1',
   `TO_Comment2` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位註解2',
-  `TO_InShow` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位內顯示',
-  `TO_InEdit` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位內編輯',
-  `TO_OutShow` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位外顯示',
-  `TO_OutEdit` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位外編輯',
-  `TO_Must` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位必填',
+  `TO_InShow` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '欄位內顯示',
+  `TO_InEdit` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '欄位內編輯',
+  `TO_OutShow` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '欄位外顯示',
+  `TO_OutEdit` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '欄位外編輯',
+  `TO_Must` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '欄位必填',
   `TO_InType` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位種類',
   `TO_ChkType` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位種類1',
-  `TO_NumOpen` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '數字大小啟用',
-  `TO_Max` int DEFAULT '0' COMMENT '數字最大值',
-  `TO_Min` int DEFAULT '0' COMMENT '數字最小值',
+  `TO_NumOpen` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '數字大小啟用',
+  `TO_Max` int(11) DEFAULT '0' COMMENT '數字最大值',
+  `TO_Min` int(11) DEFAULT '0' COMMENT '數字最小值',
   `TO_ConnectField` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相互作用欄位',
   `TO_ConnectField1` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '互相作用欄位1',
   `TO_SelPicSize` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '選擇圖片大小',
   `TO_SelStates` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位狀態選擇',
-  `TO_UploadSize` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '欄位上傳大小',
+  `TO_UploadSize` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '欄位上傳大小',
   `TO_TimeFormat` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '時間格式',
-  `TO_Sort` int UNSIGNED DEFAULT '0' COMMENT '欄位排序',
-  UNIQUE KEY `TO_Name` (`TO_Name`,`TO_Field`)
+  `TO_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '欄位排序'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統資料表設定';
 
 --
@@ -4743,9 +4623,8 @@ INSERT INTO `sys_tables_option` (`TO_Name`, `TO_Field`, `TO_Comment1`, `TO_Comme
 -- 資料表結構 `sys_web_option`
 --
 
-DROP TABLE IF EXISTS `sys_web_option`;
-CREATE TABLE IF NOT EXISTS `sys_web_option` (
-  `Admin_ID` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '管理者',
+CREATE TABLE `sys_web_option` (
+  `Admin_ID` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '管理者',
   `WO_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
   `WO_Addr` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '縣市',
   `WO_Addr1` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '區域',
@@ -4772,13 +4651,13 @@ CREATE TABLE IF NOT EXISTS `sys_web_option` (
   `WO_GAnalytics` mediumtext COLLATE utf8mb4_unicode_ci COMMENT 'Google Analytics',
   `WO_MapLat` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地圖北緯',
   `WO_MapLng` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地圖東經',
-  `WO_Open` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '網站開啟',
-  `WO_Debug` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '網站Debug',
+  `WO_Open` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '網站開啟',
+  `WO_Debug` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '網站Debug',
   `WO_StmpHost` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '郵件伺服器(SMTP)',
   `WO_StmpPort` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '郵件伺服器(PORT)',
   `WO_SendName` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '寄件者名稱',
   `WO_SendEmail` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '寄件者Email',
-  `WO_StmpAuth` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '啟用驗證',
+  `WO_StmpAuth` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '啟用驗證',
   `WO_StmpAcc` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證帳號',
   `WO_StmpPass` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證密碼',
   `WO_StmpSecure` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加密方式',
@@ -4792,8 +4671,7 @@ CREATE TABLE IF NOT EXISTS `sys_web_option` (
   `WO_favicon` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '網址小圖標',
   `WO_ShareIcon` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '社群分享預覽圖',
   `WO_FooterImg` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '版尾廣告圖上傳',
-  `WO_FooterLOGO` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '版尾LOGO',
-  PRIMARY KEY (`Admin_ID`)
+  `WO_FooterLOGO` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '版尾LOGO'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='網站資料設定';
 
 --
@@ -4802,7 +4680,7 @@ CREATE TABLE IF NOT EXISTS `sys_web_option` (
 
 INSERT INTO `sys_web_option` (`Admin_ID`, `WO_Name`, `WO_Addr`, `WO_Addr1`, `WO_Addr2`, `WO_Tel`, `WO_Tel1`, `WO_Fax`, `WO_Email`, `WO_OpenTime`, `WO_Idn`, `WO_About`, `WO_Privacy`, `WO_Title`, `WO_Url`, `WO_FBLink`, `WO_IGLink`, `WO_LineLink`, `WO_Youtube`, `WO_YoutubeLink`, `WO_Description`, `WO_Keywords`, `WO_GMAP`, `WO_GMAP_Link`, `WO_GAnalytics`, `WO_MapLat`, `WO_MapLng`, `WO_Open`, `WO_Debug`, `WO_StmpHost`, `WO_StmpPort`, `WO_SendName`, `WO_SendEmail`, `WO_StmpAuth`, `WO_StmpAcc`, `WO_StmpPass`, `WO_StmpSecure`, `WO_AddrName`, `WO_AddrEmail`, `WO_MailSubject`, `WO_MailBody`, `WO_Version`, `WO_LOGO`, `WO_LOGO2`, `WO_favicon`, `WO_ShareIcon`, `WO_FooterImg`, `WO_FooterLOGO`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 'smtp.gmail.com', '465', '小明', 'sfb122405@gmail.com', 1, 'b9413077@gmail.com', 'zdiwuwoiliqzvxeo', 'SSL', '王大明', 'sfb122405@gmail.com', '這是gmail測試寄信', '這是gmail測試寄信內容', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'JP雲端出勤任意打卡平台', '0', '0', '中工二路120號', '04-23586802', '', '0', 'bm888@ms39.hinet.net', '早上10：00~晚上22：00', NULL, NULL, '', 'JP雲端出勤任意打卡平台', 'http://localhost/jp/', 'https://www.facebook.com/jbscloudbusinesssoftware', '', '', NULL, '', 'JP雲端出勤任意打卡平台', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.809862072403!2d120.61331897611298!3d24.178400178380745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346915ff68fbd3f3%3A0xd8eaff09a7c70a3d!2zNDA35Y-w5Lit5biC6KW_5bGv5Y2A5Lit5bel5LqM6LevMTIw6Jmf!5e0!3m2!1szh-TW!2stw!4v1694596684280!5m2!1szh-TW!2stw\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'https://goo.gl/maps/25a3Wnv8c69mAT926', NULL, NULL, NULL, 0, 0, 'smtp.gmail.com', '465', 'Ai2Bi', 'sfb122405@gmail.com', 1, 'bmidp888@gmail.com', 'fhgxltgnumjgvnmo', 'SSL', '王大明', 'sfb122405@gmail.com', '這是gmail測試寄信', '這是gmail測試寄信內容', '20201124095325', 'WO_LOGO1694596451.png', 'WO_LOGO21694597050.png', NULL, NULL, 'WO_FooterImg1605163215.jpg', 'WO_FooterLOGO1694596510.png');
+(2, 'JP雲端出勤任意打卡平台', '0', '0', '中工二路120號', '04-23586802', '', '0', 'bm888@ms39.hinet.net', '早上10：00~晚上22：00', NULL, NULL, '', 'JP雲端出勤任意打卡平台', 'https://daka.smartorder.com.tw/', 'https://www.facebook.com/jbscloudbusinesssoftware', '', '', NULL, '', 'JP雲端出勤任意打卡平台', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.809862072403!2d120.61331897611298!3d24.178400178380745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346915ff68fbd3f3%3A0xd8eaff09a7c70a3d!2zNDA35Y-w5Lit5biC6KW_5bGv5Y2A5Lit5bel5LqM6LevMTIw6Jmf!5e0!3m2!1szh-TW!2stw!4v1694596684280!5m2!1szh-TW!2stw\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'https://goo.gl/maps/25a3Wnv8c69mAT926', NULL, NULL, NULL, 0, 0, 'smtp.gmail.com', '465', 'Ai2Bi', 'sfb122405@gmail.com', 1, 'bmidp888@gmail.com', 'fhgxltgnumjgvnmo', 'SSL', '王大明', 'sfb122405@gmail.com', '這是gmail測試寄信', '這是gmail測試寄信內容', '20201124095325', 'WO_LOGO1694596451.png', 'WO_LOGO21694597050.png', NULL, NULL, 'WO_FooterImg1605163215.jpg', 'WO_FooterLOGO1694596510.png');
 
 -- --------------------------------------------------------
 
@@ -4810,16 +4688,14 @@ INSERT INTO `sys_web_option` (`Admin_ID`, `WO_Name`, `WO_Addr`, `WO_Addr1`, `WO_
 -- 資料表結構 `web_abouts`
 --
 
-DROP TABLE IF EXISTS `web_abouts`;
-CREATE TABLE IF NOT EXISTS `web_abouts` (
+CREATE TABLE `web_abouts` (
   `Abouts_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分類編號',
   `Abouts_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '故事標題',
-  `Abouts_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
-  `Abouts_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Abouts_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
+  `Abouts_Lv` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '目錄層級',
+  `Abouts_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Abouts_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '顯示',
   `Abouts_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
-  `Abouts_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '內容',
-  PRIMARY KEY (`Abouts_ID`)
+  `Abouts_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '內容'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4837,18 +4713,16 @@ INSERT INTO `web_abouts` (`Abouts_ID`, `Abouts_Name`, `Abouts_Lv`, `Abouts_Sort`
 -- 資料表結構 `web_banner`
 --
 
-DROP TABLE IF EXISTS `web_banner`;
-CREATE TABLE IF NOT EXISTS `web_banner` (
-  `Banner_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_banner` (
+  `Banner_ID` int(10) UNSIGNED NOT NULL,
   `Banner_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '輪播標題',
   `Banner_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '輪播圖',
-  `Banner_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Banner_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `Banner_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Banner_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Banner_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
-  `Banner_LinkT` tinyint UNSIGNED DEFAULT '0' COMMENT '連結跳轉目標',
-  `Banner_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結',
-  PRIMARY KEY (`Banner_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `Banner_LinkT` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '連結跳轉目標',
+  `Banner_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4856,14 +4730,13 @@ CREATE TABLE IF NOT EXISTS `web_banner` (
 -- 資料表結構 `web_company`
 --
 
-DROP TABLE IF EXISTS `web_company`;
-CREATE TABLE IF NOT EXISTS `web_company` (
-  `Company_bid` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_company` (
+  `Company_bid` int(11) NOT NULL,
   `Company_ID` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司編號',
   `Company_Acc` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司帳號',
   `Company_PW` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司密碼',
   `Company_RePwd` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '忘記密碼專用',
-  `Company_Is_RePwd` tinyint UNSIGNED DEFAULT '0' COMMENT '是否使用忘記密碼',
+  `Company_Is_RePwd` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '是否使用忘記密碼',
   `Company_NAME` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
   `Company_EDITORIAL` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司統編',
   `Company_CTEL` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司電話',
@@ -4874,24 +4747,22 @@ CREATE TABLE IF NOT EXISTS `web_company` (
   `Company_NDATE` datetime DEFAULT NULL COMMENT '加入日期',
   `Company_EDATE` datetime DEFAULT NULL COMMENT '修改日期',
   `Company_END` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '到期日',
-  `Company_Plan` int UNSIGNED DEFAULT '0' COMMENT '方案選擇',
-  `Company_Pay_Type` int UNSIGNED DEFAULT '0' COMMENT '付款方式',
-  `Company_Invoice_Title` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '發票抬頭',
+  `Company_Plan` int(10) UNSIGNED DEFAULT '0' COMMENT '方案選擇',
+  `Company_Pay_Type` int(10) UNSIGNED DEFAULT '0' COMMENT '付款方式',
+  `Company_Invoice_Title` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '發票抬頭',
   `Company_Invoice_Address` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '發票地址',
-  `Company_Invoice_Type` int UNSIGNED DEFAULT '0' COMMENT '發票形式',
-  `Company_Is_Pay` tinyint UNSIGNED DEFAULT '0' COMMENT '是否付款',
+  `Company_Invoice_Type` int(10) UNSIGNED DEFAULT '0' COMMENT '發票形式',
+  `Company_Is_Pay` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '是否付款',
   `Company_Verify` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證碼',
-  `Company_OPEN` tinyint(1) DEFAULT NULL COMMENT '帳號啟用',
-  PRIMARY KEY (`Company_bid`),
-  KEY `Company_Acc` (`Company_Acc`)
-) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `Company_OPEN` tinyint(1) DEFAULT NULL COMMENT '帳號啟用'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_company`
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '71ef1f7762761f8f435c02e6d4f40d8e', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'cf68d667107b49c87d81a8f313820ea4', 1);
 
 -- --------------------------------------------------------
 
@@ -4899,9 +4770,8 @@ INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_
 -- 資料表結構 `web_contact`
 --
 
-DROP TABLE IF EXISTS `web_contact`;
-CREATE TABLE IF NOT EXISTS `web_contact` (
-  `CT_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_contact` (
+  `CT_ID` int(10) UNSIGNED NOT NULL,
   `CT_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡人',
   `CT_Tel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話',
   `CT_Mobile` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡手機',
@@ -4910,9 +4780,8 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
   `CT_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '標題',
   `CT_Verify` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '辨別碼',
   `CT_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '詳細內容',
-  `CT_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
-  PRIMARY KEY (`CT_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `CT_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4920,16 +4789,14 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
 -- 資料表結構 `web_delivery`
 --
 
-DROP TABLE IF EXISTS `web_delivery`;
-CREATE TABLE IF NOT EXISTS `web_delivery` (
+CREATE TABLE `web_delivery` (
   `Delivery_ID` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Delivery_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '付款方式',
   `Delivery_Type` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '類型',
-  `Delivery_Free` int DEFAULT '0' COMMENT '免運金額',
-  `Delivery_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Delivery_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
-  `Delivery_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
-  PRIMARY KEY (`Delivery_ID`)
+  `Delivery_Free` int(11) DEFAULT '0' COMMENT '免運金額',
+  `Delivery_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Delivery_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `Delivery_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4947,17 +4814,15 @@ INSERT INTO `web_delivery` (`Delivery_ID`, `Delivery_Name`, `Delivery_Type`, `De
 -- 資料表結構 `web_function`
 --
 
-DROP TABLE IF EXISTS `web_function`;
-CREATE TABLE IF NOT EXISTS `web_function` (
-  `Func_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_function` (
+  `Func_ID` int(10) UNSIGNED NOT NULL,
   `Func_Name` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '標題',
   `Func_Intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '簡介',
   `Func_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結',
-  `Func_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Func_Lv` int DEFAULT NULL,
-  `Func_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
-  PRIMARY KEY (`Func_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2011180 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `Func_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Func_Lv` int(11) DEFAULT NULL,
+  `Func_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_function`
@@ -4977,19 +4842,17 @@ INSERT INTO `web_function` (`Func_ID`, `Func_Name`, `Func_Intro`, `Func_Link`, `
 -- 資料表結構 `web_index_ad`
 --
 
-DROP TABLE IF EXISTS `web_index_ad`;
-CREATE TABLE IF NOT EXISTS `web_index_ad` (
-  `Ad_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_index_ad` (
+  `Ad_ID` int(10) UNSIGNED NOT NULL,
   `Ad_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相簿標題',
   `Ad_Intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相簿簡介',
   `Ad_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面圖',
   `Ad_Img` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '圖片',
-  `Ad_Qty` int DEFAULT '0' COMMENT '相簿張數',
-  `Ad_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Ad_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
-  `Ad_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
-  PRIMARY KEY (`Ad_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `Ad_Qty` int(11) DEFAULT '0' COMMENT '相簿張數',
+  `Ad_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Ad_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `Ad_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_index_ad`
@@ -5004,21 +4867,18 @@ INSERT INTO `web_index_ad` (`Ad_ID`, `Ad_Title`, `Ad_Intro`, `Ad_Mcp`, `Ad_Img`,
 -- 資料表結構 `web_index_adl`
 --
 
-DROP TABLE IF EXISTS `web_index_adl`;
-CREATE TABLE IF NOT EXISTS `web_index_adl` (
-  `Adl_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Ad_ID` int UNSIGNED DEFAULT NULL COMMENT '相簿主編號',
+CREATE TABLE `web_index_adl` (
+  `Adl_ID` int(10) UNSIGNED NOT NULL,
+  `Ad_ID` int(10) UNSIGNED DEFAULT NULL COMMENT '相簿主編號',
   `Adl_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相片標題',
   `Adl_Intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相片簡介',
   `Adl_Img` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '批次圖片',
-  `Adl_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Adl_Open` tinyint UNSIGNED DEFAULT '1' COMMENT '啟用',
+  `Adl_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Adl_Open` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '啟用',
   `Adl_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
-  `Adl_LinkT` tinyint UNSIGNED DEFAULT '0' COMMENT '連結跳轉目標',
-  `Adl_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結',
-  PRIMARY KEY (`Adl_ID`),
-  KEY `Ad_ID` (`Ad_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `Adl_LinkT` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '連結跳轉目標',
+  `Adl_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5026,8 +4886,7 @@ CREATE TABLE IF NOT EXISTS `web_index_adl` (
 -- 資料表結構 `web_member`
 --
 
-DROP TABLE IF EXISTS `web_member`;
-CREATE TABLE IF NOT EXISTS `web_member` (
+CREATE TABLE `web_member` (
   `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '會員編號',
   `Member_Acc` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員帳號',
   `Member_Pwd` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員密碼',
@@ -5045,13 +4904,11 @@ CREATE TABLE IF NOT EXISTS `web_member` (
   `Member_LastLogin` datetime DEFAULT NULL COMMENT '最後登入時間',
   `Member_Verify` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證碼',
   `Member_RePwd` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '忘記密碼專用',
-  `Member_Is_RePwd` tinyint UNSIGNED DEFAULT NULL COMMENT '是否使用忘記密碼',
+  `Member_Is_RePwd` tinyint(3) UNSIGNED DEFAULT NULL COMMENT '是否使用忘記密碼',
   `Member_Open` tinyint(1) DEFAULT NULL COMMENT '帳號啟用',
   `Member_FBID` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'FacebookID',
   `Member_GoogleID` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'GoogleID',
-  `Member_Line_id` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Line使用者ID',
-  PRIMARY KEY (`Member_ID`),
-  UNIQUE KEY `Member_Acc` (`Member_Acc`)
+  `Member_Line_id` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Line使用者ID'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5072,23 +4929,16 @@ INSERT INTO `web_member` (`Member_ID`, `Member_Acc`, `Member_Pwd`, `Member_Email
 -- 資料表結構 `web_mysql_log`
 --
 
-DROP TABLE IF EXISTS `web_mysql_log`;
-CREATE TABLE IF NOT EXISTS `web_mysql_log` (
-  `ML_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_mysql_log` (
+  `ML_ID` int(10) UNSIGNED NOT NULL,
   `ML_DATE` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '建立時間',
   `ML_USER` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '使用者',
   `ML_DATA_ID` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料ID',
   `ML_COMMENT` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '註解',
   `ML_SQL_CON` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '執行內容',
   `ML_SQL_EXEC_TYPE` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '訊息種類',
-  `ML_EXEC_FILE` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔案',
-  PRIMARY KEY (`ML_ID`),
-  KEY `ML_DATE` (`ML_DATE`),
-  KEY `ML_USER` (`ML_USER`),
-  KEY `ML_DATA_ID` (`ML_DATA_ID`),
-  KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
-  KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`(250))
-) ENGINE=MyISAM AUTO_INCREMENT=234 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
+  `ML_EXEC_FILE` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔案'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `web_mysql_log`
@@ -5313,19 +5163,16 @@ INSERT INTO `web_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 -- 資料表結構 `web_news`
 --
 
-DROP TABLE IF EXISTS `web_news`;
-CREATE TABLE IF NOT EXISTS `web_news` (
-  `News_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_news` (
+  `News_ID` int(10) UNSIGNED NOT NULL,
   `NewsC_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '消息分類',
   `News_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '消息標題',
   `News_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '消息內容',
   `News_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面圖',
-  `News_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `News_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
-  `News_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
-  PRIMARY KEY (`News_ID`),
-  KEY `NewsC_ID` (`NewsC_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `News_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `News_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `News_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_news`
@@ -5340,15 +5187,13 @@ INSERT INTO `web_news` (`News_ID`, `NewsC_ID`, `News_Title`, `News_Content`, `Ne
 -- 資料表結構 `web_newsclass`
 --
 
-DROP TABLE IF EXISTS `web_newsclass`;
-CREATE TABLE IF NOT EXISTS `web_newsclass` (
+CREATE TABLE `web_newsclass` (
   `NewsC_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分類編號',
   `NewsC_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類名稱',
-  `NewsC_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
-  `NewsC_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `NewsC_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
-  `NewsC_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
-  PRIMARY KEY (`NewsC_ID`)
+  `NewsC_Lv` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '目錄層級',
+  `NewsC_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `NewsC_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '顯示',
+  `NewsC_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5365,23 +5210,19 @@ INSERT INTO `web_newsclass` (`NewsC_ID`, `NewsC_Name`, `NewsC_Lv`, `NewsC_Sort`,
 -- 資料表結構 `web_orderdetail`
 --
 
-DROP TABLE IF EXISTS `web_orderdetail`;
-CREATE TABLE IF NOT EXISTS `web_orderdetail` (
-  `Orderd_ID` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `web_orderdetail` (
+  `Orderd_ID` int(11) NOT NULL,
   `Orderm_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
   `Product_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品編號',
   `ProductC_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類',
   `Orderd_Name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品名稱',
   `Orderd_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '內容物',
   `Orderd_Unit` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '規格',
-  `Orderd_Count` int DEFAULT NULL COMMENT '產品數量',
-  `Orderd_Price` int DEFAULT NULL COMMENT '產品原價',
-  `Orderd_Price1` int DEFAULT NULL COMMENT '產品售價',
+  `Orderd_Count` int(11) DEFAULT NULL COMMENT '產品數量',
+  `Orderd_Price` int(11) DEFAULT NULL COMMENT '產品原價',
+  `Orderd_Price1` int(11) DEFAULT NULL COMMENT '產品售價',
   `Orderd_Sdate` datetime DEFAULT NULL COMMENT '訂單日期',
-  `Product_NID` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`Orderd_ID`),
-  UNIQUE KEY `Orderm_ID` (`Orderm_ID`,`Orderd_ID`,`Orderd_Unit`),
-  KEY `ProductC_ID` (`ProductC_ID`)
+  `Product_NID` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -5390,8 +5231,7 @@ CREATE TABLE IF NOT EXISTS `web_orderdetail` (
 -- 資料表結構 `web_orderid`
 --
 
-DROP TABLE IF EXISTS `web_orderid`;
-CREATE TABLE IF NOT EXISTS `web_orderid` (
+CREATE TABLE `web_orderid` (
   `Order_ID` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -5401,13 +5241,12 @@ CREATE TABLE IF NOT EXISTS `web_orderid` (
 -- 資料表結構 `web_ordermain`
 --
 
-DROP TABLE IF EXISTS `web_ordermain`;
-CREATE TABLE IF NOT EXISTS `web_ordermain` (
+CREATE TABLE `web_ordermain` (
   `Orderm_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
   `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '會員編號',
   `Orderm_TotalSub` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '總商品金額',
-  `Orderm_Freight` int DEFAULT '0' COMMENT '運費',
-  `Orderm_TotalPrice` int DEFAULT '0' COMMENT '總金額',
+  `Orderm_Freight` int(11) DEFAULT '0' COMMENT '運費',
+  `Orderm_TotalPrice` int(11) DEFAULT '0' COMMENT '總金額',
   `Orderm_RName` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人名稱',
   `Orderm_RCity` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人縣市',
   `Orderm_RCounty` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人區域',
@@ -5418,14 +5257,13 @@ CREATE TABLE IF NOT EXISTS `web_ordermain` (
   `Orderm_Delivery` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '付款方式',
   `Orderm_payTime` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '付款時間',
   `Orderm_Note` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '備註',
-  `Orderm_States` tinyint UNSIGNED DEFAULT '0' COMMENT '狀態',
+  `Orderm_States` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '狀態',
   `Orderm_Sdate` datetime DEFAULT NULL COMMENT '訂單日期',
   `Orderm_Outdate` datetime DEFAULT NULL COMMENT '出貨日期',
-  `Orderm_card5no` int DEFAULT NULL,
+  `Orderm_card5no` int(11) DEFAULT NULL,
   `Orderm_cardno` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '信用卡卡號',
-  `Orderm_payAmt` int NOT NULL DEFAULT '0',
-  `Orderm_Success` tinyint(1) DEFAULT '0' COMMENT '訂單完成',
-  PRIMARY KEY (`Orderm_ID`)
+  `Orderm_payAmt` int(11) NOT NULL DEFAULT '0',
+  `Orderm_Success` tinyint(1) DEFAULT '0' COMMENT '訂單完成'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -5434,16 +5272,14 @@ CREATE TABLE IF NOT EXISTS `web_ordermain` (
 -- 資料表結構 `web_ordertdetail`
 --
 
-DROP TABLE IF EXISTS `web_ordertdetail`;
-CREATE TABLE IF NOT EXISTS `web_ordertdetail` (
+CREATE TABLE `web_ordertdetail` (
   `Ordertm_Sn` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
   `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員編號',
   `Product_ID` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品編號',
   `Ordertd_Unit` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '規格',
-  `Ordertd_Count` int DEFAULT NULL COMMENT '產品數量',
-  `Ordertd_Price` int DEFAULT NULL COMMENT '產品原價',
-  `Ordertd_Price1` int DEFAULT NULL COMMENT '產品售價',
-  UNIQUE KEY `Ordertm_ID` (`Ordertm_Sn`,`Product_ID`,`Ordertd_Unit`)
+  `Ordertd_Count` int(11) DEFAULT NULL COMMENT '產品數量',
+  `Ordertd_Price` int(11) DEFAULT NULL COMMENT '產品原價',
+  `Ordertd_Price1` int(11) DEFAULT NULL COMMENT '產品售價'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -5452,10 +5288,9 @@ CREATE TABLE IF NOT EXISTS `web_ordertdetail` (
 -- 資料表結構 `web_ordertmain`
 --
 
-DROP TABLE IF EXISTS `web_ordertmain`;
-CREATE TABLE IF NOT EXISTS `web_ordertmain` (
+CREATE TABLE `web_ordertmain` (
   `Ordertm_Sn` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
-  `Delivery_ID` int UNSIGNED DEFAULT NULL COMMENT '付款方式',
+  `Delivery_ID` int(10) UNSIGNED DEFAULT NULL COMMENT '付款方式',
   `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Ordertm_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Ordertm_Uniform` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '統一編號',
@@ -5471,8 +5306,7 @@ CREATE TABLE IF NOT EXISTS `web_ordertmain` (
   `Ordertm_RAddr` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Ordertm_RTel` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Ordertm_RMobile` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Ordertm_Note` mediumtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`Ordertm_Sn`)
+  `Ordertm_Note` mediumtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -5481,8 +5315,7 @@ CREATE TABLE IF NOT EXISTS `web_ordertmain` (
 -- 資料表結構 `web_ordert_sn`
 --
 
-DROP TABLE IF EXISTS `web_ordert_sn`;
-CREATE TABLE IF NOT EXISTS `web_ordert_sn` (
+CREATE TABLE `web_ordert_sn` (
   `Ord_UID` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '使用者編號',
   `Ord_Sn` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '訂單編號'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -5493,8 +5326,7 @@ CREATE TABLE IF NOT EXISTS `web_ordert_sn` (
 -- 資料表結構 `web_product`
 --
 
-DROP TABLE IF EXISTS `web_product`;
-CREATE TABLE IF NOT EXISTS `web_product` (
+CREATE TABLE `web_product` (
   `Product_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '產品編號',
   `ProductC_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品分類',
   `Product_Name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品名稱',
@@ -5509,15 +5341,11 @@ CREATE TABLE IF NOT EXISTS `web_product` (
   `Product_Img1` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖一',
   `Product_Img2` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖二',
   `Product_Img3` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖三',
-  `Product_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Product_OpenNew` tinyint UNSIGNED DEFAULT '0' COMMENT '新品',
-  `Product_OpenHot` tinyint UNSIGNED DEFAULT '0' COMMENT '人氣',
-  `Product_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
-  `Product_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
-  PRIMARY KEY (`Product_ID`),
-  KEY `Product_Name` (`Product_Name`),
-  KEY `Product_Price` (`Product_Price`(250)),
-  KEY `ProductC_ID` (`ProductC_ID`)
+  `Product_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Product_OpenNew` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '新品',
+  `Product_OpenHot` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '人氣',
+  `Product_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `Product_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5536,19 +5364,17 @@ INSERT INTO `web_product` (`Product_ID`, `ProductC_ID`, `Product_Name`, `Product
 -- 資料表結構 `web_productclass`
 --
 
-DROP TABLE IF EXISTS `web_productclass`;
-CREATE TABLE IF NOT EXISTS `web_productclass` (
+CREATE TABLE `web_productclass` (
   `ProductC_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分類編號',
   `ProductC_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類名稱',
-  `ProductC_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
-  `ProductC_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `ProductC_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
+  `ProductC_Lv` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '目錄層級',
+  `ProductC_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `ProductC_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '顯示',
   `ProductC_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
   `ProductC_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面圖',
   `ProductC_Img1` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖一',
   `ProductC_Img2` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖二',
-  `ProductC_Img3` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖三',
-  PRIMARY KEY (`ProductC_ID`)
+  `ProductC_Img3` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖三'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5581,16 +5407,14 @@ INSERT INTO `web_productclass` (`ProductC_ID`, `ProductC_Name`, `ProductC_Lv`, `
 -- 資料表結構 `web_qa`
 --
 
-DROP TABLE IF EXISTS `web_qa`;
-CREATE TABLE IF NOT EXISTS `web_qa` (
+CREATE TABLE `web_qa` (
   `QA_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '編號',
   `QA_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資訊標題',
-  `QA_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
-  `QA_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `QA_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
+  `QA_Lv` tinyint(3) UNSIGNED DEFAULT '1' COMMENT '目錄層級',
+  `QA_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `QA_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '顯示',
   `QA_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
-  `QA_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '資訊內容',
-  PRIMARY KEY (`QA_ID`)
+  `QA_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '資訊內容'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5610,9 +5434,8 @@ INSERT INTO `web_qa` (`QA_ID`, `QA_Name`, `QA_Lv`, `QA_Sort`, `QA_Open`, `QA_UpM
 -- 資料表結構 `web_setting`
 --
 
-DROP TABLE IF EXISTS `web_setting`;
-CREATE TABLE IF NOT EXISTS `web_setting` (
-  `Admin_ID` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '管理者',
+CREATE TABLE `web_setting` (
+  `Admin_ID` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '管理者',
   `Setting_BankCode` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行代號+銀行名',
   `Setting_BankAcc` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
   `Setting_BankName` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行戶名',
@@ -5620,8 +5443,7 @@ CREATE TABLE IF NOT EXISTS `web_setting` (
   `Setting_Index02` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '首頁訂做文字',
   `Setting_privacy` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '隱私權',
   `Setting_PriceLimit` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '貨到付款限制金額	',
-  `Setting_Alert` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '首頁彈跳視窗',
-  PRIMARY KEY (`Admin_ID`)
+  `Setting_Alert` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '首頁彈跳視窗'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5637,15 +5459,14 @@ INSERT INTO `web_setting` (`Admin_ID`, `Setting_BankCode`, `Setting_BankAcc`, `S
 -- 資料表結構 `web_version`
 --
 
-DROP TABLE IF EXISTS `web_version`;
-CREATE TABLE IF NOT EXISTS `web_version` (
-  `Version_ID` int UNSIGNED NOT NULL,
+CREATE TABLE `web_version` (
+  `Version_ID` int(10) UNSIGNED NOT NULL,
   `Version_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '版本名稱',
   `Version_Price` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '版本金額',
-  `Version_Day` int NOT NULL DEFAULT '0' COMMENT '購買天數',
-  `Version_Count` int NOT NULL DEFAULT '0' COMMENT '人數',
-  `Version_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Version_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `Version_Day` int(11) NOT NULL DEFAULT '0' COMMENT '購買天數',
+  `Version_Count` int(11) NOT NULL DEFAULT '0' COMMENT '人數',
+  `Version_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Version_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Version_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -5679,13 +5500,12 @@ INSERT INTO `web_version` (`Version_ID`, `Version_Title`, `Version_Price`, `Vers
 -- 資料表結構 `web_video`
 --
 
-DROP TABLE IF EXISTS `web_video`;
-CREATE TABLE IF NOT EXISTS `web_video` (
-  `Video_ID` int UNSIGNED NOT NULL,
+CREATE TABLE `web_video` (
+  `Video_ID` int(10) UNSIGNED NOT NULL,
   `Video_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '標題',
   `Video_YouTube` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'YouTube',
-  `Video_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
-  `Video_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
+  `Video_Sort` int(10) UNSIGNED DEFAULT '0' COMMENT '排序',
+  `Video_Open` tinyint(3) UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Video_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -5695,6 +5515,426 @@ CREATE TABLE IF NOT EXISTS `web_video` (
 
 INSERT INTO `web_video` (`Video_ID`, `Video_Title`, `Video_YouTube`, `Video_Sort`, `Video_Open`, `Video_Sdate`) VALUES
 (17120401, '任意卡教學 | IOS版本 |', 'sFpkDJfh5mo', 0, 1, '2017-12-04 13:57:48');
+
+--
+-- 已傾印資料表的索引
+--
+
+--
+-- 資料表索引 `absence`
+--
+ALTER TABLE `absence`
+  ADD PRIMARY KEY (`absenceno`);
+
+--
+-- 資料表索引 `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`attendanceid`);
+
+--
+-- 資料表索引 `bank`
+--
+ALTER TABLE `bank`
+  ADD PRIMARY KEY (`bankno`);
+
+--
+-- 資料表索引 `cardset`
+--
+ALTER TABLE `cardset`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `comp`
+--
+ALTER TABLE `comp`
+  ADD PRIMARY KEY (`cono`);
+
+--
+-- 資料表索引 `deduction`
+--
+ALTER TABLE `deduction`
+  ADD PRIMARY KEY (`deductionno`);
+
+--
+-- 資料表索引 `education`
+--
+ALTER TABLE `education`
+  ADD PRIMARY KEY (`educationno`);
+
+--
+-- 資料表索引 `employdeduction`
+--
+ALTER TABLE `employdeduction`
+  ADD PRIMARY KEY (`edid`);
+
+--
+-- 資料表索引 `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`eid`);
+
+--
+-- 資料表索引 `employeeattend`
+--
+ALTER TABLE `employeeattend`
+  ADD PRIMARY KEY (`eid`);
+
+--
+-- 資料表索引 `family`
+--
+ALTER TABLE `family`
+  ADD PRIMARY KEY (`relationno`);
+
+--
+-- 資料表索引 `holidays`
+--
+ALTER TABLE `holidays`
+  ADD PRIMARY KEY (`holidayid`);
+
+--
+-- 資料表索引 `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`appno`);
+
+--
+-- 資料表索引 `mod_recaptcha`
+--
+ALTER TABLE `mod_recaptcha`
+  ADD PRIMARY KEY (`Admin_ID`);
+
+--
+-- 資料表索引 `part`
+--
+ALTER TABLE `part`
+  ADD PRIMARY KEY (`partno`);
+
+--
+-- 資料表索引 `purchaser1`
+--
+ALTER TABLE `purchaser1`
+  ADD PRIMARY KEY (`pid`);
+
+--
+-- 資料表索引 `reason`
+--
+ALTER TABLE `reason`
+  ADD PRIMARY KEY (`reasonno`);
+
+--
+-- 資料表索引 `seclab1`
+--
+ALTER TABLE `seclab1`
+  ADD PRIMARY KEY (`sid`);
+
+--
+-- 資料表索引 `sys_admin`
+--
+ALTER TABLE `sys_admin`
+  ADD PRIMARY KEY (`Admin_ID`),
+  ADD UNIQUE KEY `Admin_Acc` (`Admin_Acc`),
+  ADD KEY `Admin_Code` (`Admin_Code`);
+
+--
+-- 資料表索引 `sys_download`
+--
+ALTER TABLE `sys_download`
+  ADD PRIMARY KEY (`DL_Session`);
+
+--
+-- 資料表索引 `sys_group`
+--
+ALTER TABLE `sys_group`
+  ADD PRIMARY KEY (`Group_ID`);
+
+--
+-- 資料表索引 `sys_menu`
+--
+ALTER TABLE `sys_menu`
+  ADD PRIMARY KEY (`Menu_ID`),
+  ADD KEY `Menu_Exec` (`Menu_Exec`);
+
+--
+-- 資料表索引 `sys_mysql_log`
+--
+ALTER TABLE `sys_mysql_log`
+  ADD PRIMARY KEY (`ML_ID`),
+  ADD KEY `ML_DATE` (`ML_DATE`),
+  ADD KEY `ML_USER` (`ML_USER`),
+  ADD KEY `ML_DATA_ID` (`ML_DATA_ID`),
+  ADD KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
+  ADD KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`(250));
+
+--
+-- 資料表索引 `sys_tables_option`
+--
+ALTER TABLE `sys_tables_option`
+  ADD UNIQUE KEY `TO_Name` (`TO_Name`,`TO_Field`);
+
+--
+-- 資料表索引 `sys_web_option`
+--
+ALTER TABLE `sys_web_option`
+  ADD PRIMARY KEY (`Admin_ID`);
+
+--
+-- 資料表索引 `web_abouts`
+--
+ALTER TABLE `web_abouts`
+  ADD PRIMARY KEY (`Abouts_ID`);
+
+--
+-- 資料表索引 `web_banner`
+--
+ALTER TABLE `web_banner`
+  ADD PRIMARY KEY (`Banner_ID`);
+
+--
+-- 資料表索引 `web_company`
+--
+ALTER TABLE `web_company`
+  ADD PRIMARY KEY (`Company_bid`),
+  ADD KEY `Company_Acc` (`Company_Acc`);
+
+--
+-- 資料表索引 `web_contact`
+--
+ALTER TABLE `web_contact`
+  ADD PRIMARY KEY (`CT_ID`);
+
+--
+-- 資料表索引 `web_delivery`
+--
+ALTER TABLE `web_delivery`
+  ADD PRIMARY KEY (`Delivery_ID`);
+
+--
+-- 資料表索引 `web_function`
+--
+ALTER TABLE `web_function`
+  ADD PRIMARY KEY (`Func_ID`);
+
+--
+-- 資料表索引 `web_index_ad`
+--
+ALTER TABLE `web_index_ad`
+  ADD PRIMARY KEY (`Ad_ID`);
+
+--
+-- 資料表索引 `web_index_adl`
+--
+ALTER TABLE `web_index_adl`
+  ADD PRIMARY KEY (`Adl_ID`),
+  ADD KEY `Ad_ID` (`Ad_ID`);
+
+--
+-- 資料表索引 `web_member`
+--
+ALTER TABLE `web_member`
+  ADD PRIMARY KEY (`Member_ID`),
+  ADD UNIQUE KEY `Member_Acc` (`Member_Acc`);
+
+--
+-- 資料表索引 `web_mysql_log`
+--
+ALTER TABLE `web_mysql_log`
+  ADD PRIMARY KEY (`ML_ID`),
+  ADD KEY `ML_DATE` (`ML_DATE`),
+  ADD KEY `ML_USER` (`ML_USER`),
+  ADD KEY `ML_DATA_ID` (`ML_DATA_ID`),
+  ADD KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
+  ADD KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`(250));
+
+--
+-- 資料表索引 `web_news`
+--
+ALTER TABLE `web_news`
+  ADD PRIMARY KEY (`News_ID`),
+  ADD KEY `NewsC_ID` (`NewsC_ID`);
+
+--
+-- 資料表索引 `web_newsclass`
+--
+ALTER TABLE `web_newsclass`
+  ADD PRIMARY KEY (`NewsC_ID`);
+
+--
+-- 資料表索引 `web_orderdetail`
+--
+ALTER TABLE `web_orderdetail`
+  ADD PRIMARY KEY (`Orderd_ID`),
+  ADD UNIQUE KEY `Orderm_ID` (`Orderm_ID`,`Orderd_ID`,`Orderd_Unit`),
+  ADD KEY `ProductC_ID` (`ProductC_ID`);
+
+--
+-- 資料表索引 `web_ordermain`
+--
+ALTER TABLE `web_ordermain`
+  ADD PRIMARY KEY (`Orderm_ID`);
+
+--
+-- 資料表索引 `web_ordertdetail`
+--
+ALTER TABLE `web_ordertdetail`
+  ADD UNIQUE KEY `Ordertm_ID` (`Ordertm_Sn`,`Product_ID`,`Ordertd_Unit`);
+
+--
+-- 資料表索引 `web_ordertmain`
+--
+ALTER TABLE `web_ordertmain`
+  ADD PRIMARY KEY (`Ordertm_Sn`);
+
+--
+-- 資料表索引 `web_product`
+--
+ALTER TABLE `web_product`
+  ADD PRIMARY KEY (`Product_ID`),
+  ADD KEY `Product_Name` (`Product_Name`),
+  ADD KEY `Product_Price` (`Product_Price`(250)),
+  ADD KEY `ProductC_ID` (`ProductC_ID`);
+
+--
+-- 資料表索引 `web_productclass`
+--
+ALTER TABLE `web_productclass`
+  ADD PRIMARY KEY (`ProductC_ID`);
+
+--
+-- 資料表索引 `web_qa`
+--
+ALTER TABLE `web_qa`
+  ADD PRIMARY KEY (`QA_ID`);
+
+--
+-- 資料表索引 `web_setting`
+--
+ALTER TABLE `web_setting`
+  ADD PRIMARY KEY (`Admin_ID`);
+
+--
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
+--
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `attendanceid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `cardset`
+--
+ALTER TABLE `cardset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `employdeduction`
+--
+ALTER TABLE `employdeduction`
+  MODIFY `edid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `employeeattend`
+--
+ALTER TABLE `employeeattend`
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3240;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `holidays`
+--
+ALTER TABLE `holidays`
+  MODIFY `holidayid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `purchaser1`
+--
+ALTER TABLE `purchaser1`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'IDENTITY(1,1)', AUTO_INCREMENT=133;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `seclab1`
+--
+ALTER TABLE `seclab1`
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'IDENTITY(1,1)', AUTO_INCREMENT=57;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `sys_admin`
+--
+ALTER TABLE `sys_admin`
+  MODIFY `Admin_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `sys_group`
+--
+ALTER TABLE `sys_group`
+  MODIFY `Group_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '群組ID', AUTO_INCREMENT=7;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `sys_mysql_log`
+--
+ALTER TABLE `sys_mysql_log`
+  MODIFY `ML_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_banner`
+--
+ALTER TABLE `web_banner`
+  MODIFY `Banner_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_company`
+--
+ALTER TABLE `web_company`
+  MODIFY `Company_bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_contact`
+--
+ALTER TABLE `web_contact`
+  MODIFY `CT_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_function`
+--
+ALTER TABLE `web_function`
+  MODIFY `Func_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2011180;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_index_ad`
+--
+ALTER TABLE `web_index_ad`
+  MODIFY `Ad_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_index_adl`
+--
+ALTER TABLE `web_index_adl`
+  MODIFY `Adl_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_mysql_log`
+--
+ALTER TABLE `web_mysql_log`
+  MODIFY `ML_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_news`
+--
+ALTER TABLE `web_news`
+  MODIFY `News_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `web_orderdetail`
+--
+ALTER TABLE `web_orderdetail`
+  MODIFY `Orderd_ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -142,7 +142,7 @@ if ($is_verify == false) {
 
             if (empty($_html_msg)) {
                 $employee = $CM->get_employee_data($value['eid']);
-                $ea = $CM->get_employeeattend_list($employee['employid'], $value['niandu']);
+                $ea = $CM->get_employeeattend_list($employee['employeid'], $value['niandu']);
                 $attd_list = $CM->GET_ATTENDANCE_LIST();
                 if (!empty($ea)) {
                     for ($i = 1; $i <= 12; $i++) { //1~12月
@@ -191,8 +191,8 @@ if ($is_verify == false) {
                 $datelen = (strtotime($edate) - strtotime($sdate)) / (60 * 60 * 24);
                 $employee_start = $CM->get_employee_data($value['start_eid']); //首個編號
                 $employee_end = $CM->get_employee_data($value['end_eid']);     //最後編號
-                $db->Where = " WHERE employid BETWEEN '" . $employee_start['employid'] . "' AND '" . $employee_end['employid'] . "'";
-                $db->Order_By = "Order By employid asc";
+                $db->Where = " WHERE employeid BETWEEN '" . $employee_start['employeid'] . "' AND '" . $employee_end['employeid'] . "'";
+                $db->Order_By = "Order By employeid asc";
                 $db->query_sql($employee_db, '*');
                 $employee_arr = array();
                 while ($row = $db->query_fetch()) {
@@ -298,8 +298,8 @@ if ($is_verify == false) {
                         }
                         //-----------------計算班別、補班日--------------
                         $ea_data = array(
-                            'employeid'                => $vid['employid'],
-                            'employename'              => $vid['employname'],
+                            'employeid'                => $vid['employeid'],
+                            'employename'              => $vid['employename'],
                             'ndyear'                   => $value['gen_niandu'],
                             'ndyear2'                  => intval($value['gen_niandu']) + 1911,
                             'ndweektype'               => $ndweektype,
@@ -395,7 +395,7 @@ if ($is_verify == false) {
                     $db2->Where = "Where no = '" . $employeeid . "'";
                     $db2->query_sql($employee_db, "*");
                     if ($row = $db2->query_fetch()) {
-                        $eid = $row['employid'];
+                        $eid = $row['employeid'];
                     } else {
                         continue; //卡片編號不存在
                     }
@@ -467,7 +467,7 @@ if ($is_verify == false) {
                             $ndweektype = $week_states[$ndweektype_id];
                             $ea_data = array(
                                 'employeid'                => $tk,
-                                'employename'              => $employee['employname'],
+                                'employename'              => $employee['employename'],
                                 'ndyear'                   => date('Y', strtotime($datek)) - 1911,
                                 'ndyear2'                  => date('Y', strtotime($datek)),
                                 'ndweektype'               => $ndweektype,

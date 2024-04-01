@@ -1225,8 +1225,8 @@ if (!empty($_Type)) {
 			$value = array();
 			$Value['cono'] 		= $_POST['cono'];
 			$Value['coname1'] 		= $_POST['coname1'];
-			$Value['employid'] 		= $_POST['employid'];
-			$Value['employname'] 		= $_POST['employname'];
+			$Value['employeid'] 		= $_POST['employeid'];
+			$Value['employename'] 		= $_POST['employename'];
 
 			foreach ($Value as $key => $val) {
 				if (empty($val)) {
@@ -1278,7 +1278,7 @@ if (!empty($_Type)) {
 				$Value['expireday2'] 	=  tw2ad($Value['expireday']);
 				$employee = $CM->get_employee_data($Value['eid']);
 				if (!empty($employee)) {
-					$o_employid = $employee['employid'];
+					$o_employid = $employee['employeid'];
 					$o_no = $employee['no'];
 					$Value['buildday'] 		= $employee['buildday'];
 					$Value['buildday2'] 	= $employee['buildday2'];
@@ -1289,8 +1289,8 @@ if (!empty($_Type)) {
 					$Value['buildday'] 		=  $tw_year . '-' . date('m-d');
 					$Value['buildday2'] 	= date('Y-m-d');
 				}
-				if ($o_employid != $Value['employid']) {
-					$db->Where = " WHERE employid = '" . $Value['employid'] . "'";
+				if ($o_employid != $Value['employeid']) {
+					$db->Where = " WHERE employeid = '" . $Value['employeid'] . "'";
 					$db->query_sql($employee_db, '*');
 					if ($row = $db->query_fetch()) {
 						$_html_msg 	= '員工編號已存在，請更換一個後再儲存';
@@ -1308,8 +1308,8 @@ if (!empty($_Type)) {
 				$employee_data = array(
 					'cono' 				=> $Value['cono'],
 					'coname1' 			=> $Value['coname1'],
-					'employid' 			=> $Value['employid'],
-					'employname' 		=> $Value['employname'],
+					'employeid' 			=> $Value['employeid'],
+					'employename' 		=> $Value['employename'],
 					'no' 				=> $Value['no'],
 					'id' 				=> $Value['id'],
 					'EngName' 			=> $Value['EngName'],
@@ -1359,7 +1359,7 @@ if (!empty($_Type)) {
 						$_html_msg 	= '儲存失敗，請重新整理後再試試';
 					} else {
 						$_html_msg 	= '儲存成功！';
-						$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $Value['employid'], 'employee');
+						$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $Value['employeid'], 'employee');
 					}
 				} else {
 					if (!empty($db->Error)) {
@@ -1460,7 +1460,7 @@ if (!empty($_Type)) {
 					$_html_msg 	= '儲存失敗，請重新整理後再試試';
 				} else {
 					$_html_msg 	= '儲存成功！';
-					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employeid'], 'employee');
 				}
 			}
 			break;
@@ -1531,7 +1531,7 @@ if (!empty($_Type)) {
 					$_html_msg 	= '儲存失敗，請重新整理後再試試';
 				} else {
 					$_html_msg 	= '儲存成功！';
-					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employeid'], 'employee');
 				}
 			}
 			break;
@@ -1592,7 +1592,7 @@ if (!empty($_Type)) {
 					$_html_msg 	= '儲存失敗，請重新整理後再試試';
 				} else {
 					$_html_msg 	= '儲存成功！';
-					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employeid'], 'employee');
 				}
 			}
 			break;
@@ -1637,7 +1637,7 @@ if (!empty($_Type)) {
 				}
 				if (empty($db->Error)) {
 					$_html_msg 	= '儲存成功！';
-					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employid'], 'employee');
+					$_html_href = "m_employee.php?c=" . OEncrypt('v=' . $employee['employeid'], 'employee');
 				}
 			}
 			break;

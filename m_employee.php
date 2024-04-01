@@ -138,15 +138,15 @@ if (empty($employid)) { //判斷是否為編輯模式
                           <div class="row mb-2">
                             <div class="col-lg-2">
                               <div class="form-group">
-                                <label for="employid">員工編號 *</label>
-                                <input type="text" data-name="員工編號" maxlength="10" class="form-control" name="employid" id="employid" value="<?= $employee['employid'] ?>" placeholder="EX:A001" <?= $edit ? 'readonly' : '' ?> required>
+                                <label for="employeid">員工編號 *</label>
+                                <input type="text" data-name="員工編號" maxlength="10" class="form-control" name="employeid" id="employeid" value="<?= $employee['employeid'] ?>" placeholder="EX:A001" <?= $edit ? 'readonly' : '' ?> required>
                               </div>
                             </div>
 
                             <div class="col-lg-3">
                               <div class="form-group">
-                                <label for="employname">員工姓名 *</label>
-                                <input type="text" data-name="員工姓名" maxlength="10" class="form-control" name="employname" id="employname" value="<?= $employee['employname'] ?>" placeholder="EX:張先生" required>
+                                <label for="employename">員工姓名 *</label>
+                                <input type="text" data-name="員工姓名" maxlength="10" class="form-control" name="employename" id="employename" value="<?= $employee['employename'] ?>" placeholder="EX:張先生" required>
                                 <span class="d-block mt-1">請輸入員工全名。</span>
                               </div>
                             </div>

@@ -986,7 +986,7 @@ class Custom
 		$Sheet = "employee";
 
 		$db = new MySQL();
-		$db->Where = "Where employid = '" . $id . "' OR eid = '" . $id . "'";
+		$db->Where = "Where employeid = '" . $id . "' OR eid = '" . $id . "'";
 		$db->Order_By = 'Order By eid asc';
 		$db->query_sql($Sheet, '*', 0, 1);
 		while ($row = $db->query_fetch('', 'assoc')) {
@@ -1005,7 +1005,7 @@ class Custom
 		$Sheet = "employee";
 
 		$db = new MySQL();
-		$db->Order_By = 'Order By employid asc';
+		$db->Order_By = 'Order By employeid asc';
 		$db->query_sql($Sheet, '*');
 		$count = 0;
 		while ($row = $db->query_fetch('', 'assoc')) {
