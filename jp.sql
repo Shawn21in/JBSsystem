@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-03-29 09:57:20
+-- 產生時間： 2024-04-01 02:48:58
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   `mealtime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '誤餐時間',
   `type` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '設定出勤日(工作日、休息日、例假日)',
   PRIMARY KEY (`attendanceid`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `attendance`
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `bankno` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '銀行編號',
   `bankname` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行名稱',
   PRIMARY KEY (`bankno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `bank`
@@ -194,7 +194,7 @@ INSERT INTO `cardset` (`id`, `years`, `yeare`, `months`, `monthe`, `days`, `daye
 
 DROP TABLE IF EXISTS `comp`;
 CREATE TABLE IF NOT EXISTS `comp` (
-  `cono` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '公司編號',
+  `cono` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '公司編號',
   `coname1` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司簡號',
   `coname2` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
   `coper` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '負 責 人',
@@ -268,12 +268,12 @@ INSERT INTO `comp` (`cono`, `coname1`, `coname2`, `coper`, `couno`, `cotel1`, `c
 
 DROP TABLE IF EXISTS `deduction`;
 CREATE TABLE IF NOT EXISTS `deduction` (
-  `deductionno` varchar(10) NOT NULL COMMENT '加扣款編號',
+  `deductionno` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '加扣款編號',
   `deductionname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加扣款名稱',
   `dedtype` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加(減)項',
   `dedmny` decimal(19,4) DEFAULT NULL COMMENT '加扣款金額',
   PRIMARY KEY (`deductionno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `deduction`
@@ -294,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `education` (
   `educationno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '學歷編號',
   `educationname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '學歷名稱',
   PRIMARY KEY (`educationno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `education`
@@ -318,17 +318,17 @@ INSERT INTO `education` (`educationno`, `educationname`) VALUES
 DROP TABLE IF EXISTS `employdeduction`;
 CREATE TABLE IF NOT EXISTS `employdeduction` (
   `edid` int NOT NULL AUTO_INCREMENT,
-  `employeid` varchar(10) DEFAULT NULL COMMENT '員工編號',
-  `deductionno` varchar(10) DEFAULT NULL COMMENT '加扣款編號',
-  `deductionname` varchar(30) DEFAULT NULL COMMENT '加扣款名稱',
+  `employeid` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
+  `deductionno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加扣款編號',
+  `deductionname` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加扣款名稱',
   `deductionmny` decimal(19,4) DEFAULT NULL COMMENT '加扣款金額',
   `recordno` int DEFAULT NULL COMMENT 'rec',
   `dotype` tinyint DEFAULT NULL COMMENT '加入全薪金額',
   `jishu` decimal(19,4) DEFAULT NULL,
-  `jstype` varchar(4) DEFAULT NULL COMMENT '公式類別',
+  `jstype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公式類別',
   `addh2` tinyint DEFAULT NULL COMMENT '加入補充保費',
   PRIMARY KEY (`edid`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `employdeduction`
@@ -467,54 +467,54 @@ INSERT INTO `employee` (`eid`, `employid`, `employname`, `cono`, `coname1`, `app
 DROP TABLE IF EXISTS `employeeattend`;
 CREATE TABLE IF NOT EXISTS `employeeattend` (
   `eid` int NOT NULL AUTO_INCREMENT,
-  `employeid` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '員工編號',
-  `employename` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '員工姓名',
-  `ndyear` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '年度(民國)',
-  `ndyear2` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '年度(西元)',
-  `ndweektype` varchar(4) DEFAULT NULL COMMENT '星期',
-  `nddate` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '出勤日期-民國',
+  `employeid` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工編號',
+  `employename` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '員工姓名',
+  `ndyear` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度(民國)',
+  `ndyear2` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年度(西元)',
+  `ndweektype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '星期',
+  `nddate` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日期-民國',
   `nddate1` datetime DEFAULT NULL,
-  `nddate2` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '出勤日期-西元',
-  `ndclassno` varchar(10) DEFAULT NULL,
+  `nddate2` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日期-西元',
+  `ndclassno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ndclassname` int DEFAULT NULL,
-  `ontime` varchar(4) DEFAULT NULL COMMENT '上班時間',
-  `offtime` varchar(4) DEFAULT NULL COMMENT '下班時間',
-  `latetime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '遲到時間',
-  `attendno` varchar(10) DEFAULT NULL COMMENT '出勤編號',
-  `attendname` varchar(20) DEFAULT NULL COMMENT '出勤名稱',
-  `addtime1` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '加班時間起',
-  `addtime2` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '加班時間末',
+  `ontime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上班時間',
+  `offtime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下班時間',
+  `latetime` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '遲到時間',
+  `attendno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤編號',
+  `attendname` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤名稱',
+  `addtime1` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班時間起',
+  `addtime2` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班時間末',
   `daka` tinyint DEFAULT NULL COMMENT '是否需要打卡',
-  `cuowutype` varchar(4) DEFAULT NULL,
+  `cuowutype` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jiaritype` tinyint DEFAULT NULL COMMENT 'true-當日日期是放假日;false-當日日期不是放假日。',
-  `gongxiutype` varchar(5) DEFAULT NULL,
-  `restime1` varchar(4) DEFAULT NULL COMMENT '休息時間1起',
-  `restime2` varchar(4) DEFAULT NULL COMMENT '休息時間1末',
-  `restime3` varchar(4) DEFAULT NULL,
-  `restime4` varchar(4) DEFAULT NULL,
-  `addontime` varchar(4) DEFAULT NULL COMMENT '加班上班',
-  `addofftime` varchar(4) DEFAULT NULL COMMENT '加班下班',
+  `gongxiutype` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `restime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '休息時間1起',
+  `restime2` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '休息時間1末',
+  `restime3` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `restime4` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `addontime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班上班',
+  `addofftime` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加班下班',
   `lock1` tinyint DEFAULT NULL,
   `mend` decimal(19,4) DEFAULT NULL,
   `isnearly` tinyint DEFAULT NULL COMMENT '不算早退',
-  `latemins` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '遲到分數',
-  `latetimes` varchar(4) DEFAULT NULL,
+  `latemins` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '遲到分數',
+  `latetimes` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isabsent` tinyint DEFAULT NULL,
-  `ontime1` varchar(4) DEFAULT NULL,
-  `offtime1` varchar(4) DEFAULT NULL,
-  `attendday` varchar(4) DEFAULT NULL COMMENT '出勤日',
-  `worktime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '上班時數',
-  `jiabantime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '加班時數',
-  `qingjiatime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '請假時數',
-  `absenceno` varchar(10) DEFAULT NULL COMMENT '假別編號',
-  `absencename` varchar(20) DEFAULT NULL COMMENT '假別名稱',
-  `memo` text COMMENT '備註',
+  `ontime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `offtime1` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attendday` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '出勤日',
+  `worktime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '上班時數',
+  `jiabantime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '加班時數',
+  `qingjiatime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '請假時數',
+  `absenceno` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '假別編號',
+  `absencename` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '假別名稱',
+  `memo` text COLLATE utf8mb4_unicode_ci COMMENT '備註',
   `jiabantime134` decimal(19,4) DEFAULT NULL,
   `jiabantime167` decimal(19,4) DEFAULT NULL,
   `jiabantime267` decimal(19,4) DEFAULT NULL,
   `jiabantime001` decimal(19,4) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `employeeattend`
@@ -3780,7 +3780,7 @@ CREATE TABLE IF NOT EXISTS `family` (
   `relationno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `relationship` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`relationno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `family`
@@ -3812,7 +3812,7 @@ CREATE TABLE IF NOT EXISTS `holidays` (
   `attendanceno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班別',
   `AttendDay` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '日期型態(國定日、休息日等)',
   PRIMARY KEY (`holidayid`)
-) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `holidays`
@@ -3889,7 +3889,7 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `appno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `appname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '職稱',
   PRIMARY KEY (`appno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `jobs`
@@ -3907,12 +3907,12 @@ INSERT INTO `jobs` (`appno`, `appname`) VALUES
 DROP TABLE IF EXISTS `mod_recaptcha`;
 CREATE TABLE IF NOT EXISTS `mod_recaptcha` (
   `Admin_ID` int NOT NULL COMMENT '管理者',
-  `Recaptcha_JS_url` varchar(80) DEFAULT NULL COMMENT 'JS引用路徑',
-  `Recaptcha_API_url` varchar(80) DEFAULT NULL COMMENT 'API路徑',
-  `Recaptcha_SiteKey` varchar(40) DEFAULT NULL COMMENT '公鑰',
-  `Recaptcha_SecretKey` varchar(40) DEFAULT NULL COMMENT '私鑰',
+  `Recaptcha_JS_url` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JS引用路徑',
+  `Recaptcha_API_url` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'API路徑',
+  `Recaptcha_SiteKey` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公鑰',
+  `Recaptcha_SecretKey` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '私鑰',
   PRIMARY KEY (`Admin_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='驗證碼資料表';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='驗證碼資料表';
 
 --
 -- 傾印資料表的資料 `mod_recaptcha`
@@ -3932,7 +3932,7 @@ CREATE TABLE IF NOT EXISTS `part` (
   `partno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '部門編號',
   `partname` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門名稱',
   PRIMARY KEY (`partno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `part`
@@ -3955,7 +3955,7 @@ CREATE TABLE IF NOT EXISTS `purchaser1` (
   `purchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '健保費',
   `employerPurchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額',
   PRIMARY KEY (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `purchaser1`
@@ -3987,7 +3987,7 @@ CREATE TABLE IF NOT EXISTS `reason` (
   `reasonno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `reason` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`reasonno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `reason`
@@ -4018,7 +4018,7 @@ CREATE TABLE IF NOT EXISTS `seclab1` (
   `employerSeclablMny` decimal(19,4) DEFAULT '0.0000' COMMENT '本國雇主負擔',
   `employerForeignMny` decimal(19,4) DEFAULT '0.0000' COMMENT '外勞雇主負擔',
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `seclab1`
@@ -4048,24 +4048,24 @@ INSERT INTO `seclab1` (`sid`, `seclabNo`, `seclabMny`, `seclablMny`, `ForeignMny
 DROP TABLE IF EXISTS `sys_admin`;
 CREATE TABLE IF NOT EXISTS `sys_admin` (
   `Admin_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Admin_Acc` varchar(20) NOT NULL COMMENT '管理者帳號',
-  `Admin_Pwd` varchar(32) NOT NULL COMMENT '管理者密碼',
-  `Admin_Name` varchar(20) DEFAULT NULL COMMENT '管理者名稱',
-  `Admin_Depart` varchar(12) DEFAULT NULL COMMENT '部門',
+  `Admin_Acc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '管理者帳號',
+  `Admin_Pwd` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '管理者密碼',
+  `Admin_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '管理者名稱',
+  `Admin_Depart` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門',
   `Admin_Permissions` tinyint UNSIGNED DEFAULT '0' COMMENT '管理者權限',
   `Group_ID` tinyint UNSIGNED DEFAULT NULL COMMENT '管理者群組',
-  `Depart_ID` varchar(11) DEFAULT NULL COMMENT '部門',
+  `Depart_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '部門',
   `Tables_ID` int UNSIGNED DEFAULT NULL COMMENT '管理者資料庫',
-  `Admin_Code` varchar(32) DEFAULT NULL COMMENT '登入碼',
+  `Admin_Code` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '登入碼',
   `Admin_Sdate` datetime DEFAULT '1911-00-00 00:00:00' COMMENT '建立時間',
   `Admin_LastLogin` datetime DEFAULT NULL COMMENT '最後登入日期',
-  `Admin_IP` varchar(20) DEFAULT NULL COMMENT '登入IP',
+  `Admin_IP` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '登入IP',
   `Admin_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Admin_Checkbox` tinyint UNSIGNED DEFAULT '0' COMMENT '切換資料庫啟用',
   PRIMARY KEY (`Admin_ID`),
   UNIQUE KEY `Admin_Acc` (`Admin_Acc`),
   KEY `Admin_Code` (`Admin_Code`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COMMENT='系統管理員表';
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統管理員表';
 
 --
 -- 傾印資料表的資料 `sys_admin`
@@ -4087,12 +4087,12 @@ INSERT INTO `sys_admin` (`Admin_ID`, `Admin_Acc`, `Admin_Pwd`, `Admin_Name`, `Ad
 
 DROP TABLE IF EXISTS `sys_download`;
 CREATE TABLE IF NOT EXISTS `sys_download` (
-  `DL_Session` varchar(32) NOT NULL COMMENT '下載碼',
-  `DL_DownLoadInfo` varchar(100) DEFAULT NULL COMMENT '下載資訊',
-  `DL_DownLoadPath` varchar(100) DEFAULT NULL COMMENT '檔案路徑',
-  `DL_DownLoadUrl` varchar(100) DEFAULT NULL COMMENT '下載位址',
+  `DL_Session` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '下載碼',
+  `DL_DownLoadInfo` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下載資訊',
+  `DL_DownLoadPath` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '檔案路徑',
+  `DL_DownLoadUrl` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '下載位址',
   PRIMARY KEY (`DL_Session`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='下載資料表';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='下載資料表';
 
 -- --------------------------------------------------------
 
@@ -4103,11 +4103,11 @@ CREATE TABLE IF NOT EXISTS `sys_download` (
 DROP TABLE IF EXISTS `sys_group`;
 CREATE TABLE IF NOT EXISTS `sys_group` (
   `Group_ID` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '群組ID',
-  `Group_Name` varchar(30) DEFAULT NULL COMMENT '群組名稱',
+  `Group_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '群組名稱',
   `Group_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '群組級別',
-  `Group_MenuUse` text COMMENT '群組目錄權限',
+  `Group_MenuUse` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '群組目錄權限',
   PRIMARY KEY (`Group_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COMMENT='系統群組表';
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統群組表';
 
 --
 -- 傾印資料表的資料 `sys_group`
@@ -4126,31 +4126,31 @@ INSERT INTO `sys_group` (`Group_ID`, `Group_Name`, `Group_Lv`, `Group_MenuUse`) 
 
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE IF NOT EXISTS `sys_menu` (
-  `Menu_ID` varchar(11) NOT NULL COMMENT '目錄編號',
-  `Menu_Name` varchar(20) DEFAULT NULL COMMENT '目錄名稱',
+  `Menu_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '目錄編號',
+  `Menu_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄名稱',
   `Menu_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
-  `Menu_Exec` varchar(60) DEFAULT NULL COMMENT '執行檔',
-  `Menu_Path` varchar(20) DEFAULT NULL COMMENT '執行檔位置',
+  `Menu_Exec` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔',
+  `Menu_Path` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔位置',
   `Menu_Sort` int DEFAULT '0' COMMENT '目錄排序',
-  `Menu_UpMID` varchar(11) DEFAULT NULL COMMENT '上層類別',
+  `Menu_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層類別',
   `Menu_Permissions` tinyint UNSIGNED DEFAULT '0' COMMENT '目錄權限',
-  `Menu_Smallpic` varchar(20) DEFAULT NULL COMMENT '目錄小圖示',
-  `Menu_TableName` varchar(30) DEFAULT NULL COMMENT '資料表名稱',
-  `Menu_TableName1` varchar(30) DEFAULT NULL COMMENT '擴充資料表名稱',
-  `Menu_TableName2` varchar(30) DEFAULT NULL COMMENT '分類資料表名稱',
-  `Menu_TableKey` varchar(20) DEFAULT NULL COMMENT '資料表主鍵',
-  `Menu_TableKey1` varchar(20) DEFAULT NULL COMMENT '擴充資料表主鍵',
-  `Menu_TableKey2` varchar(20) DEFAULT NULL COMMENT '分類資料表主鍵',
-  `Menu_TablePre` varchar(10) DEFAULT NULL COMMENT '資料表前輟',
-  `Menu_TablePre1` varchar(10) DEFAULT NULL COMMENT '擴充資料表前輟',
-  `Menu_TablePre2` varchar(10) DEFAULT NULL COMMENT '分類資料表前輟',
-  `Menu_OrderBy` varchar(60) DEFAULT NULL COMMENT '自定義排序',
+  `Menu_Smallpic` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄小圖示',
+  `Menu_TableName` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表名稱',
+  `Menu_TableName1` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '擴充資料表名稱',
+  `Menu_TableName2` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類資料表名稱',
+  `Menu_TableKey` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表主鍵',
+  `Menu_TableKey1` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '擴充資料表主鍵',
+  `Menu_TableKey2` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類資料表主鍵',
+  `Menu_TablePre` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表前輟',
+  `Menu_TablePre1` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '擴充資料表前輟',
+  `Menu_TablePre2` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類資料表前輟',
+  `Menu_OrderBy` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '自定義排序',
   `Menu_ClassMax` tinyint UNSIGNED DEFAULT '1' COMMENT '分類最大層數',
   `Menu_Mode` tinyint(1) DEFAULT '0' COMMENT '目錄模式',
-  `Menu_Model` varchar(10) DEFAULT NULL COMMENT '目錄模組',
-  `Menu_Link` varchar(100) DEFAULT NULL COMMENT '目錄連結',
-  `Menu_CstSnPre` varchar(5) DEFAULT NULL COMMENT '自定編號前輟',
-  `Menu_CstSnType` varchar(6) DEFAULT NULL COMMENT '自訂編號種類',
+  `Menu_Model` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄模組',
+  `Menu_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目錄連結',
+  `Menu_CstSnPre` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '自定編號前輟',
+  `Menu_CstSnType` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '自訂編號種類',
   `Menu_CstSnNum` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '自訂編號流水碼數',
   `Menu_Add` tinyint UNSIGNED DEFAULT '0' COMMENT '允許新增資料',
   `Menu_Edt` tinyint UNSIGNED DEFAULT '0' COMMENT '允許編輯資料',
@@ -4162,7 +4162,7 @@ CREATE TABLE IF NOT EXISTS `sys_menu` (
   `Menu_SysAdminUse` tinyint UNSIGNED DEFAULT '0' COMMENT '系統管理員使用',
   PRIMARY KEY (`Menu_ID`),
   KEY `Menu_Exec` (`Menu_Exec`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='系統目錄表';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統目錄表';
 
 --
 -- 傾印資料表的資料 `sys_menu`
@@ -4199,19 +4199,19 @@ DROP TABLE IF EXISTS `sys_mysql_log`;
 CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   `ML_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `ML_DATE` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '建立時間',
-  `ML_USER` varchar(30) DEFAULT NULL COMMENT '使用者',
-  `ML_DATA_ID` varchar(30) DEFAULT NULL COMMENT '資料ID',
-  `ML_COMMENT` text COMMENT '註解',
-  `ML_SQL_CON` text COMMENT '執行內容',
-  `ML_SQL_EXEC_TYPE` varchar(10) DEFAULT NULL COMMENT '訊息種類',
-  `ML_EXEC_FILE` varchar(255) DEFAULT NULL COMMENT '執行檔案',
+  `ML_USER` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '使用者',
+  `ML_DATA_ID` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料ID',
+  `ML_COMMENT` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '註解',
+  `ML_SQL_CON` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '執行內容',
+  `ML_SQL_EXEC_TYPE` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '訊息種類',
+  `ML_EXEC_FILE` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔案',
   PRIMARY KEY (`ML_ID`),
   KEY `ML_DATE` (`ML_DATE`),
   KEY `ML_USER` (`ML_USER`),
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
-  KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+  KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`(250))
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -4272,7 +4272,8 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (52, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'10\',\'622\',\'40100\',\'1940\');', 'INSERT', '/jp/web_post.php'),
 (53, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'11\',\'651\',\'42000\',\'2032\');', 'INSERT', '/jp/web_post.php'),
 (54, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
-(55, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php');
+(55, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php'),
+(56, '2024-04-01 08:53:54', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'e5fb614c4d353db87ea7fdfbdc0689fb\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -4283,10 +4284,10 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 DROP TABLE IF EXISTS `sys_tables`;
 CREATE TABLE IF NOT EXISTS `sys_tables` (
   `Tables_ID` int UNSIGNED NOT NULL COMMENT '資料庫ID',
-  `Tables_Name` varchar(30) DEFAULT NULL COMMENT '資料庫名稱',
-  `Tables_Name1` varchar(30) DEFAULT NULL COMMENT '資料庫中文名稱',
+  `Tables_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料庫名稱',
+  `Tables_Name1` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料庫中文名稱',
   `Tables_Open` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '資料庫啟用'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='系統資料庫表';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統資料庫表';
 
 --
 -- 傾印資料表的資料 `sys_tables`
@@ -4303,29 +4304,29 @@ INSERT INTO `sys_tables` (`Tables_ID`, `Tables_Name`, `Tables_Name1`, `Tables_Op
 
 DROP TABLE IF EXISTS `sys_tables_option`;
 CREATE TABLE IF NOT EXISTS `sys_tables_option` (
-  `TO_Name` varchar(30) DEFAULT NULL COMMENT '資料表名稱',
-  `TO_Field` varchar(20) DEFAULT NULL COMMENT '資料表欄位',
-  `TO_Comment1` varchar(30) DEFAULT NULL COMMENT '欄位註解1',
-  `TO_Comment2` varchar(30) DEFAULT NULL COMMENT '欄位註解2',
+  `TO_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表名稱',
+  `TO_Field` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料表欄位',
+  `TO_Comment1` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位註解1',
+  `TO_Comment2` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位註解2',
   `TO_InShow` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位內顯示',
   `TO_InEdit` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位內編輯',
   `TO_OutShow` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位外顯示',
   `TO_OutEdit` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位外編輯',
   `TO_Must` tinyint UNSIGNED DEFAULT '0' COMMENT '欄位必填',
-  `TO_InType` varchar(15) DEFAULT NULL COMMENT '欄位種類',
-  `TO_ChkType` varchar(15) DEFAULT NULL COMMENT '欄位種類1',
+  `TO_InType` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位種類',
+  `TO_ChkType` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位種類1',
   `TO_NumOpen` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '數字大小啟用',
   `TO_Max` int DEFAULT '0' COMMENT '數字最大值',
   `TO_Min` int DEFAULT '0' COMMENT '數字最小值',
-  `TO_ConnectField` varchar(20) DEFAULT NULL COMMENT '相互作用欄位',
-  `TO_ConnectField1` varchar(20) DEFAULT NULL COMMENT '互相作用欄位1',
-  `TO_SelPicSize` varchar(30) DEFAULT NULL COMMENT '選擇圖片大小',
-  `TO_SelStates` varchar(30) DEFAULT NULL COMMENT '欄位狀態選擇',
+  `TO_ConnectField` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相互作用欄位',
+  `TO_ConnectField1` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '互相作用欄位1',
+  `TO_SelPicSize` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '選擇圖片大小',
+  `TO_SelStates` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '欄位狀態選擇',
   `TO_UploadSize` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '欄位上傳大小',
-  `TO_TimeFormat` varchar(20) DEFAULT NULL COMMENT '時間格式',
+  `TO_TimeFormat` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '時間格式',
   `TO_Sort` int UNSIGNED DEFAULT '0' COMMENT '欄位排序',
   UNIQUE KEY `TO_Name` (`TO_Name`,`TO_Field`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='系統資料表設定';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系統資料表設定';
 
 --
 -- 傾印資料表的資料 `sys_tables_option`
@@ -4605,55 +4606,55 @@ INSERT INTO `sys_tables_option` (`TO_Name`, `TO_Field`, `TO_Comment1`, `TO_Comme
 DROP TABLE IF EXISTS `sys_web_option`;
 CREATE TABLE IF NOT EXISTS `sys_web_option` (
   `Admin_ID` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '管理者',
-  `WO_Name` varchar(20) DEFAULT NULL COMMENT '公司名稱',
-  `WO_Addr` varchar(10) DEFAULT NULL COMMENT '縣市',
-  `WO_Addr1` varchar(10) DEFAULT NULL COMMENT '區域',
-  `WO_Addr2` varchar(100) DEFAULT NULL COMMENT '地址',
-  `WO_Tel` varchar(20) DEFAULT NULL COMMENT '公司電話',
-  `WO_Tel1` varchar(20) DEFAULT NULL COMMENT '公司手機',
-  `WO_Fax` varchar(12) DEFAULT NULL COMMENT '公司傳真',
-  `WO_Email` varchar(60) DEFAULT NULL COMMENT '公司信箱',
-  `WO_OpenTime` text COMMENT '營業時間',
-  `WO_Idn` varchar(8) DEFAULT NULL COMMENT '公司統編',
-  `WO_About` text COMMENT '關於我們',
-  `WO_Privacy` text COMMENT '隱私權政策',
-  `WO_Title` varchar(35) DEFAULT NULL COMMENT '網站標題',
-  `WO_Url` varchar(100) DEFAULT NULL COMMENT '網站網址',
-  `WO_FBLink` varchar(100) DEFAULT NULL COMMENT 'Facebook',
-  `WO_IGLink` varchar(100) DEFAULT NULL COMMENT 'Instagram',
-  `WO_LineLink` varchar(100) DEFAULT NULL COMMENT 'LineID',
-  `WO_Youtube` varchar(12) DEFAULT NULL COMMENT 'Youtube影片碼',
-  `WO_YoutubeLink` varchar(100) DEFAULT NULL COMMENT 'Youtube影片連結',
-  `WO_Description` text COMMENT '網站介紹',
-  `WO_Keywords` tinytext COMMENT '網站關鍵字',
-  `WO_GMAP` text COMMENT 'Google MAP',
-  `WO_GMAP_Link` text COMMENT 'GOOGLE地圖連結',
-  `WO_GAnalytics` text COMMENT 'Google Analytics',
-  `WO_MapLat` varchar(20) DEFAULT NULL COMMENT '地圖北緯',
-  `WO_MapLng` varchar(20) DEFAULT NULL COMMENT '地圖東經',
+  `WO_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
+  `WO_Addr` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '縣市',
+  `WO_Addr1` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '區域',
+  `WO_Addr2` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地址',
+  `WO_Tel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司電話',
+  `WO_Tel1` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司手機',
+  `WO_Fax` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司傳真',
+  `WO_Email` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司信箱',
+  `WO_OpenTime` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '營業時間',
+  `WO_Idn` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司統編',
+  `WO_About` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '關於我們',
+  `WO_Privacy` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '隱私權政策',
+  `WO_Title` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '網站標題',
+  `WO_Url` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '網站網址',
+  `WO_FBLink` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Facebook',
+  `WO_IGLink` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Instagram',
+  `WO_LineLink` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'LineID',
+  `WO_Youtube` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Youtube影片碼',
+  `WO_YoutubeLink` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Youtube影片連結',
+  `WO_Description` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '網站介紹',
+  `WO_Keywords` text COLLATE utf8mb4_unicode_ci COMMENT '網站關鍵字',
+  `WO_GMAP` mediumtext COLLATE utf8mb4_unicode_ci COMMENT 'Google MAP',
+  `WO_GMAP_Link` mediumtext COLLATE utf8mb4_unicode_ci COMMENT 'GOOGLE地圖連結',
+  `WO_GAnalytics` mediumtext COLLATE utf8mb4_unicode_ci COMMENT 'Google Analytics',
+  `WO_MapLat` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地圖北緯',
+  `WO_MapLng` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地圖東經',
   `WO_Open` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '網站開啟',
   `WO_Debug` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '網站Debug',
-  `WO_StmpHost` varchar(100) DEFAULT NULL COMMENT '郵件伺服器(SMTP)',
-  `WO_StmpPort` varchar(6) DEFAULT NULL COMMENT '郵件伺服器(PORT)',
-  `WO_SendName` varchar(20) DEFAULT NULL COMMENT '寄件者名稱',
-  `WO_SendEmail` varchar(60) DEFAULT NULL COMMENT '寄件者Email',
+  `WO_StmpHost` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '郵件伺服器(SMTP)',
+  `WO_StmpPort` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '郵件伺服器(PORT)',
+  `WO_SendName` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '寄件者名稱',
+  `WO_SendEmail` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '寄件者Email',
   `WO_StmpAuth` tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT '啟用驗證',
-  `WO_StmpAcc` varchar(30) DEFAULT NULL COMMENT '驗證帳號',
-  `WO_StmpPass` varchar(30) DEFAULT NULL COMMENT '驗證密碼',
-  `WO_StmpSecure` varchar(3) DEFAULT NULL COMMENT '加密方式',
-  `WO_AddrName` varchar(20) DEFAULT NULL COMMENT '測試收件者名稱',
-  `WO_AddrEmail` varchar(60) DEFAULT NULL COMMENT '測試收件者信箱',
-  `WO_MailSubject` varchar(100) DEFAULT NULL COMMENT '測試信件主題',
-  `WO_MailBody` text COMMENT '測試信件內容',
-  `WO_Version` varchar(20) DEFAULT NULL COMMENT '目前版本',
-  `WO_LOGO` varchar(60) DEFAULT NULL COMMENT '網站LOGO',
-  `WO_LOGO2` varchar(60) DEFAULT NULL COMMENT '後台登入頁LOGO',
-  `WO_favicon` varchar(60) DEFAULT NULL COMMENT '網址小圖標',
-  `WO_ShareIcon` varchar(60) DEFAULT NULL COMMENT '社群分享預覽圖',
-  `WO_FooterImg` varchar(60) DEFAULT NULL COMMENT '版尾廣告圖上傳',
-  `WO_FooterLOGO` varchar(60) DEFAULT NULL COMMENT '版尾LOGO',
+  `WO_StmpAcc` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證帳號',
+  `WO_StmpPass` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證密碼',
+  `WO_StmpSecure` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '加密方式',
+  `WO_AddrName` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '測試收件者名稱',
+  `WO_AddrEmail` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '測試收件者信箱',
+  `WO_MailSubject` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '測試信件主題',
+  `WO_MailBody` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '測試信件內容',
+  `WO_Version` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '目前版本',
+  `WO_LOGO` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '網站LOGO',
+  `WO_LOGO2` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '後台登入頁LOGO',
+  `WO_favicon` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '網址小圖標',
+  `WO_ShareIcon` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '社群分享預覽圖',
+  `WO_FooterImg` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '版尾廣告圖上傳',
+  `WO_FooterLOGO` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '版尾LOGO',
   PRIMARY KEY (`Admin_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COMMENT='網站資料設定';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='網站資料設定';
 
 --
 -- 傾印資料表的資料 `sys_web_option`
@@ -4671,15 +4672,15 @@ INSERT INTO `sys_web_option` (`Admin_ID`, `WO_Name`, `WO_Addr`, `WO_Addr1`, `WO_
 
 DROP TABLE IF EXISTS `web_abouts`;
 CREATE TABLE IF NOT EXISTS `web_abouts` (
-  `Abouts_ID` varchar(11) NOT NULL COMMENT '分類編號',
-  `Abouts_Name` varchar(20) DEFAULT NULL COMMENT '故事標題',
+  `Abouts_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分類編號',
+  `Abouts_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '故事標題',
   `Abouts_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
   `Abouts_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Abouts_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
-  `Abouts_UpMID` varchar(11) DEFAULT NULL COMMENT '上層目錄ID',
-  `Abouts_Content` text COMMENT '內容',
+  `Abouts_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
+  `Abouts_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '內容',
   PRIMARY KEY (`Abouts_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_abouts`
@@ -4699,15 +4700,15 @@ INSERT INTO `web_abouts` (`Abouts_ID`, `Abouts_Name`, `Abouts_Lv`, `Abouts_Sort`
 DROP TABLE IF EXISTS `web_banner`;
 CREATE TABLE IF NOT EXISTS `web_banner` (
   `Banner_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Banner_Title` varchar(60) DEFAULT NULL COMMENT '輪播標題',
-  `Banner_Mcp` varchar(60) DEFAULT NULL COMMENT '輪播圖',
+  `Banner_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '輪播標題',
+  `Banner_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '輪播圖',
   `Banner_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Banner_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Banner_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
   `Banner_LinkT` tinyint UNSIGNED DEFAULT '0' COMMENT '連結跳轉目標',
-  `Banner_Link` varchar(100) DEFAULT NULL COMMENT '連結',
+  `Banner_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結',
   PRIMARY KEY (`Banner_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4718,39 +4719,39 @@ CREATE TABLE IF NOT EXISTS `web_banner` (
 DROP TABLE IF EXISTS `web_company`;
 CREATE TABLE IF NOT EXISTS `web_company` (
   `Company_bid` int NOT NULL AUTO_INCREMENT,
-  `Company_ID` varchar(20) DEFAULT NULL COMMENT '公司編號',
-  `Company_Acc` varchar(50) DEFAULT NULL COMMENT '公司帳號',
-  `Company_PW` varchar(50) DEFAULT NULL COMMENT '公司密碼',
-  `Company_RePwd` varchar(32) DEFAULT NULL COMMENT '忘記密碼專用',
+  `Company_ID` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司編號',
+  `Company_Acc` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司帳號',
+  `Company_PW` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司密碼',
+  `Company_RePwd` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '忘記密碼專用',
   `Company_Is_RePwd` tinyint UNSIGNED DEFAULT '0' COMMENT '是否使用忘記密碼',
-  `Company_NAME` varchar(10) DEFAULT NULL COMMENT '公司名稱',
-  `Company_EDITORIAL` varchar(8) DEFAULT NULL COMMENT '公司統編',
-  `Company_CTEL` varchar(20) DEFAULT NULL COMMENT '公司電話',
-  `Company_ADDRESS` varchar(60) DEFAULT NULL COMMENT '公司地址',
-  `Company_PER` varchar(10) DEFAULT NULL COMMENT '公司負責人',
-  `Company_TEL` varchar(20) DEFAULT NULL COMMENT '負責人電話',
-  `Company_EMAIL` varchar(68) DEFAULT NULL COMMENT '公司E-MAIL',
+  `Company_NAME` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司名稱',
+  `Company_EDITORIAL` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司統編',
+  `Company_CTEL` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司電話',
+  `Company_ADDRESS` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司地址',
+  `Company_PER` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司負責人',
+  `Company_TEL` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '負責人電話',
+  `Company_EMAIL` varchar(68) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公司E-MAIL',
   `Company_NDATE` datetime DEFAULT NULL COMMENT '加入日期',
   `Company_EDATE` datetime DEFAULT NULL COMMENT '修改日期',
-  `Company_END` varchar(20) DEFAULT NULL COMMENT '到期日',
+  `Company_END` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '到期日',
   `Company_Plan` int UNSIGNED DEFAULT '0' COMMENT '方案選擇',
   `Company_Pay_Type` int UNSIGNED DEFAULT '0' COMMENT '付款方式',
   `Company_Invoice_Title` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '發票抬頭',
-  `Company_Invoice_Address` varchar(150) DEFAULT NULL COMMENT '發票地址',
+  `Company_Invoice_Address` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '發票地址',
   `Company_Invoice_Type` int UNSIGNED DEFAULT '0' COMMENT '發票形式',
   `Company_Is_Pay` tinyint UNSIGNED DEFAULT '0' COMMENT '是否付款',
-  `Company_Verify` varchar(150) DEFAULT NULL COMMENT '驗證碼',
+  `Company_Verify` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證碼',
   `Company_OPEN` tinyint(1) DEFAULT NULL COMMENT '帳號啟用',
   PRIMARY KEY (`Company_bid`),
   KEY `Company_Acc` (`Company_Acc`)
-) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_company`
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '8d05fcd99dbde9c205b55d2feb279e29', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'e5fb614c4d353db87ea7fdfbdc0689fb', 1);
 
 -- --------------------------------------------------------
 
@@ -4761,17 +4762,17 @@ INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_
 DROP TABLE IF EXISTS `web_contact`;
 CREATE TABLE IF NOT EXISTS `web_contact` (
   `CT_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `CT_Name` varchar(30) DEFAULT NULL COMMENT '聯絡人',
-  `CT_Tel` varchar(20) DEFAULT NULL COMMENT '聯絡電話',
-  `CT_Mobile` varchar(20) DEFAULT NULL COMMENT '聯絡手機',
-  `CT_Email` varchar(100) DEFAULT NULL COMMENT '電子信箱',
-  `CT_Address` varchar(100) DEFAULT NULL COMMENT '聯絡地址',
-  `CT_Title` varchar(60) DEFAULT NULL COMMENT '標題',
-  `CT_Verify` varchar(60) DEFAULT NULL COMMENT '辨別碼',
-  `CT_Content` text COMMENT '詳細內容',
+  `CT_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡人',
+  `CT_Tel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話',
+  `CT_Mobile` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡手機',
+  `CT_Email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電子信箱',
+  `CT_Address` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡地址',
+  `CT_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '標題',
+  `CT_Verify` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '辨別碼',
+  `CT_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '詳細內容',
   `CT_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
   PRIMARY KEY (`CT_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4781,15 +4782,15 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
 
 DROP TABLE IF EXISTS `web_delivery`;
 CREATE TABLE IF NOT EXISTS `web_delivery` (
-  `Delivery_ID` varchar(5) NOT NULL,
-  `Delivery_Name` varchar(30) DEFAULT NULL COMMENT '付款方式',
-  `Delivery_Type` varchar(10) DEFAULT '0' COMMENT '類型',
+  `Delivery_ID` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Delivery_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '付款方式',
+  `Delivery_Type` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT '0' COMMENT '類型',
   `Delivery_Free` int DEFAULT '0' COMMENT '免運金額',
   `Delivery_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Delivery_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Delivery_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
   PRIMARY KEY (`Delivery_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_delivery`
@@ -4809,14 +4810,14 @@ INSERT INTO `web_delivery` (`Delivery_ID`, `Delivery_Name`, `Delivery_Type`, `De
 DROP TABLE IF EXISTS `web_function`;
 CREATE TABLE IF NOT EXISTS `web_function` (
   `Func_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Func_Name` varchar(60) DEFAULT NULL COMMENT '標題',
-  `Func_Intro` varchar(255) DEFAULT NULL COMMENT '簡介',
-  `Func_Link` varchar(100) DEFAULT NULL COMMENT '連結',
+  `Func_Name` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '標題',
+  `Func_Intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '簡介',
+  `Func_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結',
   `Func_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Func_Lv` int DEFAULT NULL,
   `Func_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   PRIMARY KEY (`Func_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2011180 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=2011180 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_function`
@@ -4839,16 +4840,16 @@ INSERT INTO `web_function` (`Func_ID`, `Func_Name`, `Func_Intro`, `Func_Link`, `
 DROP TABLE IF EXISTS `web_index_ad`;
 CREATE TABLE IF NOT EXISTS `web_index_ad` (
   `Ad_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Ad_Title` varchar(60) DEFAULT NULL COMMENT '相簿標題',
-  `Ad_Intro` varchar(255) DEFAULT NULL COMMENT '相簿簡介',
-  `Ad_Mcp` varchar(60) DEFAULT NULL COMMENT '封面圖',
-  `Ad_Img` varchar(60) DEFAULT NULL COMMENT '圖片',
+  `Ad_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相簿標題',
+  `Ad_Intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相簿簡介',
+  `Ad_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面圖',
+  `Ad_Img` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '圖片',
   `Ad_Qty` int DEFAULT '0' COMMENT '相簿張數',
   `Ad_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Ad_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Ad_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
   PRIMARY KEY (`Ad_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_index_ad`
@@ -4867,17 +4868,17 @@ DROP TABLE IF EXISTS `web_index_adl`;
 CREATE TABLE IF NOT EXISTS `web_index_adl` (
   `Adl_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `Ad_ID` int UNSIGNED DEFAULT NULL COMMENT '相簿主編號',
-  `Adl_Title` varchar(60) DEFAULT NULL COMMENT '相片標題',
-  `Adl_Intro` varchar(255) DEFAULT NULL COMMENT '相片簡介',
-  `Adl_Img` varchar(60) DEFAULT NULL COMMENT '批次圖片',
+  `Adl_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相片標題',
+  `Adl_Intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '相片簡介',
+  `Adl_Img` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '批次圖片',
   `Adl_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Adl_Open` tinyint UNSIGNED DEFAULT '1' COMMENT '啟用',
   `Adl_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
   `Adl_LinkT` tinyint UNSIGNED DEFAULT '0' COMMENT '連結跳轉目標',
-  `Adl_Link` varchar(100) DEFAULT NULL COMMENT '連結',
+  `Adl_Link` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '連結',
   PRIMARY KEY (`Adl_ID`),
   KEY `Ad_ID` (`Ad_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4887,31 +4888,31 @@ CREATE TABLE IF NOT EXISTS `web_index_adl` (
 
 DROP TABLE IF EXISTS `web_member`;
 CREATE TABLE IF NOT EXISTS `web_member` (
-  `Member_ID` varchar(11) NOT NULL COMMENT '會員編號',
-  `Member_Acc` varchar(50) DEFAULT NULL COMMENT '會員帳號',
-  `Member_Pwd` varchar(32) DEFAULT NULL COMMENT '會員密碼',
-  `Member_Email` varchar(68) DEFAULT NULL COMMENT '電子信箱',
-  `Member_Name` varchar(50) DEFAULT NULL COMMENT '會員名稱',
-  `Member_Sex` varchar(2) DEFAULT NULL COMMENT '會員性別',
-  `Member_Tel` varchar(20) DEFAULT NULL COMMENT '聯絡電話',
-  `Member_Mobile` varchar(16) DEFAULT NULL COMMENT '聯絡手機',
-  `Member_Zipcode` varchar(10) DEFAULT NULL COMMENT '區域碼',
-  `Member_City` varchar(30) DEFAULT NULL COMMENT '區住縣市',
-  `Member_County` varchar(30) DEFAULT NULL COMMENT '區住地區',
-  `Member_Address` varchar(60) DEFAULT NULL COMMENT '區住地址',
+  `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '會員編號',
+  `Member_Acc` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員帳號',
+  `Member_Pwd` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員密碼',
+  `Member_Email` varchar(68) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '電子信箱',
+  `Member_Name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員名稱',
+  `Member_Sex` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員性別',
+  `Member_Tel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡電話',
+  `Member_Mobile` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '聯絡手機',
+  `Member_Zipcode` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '區域碼',
+  `Member_City` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '區住縣市',
+  `Member_County` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '區住地區',
+  `Member_Address` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '區住地址',
   `Member_Sdate` datetime DEFAULT NULL COMMENT '加入時間',
   `Member_Edate` datetime DEFAULT NULL COMMENT '編輯時間',
   `Member_LastLogin` datetime DEFAULT NULL COMMENT '最後登入時間',
-  `Member_Verify` varchar(150) DEFAULT NULL COMMENT '驗證碼',
-  `Member_RePwd` varchar(32) DEFAULT NULL COMMENT '忘記密碼專用',
+  `Member_Verify` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '驗證碼',
+  `Member_RePwd` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '忘記密碼專用',
   `Member_Is_RePwd` tinyint UNSIGNED DEFAULT NULL COMMENT '是否使用忘記密碼',
   `Member_Open` tinyint(1) DEFAULT NULL COMMENT '帳號啟用',
-  `Member_FBID` varchar(20) DEFAULT NULL COMMENT 'FacebookID',
-  `Member_GoogleID` varchar(25) DEFAULT NULL COMMENT 'GoogleID',
-  `Member_Line_id` varchar(60) DEFAULT NULL COMMENT 'Line使用者ID',
+  `Member_FBID` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'FacebookID',
+  `Member_GoogleID` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'GoogleID',
+  `Member_Line_id` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Line使用者ID',
   PRIMARY KEY (`Member_ID`),
   UNIQUE KEY `Member_Acc` (`Member_Acc`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_member`
@@ -4935,19 +4936,19 @@ DROP TABLE IF EXISTS `web_mysql_log`;
 CREATE TABLE IF NOT EXISTS `web_mysql_log` (
   `ML_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `ML_DATE` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '建立時間',
-  `ML_USER` varchar(30) DEFAULT NULL COMMENT '使用者',
-  `ML_DATA_ID` varchar(30) DEFAULT NULL COMMENT '資料ID',
-  `ML_COMMENT` text COMMENT '註解',
-  `ML_SQL_CON` text COMMENT '執行內容',
-  `ML_SQL_EXEC_TYPE` varchar(10) DEFAULT NULL COMMENT '訊息種類',
-  `ML_EXEC_FILE` varchar(255) DEFAULT NULL COMMENT '執行檔案',
+  `ML_USER` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '使用者',
+  `ML_DATA_ID` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資料ID',
+  `ML_COMMENT` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '註解',
+  `ML_SQL_CON` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '執行內容',
+  `ML_SQL_EXEC_TYPE` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '訊息種類',
+  `ML_EXEC_FILE` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '執行檔案',
   PRIMARY KEY (`ML_ID`),
   KEY `ML_DATE` (`ML_DATE`),
   KEY `ML_USER` (`ML_USER`),
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
-  KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`)
-) ENGINE=MyISAM AUTO_INCREMENT=234 DEFAULT CHARSET=utf8mb3 COMMENT='執行訊息';
+  KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`(250))
+) ENGINE=MyISAM AUTO_INCREMENT=234 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `web_mysql_log`
@@ -5175,16 +5176,16 @@ INSERT INTO `web_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 DROP TABLE IF EXISTS `web_news`;
 CREATE TABLE IF NOT EXISTS `web_news` (
   `News_ID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `NewsC_ID` varchar(11) DEFAULT NULL COMMENT '消息分類',
-  `News_Title` varchar(60) DEFAULT NULL COMMENT '消息標題',
-  `News_Content` text COMMENT '消息內容',
-  `News_Mcp` varchar(60) DEFAULT NULL COMMENT '封面圖',
+  `NewsC_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '消息分類',
+  `News_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '消息標題',
+  `News_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '消息內容',
+  `News_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面圖',
   `News_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `News_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   `News_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
   PRIMARY KEY (`News_ID`),
   KEY `NewsC_ID` (`NewsC_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_news`
@@ -5201,14 +5202,14 @@ INSERT INTO `web_news` (`News_ID`, `NewsC_ID`, `News_Title`, `News_Content`, `Ne
 
 DROP TABLE IF EXISTS `web_newsclass`;
 CREATE TABLE IF NOT EXISTS `web_newsclass` (
-  `NewsC_ID` varchar(11) NOT NULL COMMENT '分類編號',
-  `NewsC_Name` varchar(20) DEFAULT NULL COMMENT '分類名稱',
+  `NewsC_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分類編號',
+  `NewsC_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類名稱',
   `NewsC_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
   `NewsC_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `NewsC_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
-  `NewsC_UpMID` varchar(11) DEFAULT NULL COMMENT '上層目錄ID',
+  `NewsC_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
   PRIMARY KEY (`NewsC_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_newsclass`
@@ -5227,21 +5228,21 @@ INSERT INTO `web_newsclass` (`NewsC_ID`, `NewsC_Name`, `NewsC_Lv`, `NewsC_Sort`,
 DROP TABLE IF EXISTS `web_orderdetail`;
 CREATE TABLE IF NOT EXISTS `web_orderdetail` (
   `Orderd_ID` int NOT NULL AUTO_INCREMENT,
-  `Orderm_ID` varchar(11) NOT NULL COMMENT '訂單編號',
-  `Product_ID` varchar(11) DEFAULT NULL COMMENT '產品編號',
-  `ProductC_ID` varchar(11) DEFAULT NULL COMMENT '分類',
-  `Orderd_Name` varchar(100) DEFAULT NULL COMMENT '產品名稱',
-  `Orderd_Content` text COMMENT '內容物',
-  `Orderd_Unit` varchar(60) DEFAULT NULL COMMENT '規格',
+  `Orderm_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
+  `Product_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品編號',
+  `ProductC_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類',
+  `Orderd_Name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品名稱',
+  `Orderd_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '內容物',
+  `Orderd_Unit` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '規格',
   `Orderd_Count` int DEFAULT NULL COMMENT '產品數量',
   `Orderd_Price` int DEFAULT NULL COMMENT '產品原價',
   `Orderd_Price1` int DEFAULT NULL COMMENT '產品售價',
   `Orderd_Sdate` datetime DEFAULT NULL COMMENT '訂單日期',
-  `Product_NID` varchar(20) DEFAULT NULL,
+  `Product_NID` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`Orderd_ID`),
   UNIQUE KEY `Orderm_ID` (`Orderm_ID`,`Orderd_ID`,`Orderd_Unit`),
   KEY `ProductC_ID` (`ProductC_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5251,8 +5252,8 @@ CREATE TABLE IF NOT EXISTS `web_orderdetail` (
 
 DROP TABLE IF EXISTS `web_orderid`;
 CREATE TABLE IF NOT EXISTS `web_orderid` (
-  `Order_ID` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `Order_ID` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5262,30 +5263,30 @@ CREATE TABLE IF NOT EXISTS `web_orderid` (
 
 DROP TABLE IF EXISTS `web_ordermain`;
 CREATE TABLE IF NOT EXISTS `web_ordermain` (
-  `Orderm_ID` varchar(11) NOT NULL COMMENT '訂單編號',
-  `Member_ID` varchar(11) NOT NULL COMMENT '會員編號',
-  `Orderm_TotalSub` varchar(10) DEFAULT NULL COMMENT '總商品金額',
+  `Orderm_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
+  `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '會員編號',
+  `Orderm_TotalSub` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '總商品金額',
   `Orderm_Freight` int DEFAULT '0' COMMENT '運費',
   `Orderm_TotalPrice` int DEFAULT '0' COMMENT '總金額',
-  `Orderm_RName` varchar(30) DEFAULT NULL COMMENT '收件人名稱',
-  `Orderm_RCity` varchar(5) DEFAULT NULL COMMENT '收件人縣市',
-  `Orderm_RCounty` varchar(5) DEFAULT NULL COMMENT '收件人區域',
-  `Orderm_RAddr` varchar(100) DEFAULT NULL COMMENT '收件人地址',
-  `Orderm_RZipcode` varchar(6) DEFAULT NULL COMMENT '收件人郵遞區號',
-  `Orderm_RTel` varchar(12) DEFAULT NULL COMMENT '收件人電話',
-  `Orderm_RMobile` varchar(12) DEFAULT NULL COMMENT '收件人手機',
-  `Orderm_Delivery` varchar(30) DEFAULT NULL COMMENT '付款方式',
-  `Orderm_payTime` varchar(60) DEFAULT NULL COMMENT '付款時間',
-  `Orderm_Note` text COMMENT '備註',
+  `Orderm_RName` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人名稱',
+  `Orderm_RCity` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人縣市',
+  `Orderm_RCounty` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人區域',
+  `Orderm_RAddr` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人地址',
+  `Orderm_RZipcode` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人郵遞區號',
+  `Orderm_RTel` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人電話',
+  `Orderm_RMobile` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '收件人手機',
+  `Orderm_Delivery` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '付款方式',
+  `Orderm_payTime` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '付款時間',
+  `Orderm_Note` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '備註',
   `Orderm_States` tinyint UNSIGNED DEFAULT '0' COMMENT '狀態',
   `Orderm_Sdate` datetime DEFAULT NULL COMMENT '訂單日期',
   `Orderm_Outdate` datetime DEFAULT NULL COMMENT '出貨日期',
   `Orderm_card5no` int DEFAULT NULL,
-  `Orderm_cardno` varchar(20) DEFAULT NULL COMMENT '信用卡卡號',
+  `Orderm_cardno` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '信用卡卡號',
   `Orderm_payAmt` int NOT NULL DEFAULT '0',
   `Orderm_Success` tinyint(1) DEFAULT '0' COMMENT '訂單完成',
   PRIMARY KEY (`Orderm_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5295,15 +5296,15 @@ CREATE TABLE IF NOT EXISTS `web_ordermain` (
 
 DROP TABLE IF EXISTS `web_ordertdetail`;
 CREATE TABLE IF NOT EXISTS `web_ordertdetail` (
-  `Ordertm_Sn` varchar(12) NOT NULL COMMENT '訂單編號',
-  `Member_ID` varchar(11) DEFAULT NULL COMMENT '會員編號',
-  `Product_ID` varchar(12) DEFAULT NULL COMMENT '產品編號',
-  `Ordertd_Unit` varchar(60) DEFAULT NULL COMMENT '規格',
+  `Ordertm_Sn` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
+  `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '會員編號',
+  `Product_ID` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品編號',
+  `Ordertd_Unit` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '規格',
   `Ordertd_Count` int DEFAULT NULL COMMENT '產品數量',
   `Ordertd_Price` int DEFAULT NULL COMMENT '產品原價',
   `Ordertd_Price1` int DEFAULT NULL COMMENT '產品售價',
   UNIQUE KEY `Ordertm_ID` (`Ordertm_Sn`,`Product_ID`,`Ordertd_Unit`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5313,26 +5314,26 @@ CREATE TABLE IF NOT EXISTS `web_ordertdetail` (
 
 DROP TABLE IF EXISTS `web_ordertmain`;
 CREATE TABLE IF NOT EXISTS `web_ordertmain` (
-  `Ordertm_Sn` varchar(12) NOT NULL COMMENT '訂單編號',
+  `Ordertm_Sn` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '訂單編號',
   `Delivery_ID` int UNSIGNED DEFAULT NULL COMMENT '付款方式',
-  `Member_ID` varchar(11) DEFAULT NULL,
-  `Ordertm_Name` varchar(30) DEFAULT NULL,
-  `Ordertm_Uniform` varchar(8) DEFAULT NULL COMMENT '統一編號',
-  `Ordertm_City` varchar(5) DEFAULT NULL,
-  `Ordertm_County` varchar(5) DEFAULT NULL,
-  `Ordertm_Address` varchar(100) DEFAULT NULL,
-  `Ordertm_Tel` varchar(12) DEFAULT NULL,
-  `Ordertm_Mobile` varchar(12) DEFAULT NULL,
-  `Ordertm_Email` varchar(120) DEFAULT NULL COMMENT '訂購人信箱',
-  `Ordertm_RName` varchar(30) DEFAULT NULL,
-  `Ordertm_RCity` varchar(5) DEFAULT NULL,
-  `Ordertm_RCounty` varchar(5) DEFAULT NULL,
-  `Ordertm_RAddr` varchar(100) DEFAULT NULL,
-  `Ordertm_RTel` varchar(12) DEFAULT NULL,
-  `Ordertm_RMobile` varchar(12) DEFAULT NULL,
-  `Ordertm_Note` text,
+  `Member_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_Name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_Uniform` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '統一編號',
+  `Ordertm_City` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_County` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_Address` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_Tel` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_Mobile` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_Email` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '訂購人信箱',
+  `Ordertm_RName` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_RCity` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_RCounty` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_RAddr` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_RTel` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_RMobile` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ordertm_Note` mediumtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`Ordertm_Sn`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5342,9 +5343,9 @@ CREATE TABLE IF NOT EXISTS `web_ordertmain` (
 
 DROP TABLE IF EXISTS `web_ordert_sn`;
 CREATE TABLE IF NOT EXISTS `web_ordert_sn` (
-  `Ord_UID` varchar(12) DEFAULT NULL COMMENT '使用者編號',
-  `Ord_Sn` varchar(12) DEFAULT NULL COMMENT '訂單編號'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `Ord_UID` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '使用者編號',
+  `Ord_Sn` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '訂單編號'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -5354,20 +5355,20 @@ CREATE TABLE IF NOT EXISTS `web_ordert_sn` (
 
 DROP TABLE IF EXISTS `web_product`;
 CREATE TABLE IF NOT EXISTS `web_product` (
-  `Product_ID` varchar(11) NOT NULL COMMENT '產品編號',
-  `ProductC_ID` varchar(11) DEFAULT NULL COMMENT '產品分類',
-  `Product_Name` varchar(50) DEFAULT NULL COMMENT '產品名稱',
-  `Product_Intro` varchar(255) DEFAULT NULL COMMENT '產品簡介',
-  `Product_Content` text COMMENT '詳細內容',
-  `Product_Unit_ID` text COMMENT '規格UID',
-  `Product_Unit_NO` text COMMENT '進銷存產品編號',
-  `Product_Unit` text COMMENT '規格',
-  `Product_Price` varchar(255) DEFAULT NULL COMMENT '原價',
-  `Product_Price1` varchar(255) DEFAULT NULL COMMENT '售價',
-  `Product_Mcp` varchar(60) DEFAULT NULL COMMENT '封面圖',
-  `Product_Img1` varchar(60) DEFAULT NULL COMMENT '產品圖一',
-  `Product_Img2` varchar(60) DEFAULT NULL COMMENT '產品圖二',
-  `Product_Img3` varchar(60) DEFAULT NULL COMMENT '產品圖三',
+  `Product_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '產品編號',
+  `ProductC_ID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品分類',
+  `Product_Name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品名稱',
+  `Product_Intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品簡介',
+  `Product_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '詳細內容',
+  `Product_Unit_ID` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '規格UID',
+  `Product_Unit_NO` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '進銷存產品編號',
+  `Product_Unit` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '規格',
+  `Product_Price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '原價',
+  `Product_Price1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '售價',
+  `Product_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面圖',
+  `Product_Img1` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖一',
+  `Product_Img2` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖二',
+  `Product_Img3` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖三',
   `Product_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Product_OpenNew` tinyint UNSIGNED DEFAULT '0' COMMENT '新品',
   `Product_OpenHot` tinyint UNSIGNED DEFAULT '0' COMMENT '人氣',
@@ -5375,9 +5376,9 @@ CREATE TABLE IF NOT EXISTS `web_product` (
   `Product_Sdate` datetime DEFAULT NULL COMMENT '建立時間',
   PRIMARY KEY (`Product_ID`),
   KEY `Product_Name` (`Product_Name`),
-  KEY `Product_Price` (`Product_Price`),
+  KEY `Product_Price` (`Product_Price`(250)),
   KEY `ProductC_ID` (`ProductC_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_product`
@@ -5397,18 +5398,18 @@ INSERT INTO `web_product` (`Product_ID`, `ProductC_ID`, `Product_Name`, `Product
 
 DROP TABLE IF EXISTS `web_productclass`;
 CREATE TABLE IF NOT EXISTS `web_productclass` (
-  `ProductC_ID` varchar(11) NOT NULL COMMENT '分類編號',
-  `ProductC_Name` varchar(20) DEFAULT NULL COMMENT '分類名稱',
+  `ProductC_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分類編號',
+  `ProductC_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分類名稱',
   `ProductC_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
   `ProductC_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `ProductC_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
-  `ProductC_UpMID` varchar(11) DEFAULT NULL COMMENT '上層目錄ID',
-  `ProductC_Mcp` varchar(60) DEFAULT NULL COMMENT '封面圖',
-  `ProductC_Img1` varchar(60) DEFAULT NULL COMMENT '產品圖一',
-  `ProductC_Img2` varchar(60) DEFAULT NULL COMMENT '產品圖二',
-  `ProductC_Img3` varchar(60) DEFAULT NULL COMMENT '產品圖三',
+  `ProductC_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
+  `ProductC_Mcp` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '封面圖',
+  `ProductC_Img1` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖一',
+  `ProductC_Img2` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖二',
+  `ProductC_Img3` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '產品圖三',
   PRIMARY KEY (`ProductC_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_productclass`
@@ -5442,15 +5443,15 @@ INSERT INTO `web_productclass` (`ProductC_ID`, `ProductC_Name`, `ProductC_Lv`, `
 
 DROP TABLE IF EXISTS `web_qa`;
 CREATE TABLE IF NOT EXISTS `web_qa` (
-  `QA_ID` varchar(11) NOT NULL COMMENT '編號',
-  `QA_Name` varchar(20) DEFAULT NULL COMMENT '資訊標題',
+  `QA_ID` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '編號',
+  `QA_Name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '資訊標題',
   `QA_Lv` tinyint UNSIGNED DEFAULT '1' COMMENT '目錄層級',
   `QA_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `QA_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '顯示',
-  `QA_UpMID` varchar(11) DEFAULT NULL COMMENT '上層目錄ID',
-  `QA_Content` text COMMENT '資訊內容',
+  `QA_UpMID` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '上層目錄ID',
+  `QA_Content` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '資訊內容',
   PRIMARY KEY (`QA_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_qa`
@@ -5472,16 +5473,16 @@ INSERT INTO `web_qa` (`QA_ID`, `QA_Name`, `QA_Lv`, `QA_Sort`, `QA_Open`, `QA_UpM
 DROP TABLE IF EXISTS `web_setting`;
 CREATE TABLE IF NOT EXISTS `web_setting` (
   `Admin_ID` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '管理者',
-  `Setting_BankCode` varchar(30) DEFAULT NULL COMMENT '銀行代號+銀行名',
-  `Setting_BankAcc` varchar(20) DEFAULT NULL COMMENT '銀行帳號',
-  `Setting_BankName` varchar(20) DEFAULT NULL COMMENT '銀行戶名',
-  `Setting_Index01` text COMMENT '首頁品牌故事簡介',
-  `Setting_Index02` text COMMENT '首頁訂做文字',
-  `Setting_privacy` text COMMENT '隱私權',
-  `Setting_PriceLimit` varchar(10) DEFAULT NULL COMMENT '貨到付款限制金額	',
-  `Setting_Alert` text COMMENT '首頁彈跳視窗',
+  `Setting_BankCode` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行代號+銀行名',
+  `Setting_BankAcc` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行帳號',
+  `Setting_BankName` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '銀行戶名',
+  `Setting_Index01` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '首頁品牌故事簡介',
+  `Setting_Index02` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '首頁訂做文字',
+  `Setting_privacy` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '隱私權',
+  `Setting_PriceLimit` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '貨到付款限制金額	',
+  `Setting_Alert` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '首頁彈跳視窗',
   PRIMARY KEY (`Admin_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_setting`
@@ -5499,14 +5500,14 @@ INSERT INTO `web_setting` (`Admin_ID`, `Setting_BankCode`, `Setting_BankAcc`, `S
 DROP TABLE IF EXISTS `web_version`;
 CREATE TABLE IF NOT EXISTS `web_version` (
   `Version_ID` int UNSIGNED NOT NULL,
-  `Version_Title` varchar(60) DEFAULT NULL COMMENT '版本名稱',
-  `Version_Price` text COMMENT '版本金額',
+  `Version_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '版本名稱',
+  `Version_Price` mediumtext COLLATE utf8mb4_unicode_ci COMMENT '版本金額',
   `Version_Day` int NOT NULL DEFAULT '0' COMMENT '購買天數',
   `Version_Count` int NOT NULL DEFAULT '0' COMMENT '人數',
   `Version_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Version_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Version_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_version`
@@ -5541,12 +5542,12 @@ INSERT INTO `web_version` (`Version_ID`, `Version_Title`, `Version_Price`, `Vers
 DROP TABLE IF EXISTS `web_video`;
 CREATE TABLE IF NOT EXISTS `web_video` (
   `Video_ID` int UNSIGNED NOT NULL,
-  `Video_Title` varchar(60) DEFAULT NULL COMMENT '標題',
-  `Video_YouTube` varchar(11) DEFAULT NULL COMMENT 'YouTube',
+  `Video_Title` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '標題',
+  `Video_YouTube` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'YouTube',
   `Video_Sort` int UNSIGNED DEFAULT '0' COMMENT '排序',
   `Video_Open` tinyint UNSIGNED DEFAULT '0' COMMENT '啟用',
   `Video_Sdate` datetime DEFAULT NULL COMMENT '建立時間'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `web_video`
