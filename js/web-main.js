@@ -183,7 +183,16 @@ $(document).ready(function (e) {
 		Form_Data += field.serialize();
 		Form_Data += '&token=' + token;
 		Form_Data += '&_type=' + type;
-		Post_JS(Form_Data, Exec_Url);
+		Swal.fire({
+			title: "確定要刪除?",
+			showDenyButton: true,
+			confirmButtonText: "確認",
+			denyButtonText: "取消"
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Post_JS(Form_Data, Exec_Url);
+			}
+		});
 	});
 	$('.logout').click(function () {
 		var Form_Data = '';
