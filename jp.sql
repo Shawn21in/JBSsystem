@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2024-04-01 02:48:58
+-- 產生時間： 2024-04-01 06:12:20
 -- 伺服器版本： 8.2.0
 -- PHP 版本： 7.4.33
 
@@ -3955,26 +3955,63 @@ CREATE TABLE IF NOT EXISTS `purchaser1` (
   `purchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '健保費',
   `employerPurchaserhmny` decimal(19,4) DEFAULT NULL COMMENT '雇主負擔金額',
   PRIMARY KEY (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=133 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `purchaser1`
 --
 
 INSERT INTO `purchaser1` (`pid`, `purchaserno`, `purchasermny`, `purchaserhmny`, `employerPurchaserhmny`) VALUES
-(20, 1, 27470.0000, 426.0000, 1329.0000),
-(21, 2, 27600.0000, 428.0000, 1336.0000),
-(22, 3, 28800.0000, 447.0000, 1394.0000),
-(23, 4, 30300.0000, 470.0000, 1466.0000),
-(24, 5, 31800.0000, 493.0000, 1539.0000),
-(25, 6, 33300.0000, 516.0000, 1611.0000),
-(26, 7, 34800.0000, 540.0000, 1684.0000),
-(27, 8, 36300.0000, 563.0000, 1757.0000),
-(28, 9, 38200.0000, 592.0000, 1849.0000),
-(29, 10, 40100.0000, 622.0000, 1940.0000),
-(30, 11, 42000.0000, 651.0000, 2032.0000),
-(31, 12, 43900.0000, 681.0000, 2124.0000),
-(32, 13, 45800.0000, 710.0000, 2216.0000);
+(83, 1, 27470.0000, 426.0000, 1329.0000),
+(84, 2, 27600.0000, 428.0000, 1336.0000),
+(85, 3, 28800.0000, 447.0000, 1394.0000),
+(86, 4, 30300.0000, 470.0000, 1466.0000),
+(87, 5, 31800.0000, 493.0000, 1539.0000),
+(88, 6, 33300.0000, 516.0000, 1611.0000),
+(89, 7, 34800.0000, 540.0000, 1684.0000),
+(90, 8, 36300.0000, 563.0000, 1757.0000),
+(91, 9, 38200.0000, 592.0000, 1849.0000),
+(92, 10, 40100.0000, 622.0000, 1940.0000),
+(93, 11, 42000.0000, 651.0000, 2032.0000),
+(94, 12, 43900.0000, 681.0000, 2124.0000),
+(95, 13, 45800.0000, 710.0000, 2216.0000),
+(96, 14, 48200.0000, 748.0000, 2332.0000),
+(97, 15, 50600.0000, 785.0000, 2449.0000),
+(98, 16, 53000.0000, 822.0000, 2565.0000),
+(99, 17, 55400.0000, 859.0000, 2681.0000),
+(100, 18, 57800.0000, 896.0000, 2797.0000),
+(101, 19, 60800.0000, 943.0000, 2942.0000),
+(102, 20, 63800.0000, 990.0000, 3087.0000),
+(103, 21, 66800.0000, 1036.0000, 3233.0000),
+(104, 22, 69800.0000, 1083.0000, 3378.0000),
+(105, 23, 72800.0000, 1129.0000, 3523.0000),
+(106, 24, 76500.0000, 1187.0000, 3702.0000),
+(107, 25, 80200.0000, 1244.0000, 3881.0000),
+(108, 26, 83900.0000, 1301.0000, 4060.0000),
+(109, 27, 87600.0000, 1359.0000, 4239.0000),
+(110, 28, 92100.0000, 1428.0000, 4457.0000),
+(111, 29, 96600.0000, 1498.0000, 4675.0000),
+(112, 30, 101100.0000, 1568.0000, 4892.0000),
+(113, 31, 105600.0000, 1638.0000, 5110.0000),
+(114, 32, 110100.0000, 1708.0000, 5328.0000),
+(115, 33, 115500.0000, 1791.0000, 5589.0000),
+(116, 34, 120900.0000, 1875.0000, 5850.0000),
+(117, 35, 126300.0000, 1959.0000, 6112.0000),
+(118, 36, 131700.0000, 2043.0000, 6373.0000),
+(119, 37, 137100.0000, 2126.0000, 6634.0000),
+(120, 38, 142500.0000, 2210.0000, 6896.0000),
+(121, 39, 147900.0000, 2294.0000, 7157.0000),
+(122, 40, 150000.0000, 2327.0000, 7259.0000),
+(123, 41, 156400.0000, 2426.0000, 7568.0000),
+(124, 42, 162800.0000, 2525.0000, 7878.0000),
+(125, 43, 169200.0000, 2624.0000, 8188.0000),
+(126, 44, 175600.0000, 2724.0000, 8497.0000),
+(127, 45, 182000.0000, 2823.0000, 8807.0000),
+(128, 46, 189500.0000, 2939.0000, 9170.0000),
+(129, 47, 197000.0000, 3055.0000, 9533.0000),
+(130, 48, 204500.0000, 3172.0000, 9896.0000),
+(131, 49, 212000.0000, 3288.0000, 10259.0000),
+(132, 50, 219500.0000, 3404.0000, 10622.0000);
 
 -- --------------------------------------------------------
 
@@ -4211,7 +4248,7 @@ CREATE TABLE IF NOT EXISTS `sys_mysql_log` (
   KEY `ML_DATA_ID` (`ML_DATA_ID`),
   KEY `ML_SQL_EXEC_TYPE` (`ML_SQL_EXEC_TYPE`),
   KEY `ML_EXEC_FILE` (`ML_EXEC_FILE`(250))
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
+) ENGINE=MyISAM AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='執行訊息';
 
 --
 -- 傾印資料表的資料 `sys_mysql_log`
@@ -4273,7 +4310,110 @@ INSERT INTO `sys_mysql_log` (`ML_ID`, `ML_DATE`, `ML_USER`, `ML_DATA_ID`, `ML_CO
 (53, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'11\',\'651\',\'42000\',\'2032\');', 'INSERT', '/jp/web_post.php'),
 (54, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
 (55, '2024-03-29 17:55:25', '系統管理員', '1', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php'),
-(56, '2024-04-01 08:53:54', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'e5fb614c4d353db87ea7fdfbdc0689fb\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php');
+(56, '2024-04-01 08:53:54', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'e5fb614c4d353db87ea7fdfbdc0689fb\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(57, '2024-04-01 11:36:28', '', '', '', 'UPDATE web_company SET `Company_PW` = \'767f2e385cba483c5e3a0f41d9d78cc3\',`Company_RePwd` = \'\',`Company_Is_RePwd` = \'0\',`Company_Verify` = \'71ef1f7762761f8f435c02e6d4f40d8e\'  WHERE (BINARY Company_Acc = \'JBS123\' OR BINARY Company_Email = \'JBS123\') AND (BINARY Company_PW = \'767f2e385cba483c5e3a0f41d9d78cc3\' OR BINARY Company_RePwd = \'767f2e385cba483c5e3a0f41d9d78cc3\');', 'UPDATE', '/jp/web_post.php'),
+(58, '2024-04-01 12:01:32', '', '', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(59, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27470\',\'1329\');', 'INSERT', '/jp/web_post.php'),
+(60, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
+(61, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
+(62, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php'),
+(63, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'5\',\'493\',\'31800\',\'1539\');', 'INSERT', '/jp/web_post.php'),
+(64, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'6\',\'516\',\'33300\',\'1611\');', 'INSERT', '/jp/web_post.php'),
+(65, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'7\',\'540\',\'34800\',\'1684\');', 'INSERT', '/jp/web_post.php'),
+(66, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'8\',\'563\',\'36300\',\'1757\');', 'INSERT', '/jp/web_post.php'),
+(67, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'9\',\'592\',\'38200\',\'1849\');', 'INSERT', '/jp/web_post.php'),
+(68, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'10\',\'622\',\'40100\',\'1940\');', 'INSERT', '/jp/web_post.php'),
+(69, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'11\',\'651\',\'42000\',\'2032\');', 'INSERT', '/jp/web_post.php'),
+(70, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
+(71, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php'),
+(72, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'14\',\'748\',\'48200\',\'2332\');', 'INSERT', '/jp/web_post.php'),
+(73, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'15\',\'822\',\'50600\',\'2449\');', 'INSERT', '/jp/web_post.php'),
+(74, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'16\',\'859\',\'53000\',\'2565\');', 'INSERT', '/jp/web_post.php'),
+(75, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'17\',\'\',\'55400\',\'2681\');', 'INSERT', '/jp/web_post.php'),
+(76, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'18\',\'\',\'57800\',\'2797\');', 'INSERT', '/jp/web_post.php'),
+(77, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'19\',\'\',\'60800\',\'2942\');', 'INSERT', '/jp/web_post.php'),
+(78, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'20\',\'\',\'63800\',\'3087\');', 'INSERT', '/jp/web_post.php'),
+(79, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'21\',\'\',\'66800\',\'3233\');', 'INSERT', '/jp/web_post.php'),
+(80, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'22\',\'\',\'69800\',\'3378\');', 'INSERT', '/jp/web_post.php'),
+(81, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'23\',\'\',\'72800\',\'3523\');', 'INSERT', '/jp/web_post.php'),
+(82, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'24\',\'\',\'76500\',\'3702\');', 'INSERT', '/jp/web_post.php'),
+(83, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'25\',\'\',\'80200\',\'3881\');', 'INSERT', '/jp/web_post.php'),
+(84, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'26\',\'\',\'83900\',\'4060\');', 'INSERT', '/jp/web_post.php'),
+(85, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'27\',\'\',\'87600\',\'4239\');', 'INSERT', '/jp/web_post.php'),
+(86, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'28\',\'\',\'92100\',\'4457\');', 'INSERT', '/jp/web_post.php'),
+(87, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'29\',\'\',\'96600\',\'4675\');', 'INSERT', '/jp/web_post.php'),
+(88, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'30\',\'\',\'101100\',\'4892\');', 'INSERT', '/jp/web_post.php'),
+(89, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'31\',\'\',\'105600\',\'5110\');', 'INSERT', '/jp/web_post.php'),
+(90, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'32\',\'\',\'110100\',\'5328\');', 'INSERT', '/jp/web_post.php'),
+(91, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'33\',\'\',\'115500\',\'5589\');', 'INSERT', '/jp/web_post.php'),
+(92, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'34\',\'\',\'120900\',\'5850\');', 'INSERT', '/jp/web_post.php'),
+(93, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'35\',\'\',\'126300\',\'6112\');', 'INSERT', '/jp/web_post.php'),
+(94, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'36\',\'\',\'131700\',\'6373\');', 'INSERT', '/jp/web_post.php'),
+(95, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'37\',\'\',\'137100\',\'6634\');', 'INSERT', '/jp/web_post.php'),
+(96, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'38\',\'\',\'142500\',\'6896\');', 'INSERT', '/jp/web_post.php'),
+(97, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'39\',\'\',\'147900\',\'7157\');', 'INSERT', '/jp/web_post.php'),
+(98, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'40\',\'\',\'150000\',\'7259\');', 'INSERT', '/jp/web_post.php'),
+(99, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'41\',\'\',\'156400\',\'7568\');', 'INSERT', '/jp/web_post.php'),
+(100, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'42\',\'\',\'162800\',\'7878\');', 'INSERT', '/jp/web_post.php'),
+(101, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'43\',\'\',\'169200\',\'8188\');', 'INSERT', '/jp/web_post.php'),
+(102, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'44\',\'\',\'175600\',\'8497\');', 'INSERT', '/jp/web_post.php'),
+(103, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'45\',\'\',\'182000\',\'8807\');', 'INSERT', '/jp/web_post.php'),
+(104, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'46\',\'\',\'189500\',\'9170\');', 'INSERT', '/jp/web_post.php'),
+(105, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'47\',\'\',\'197000\',\'9533\');', 'INSERT', '/jp/web_post.php'),
+(106, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'48\',\'\',\'204500\',\'9896\');', 'INSERT', '/jp/web_post.php'),
+(107, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'49\',\'\',\'212000\',\'10259\');', 'INSERT', '/jp/web_post.php'),
+(108, '2024-04-01 12:01:32', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'50\',\'\',\'219500\',\'10622\');', 'INSERT', '/jp/web_post.php'),
+(109, '2024-04-01 13:50:40', '', '', '', 'DELETE FROM purchaser1  WHERE  1 = 1;', 'DELETE', '/jp/web_post.php'),
+(110, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'1\',\'426\',\'27470\',\'1329\');', 'INSERT', '/jp/web_post.php'),
+(111, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'2\',\'428\',\'27600\',\'1336\');', 'INSERT', '/jp/web_post.php'),
+(112, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'3\',\'447\',\'28800\',\'1394\');', 'INSERT', '/jp/web_post.php'),
+(113, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'4\',\'470\',\'30300\',\'1466\');', 'INSERT', '/jp/web_post.php'),
+(114, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'5\',\'493\',\'31800\',\'1539\');', 'INSERT', '/jp/web_post.php'),
+(115, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'6\',\'516\',\'33300\',\'1611\');', 'INSERT', '/jp/web_post.php'),
+(116, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'7\',\'540\',\'34800\',\'1684\');', 'INSERT', '/jp/web_post.php'),
+(117, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'8\',\'563\',\'36300\',\'1757\');', 'INSERT', '/jp/web_post.php'),
+(118, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'9\',\'592\',\'38200\',\'1849\');', 'INSERT', '/jp/web_post.php'),
+(119, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'10\',\'622\',\'40100\',\'1940\');', 'INSERT', '/jp/web_post.php'),
+(120, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'11\',\'651\',\'42000\',\'2032\');', 'INSERT', '/jp/web_post.php'),
+(121, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'12\',\'681\',\'43900\',\'2124\');', 'INSERT', '/jp/web_post.php'),
+(122, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'13\',\'710\',\'45800\',\'2216\');', 'INSERT', '/jp/web_post.php'),
+(123, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'14\',\'748\',\'48200\',\'2332\');', 'INSERT', '/jp/web_post.php'),
+(124, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'15\',\'785\',\'50600\',\'2449\');', 'INSERT', '/jp/web_post.php'),
+(125, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'16\',\'822\',\'53000\',\'2565\');', 'INSERT', '/jp/web_post.php'),
+(126, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'17\',\'859\',\'55400\',\'2681\');', 'INSERT', '/jp/web_post.php'),
+(127, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'18\',\'896\',\'57800\',\'2797\');', 'INSERT', '/jp/web_post.php'),
+(128, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'19\',\'943\',\'60800\',\'2942\');', 'INSERT', '/jp/web_post.php'),
+(129, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'20\',\'990\',\'63800\',\'3087\');', 'INSERT', '/jp/web_post.php'),
+(130, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'21\',\'1036\',\'66800\',\'3233\');', 'INSERT', '/jp/web_post.php'),
+(131, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'22\',\'1083\',\'69800\',\'3378\');', 'INSERT', '/jp/web_post.php'),
+(132, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'23\',\'1129\',\'72800\',\'3523\');', 'INSERT', '/jp/web_post.php'),
+(133, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'24\',\'1187\',\'76500\',\'3702\');', 'INSERT', '/jp/web_post.php'),
+(134, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'25\',\'1244\',\'80200\',\'3881\');', 'INSERT', '/jp/web_post.php'),
+(135, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'26\',\'1301\',\'83900\',\'4060\');', 'INSERT', '/jp/web_post.php'),
+(136, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'27\',\'1359\',\'87600\',\'4239\');', 'INSERT', '/jp/web_post.php'),
+(137, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'28\',\'1428\',\'92100\',\'4457\');', 'INSERT', '/jp/web_post.php'),
+(138, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'29\',\'1498\',\'96600\',\'4675\');', 'INSERT', '/jp/web_post.php'),
+(139, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'30\',\'1568\',\'101100\',\'4892\');', 'INSERT', '/jp/web_post.php'),
+(140, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'31\',\'1638\',\'105600\',\'5110\');', 'INSERT', '/jp/web_post.php'),
+(141, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'32\',\'1708\',\'110100\',\'5328\');', 'INSERT', '/jp/web_post.php'),
+(142, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'33\',\'1791\',\'115500\',\'5589\');', 'INSERT', '/jp/web_post.php'),
+(143, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'34\',\'1875\',\'120900\',\'5850\');', 'INSERT', '/jp/web_post.php'),
+(144, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'35\',\'1959\',\'126300\',\'6112\');', 'INSERT', '/jp/web_post.php'),
+(145, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'36\',\'2043\',\'131700\',\'6373\');', 'INSERT', '/jp/web_post.php'),
+(146, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'37\',\'2126\',\'137100\',\'6634\');', 'INSERT', '/jp/web_post.php'),
+(147, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'38\',\'2210\',\'142500\',\'6896\');', 'INSERT', '/jp/web_post.php'),
+(148, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'39\',\'2294\',\'147900\',\'7157\');', 'INSERT', '/jp/web_post.php'),
+(149, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'40\',\'2327\',\'150000\',\'7259\');', 'INSERT', '/jp/web_post.php'),
+(150, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'41\',\'2426\',\'156400\',\'7568\');', 'INSERT', '/jp/web_post.php'),
+(151, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'42\',\'2525\',\'162800\',\'7878\');', 'INSERT', '/jp/web_post.php'),
+(152, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'43\',\'2624\',\'169200\',\'8188\');', 'INSERT', '/jp/web_post.php'),
+(153, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'44\',\'2724\',\'175600\',\'8497\');', 'INSERT', '/jp/web_post.php'),
+(154, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'45\',\'2823\',\'182000\',\'8807\');', 'INSERT', '/jp/web_post.php'),
+(155, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'46\',\'2939\',\'189500\',\'9170\');', 'INSERT', '/jp/web_post.php'),
+(156, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'47\',\'3055\',\'197000\',\'9533\');', 'INSERT', '/jp/web_post.php'),
+(157, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'48\',\'3172\',\'204500\',\'9896\');', 'INSERT', '/jp/web_post.php'),
+(158, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'49\',\'3288\',\'212000\',\'10259\');', 'INSERT', '/jp/web_post.php'),
+(159, '2024-04-01 13:50:40', '', '', '', 'INSERT INTO purchaser1 (`purchaserno`,`purchaserhmny`,`purchasermny`,`employerPurchaserhmny`) VALUES (\'50\',\'3404\',\'219500\',\'10622\');', 'INSERT', '/jp/web_post.php');
 
 -- --------------------------------------------------------
 
@@ -4751,7 +4891,7 @@ CREATE TABLE IF NOT EXISTS `web_company` (
 --
 
 INSERT INTO `web_company` (`Company_bid`, `Company_ID`, `Company_Acc`, `Company_PW`, `Company_RePwd`, `Company_Is_RePwd`, `Company_NAME`, `Company_EDITORIAL`, `Company_CTEL`, `Company_ADDRESS`, `Company_PER`, `Company_TEL`, `Company_EMAIL`, `Company_NDATE`, `Company_EDATE`, `Company_END`, `Company_Plan`, `Company_Pay_Type`, `Company_Invoice_Title`, `Company_Invoice_Address`, `Company_Invoice_Type`, `Company_Is_Pay`, `Company_Verify`, `Company_OPEN`) VALUES
-(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, 'e5fb614c4d353db87ea7fdfbdc0689fb', 1);
+(109, 'C2312150001', 'JBS123', '767f2e385cba483c5e3a0f41d9d78cc3', '', 0, '華越資訊', '25686802', '09132456789', '台中市', '測試', '0912345678', 'kerry19820813@gmail.com', '2023-12-15 16:22:34', '2023-12-29 16:29:35', '2024-02-10 11:19:30', 1, 0, NULL, '407台中市西屯區中工二路120號', 1, 1, '71ef1f7762761f8f435c02e6d4f40d8e', 1);
 
 -- --------------------------------------------------------
 

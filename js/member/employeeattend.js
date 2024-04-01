@@ -1,4 +1,7 @@
 $(function () {
+    $(window).on('load', function () {
+        $('#employ_select .e_radio').eq(0).trigger('click');
+    })
     $("#search_eid").chosen({
         width: "50%",
         search_contains: true,
